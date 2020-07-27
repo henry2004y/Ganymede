@@ -42,6 +42,14 @@ Alfvén wings are a consequence of the interaction between the flow velocity and
 In addition, the plasma still advects the magnetic field with a given velocity $V$ . The Alfvén wave, therefore, travels with an angle $\theta=\tan^{-1}({M_A}^{-1})$, where $M_A$ is the Alfvén Mach number, defined by $M_A=V /V_A$ (Neubauer, 1980).
 The flow diverts around the obstacle and forms two tubes (above and below) the object in which the flow characteristics of the plasma are altered significantly from the surrounding medium. This cavity is the low density Alfvén wing.
 
+### Ionosphere
+
+Whether or not Ganymede has a real ionosphere is still debatable. In 2001, researchers published a paper with a conclusion that Ganymede has a bound ionosphere composed mainly of molecular oxygen ions in the polar regions and of atomic oxygen ions at low latitudes and that protons are absent everywhere.
+Their prediction is that Ganymede is surrounded by a corona of hot oxygen atoms.
+
+From PWS measurements during the G1 and G2 flyby,
+\fig{/assets/PWS_e_density.png}
+
 ### MHD
 
 Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability (Tóth, 2000; Jiang et al., 2012a).
