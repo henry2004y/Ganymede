@@ -50,6 +50,13 @@ Their prediction is that Ganymede is surrounded by a corona of hot oxygen atoms.
 From PWS measurements during the G1 and G2 flyby,
 \fig{/assets/PWS_e_density.png}
 
+The common slope of the first mentioned triad corresponds to a scale height of 600 km and a surface density of about 400${cm}^{-3}$. This is well below the upper limit of $4\times10^3 \text{cm}^{-3}$ obtained by [Kliore, 1998] in the radio occultation observation.
+
+Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Temperature maps published by [Orton+, 1996] show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector.
+
+In the closed field line region, the magnetospheric thermal plasma density can be expected to be very low in this region, because of the inaccessibility of closed drift paths to injected Jovian particles and the paucity of local plasma sources.
+In the low-latitude regions of Ganymede, the dayside temperature can be as high as 140–150 K.
+
 ### MHD
 
 Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability (Tóth, 2000; Jiang et al., 2012a).
@@ -204,7 +211,7 @@ If we update everything explicitly, the large density inside the body to reduce 
 
 However, with semi-implicit method and solid body this is no longer true.
 
-Happened to find that my timestep for the cell inner BC Hall MHD run is incredibly small for the pole region inside $r=1$, $\sim10^{-6}s$! Yuxi told me this is because of the resistivity. Remember you need to switch to semi-implicit scheme for time-accurate mode? This is the reason! Also, the smallest timestep shows up in one layer of cells below $r=1$ when I had coarse axis turned on. Just think about this: things get slowed down at $r=1$!
+Happened to find that my timestep for the cell inner BC Hall MHD run is incredibly small for the pole region inside $r=1$, the time step is about $\sim10^{-6}s$! Yuxi told me this is because of the resistivity. Remember you need to switch to semi-implicit scheme for time-accurate mode? This is the reason! Also, the smallest timestep shows up in one layer of cells below $r=1$ when I had coarse axis turned on. Just think about this: things get slowed down at $r=1$!
 
 Solution: use semi-implicit scheme in both local timestepping and time-accurate mode.
 
@@ -256,6 +263,8 @@ I once tried a steady state test with surface density down to 100 amu/cc. The ma
 Actually one idea to test the density only is to completely remove the magnetic field and focus on the hydrodynamics part.
 
 For the high resolution runs (AMR3), the density peak at dayside near the surface becomes more of an issue. Also, in Hall MHD, even if the Hall region is set to $r=1.05$, the peak at the tail near the surface becomes another issue. In any case, the flow pattern is consistent with the prescribed boundary condition, but not necessarily be correct in nature.
+
+[Duling+, 2014] and [Toth+, 2015] uses `float` density.
 
 For the velocity, we have three choices:
 1. absorb, which means that plasma velocity can only goes into the body;
