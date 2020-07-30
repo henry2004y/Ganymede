@@ -65,16 +65,16 @@ It takes only $10$ mins for a quasi-steady state run. This is measured in time-a
 Magnetopause location is $10\%$ smaller than the observed one. (But this is for G28, not G8)
 
 ## Single fluid MHD, 2008
+
 improved results for G8 pass by modifying BCs and adjusting other parameters in the simulation.
 
 Modified BC at the inner boundary $r=1.05R_G$, where roughly represents the location of the peak ionospheric conductivity. In the 2008 work, the conductance of the moon's interior was set very high, which led to a total conductance (sum of interior and ionospheric conductances) that was too high, although the ionspheric contribution used was only $2S$.
 
 Forcing the ionospheric flow to be zero is a reasonably good approximation for a highly conducting obstacle. However, the moon's mantle is most likely to be quite weakly conducting and the conductance of Ganymede's ionosphere is quite uncertain.
 
-
 * Ionosphere can be considered as a reservoir populated with cold and dense plasma. $\rightarrow$ constant plasma density and pressure is applicable.
-* BC1: $\mathbf{v}_r=0,\mathbf{v}_\theta$ and $\mathbf{v}_\phi$ continuous.$\rightarrow$ float. This allows the boundary to act as a hard wall with respect to the flow and prevents the plasma from penetrating the boundary. However, not allowing the flow go through the boundary is not appropriate for an ionosphere with finite conductance. Other issues about this BC
-* BC2:  requires the component of the flow velocty perpendicular to the local magnetic field to be continuous at the inner boundary, $\mathbf{v}_{\perp1}=\mathbf{v}_{\perp2}$, where $\mathbf{v}_\perp=\mathbf{v}-\frac{\mathbf{v}\cdot\mathbf{B}}{B}\widehat{b}$
+* reflect $U$: $\mathbf{v}_r=0,\mathbf{v}_\theta$ and $\mathbf{v}_\phi$ continuous.$\rightarrow$ float. This allows the boundary to act as a hard wall with respect to the flow and prevents the plasma from penetrating the boundary. However, not allowing the flow go through the boundary is not appropriate for an ionosphere with finite conductance. Other issues about this BC
+* $B$ dependent $U$:  requires the component of the flow velocty perpendicular to the local magnetic field to be continuous at the inner boundary, $\mathbf{v}_{\perp1}=\mathbf{v}_{\perp2}$, where $\mathbf{v}_\perp=\mathbf{v}-\frac{\mathbf{v}\cdot\mathbf{B}}{B}\widehat{b}$
 
 Resistivity profile: between the core boundary $r=0.5R_G$ and the moon's surface $r=1.0R_G$ is the insulating rocky mantle whose electrical conductivity is extremely low ($\sim 0$). No plasma flowing in this region, the model solves for a magnetic diffusion equation only. High numerical resistivity corresponding to a Lundquist number of $0.2$ in this region.
 
@@ -83,6 +83,10 @@ $$ \eta=\eta(r) $$
 An anomolous resistivity being setup to enable fast reconnection to occur in regions where magnetic shear is strong. It is introduced only outside the ionosphere and is turned on only at locations where the local current density exceeds some threshold.
 
 The global flow pattern should be: plasma flow is brought into the magnetosphere mainly through reconnection on the upstream side and in turn convects over the polar cap into the downstream region. Then it is expected to partially return toward the moon and upstream at low latitude ($z=0$ cut).
+
+## Ideal MHD with Non-Conducting Surface, 2014
+
+
 
 ## Aurora Estimation, 2015
 
@@ -126,3 +130,13 @@ While they have kinetic ions in their model, only the simulated electric and mag
 ## Ionosphere Model, 2019
 
 This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019](https://www.sciencedirect.com/science/article/pii/S0019103517307054)
+
+## 
+
+| Variables | Core Boundary ($r=0.5R\_G$) | Surface Boundary ($r=1R\_G$) | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
+|---|---|---|---|---|
+| $\rho$       |        | fixed, $550 \text{amu}/cm^3$   | fixed | float |
+| $p$          |        | fixed, $0.115\textnormal{nPa}$ | fixed | float |
+| $p\_e$       |        | fixed, $0.01\textnormal{nPa}$  | fixed | float |
+| $\mathbf{V}$ |        | $\mathbf{V}\perp\mathbf{B}$    | fixed | float |
+| $\mathbf{B}$ | dipole |                                | fixed | float |

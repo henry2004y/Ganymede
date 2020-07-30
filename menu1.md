@@ -264,7 +264,7 @@ Actually one idea to test the density only is to completely remove the magnetic 
 
 For the high resolution runs (AMR3), the density peak at dayside near the surface becomes more of an issue. Also, in Hall MHD, even if the Hall region is set to $r=1.05$, the peak at the tail near the surface becomes another issue. In any case, the flow pattern is consistent with the prescribed boundary condition, but not necessarily be correct in nature.
 
-[Duling+, 2014] and [Toth+, 2015] uses `float` density.
+[Duling+, 2014] and [Toth+, 2016] uses `float` density.
 
 For the velocity, we have three choices:
 1. absorb, which means that plasma velocity can only goes into the body;
@@ -281,7 +281,7 @@ On a coarse grid (0.3 million cells), a bunch of tests are performed. While the 
 
 At a certain time for the solid BC runs, I get inflow at the dayside inner boundary, and a small pressure bump near the surface.
 
-The absorb BC, which is also used by [Duling+ 2014] and [Toth+ 2015], also gives wrong flow pattern on the flanks.
+The absorb BC, which is also used by [Duling+ 2014] and [Toth+ 2016], also gives wrong flow pattern on the flanks.
 
 The flow pattern issue is also present in some Cartesian grid ideal MHD runs, indicating that it has nothing to do with the grid geometry.
 
