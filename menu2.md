@@ -13,11 +13,25 @@
 ## resistive MHD, 2002
 
 Ip and Kopp.
-simulation domain $10 R_G$ surrounding Ganymede. Outer boundary may have reflections that effect the inner solution, and the inner BC $\mathbf{v}=0$ is inconsistent with the flow measurements from Galileo Plasma Subsystem (PLS).
+
+The simulation domain is $10 R_G$ surrounding Ganymede. Outer boundary may have reflections that effect the inner solution, and the inner BC $\mathbf{v}=0$ is inconsistent with the flow measurements from Galileo Plasma Subsystem (PLS).
+
+The BCs are not clearly mentioned.
 
 ## Multifluid MHD, 2006
 
-Paty & Winglee. They want to incorporate the effect of multiple ion species. However, the model has some issues with the configuration of the magnetosphere, such that the magnetic field comparison is not good.
+Paty & Winglee. 
+
+The inner boundary lies along the base of the ionosphere, which is held constant on the assumption of a constant source of ionospheric and exospheric material from surface sputtering. Plasma incident on this boundary is lost to the simulation since neither the chemical effects associated with generation of aurora or the surface sputtering is included in the model.
+
+| Variables | Inner Boundary | Outer Boundary (upstream) |
+|---|---|---|---|---|
+| $\rho$       | fixed, $H^+$ 2000 $\text{cc}^{-1}$, $O^+$ 1000 $\text{cc}^{-1}$  | fixed, 30 amu/cc |
+| $P$          | scale height $H=263$ km, 9.0 to 0.1 eV from polar to equatorial| fixed
+| $\mathbf{V}$ | float | fixed, 180 km/s |
+| $\mathbf{B}$ | ? | fixed |
+
+They want to incorporate the effect of multiple ion species. However, the model has some issues with the configuration of the magnetosphere, such that the magnetic field comparison is not good.
 
 ## Single fluid MHD, 2008-2010
 
@@ -93,7 +107,7 @@ The Dungey-cycle like global flow pattern should be: plasma flow is brought into
 
 ## Ideal MHD with Non-Conducting Surface, 2014
 
-| Variables | Surface Boundary ($r=1R_G$) | Outer Boundary (upstream) | Outer Boundary (downstream)|
+| Variables | Inner Boundary | Outer Boundary (upstream) | Outer Boundary (downstream)|
 |---|---|---|---|
 | $\rho$       | float  | fixed | float |
 | $e$          | float  | fixed | float |
@@ -147,7 +161,7 @@ Payan
 
 Tóth
 
-| Variables | Surface Boundary ($r=1R_G$) | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
+| Variables | Inner Boundary | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
 |---|---|---|---|
 | $\rho$       | float  | fixed | float |
 | $P$          | float  | fixed | float |
@@ -170,6 +184,21 @@ The standoff distance is 6% larger than observation.
 
 [Parallel hybrid multi-grid model](https://www.sciencedirect.com/science/article/pii/S0021999116000061)
 
+The incident plasma is injected at the entry plane following a Maxwellian velocity distribution.
+
+Particle BC:
+* periodic boundary conditions are used to deal with particles coming from the incident plasma flow;
+* planetary particles are lost when leaving the simulation domain.
+
+The BCs are not fully described in the paper.
+
+| Variables | Surface Boundary ($r=1R_G$) | Outer Boundary (upstream) | Outer Boundary (downstream)| Outer Boundary (side)|
+|---|---|---|---|---|
+| Particle | fixed, 0 | Maxwellian | float | particle-dependent |
+| $\mathbf{E}$ | ? | fixed, $-\mathbf{V}\times\mathbf{B}$ | float | periodic   |
+| $\mathbf{B}$ | ? | fixed | float | periodic |
+
+
 ###
 
 [Fatemi](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363)
@@ -185,7 +214,7 @@ While they have kinetic ions in their model, only the simulated electric and mag
 
 This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019](https://www.sciencedirect.com/science/article/pii/S0019103517307054)
 
-## MHD-EPIC, 2019
+## MHD-EPIC, 2019-2020
 
 Zhou
 
