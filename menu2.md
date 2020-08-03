@@ -25,7 +25,7 @@ Paty & Winglee.
 The inner boundary lies along the base of the ionosphere, which is held constant on the assumption of a constant source of ionospheric and exospheric material from surface sputtering. Plasma incident on this boundary is lost to the simulation since neither the chemical effects associated with generation of aurora or the surface sputtering is included in the model.
 
 | Variables | Inner Boundary | Outer Boundary (upstream) |
-|---|---|---|---|---|
+|---|---|---|
 | $\rho$       | fixed, $H^+$ 2000 $\text{cc}^{-1}$, $O^+$ 1000 $\text{cc}^{-1}$  | fixed, 30 amu/cc |
 | $P$          | scale height $H=263$ km, 9.0 to 0.1 eV from polar to equatorial| fixed
 | $\mathbf{V}$ | float | fixed, 180 km/s |
