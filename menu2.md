@@ -212,7 +212,36 @@ While they have kinetic ions in their model, only the simulated electric and mag
 
 ## Ionosphere Model, 2019
 
-This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019](https://www.sciencedirect.com/science/article/pii/S0019103517307054)
+This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019](https://www.sciencedirect.com/science/article/pii/S0019103517307054). They have a follow-up paper on Constraining Ganymede's neutral and plasma properties [https://doi.org/10.1016/j.icarus.2020.113691], with the improvements of adding collisions between ion and neutral species. However, they found that this effect is only important below 200 km altitude.
+
+\fig{/assets/O2+_density.jpg}
+
+In this model, ions are generated from the ionization of the neutral exosphere, whose 3D configuration is taken from the recent model of [Leblanc+, 2017].
+The magnetic field is provided by the MHD model of [Jia+, 2009].
+
+The dominant ion species found in the model is $O_2^+$ near the surface. The ion energy distribution agrees better with observation than the electron number density, where the model gives more than one order of magnitude less than observation. They therefore suspect that the input exosphere is the likely cause for the discrepancy.
+
+\fig{/assets/e_density_G2.jpg}
+
+To increase the ion production rate they multiplied by 10 the $O_2$ distribution derived by [Leblanc+, 2017].
+This corresponds to assuming that the dynamics of molecules is exactly the same, but the ejection rate is increased by a factor of 10.
+This would bring the mean column density of $O_2$, the only “observational constraint”, to $2.44\times10^{15}\, \text{cm}^{−2}$, which is just a factor of 2 higher than the upper limit estimated by [Hall+, 1998].
+
+\fig{/assets/e_density_G2_increasedO2.jpg}
+
+In the ionospheric model, the neutral exosphere is ionized by solar EUV radiation and Jovian magnetospheric electrons.
+On the one hand, the photo-ionization process is derived from the solar flux, which is known with a good level of confidence. On the other hand, the electron-impact ionization frequency, which is an order of magnitude larger than the photo-ionization frequency, is less certain and potentially too strong assumptions have been made in the ionospheric model.
+They played with it and used an asymmetric electron-impact ionization rate:
+
+\fig{electron_impact_ionization_rate_distribution.jpg}
+
+where the orange region is illuminated and the pink region has a 4 times higher ionization rate. (I don't fully understand the calculation in this part!)
+
+This results in better comparison against the electron number density:
+
+\fig{e_density_G2_asymm_rate.jpg}
+
+### Electron impact calculation
 
 ## MHD-EPIC, 2019-2020
 
