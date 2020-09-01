@@ -271,7 +271,7 @@ Actually one idea to test the density only is to completely remove the magnetic 
 
 For the high resolution runs (AMR3), the density peak at dayside near the surface becomes more of an issue. Also, in Hall MHD, even if the Hall region is set to $r=1.05$, the peak at the tail near the surface becomes another issue. In any case, the flow pattern is consistent with the prescribed boundary condition, but not necessarily be correct in nature.
 
-[Duling+, 2014] and [Toth+, 2016] uses `float` density.
+[Duling+, 2014][Duling+2014] and [Toth+, 2016][Tóth+2016] uses `float` density.
 
 For the velocity, we have three choices:
 1. absorb, which means that plasma velocity can only goes into the body;
@@ -288,7 +288,7 @@ On a coarse grid (0.3 million cells), a bunch of tests are performed. While the 
 
 At a certain time for the solid BC runs, I get inflow at the dayside inner boundary, and a small pressure bump near the surface.
 
-The absorb BC, which is also used by [Duling+ 2014] and [Toth+ 2016], also gives wrong flow pattern on the flanks.
+The absorb BC, which is also used by [Duling+, 2014][Duling+2014] and [Tóth+, 2016][Tóth+2016], also gives wrong flow pattern on the flanks.
 
 The flow pattern issue is also present in some Cartesian grid ideal MHD runs, indicating that it has nothing to do with the grid geometry.
 
@@ -296,7 +296,7 @@ Tests of different resistivity profiles ($\eta_{max}=5\times 10^{11}m^2/s$, $\et
 
 I have repeatly confirmed that one quasi-steady solution with the given BC can convert to others by changing the inner BC setup.
 
-Besides, I have also tried to implement the insulating BC described in [Duling+, 2014].
+Besides, I have also tried to implement the insulating BC described in [Duling+, 2014][Duling+2014].
 On a coarse grid, this BC gives pretty good magnetic field comparison. However, I gave it up later because I did not know how to make it work in parallel with the FFT computation.
 
 I always believe there are still inconsistencies in the boundary setup. None of the existing models provide a correct description of the inner boundary, and in fact how can believe that an MHD model can have an inner boundary that is actually the solid moon it self?
@@ -316,9 +316,9 @@ One problem I encounter with `#SOLIDSTATE` at first is that the region $r<rsolid
 
 40000 steps in steady state run with $\eta=3\times 10^{11}m^2/s$. From $P_{max}$ .vs. timestep plot, I can see clear periodic oscillations indicating it is not converging. The streamline plot in $y=0$ plane shows unphysical behavior near the pole region: it is too large, up to about 130km/s. The compare with Galileo still has an off-set for the magnetopause position.
 
-$\eta=3\times 10^{11}m^2/s$ test: no spurious flow pattern in the equatorial plane at the sides; the Galileo comparison is ok. I realize one thing: the resistivity profile I use in `PARAM.in` starts from $r=0.95$. This may have an influence on the results. I tried $r=0.98$ for another test. Also, [Duling+ 2014] uses $\eta=1.6\times 10^{10}m^2/s$ at the surface. I also want to test that.
+$\eta=3\times 10^{11}m^2/s$ test: no spurious flow pattern in the equatorial plane at the sides; the Galileo comparison is ok. I realize one thing: the resistivity profile I use in `PARAM.in` starts from $r=0.95$. This may have an influence on the results. I tried $r=0.98$ for another test. Also, [Duling+, 2014][Duling+2014] uses $\eta=1.6\times 10^{10}\text{m}^2/s$ at the surface. I also want to test that.
 
-Bad results. Even $\eta=1\times 10^{11}m^2/s$ results in a small magnetosphere than Galileo observed. The even smaller $\eta$ run is worse. However, if I turn on Hall MHD, the magnetosphere will expand.
+Bad results. Even $\eta=1\times 10^{11}\text{m}^2/s$ results in a small magnetosphere than Galileo observed. The even smaller $\eta$ run is worse. However, if I turn on Hall MHD, the magnetosphere will expand.
 
 G8, $\eta=0$ run. Physically, this is equivalent to a perfect conducting sphere with $r=0.5R_G$? No, not that easy. I get very small magnetosphere, the standoff distance is about 1.8, and the tail reconnection region center distance is about 2.5.
 This is consistent with my previous tests that the smaller the resistivity is, the smaller the magnetosphere is. However, when I check the $b_1$ components in $0.5<r<1$, something terrifying shows up: it is not zero!!! This might be the problem!
@@ -353,6 +353,16 @@ If the resistivity in the nearest physical cell is not 0, then even if the resis
 
 I found that the solidtimestep inside $r=1$ is the reason for the wrong results: I picked a too large timestep $1e-2s$.
 Maybe some value around $1e-4s$ is better.
+
+### Better Inner BC
+
+Mass loading/loss:
+* **photo-ionization**
+* **dissociative recombination**
+* **electron impact**
+
+I have found the recombination process in `UserSaturn`, impact ionization, charge exchange and recombination in `UserMars`.
+For Mars, there are currently a 4 species module and a 5 fluids + Pe module. The latter is inherited from the former one.
 
 ## Outer BCs
 
@@ -568,3 +578,5 @@ The Kelvin–Helmholtz instability is a favorite excitation mechanism for compre
 K-H instability driven surface waves --> mode conversion to Alfvén wave inside the magnetosphere?
 
 [Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
+[Duling+2014]: https://doi.org/10.1002/2013JA019554
+[Tóth+2016]: https://doi.org/10.1002/2015JA021997
