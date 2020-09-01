@@ -257,8 +257,9 @@ Zhou
 | $p$          |        | fixed, $0.115\textnormal{nPa}$ | fixed | float |
 | $p_e$        |        | fixed, $0.01\textnormal{nPa}$  | fixed | float |
 | $\mathbf{V}$ |        | $\mathbf{V}\perp\mathbf{B}$    | fixed | float |
-| $\mathbf{B}$ | dipole |                                | fixed | float |
+| $\mathbf{B}$ | dipole | float[^3]                      | fixed | float |
 
+[^3]: For the MHD part, the float magnetic field boundary at $r=1$ is found to be the best choice. Another option is to set the face values the same as the first layer of cells beneath the surface, which will give worse results starting from the dipole+upstream field outside the surface and pure dipole in the mantle initially.
 
 [Hall+1998]: https://iopscience.iop.org/article/10.1086/305604
 [Ip+Kopp2002]: https://doi.org/10.1029/2001JA005071
