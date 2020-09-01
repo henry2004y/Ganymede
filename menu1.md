@@ -364,6 +364,9 @@ Mass loading/loss:
 I have found the recombination process in `UserSaturn`, impact ionization, charge exchange and recombination in `UserMars`.
 For Mars, there are currently a 4 species module and a 5 fluids + Pe module. The latter is inherited from the former one.
 
+What I have in mind is similar to what's been described in [Duling+, 2014][Duling+2014].
+
+
 ## Outer BCs
 
 There are two types of outer boundary conditions: cell BC (`#OUTERBOUNDARY`) and face BC (`#BOXBOUNDARY`).

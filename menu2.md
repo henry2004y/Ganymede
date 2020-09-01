@@ -107,7 +107,7 @@ The later improved model in 2009 tunes the resistivity.
 
 The Dungey-cycle like global flow pattern should be: plasma flow is brought into the magnetosphere mainly through reconnection on the upstream side and in turn convects over the polar cap into the downstream region. Then it is expected to partially return toward the moon and upstream at low latitude ($z=0$ cut).
 
-## Ideal MHD with Non-Conducting Surface, 2014
+## Ideal MHD with Non-Conducting Surface
 
 [Duling+, 2014][Duling+2014]
 
@@ -122,23 +122,38 @@ The magnetic insulating BC is complicated. Even until now I don't fully understa
 
 ### Atmosphere and ionosphere
 
-$O_2$: radially symmetric distribution, 0 initial velocity.
+Four factors are considered:
+* ion‐neutral collision in the atmosphere
+* ionization due to solar radiation
+* recombination
+* magnetic diffusion (refer to the original paper)
 
-The amount of momentum loss is modeled through a collision frequency,
+For the atmosphere they assume $O_2$ with radially symmetric distribution and 0 initial velocity.
+When plasma particles collide with the neutral molecules, the plasma loses momentum.
+The amount of momentum loss is modeled through a collision frequency on the RHS of the momentum equation,
+$$ - \nu_n \mathbf{V} $$,
 $$ \nu_n(r) = \sigma_n V_0 n_n(r) $$
-which is a function of the $O_2$ cross section $\sigma_n = 2.0\times10^{-19}\,m^2$, typical plasma flow velocity $V_0$, and the number density of $O_2$ molecules in the atmosphere. Note that ion-neutral collisions occur predominantly near the surface where the plasma flow speed $V$ is significantly reduced from the Jovian background flow speed $V_0$. Nevertheless, the collision frequency is only a weak function of $V$ since $\sigma_n$ scales approximately with $V^{-1}$ for elastic collisions in the polarization approximation.
+which is a function of the $O_2$ cross section $\sigma_n = 2.0\times10^{-19}\,m^2$, typical plasma flow velocity $V_0$, and the number density of $O_2$ molecules in the atmosphere.[^3] Nevertheless, the collision frequency is only a weak function of $V$ since $\sigma_n$ scales approximately with $V^{-1}$ for elastic collisions in the polarization approximation.
+
+[^3]: Note that ion-neutral collisions occur predominantly near the surface where the plasma flow speed $V$ is significantly reduced from the Jovian background flow speed $V_0$. That's why there no velocity difference in the formula.
 
 The atmosphere is approximated with a hydrostatic model and a constant scale height $H$:
 $$ n_n(r) = n_{n,0} \exp{\frac{R_G - r}{H}} $$
 
 They choose a scale height $H = 250$ km even though the real scale height close to the surface is likely smaller.
-With a estimated column density of $2\times10^{14} \text{cm}^{−2}$ and the chosen scale height, the estimated number density on the surface is about $n_{n,0} = N_n∕H \approx 8.0\times10^{12} \text{m}^{−3}$.
+With an estimated column density of $2\times10^{14} \text{cm}^{−2}$[^4] and the chosen scale height, the estimated number density on the surface is about $n_{n,0} = N_n∕H \approx 8.0\times10^{12} \text{m}^{−3}$.
 
-The **photo-ionization** process contributes to plasma mass loading. This process is characterized by a production rate
+[^4]: [A later paper][Carnielli+2020] argued that a 10 times larger column density is required to reproduce the correct electron number density during the G2 flyby close encounter.
+
+As a result of **photo‐ionization**, the plasma gains mass and experiences a modification of its flow.
+This is described with a source term on the RHS of the continuity equation,
+$$ (P-L)m_i $$.
+This process is characterized by a production rate
 $$ P(r) = \nu_{\text{ion}}n_n(r). $$
 For simplicity a globally averaged and constant solar radiation is assumed and the shadow caused by Ganymede’s body as well as the variability of Ganymede’s position on its orbit are neglected. Therefore, the production rate directly scales with the density of the atmosphere and thus only has a radial dependency. The photo-ionization rate is chosen to be $\nu_\text{ion} = 2.2\times10^{−8} \text{s}^{−1}$.
 
-Plasma can also be lost through **dissociative recombination**. The occurrence of recombination depends on the thermal energy of the electrons and consequently the recombination rate is a function of the plasma particle density $n = \rho∕m_i$ and the electron temperature $T_e$.
+Because plasma consists of molecular ions and electrons, it can be lost through **dissociative recombination**.
+The occurrence of recombination depends on the thermal energy of the electrons and consequently the recombination rate is a function of the plasma particle density $n = \rho∕m_i$ and the electron temperature $T_e$.
 An empirical dissociative recombination rate coefficient is applied
 $$ \alpha = 1.6 \Big(\frac{300\,\text{K}}{T_e}\Big)^{0.55}\times 10^{13} \text{m}^3/\text{s}$$
 of gaseous oxygen for temperatures higher than 1200 K. An electron temperature of $k_B T_e = 0.1\,\text{eV}\approx 1160\,\text{K}$ is used and results in $\alpha \approx 7.8\times10^{-14}\,\text{m}^3/\text{s} $.
@@ -157,11 +172,13 @@ $$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}}. $$
 
 The estimated surface density the therefore around $n_s\approx 1500\, \text{cm}^{-3}$, which is higher than previous observation and close to another model estimation.
 
+So, as a summary, from a model perspective, we need to specify the $O_2$ number density distribution,
+
 ## Aurora Estimation, 2015
 
 Payan
 
-## MHD-EPIC, 2016
+## MHD-EPIC
 
 [Tóth+, 2016][Tóth+2016]
 
@@ -214,20 +231,20 @@ While they have kinetic ions in their model, only the simulated electric and mag
 
 10-moment equation model.
 
-## Ionosphere Model, 2019
+## Ionosphere Model
 
 This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019][Carnielli+2019]. They have a [follow-up paper][Carnielli+2020] on Constraining Ganymede's neutral and plasma properties , with the improvements of adding collisions between ion and neutral species. However, they found that this effect is only important below 200 km altitude.
 
 \fig{/assets/O2+_density.jpg}
 
-In this model, ions are generated from the ionization of the neutral exosphere, whose 3D configuration is taken from the recent model of [Leblanc+, 2017].
+In this model, ions are generated from the ionization of the neutral exosphere, whose 3D configuration is taken from the recent model of [Leblanc+, 2017][Leblanc+2017].
 The magnetic field is provided by the MHD model of [Jia+, 2009][Jia+2009].
 
 The dominant ion species found in the model is $O_2^+$ near the surface. The ion energy distribution agrees better with observation than the electron number density, where the model gives more than one order of magnitude less than observation. They therefore suspect that the input exosphere is the likely cause for the discrepancy.
 
 \fig{/assets/e_density_G2.jpg}
 
-To increase the ion production rate they multiplied by 10 the $O_2$ distribution derived by [Leblanc+, 2017][[Leblanc+2017]].
+To increase the ion production rate they multiplied by 10 the $O_2$ distribution derived by [Leblanc+, 2017][Leblanc+2017].
 This corresponds to assuming that the dynamics of molecules is exactly the same, but the ejection rate is increased by a factor of 10.
 This would bring the mean column density of $O_2$, the only “observational constraint”, to $2.44\times10^{15}\, \text{cm}^{−2}$, which is just a factor of 2 higher than the upper limit estimated by [Hall+, 1998][Hall+1998].
 
@@ -257,9 +274,9 @@ Zhou
 | $p$          |        | fixed, $0.115\textnormal{nPa}$ | fixed | float |
 | $p_e$        |        | fixed, $0.01\textnormal{nPa}$  | fixed | float |
 | $\mathbf{V}$ |        | $\mathbf{V}\perp\mathbf{B}$    | fixed | float |
-| $\mathbf{B}$ | dipole | float[^3]                      | fixed | float |
+| $\mathbf{B}$ | dipole | float[^5]                      | fixed | float |
 
-[^3]: For the MHD part, the float magnetic field boundary at $r=1$ is found to be the best choice. Another option is to set the face values the same as the first layer of cells beneath the surface, which will give worse results starting from the dipole+upstream field outside the surface and pure dipole in the mantle initially.
+[^5]: For the MHD part, the float magnetic field boundary at $r=1$ is found to be the best choice. Another option is to set the face values the same as the first layer of cells beneath the surface, which will give worse results starting from the dipole+upstream field outside the surface and pure dipole in the mantle initially.
 
 [Hall+1998]: https://iopscience.iop.org/article/10.1086/305604
 [Ip+Kopp2002]: https://doi.org/10.1029/2001JA005071
