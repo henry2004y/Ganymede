@@ -233,13 +233,13 @@ In the ionospheric model, the neutral exosphere is ionized by solar EUV radiatio
 On the one hand, the photo-ionization process is derived from the solar flux, which is known with a good level of confidence. On the other hand, the electron-impact ionization frequency, which is an order of magnitude larger than the photo-ionization frequency, is less certain and potentially too strong assumptions have been made in the ionospheric model.
 They played with it and used an asymmetric electron-impact ionization rate:
 
-\fig{electron_impact_ionization_rate_distribution.jpg}
+\fig{/assets/electron_impact_ionization_rate_distribution.jpg}
 
 where the orange region is illuminated and the pink region has a 4 times higher ionization rate. (I don't fully understand the calculation in this part!)
 
 This results in better comparison against the electron number density:
 
-\fig{e_density_G2_asymm_rate.jpg}
+\fig{/assets/e_density_G2_asymm_rate.jpg}
 
 ### Electron impact calculation
 
