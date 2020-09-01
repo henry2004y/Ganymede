@@ -365,7 +365,13 @@ I have found the recombination process in `UserSaturn`, impact ionization, charg
 For Mars, there are currently a 4 species module and a 5 fluids + Pe module. The latter is inherited from the former one.
 
 What I have in mind is similar to what's been described in [Duling+, 2014][Duling+2014].
+From a modeling perspective, we need to specify the $O_2$ number density distribution, calculate the production rate, loss rate and collision frequency according to the formulas, and then add to the mass and momentum equations.
 
+As a starting point, I can use a hydrostatic assumption for the neutral atmosphere, with uniformly distributed $O_2$.
+If I believe that a denser atmosphere is true from [Carnielli+, 2020][Carnielli+2020] and use a column density $N_n = 2.44\times10^{15}\, \text{cm}^{−2}$ and scale height $H = 250$ km, then 
+$$ n_n(r) = N_n / H = 9.8\times10^{13} \text{m}^{−3} $$.
+
+Let's see how it goes.
 
 ## Outer BCs
 
@@ -583,3 +589,4 @@ K-H instability driven surface waves --> mode conversion to Alfvén wave inside 
 [Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
 [Duling+2014]: https://doi.org/10.1002/2013JA019554
 [Tóth+2016]: https://doi.org/10.1002/2015JA021997
+[Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691

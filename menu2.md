@@ -141,7 +141,7 @@ The atmosphere is approximated with a hydrostatic model and a constant scale hei
 $$ n_n(r) = n_{n,0} \exp{\frac{R_G - r}{H}} $$
 
 They choose a scale height $H = 250$ km even though the real scale height close to the surface is likely smaller.
-With an estimated column density of $2\times10^{14} \text{cm}^{−2}$[^4] and the chosen scale height, the estimated number density on the surface is about $n_{n,0} = N_n∕H \approx 8.0\times10^{12} \text{m}^{−3}$.
+With an estimated column density $N_n = 2\times10^{14} \text{cm}^{−2}$[^4] and the chosen scale height, the estimated number density on the surface is about $n_{n,0} = N_n∕H \approx 8.0\times10^{12} \text{m}^{−3}$.
 
 [^4]: [A later paper][Carnielli+2020] argued that a 10 times larger column density is required to reproduce the correct electron number density during the G2 flyby close encounter.
 
@@ -171,8 +171,6 @@ When equalizing the production and loss rate to receive the plasma number densit
 $$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}}. $$
 
 The estimated surface density the therefore around $n_s\approx 1500\, \text{cm}^{-3}$, which is higher than previous observation and close to another model estimation.
-
-So, as a summary, from a model perspective, we need to specify the $O_2$ number density distribution,
 
 ## Aurora Estimation, 2015
 
