@@ -1,7 +1,7 @@
 @def title = "Simulations on Ganymede"
 @def tags = ["syntax", "code"]
 
-# How to use Franklin
+# Simulations on Ganymede
 
 \tableofcontents <!-- you can use \toc as well -->
 

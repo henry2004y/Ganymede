@@ -39,7 +39,7 @@ The codes I write for processing and analyzing both observation and simulation r
 
 Refer to the original paper.
 Alfvén wings are a consequence of the interaction between the flow velocity and an Alfvén wave. As a magnetic field encounters an obstacle and starts to bend, Alfvén waves are launched along the field-lines away from that point. These Alfvén waves propagate along the magnetic field line with the speed $V_A=B/\sqrt{\mu_0 \rho}$, where $B$ is the magnetic field strength, and $\rho$ is the plasma mass density.
-In addition, the plasma still advects the magnetic field with a given velocity $V$ . The Alfvén wave, therefore, travels with an angle $\theta=\tan^{-1}({M_A}^{-1})$, where $M_A$ is the Alfvén Mach number, defined by $M_A=V /V_A$ (Neubauer, 1980).
+In addition, the plasma still advects the magnetic field with a given velocity $V$ . The Alfvén wave, therefore, travels with an angle $\theta=\tan^{-1}({M_A}^{-1})$, where $M_A$ is the Alfvén Mach number, defined by $M_A=V /V_A$ [Neubauer, 1980][Neubauer1980].
 The flow diverts around the obstacle and forms two tubes (above and below) the object in which the flow characteristics of the plasma are altered significantly from the surrounding medium. This cavity is the low density Alfvén wing.
 
 ### Ionosphere
@@ -50,16 +50,23 @@ Their prediction is that Ganymede is surrounded by a corona of hot oxygen atoms.
 From PWS measurements during the G1 and G2 flyby,
 \fig{/assets/PWS_e_density.png}
 
-The common slope of the first mentioned triad corresponds to a scale height of 600 km and a surface density of about 400${cm}^{-3}$. This is well below the upper limit of $4\times10^3 \text{cm}^{-3}$ obtained by [Kliore, 1998] in the radio occultation observation.
+The common slope of the first mentioned triad corresponds to a scale height of 600 km and a surface density of about 400$\text{cm}^{-3}$. This is well below the upper limit of $4\times10^3 \text{cm}^{-3}$ obtained by [Kliore, 1998] in the radio occultation observation.
 
 Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Temperature maps published by [Orton+, 1996] show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector.
 
 In the closed field line region, the magnetospheric thermal plasma density can be expected to be very low in this region, because of the inaccessibility of closed drift paths to injected Jovian particles and the paucity of local plasma sources.
 In the low-latitude regions of Ganymede, the dayside temperature can be as high as 140–150 K.
 
+Mass loading/loss:
+* **photo-ionization**
+* **dissociative recombination**
+* **electron impact**
+
 ### MHD
 
-Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability (Tóth, 2000; Jiang et al., 2012a).
+Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability [Tóth, 2000; Jiang+, 2012a][^1]
+
+[^1]: R.L Jiang at Nanjing University has an AMR MHD code which should be similar to BATSRUS.
 
 ### Resistivity
 
@@ -559,3 +566,5 @@ Quoted from one of his paper:
 The Kelvin–Helmholtz instability is a favorite excitation mechanism for compressional fast mode waves at the magnetopause.
 
 K-H instability driven surface waves --> mode conversion to Alfvén wave inside the magnetosphere?
+
+[Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
