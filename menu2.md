@@ -10,17 +10,17 @@
 \toc
 
 
-## resistive MHD, 2002
+## resistive MHD
 
-Ip and Kopp.
+[Ip and Kopp, 2002][Ip+Kopp2002]
 
 The simulation domain is $10 R_G$ surrounding Ganymede. Outer boundary may have reflections that effect the inner solution, and the inner BC $\mathbf{v}=0$ is inconsistent with the flow measurements from Galileo Plasma Subsystem (PLS).
 
 The BCs are not clearly mentioned.
 
-## Multifluid MHD, 2006
+## Multifluid MHD
 
-Paty & Winglee. 
+[Paty+, 2004][Paty1], [Paty+, 2006][Paty2], [Paty+, 2008][Paty3]
 
 The inner boundary lies along the base of the ionosphere, which is held constant on the assumption of a constant source of ionospheric and exospheric material from surface sputtering. Plasma incident on this boundary is lost to the simulation since neither the chemical effects associated with generation of aurora or the surface sputtering is included in the model.
 
@@ -34,6 +34,8 @@ The inner boundary lies along the base of the ionosphere, which is held constant
 They want to incorporate the effect of multiple ion species. However, the model has some issues with the configuration of the magnetosphere, such that the magnetic field comparison is not good.
 
 ## Single fluid MHD, 2008-2010
+
+[Jia+, 2009][Jia+2009]
 
 4 Eqs. stretched spherical coordinates, leapfrog time marching, central differencing in space.
 
@@ -107,6 +109,8 @@ The Dungey-cycle like global flow pattern should be: plasma flow is brought into
 
 ## Ideal MHD with Non-Conducting Surface, 2014
 
+[Duling+, 2014][Duling+2014]
+
 | Variables | Inner Boundary | Outer Boundary (upstream) | Outer Boundary (downstream)|
 |---|---|---|---|
 | $\rho$       | float  | fixed | float |
@@ -159,7 +163,7 @@ Payan
 
 ## MHD-EPIC, 2016
 
-Tóth
+[Tóth+, 2016][Tóth+2016]
 
 | Variables | Inner Boundary | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
 |---|---|---|---|
@@ -180,9 +184,9 @@ The standoff distance is 6% larger than observation.
 
 ## Hybrid Model
 
-###
+### Parallel hybrid multi-grid model
 
-[Parallel hybrid multi-grid model](https://www.sciencedirect.com/science/article/pii/S0021999116000061)
+[Leclercq+, 2016][Leclercq+2016]
 
 The incident plasma is injected at the entry plane following a Maxwellian velocity distribution.
 
@@ -201,7 +205,7 @@ The BCs are not fully described in the paper.
 
 ###
 
-[Fatemi](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363)
+[Fatemi+, 2018][Fatemi+2018]
 
 They do not specify the inner boundary conditions in the published paper.
 While they have kinetic ions in their model, only the simulated electric and magnetic fields are used in another test particle model to compute the precipitation fluxes for the energetic particles. This probably means that there are some issues with the hybrid model itself, otherwise why not use the information from the model directly?
@@ -212,20 +216,20 @@ While they have kinetic ions in their model, only the simulated electric and mag
 
 ## Ionosphere Model, 2019
 
-This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019](https://www.sciencedirect.com/science/article/pii/S0019103517307054). They have a follow-up paper on Constraining Ganymede's neutral and plasma properties [https://doi.org/10.1016/j.icarus.2020.113691], with the improvements of adding collisions between ion and neutral species. However, they found that this effect is only important below 200 km altitude.
+This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019][Carnielli+2019]. They have a [follow-up paper][Carnielli+2020] on Constraining Ganymede's neutral and plasma properties , with the improvements of adding collisions between ion and neutral species. However, they found that this effect is only important below 200 km altitude.
 
 \fig{/assets/O2+_density.jpg}
 
 In this model, ions are generated from the ionization of the neutral exosphere, whose 3D configuration is taken from the recent model of [Leblanc+, 2017].
-The magnetic field is provided by the MHD model of [Jia+, 2009].
+The magnetic field is provided by the MHD model of [Jia+, 2009][Jia+2009].
 
 The dominant ion species found in the model is $O_2^+$ near the surface. The ion energy distribution agrees better with observation than the electron number density, where the model gives more than one order of magnitude less than observation. They therefore suspect that the input exosphere is the likely cause for the discrepancy.
 
 \fig{/assets/e_density_G2.jpg}
 
-To increase the ion production rate they multiplied by 10 the $O_2$ distribution derived by [Leblanc+, 2017].
+To increase the ion production rate they multiplied by 10 the $O_2$ distribution derived by [Leblanc+, 2017][[Leblanc+2017]].
 This corresponds to assuming that the dynamics of molecules is exactly the same, but the ejection rate is increased by a factor of 10.
-This would bring the mean column density of $O_2$, the only “observational constraint”, to $2.44\times10^{15}\, \text{cm}^{−2}$, which is just a factor of 2 higher than the upper limit estimated by [Hall+, 1998].
+This would bring the mean column density of $O_2$, the only “observational constraint”, to $2.44\times10^{15}\, \text{cm}^{−2}$, which is just a factor of 2 higher than the upper limit estimated by [Hall+, 1998][Hall+1998].
 
 \fig{/assets/e_density_G2_increasedO2.jpg}
 
@@ -254,3 +258,18 @@ Zhou
 | $p_e$        |        | fixed, $0.01\textnormal{nPa}$  | fixed | float |
 | $\mathbf{V}$ |        | $\mathbf{V}\perp\mathbf{B}$    | fixed | float |
 | $\mathbf{B}$ | dipole |                                | fixed | float |
+
+
+[Hall+1998]: https://iopscience.iop.org/article/10.1086/305604
+[Ip+Kopp2002]: https://doi.org/10.1029/2001JA005071
+[Paty1]: https://doi.org/10.1029/2004GL021220
+[Paty2]: https://doi.org/10.1029/2005GL025273
+[Paty3]: https://doi.org/10.1029/2007JA012848
+[Jia+2009]: https://doi.org/10.1029/2009JA014375
+[Duling+2014]: https://doi.org/10.1002/2013JA019554
+[Tóth+2016]: https://doi.org/10.1002/2015JA021997
+[Leclercq+2016]: https://doi.org/10.1016/j.jcp.2016.01.005
+[Leblanc+2017]: https://doi.org/10.1016/j.icarus.2017.04.025
+[Fatemi+2018]: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363
+[Carnielli+2019]: https://www.sciencedirect.com/science/article/pii/S0019103517307054
+[Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
