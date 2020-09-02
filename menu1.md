@@ -351,8 +351,8 @@ If the resistivity in the nearest physical cell is not 0, then even if the resis
   * one on Europa for the idea of induced magnetic field,
   * another on Mercury for the property of resistivity.
 
-I found that the solidtimestep inside $r=1$ is the reason for the wrong results: I picked a too large timestep $1e-2s$.
-Maybe some value around $1e-4s$ is better.
+I found that the solidtimestep inside $r=1$ is the reason for the wrong results: I picked a too large timestep $10^{-2}$s.
+Maybe some value around $10^{-4}$s is better.
 
 ### Better Inner BC
 
