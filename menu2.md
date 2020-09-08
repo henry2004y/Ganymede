@@ -131,7 +131,7 @@ Four factors are considered:
 For the atmosphere they assume $O_2$ with radially symmetric distribution and 0 initial velocity.
 When plasma particles collide with the neutral molecules, the plasma loses momentum.
 The amount of momentum loss is modeled through a collision frequency on the RHS of the momentum equation,
-$$ - \nu_n \mathbf{V} $$,
+$$ - \nu_n \mathbf{V}, $$
 $$ \nu_n(r) = \sigma_n V_0 n_n(r) $$
 which is a function of the $O_2$ cross section $\sigma_n = 2.0\times10^{-19}\,m^2$, typical plasma flow velocity $V_0$, and the number density of $O_2$ molecules in the atmosphere.[^3] Nevertheless, the collision frequency is only a weak function of $V$ since $\sigma_n$ scales approximately with $V^{-1}$ for elastic collisions in the polarization approximation.
 
@@ -147,7 +147,7 @@ With an estimated column density $N_n = 2\times10^{14} \text{cm}^{−2}$[^4] and
 
 As a result of **photo‐ionization**, the plasma gains mass and experiences a modification of its flow.
 This is described with a source term on the RHS of the continuity equation,
-$$ (P-L)m_i $$.
+$$ (P-L)m_i. $$
 This process is characterized by a production rate
 $$ P(r) = \nu_{\text{ion}}n_n(r). $$
 For simplicity a globally averaged and constant solar radiation is assumed and the shadow caused by Ganymede’s body as well as the variability of Ganymede’s position on its orbit are neglected. Therefore, the production rate directly scales with the density of the atmosphere and thus only has a radial dependency. The photo-ionization rate is chosen to be $\nu_\text{ion} = 2.2\times10^{−8} \text{s}^{−1}$.
