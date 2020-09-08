@@ -229,6 +229,11 @@ While they have kinetic ions in their model, only the simulated electric and mag
 
 10-moment equation model.
 
+## Exosphere
+
+\fig{/assets/Exosphere_Ganymede.jpg}
+Possible source and loss mechanisms for the exosphere of Ganymede.
+
 ## Ionosphere Model
 
 This is a test particle model built in the same group as the first hybrid model by [Carnielli+ 2019][Carnielli+2019]. They have a [follow-up paper][Carnielli+2020] on Constraining Ganymede's neutral and plasma properties , with the improvements of adding collisions between ion and neutral species. However, they found that this effect is only important below 200 km altitude.
@@ -276,6 +281,10 @@ Zhou
 
 [^5]: For the MHD part, the float magnetic field boundary at $r=1$ is found to be the best choice. Another option is to set the face values the same as the first layer of cells beneath the surface, which will give worse results starting from the dipole+upstream field outside the surface and pure dipole in the mantle initially.
 
+## Test Particle Models
+
+There are two test particle models for Ganymede in 2020: [Plainaki+, 2020](Plainaki+2020) on the Jovian Energetic Ion Circulation around Ganymede and [Liuzzo+, 2020](Liuzzo+2020) on the energetic electron bombardment. The key method is the same: apply a test particle Monte Carlo model with a given EM field. The key results are similar: both models show a large-scale dichotomy in surface fluxes between the polar and the lower-latitude regions of Ganymede, with certain levels of asymmetry.
+
 [Hall+1998]: https://iopscience.iop.org/article/10.1086/305604
 [Ip+Kopp2002]: https://doi.org/10.1029/2001JA005071
 [Paty1]: https://doi.org/10.1029/2004GL021220
@@ -289,3 +298,5 @@ Zhou
 [Fatemi+2018]: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363
 [Carnielli+2019]: https://www.sciencedirect.com/science/article/pii/S0019103517307054
 [Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
+[Plainaki+2020]: https://doi.org/10.3847/1538-4357/aba94c
+[Liuzzo+2020]: https://doi.org/10.1029/2020JA028347
