@@ -135,7 +135,7 @@ $$ - \nu_n \mathbf{V}, $$
 $$ \nu_n(r) = \sigma_n V_0 n_n(r) $$
 which is a function of the $O_2$ cross section $\sigma_n = 2.0\times10^{-19}\,m^2$, typical plasma flow velocity $V_0$, and the number density of $O_2$ molecules in the atmosphere.[^3] Nevertheless, the collision frequency is only a weak function of $V$ since $\sigma_n$ scales approximately with $V^{-1}$ for elastic collisions in the polarization approximation.
 
-[^3]: Note that ion-neutral collisions occur predominantly near the surface where the plasma flow speed $V$ is significantly reduced from the Jovian background flow speed $V_0$. That's why there no velocity difference in the formula.
+[^3]: Note that ion-neutral collisions occur predominantly near the surface where the plasma flow speed $V$ is significantly reduced from the Jovian background flow speed $V_0$. That's why there's no velocity difference in the formula.
 
 The atmosphere is approximated with a hydrostatic model and a constant scale height $H$:
 $$ n_n(r) = n_{n,0} \exp{\frac{R_G - r}{H}} $$
@@ -155,7 +155,7 @@ For simplicity a globally averaged and constant solar radiation is assumed and t
 Because plasma consists of molecular ions and electrons, it can be lost through **dissociative recombination**.
 The occurrence of recombination depends on the thermal energy of the electrons and consequently the recombination rate is a function of the plasma particle density $n = \rho∕m_i$ and the electron temperature $T_e$.
 An empirical dissociative recombination rate coefficient is applied
-$$ \alpha = 1.6 \Big(\frac{300\,\text{K}}{T_e}\Big)^{0.55}\times 10^{13} \text{m}^3/\text{s}$$
+$$ \alpha = 1.6 \Big(\frac{300\,\text{K}}{T_e}\Big)^{0.55}\times 10^{-13} \text{m}^3/\text{s} $$
 of gaseous oxygen for temperatures higher than 1200 K. An electron temperature of $k_B T_e = 0.1\,\text{eV}\approx 1160\,\text{K}$ is used and results in $\alpha \approx 7.8\times10^{-14}\,\text{m}^3/\text{s} $.
 Since the real electron temperature is unknown, whichever yields a reasonable ionospheric mass density is chosen.
 To avoid the ion plasma density decreases below the mostly atomic background ion density $n_0 = \rho_0∕m_i$, the loss rate is modified by
