@@ -369,7 +369,7 @@ From a modeling perspective, we need to specify the $O_2$ number density distrib
 
 As a starting point, I can use a hydrostatic assumption for the neutral atmosphere, with uniformly distributed $O_2$.
 If I believe that a denser atmosphere is true from [Carnielli+, 2020][Carnielli+2020] and use a column density $N_n = 2.44\times10^{15}\, \text{cm}^{−2}$ and scale height $H = 250$ km, then 
-$$ n_n(r) = N_n / H = 9.8\times10^{13} \text{m}^{−3} $$.
+$$ n_{n,0} = N_n / H = 9.8\times10^{13} \text{m}^{−3} $$.
 
 Let's see how it goes.
 
