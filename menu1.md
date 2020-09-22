@@ -382,8 +382,9 @@ S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
 S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)U_{n}^2 - \frac{1}{2}\rho U^2 (C_\text{ex} - \alpha_\text{rec}) + \frac{3}{2}p + \frac{3}{2}C_\text{ex}p \\
 S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{u} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
 \end{align}
-where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{u} - \mathbf{u}_n|$ is the charge‐exchange rate, $\mathbf{u}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
+where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
 
+I initially made many mistakes on the velocity. I don't quite understand the source term especially in the pressure equation: why does it look like a source term?
 
 ## Outer BCs
 
