@@ -369,9 +369,21 @@ From a modeling perspective, we need to specify the $O_2$ number density distrib
 
 As a starting point, I can use a hydrostatic assumption for the neutral atmosphere, with uniformly distributed $O_2$.
 If I believe that a denser atmosphere is true from [Carnielli+, 2020][Carnielli+2020] and use a column density $N_n = 2.44\times10^{15}\, \text{cm}^{−2}$ and scale height $H = 250$ km, then 
-$$ n_{n,0} = N_n / H = 9.8\times10^{13} \text{m}^{−3} $$.
+$$ n_{n,0} = N_n / H = 9.8\times10^{13} \text{m}^{−3}. $$
 
-Let's see how it goes.
+From [Yash's Jupiter paper](https://doi.org/10.1029/2019JA026787),
+$$ \dot{\rho} = 16 m_p n_n C_i$$
+where $C_i$ is the ionization rate (specified to $10^{−4} \text{s}^{−1}$ in the simulations) and 16 amu is taken to be the average mass of the heavy ions present in Jupiter's magnetosphere.
+
+The source terms for the mass continuity, momentum, total energy and thermal energy equations (Hansen, 2001):
+\begin{align}
+S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
+\mathbf{S}_{\rho U} &= (\dot{\rho} - C_\text{ex})\mathbf{U}_{n} - (C_\text{ex}+\alpha_\text{rec})\rho \mathbf{U}_x \\
+S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)U_{n}^2 - \frac{1}{2}\rho U^2 (C_\text{ex} - \alpha_\text{rec}) + \frac{3}{2}p + \frac{3}{2}C_\text{ex}p \\
+S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{u} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
+\end{align}
+where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{u} - \mathbf{u}_n|$ is the charge‐exchange rate, $\mathbf{u}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
+
 
 ## Outer BCs
 
