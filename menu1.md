@@ -356,6 +356,28 @@ Maybe some value around $10^{-4}$s is better.
 
 ### Better Inner BC
 
+Source terms can be used to include physical processes that MHD would otherwise not model or to model sources or sinks of MHD quantities.
+Mass loading is the physical process in which newly created charged particles become part of an ambient plasma flow via electromagnetic forces. The processes of photoionization and electron impact ionization add new mass to the plasma, while charge exchange reactions may or may not add mass. Ionization creates an electronion pair —-- a source of new charge and mass for the plasma. Recombination acts as a sink of plasma in a similar way. Charge exchange on the other hand, exchanges a thermalized plasma ion with a neutral particle. In the process, mass may be added (asymmetric charge) or it may not (symmetric charge exchange). An example of charge exchange which adds mass is the accidentally resonant charge exchange reaction between hydrogen and oxygen. The forward reaction of the $ H^+ + O \rightleftharpoons H + O^+ $ charge exchange process is a typical example of mass addition without creating new charge. An example of the special case of no new mass being added is the resonant charge exchange between atoms and their corresponding ions (such as $ O^+ + O \rightleftharpoons O + O^+ $. In this case, there is neither new charge nor new mass added to the plasma, however the momentum and energy can change. The reaction results in a "friction" like force on the plasma as the ion moving with the plasma is replaced by a neutral at a different velocity. One can obtain the formulation of the source terms for MHD by starting with the Boltzmann equation [e.g., Gombosi et al., 1996]. Terms are formulated for this
+equation and then appropriate velocity moments are taken, resulting in the mass loading and friction source terms. The source vector (in the conservative form of equation 2.18) can be written as [Gombosi et al., 1996: Combi et al.. 1998]:
+\begin{align}
+\mathbf{S}_n = 
+\begin{pmatrix}
+\dot{\rho} \\
+\dot{\rho}\mathbf{U}_n + \eta \rho (\mathbf{U}_n - \mathbf{U}) \\
+0 \\
+\frac{1}{2}\dot{\rho}\mathbf{U}_n^2 + \eta [\frac{1}{2}\rho (\mathbf{U}_n^2 - \mathbf{U}^2) + \frac{1}{\gamma-1}P]
+\end{pmatrix}
+- L_e
+\begin{pmatrix}
+\rho \\
+\rho \mathbf{U} \\
+0 \\
+\frac{1}{2}\rho\mathbf{U}^2 + \frac{1}{\gamma - 1}P
+\end{pmatrix}
+\end{align}
+
+where $\dot{\rho}$ is the net mass addition rate (production minus loss due to ionization and charge exchange), $\eta$ is the coefficient of frictional interaction between the plasma and the neutral gas due to charge exchange reactions and $L_e$ is the coefficient associated with electron recombination. Note that in the first bracket the first term in each line is associated with mass addition (ionization and charge exchange) and the second is due to friction (charge exchange). The second bracket represents the loss terms associated with recombination.
+
 Mass loading/loss:
 * **photo-ionization**
 * **dissociative recombination**
@@ -378,13 +400,15 @@ where $C_i$ is the ionization rate (specified to $10^{−4} \text{s}^{−1}$ in 
 The source terms for the mass continuity, momentum, total energy and thermal energy equations (Hansen, 2001):
 \begin{align}
 S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
-\mathbf{S}_{\rho U} &= (\dot{\rho} - C_\text{ex})\mathbf{U}_{n} - (C_\text{ex}+\alpha_\text{rec})\rho \mathbf{U}_x \\
-S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)U_{n}^2 - \frac{1}{2}\rho U^2 (C_\text{ex} - \alpha_\text{rec}) + \frac{3}{2}p + \frac{3}{2}C_\text{ex}p \\
-S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{u} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
+\mathbf{S}_{\rho U} &= \dot{\rho}\mathbf{U}_{n} + C_\text{ex}\mathbf{U}_{n} - (C_\text{ex}+\alpha_\text{rec})\rho \mathbf{U} \\
+S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)\mathbf{U}_{n}^2 - \frac{1}{2}\rho \mathbf{U}^2 (C_\text{ex} - \alpha_\text{rec}) + \frac{3}{2}p + \frac{3}{2}C_\text{ex}p \\
+S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{U} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
 \end{align}
 where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
 
-I initially made many mistakes on the velocity. I don't quite understand the source term especially in the pressure equation: why does it look like a source term?
+I have confirmed that the mass and momentum equation is consistent with K.C.Hansen's thesis.
+
+I initially made many mistakes on the velocity. I don't quite understand the terms especially in the pressure equation: why does it look like a source term?
 
 ## Outer BCs
 
