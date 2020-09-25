@@ -357,7 +357,7 @@ Maybe some value around $10^{-4}$s is better.
 ### Better Inner BC
 
 Source terms can be used to include physical processes that MHD would otherwise not model or to model sources or sinks of MHD quantities.
-Mass loading is the physical process in which newly created charged particles become part of an ambient plasma flow via electromagnetic forces. The processes of photoionization and electron impact ionization add new mass to the plasma, while charge exchange reactions may or may not add mass. Ionization creates an electronion pair —-- a source of new charge and mass for the plasma. Recombination acts as a sink of plasma in a similar way. Charge exchange on the other hand, exchanges a thermalized plasma ion with a neutral particle. In the process, mass may be added (asymmetric charge) or it may not (symmetric charge exchange). An example of charge exchange which adds mass is the accidentally resonant charge exchange reaction between hydrogen and oxygen. The forward reaction of the $ H^+ + O \rightleftharpoons H + O^+ $ charge exchange process is a typical example of mass addition without creating new charge. An example of the special case of no new mass being added is the resonant charge exchange between atoms and their corresponding ions (such as $ O^+ + O \rightleftharpoons O + O^+ $. In this case, there is neither new charge nor new mass added to the plasma, however the momentum and energy can change. The reaction results in a "friction" like force on the plasma as the ion moving with the plasma is replaced by a neutral at a different velocity. One can obtain the formulation of the source terms for MHD by starting with the Boltzmann equation [e.g., Gombosi et al., 1996]. Terms are formulated for this
+Mass loading is the physical process in which newly created charged particles become part of an ambient plasma flow via electromagnetic forces. The processes of photoionization and electron impact ionization add new mass to the plasma, while charge exchange reactions may or may not add mass. Ionization creates an electronion pair — a source of new charge and mass for the plasma. Recombination acts as a sink of plasma in a similar way. Charge exchange on the other hand, exchanges a thermalized plasma ion with a neutral particle. In the process, mass may be added (asymmetric charge) or it may not (symmetric charge exchange). An example of charge exchange which adds mass is the accidentally resonant charge exchange reaction between hydrogen and oxygen. The forward reaction of the $ H^+ + O \rightleftharpoons H + O^+ $ charge exchange process is a typical example of mass addition without creating new charge. An example of the special case of no new mass being added is the resonant charge exchange between atoms and their corresponding ions (such as $ O^+ + O \rightleftharpoons O + O^+ $. In this case, there is neither new charge nor new mass added to the plasma, however the momentum and energy can change. The reaction results in a "friction" like force on the plasma as the ion moving with the plasma is replaced by a neutral at a different velocity. One can obtain the formulation of the source terms for MHD by starting with the Boltzmann equation [e.g., Gombosi et al., 1996]. Terms are formulated for this
 equation and then appropriate velocity moments are taken, resulting in the mass loading and friction source terms. The source vector (in the conservative form of equation 2.18) can be written as [Gombosi et al., 1996: Combi et al.. 1998]:
 \begin{align}
 \mathbf{S}_n = 
@@ -377,6 +377,19 @@ equation and then appropriate velocity moments are taken, resulting in the mass 
 \end{align}
 
 where $\dot{\rho}$ is the net mass addition rate (production minus loss due to ionization and charge exchange), $\eta$ is the coefficient of frictional interaction between the plasma and the neutral gas due to charge exchange reactions and $L_e$ is the coefficient associated with electron recombination. Note that in the first bracket the first term in each line is associated with mass addition (ionization and charge exchange) and the second is due to friction (charge exchange). The second bracket represents the loss terms associated with recombination.
+
+It is interesting to examine the first term (associated with mass addition due to ionization and charge exchange) in both the conservative and the primitive forms.
+Table below shows the terms in the momentum, pressure and energy equations for mass loading where the velocity of the ionized neutrals is zero. From the conservative form it is clear what change the total momentum and energy of the plasma undergo. With the neutral at rest the neutral has no momentum and no energy that it can add to the plasma when it is ionized. The primitive form of the momentum equation shows
+that while the plasma momentum is conserved, the mass addition must be offset by a decrease in the plasma velocity. This process heats the plasma as seen by the source term in the pressure equation.
+
+Ionization source terms in primitive and conservative form:
+
+|     Equation      | Primitive Form | Conservative Form |
+|:---------------:|:----------:|:-----------:|
+| Momentum | $-\dot{\rho}\mathbf{U}$      | 0        |
+| Pressure | $-\frac{1}{2}\dot{\rho}\mathbf{U}$       | -       |
+| Energy | -       | 0        |
+
 
 Mass loading/loss:
 * **photo-ionization**
@@ -401,14 +414,33 @@ The source terms for the mass continuity, momentum, total energy and thermal ene
 \begin{align}
 S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
 \mathbf{S}_{\rho U} &= \dot{\rho}\mathbf{U}_{n} + C_\text{ex}\mathbf{U}_{n} - (C_\text{ex}+\alpha_\text{rec})\rho \mathbf{U} \\
-S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)\mathbf{U}_{n}^2 - \frac{1}{2}\rho \mathbf{U}^2 (C_\text{ex} - \alpha_\text{rec}) + \frac{3}{2}p + \frac{3}{2}C_\text{ex}p \\
+S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)\mathbf{U}_{n}^2 - \frac{1}{2}\rho \mathbf{U}^2 (C_\text{ex} - \alpha_\text{rec}) - \frac{3}{2}\alpha_\text{rec}p + \frac{3}{2}C_\text{ex}p \\
 S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{U} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
 \end{align}
 where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
 
-I have confirmed that the mass and momentum equation is consistent with K.C.Hansen's thesis.
+I have confirmed that the mass and momentum equation is consistent with K.C.Hansen's thesis. The energy equation in Yash's paper is wrong, but the pressure equation is probably correct.
 
 I initially made many mistakes on the velocity. I don't quite understand the terms especially in the pressure equation: why does it look like a source term?
+
+\begin{align}
+\nu_\text{ion} &= 2.2 \times 10^{-8}\, &[\text{s}^{-1}] \\
+n_{n,0} &= 9.8 \times 10^{13}\, &[\text{m}^{-3}] \\
+\alpha &= 7.8 \times 10^{-14}\, &[\text{m}^3 \text{s}] \\
+M_\text{ion} &= 32 \, &[\text{amu}]
+\end{align}
+
+In a steady state, when we equalize the production with loss, the plasma density at the surface should be
+$$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}} \approx 1500\, \text{cm}^{-3} $$
+
+As an estimation, the source term in the mass equation gives
+\begin{align}
+\dot{\rho} &= n_n(r) \nu_\text{ion} M_\text{ion}
+&= 9.8 \times 10^{13} \cdot 2.2 \times 10^{-8} \cdot 32\, [\text{amu}\cdot\text{m}^{-3}\text{s}^{-1}]
+&= 2\, [\text{amu}\cdot\text{cm}^{-3}\text{s}^{-1}]
+\end{align}
+
+This is very small! For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-3}$s. For 1000 steps in local timestepping, the increase in density is only 1! Maybe this is the reason why the German group run their model in steady state for 1.2 million steps: if they have approximately the same time step, then the final density near the surface will be on the order of $10^{3}\, [\text{cm}^{-3}]$, which is consistent with the contour plots in their paper. I don't know if I can speed this up.
 
 ## Outer BCs
 

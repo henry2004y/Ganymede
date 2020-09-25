@@ -172,6 +172,8 @@ $$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}}. $$
 
 The estimated surface density the therefore around $n_s\approx 1500\, \text{cm}^{-3}$, which is higher than previous observation and close to another model estimation.
 
+In order to achieve this equilibrium, they ran the model for approximately 1.2 million iterations with a time step controlled by the Courant‐Friedrichs‐Lewy criterion which respects all physical effects.
+
 ## Aurora Estimation, 2015
 
 Payan
