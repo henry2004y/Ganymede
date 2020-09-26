@@ -28,3 +28,7 @@ For the G2 flyby, the flow was originally interpreted by [Barth+, 1997] as escap
 However, this was later reinterpreted as a flow of oxygen ions by [Vasyliūnas and Eviatar, 2000], which is supported by the MHD simulation results of [Jia+, 2009], and a combination of both species by [Paty+, 2008].
 [Collinson+, 2018] re-analyzed the PLS data from the G1 and G2 flybys, showing different fits for different assumed ion masses. Remarkably, for the G2 flyby none of the fits can match the electron density profile – which, assuming quasi-neutrality, should equal to the total ion density – derived from PWS and reported in [Eviatar+, 2001b].
 In summary, the ionospheric composition is a subject of debate.
+
+[Kivelson+, 2004][Kivelson+2004]
+
+[Kivelson+2004](https://lasp.colorado.edu/home/mop/files/2015/08/jupiter_ch21-1.pdf)

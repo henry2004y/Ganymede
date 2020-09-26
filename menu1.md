@@ -52,10 +52,18 @@ From PWS measurements during the G1 and G2 flyby,
 
 The common slope of the first mentioned triad corresponds to a scale height of 600 km and a surface density of about 400$\text{cm}^{-3}$. This is well below the upper limit of $4\times10^3 \text{cm}^{-3}$ obtained by [Kliore, 1998] in the radio occultation observation.
 
-Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Temperature maps published by [Orton+, 1996] show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector.
+Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Neutral temperature maps published by [Orton+, 1996](https://science.sciencemag.org/content/274/5286/389/tab-figures-data) show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector. The $O_2$ scale height estimated in [Eviatar+, 2000](https://doi.org/10.1016/S0032-0633(00)00154-9) is only 21.5 km. The estimated polar cap ion density is 
+\begin{align} 
+n_{O_2^+} &= 2.2 \times 10^3\,\text{cm}^{-3}, \\
+n_{O_2} &= 3.5 \times 10^6\,\text{cm}^{-3}, \\
+n_{O^+} &= 3.3 \times 10^2\,\text{cm}^{-3}, \\
+n_{O^} &= 1.7 \times 10^6\,\text{cm}^{-3}, \\
+\end{align}
 
 In the closed field line region, the magnetospheric thermal plasma density can be expected to be very low in this region, because of the inaccessibility of closed drift paths to injected Jovian particles and the paucity of local plasma sources.
-In the low-latitude regions of Ganymede, the dayside temperature can be as high as 140–150 K.
+In the low-latitude regions of Ganymede, the dayside temperature can be as high as 140–150 K.[^1]
+
+[^1]: High-low is always relative. Keep in mind that this $10^2$ K temperature is in fact very very low compared to the background energetic ions that contribute most of the pressure!
 
 Mass loading/loss:
 * **photo-ionization**
@@ -64,9 +72,9 @@ Mass loading/loss:
 
 ### MHD
 
-Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability [Tóth, 2000; Jiang+, 2012a][^1]
+Magnetohydrodynamics (MHD) equations are presently the only system available to self-consistently describe large-scale dynamics of space plasmas, and numerical MHD simulations has enabled us to capture the basic structures of the solar wind plasma flow and transient phenomena. The modern MHD codes can successfully solve both in time accurate and steady state problems involving all kinds of discontinuities. Different from the usual computational fluid mechanics, the MHD scheme has to be designed so as to guarantee the divergence free constraint of the magnetic field in two or three-dimensional MHD calculations. It is well-known that simply transferring conservation law methods for the Euler to the MHD equations can not be supposed to work at default in maintaining the divergence-free of magnetic field. The $\nabla\cdot\mathbf{B}$ error accumulated during the calculation may grow in an uncontrolled fashion, which can result in unphysical forces and numerical instability [Tóth, 2000; Jiang+, 2012a][^2]
 
-[^1]: R.L Jiang at Nanjing University has an AMR MHD code which should be similar to BATSRUS.
+[^2]: R.L Jiang at Nanjing University has an AMR MHD code which should be similar to BATSRUS.
 
 ### Resistivity
 
@@ -417,11 +425,11 @@ S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
 S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)\mathbf{U}_{n}^2 - \frac{1}{2}\rho \mathbf{U}^2 (C_\text{ex} - \alpha_\text{rec}) - \frac{3}{2}\alpha_\text{rec}p + \frac{3}{2}C_\text{ex}p \\
 S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{U} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
 \end{align}
-where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.
+where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.[^3] [^4]
 
-I have confirmed that the mass and momentum equation is consistent with K.C.Hansen's thesis. The energy equation in Yash's paper is wrong, but the pressure equation is probably correct.
+[^3]: The mass and momentum equations are consistent with K.C.Hansen's thesis. The energy equation in Yash's paper is wrong, but the pressure equation is probably correct.
 
-I initially made many mistakes on the velocity. I don't quite understand the terms especially in the pressure equation: why does it look like a source term?
+[^4]: Initially I made many mistakes on the velocity. I don't quite understand the terms especially in the pressure equation: why does it look like a source term?
 
 \begin{align}
 \nu_\text{ion} &= 2.2 \times 10^{-8}\, &[\text{s}^{-1}] \\
@@ -441,6 +449,12 @@ As an estimation, the source term in the mass equation gives
 \end{align}
 
 This is very small! For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-3}$s. For 1000 steps in local timestepping, the increase in density is only 1! Maybe this is the reason why the German group run their model in steady state for 1.2 million steps: if they have approximately the same time step, then the final density near the surface will be on the order of $10^{3}\, [\text{cm}^{-3}]$, which is consistent with the contour plots in their paper. I don't know if I can speed this up.
+
+For my specific problem, I need to have a feeling about the surface density, pressure and temperature in equilibrium. If I trust [Fatemi+, 2018]'s result, than it means that the thermal pressure does not matter much. Similar things may happen in [Duling+, 2014][Duling+2014].
+According to my simple test, the upstream pressure has little influence on the magnetic field topology.
+
+Use MHD just to simulate the thermal plasma background, and use PIC to get the energetic part done?
+
 
 ## Outer BCs
 

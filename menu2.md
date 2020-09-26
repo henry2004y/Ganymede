@@ -55,6 +55,8 @@ The best BCs being advertised:
 | $\mathbf{V}$ |        | $\mathbf{V}\perp\mathbf{B}$    | fixed | float |
 | $\mathbf{B}$ | dipole |                                | fixed | float |
 
+The pressure and density at the surface boundary corresponds to an average temperature of 20 eV
+
 ### Core BC 
 
 Set tangential $\mathbf{E}$ to be 0 (I don't know what this means and why.)
@@ -76,7 +78,7 @@ P_{surf}=nk_B T=39\cdot 10^{6}\times k_B\times 20/k_B \cdot(1.6\cdot 10^{-19})\t
 \end{align}
 Flows stop at this BC, $\mathbf{v}=0$. $\eta$ in this layer increases from the background value used far from Ganymede (nearly $0$, which means fully conducting) to the value assumed at the surface in order to mimic the finite electric conductance of the ionosphere. uncertain ionosphere conductance, height-integrated conductance $\Sigma=2S$ in the setup.
 
-Later [Duling+, 2014] questioned this approximation. The extension of the resistivity profile outside the surface is only a numerical consideration, which is probably incorrect.
+Later [Duling+, 2014][Duling+2014] questioned this approximation. The extension of the resistivity profile outside the surface is only a numerical consideration, which is probably incorrect.
 
 Forcing the ionospheric flow to be zero is a reasonably good approximation for a highly conducting obstacle. However, the moon's mantle is most likely to be quite weakly conducting and the conductance of Ganymede's ionosphere is quite uncertain.
 
@@ -97,9 +99,11 @@ The flow speed in the reference frame of Ganymede is
 $$ \mathbf{v}=140 \text{km/s} $$
 The average plasma $n$ is around $4\text{ cm}^{-3}$ with a range from $1$ to $10\text{ cm}^{-3}$. Assuming that mass-charge ratio is $14$, and ions are singly charged. For G8 pass,
 $$ P_t=3.8\text{nPa} $$
-so that the solar wind temperature is
-$$ T_{solar} = P/(nk_B)=3.8\text{ nPa}/(4*1.38\times10^{-23})/1.2=5.7367\times10^7 K $$
-This is equivalent to about $250eV$. The coefficient $1.2$ corresponds to the original settings of ion/electron temperature ratio $5$.
+so that the Jovian wind temperature is
+$$ T_{solar} = P/(nk_B)=3.8\text{ nPa}/(4\times 10^{6}*1.38\times10^{-23})/1.2=5.7367\times10^7 K $$
+This is equivalent to about $6000eV$. The coefficient $1.2$ corresponds to the original settings of ion/electron temperature ratio $5$.
+
+This large temperature results from the simplification of single fluid MHD. In Table 21.1 of [Kivelson+, 2004][Kivelson+2004], the average ion temperature around the equator is about 60 eV and the average electron temperature is about 300 eV. With an average ion number density of 4, this gives a thermal pressure of only 0.04 nPa. However, there are also a significant contributions to the pressure from energetic ions (20 keV - 100 MeV ions) of 3.6 nPa and hot electrons of 0.2 nPa, which in total gives 3.8 nPa pressure. In order to compensate for the missing energetic species from the single fluid MHD simulation, we have to prescribe a much hotter plasma.
 
 The initial model in 2008 without resistivity generates a magnetopause which is $10\%$ smaller than the observed one for G28.
 
@@ -119,6 +123,8 @@ The Dungey-cycle like global flow pattern should be: plasma flow is brought into
 | $\mathbf{B}$ | insulating | fixed | float |
 
 The magnetic insulating BC is complicated. Even until now I don't fully understand the derivation.
+
+They didn't show any plots or had any comments related to pressure nor temperature. This probably means that they only considered the thermal component of the plasma, similar to what [Fatemi+, 2018][Fatemi+2018] did.
 
 ### Atmosphere and ionosphere
 
@@ -224,6 +230,8 @@ The BCs are not fully described in the paper.
 
 [Fatemi+, 2018][Fatemi+2018]
 
+Outer boundary condition: $T_i = T_e = 200\,\text{eV}$, $n_i = 4\,\ text{cm}^{-3}$. The author claims that using a slightly higher than average (60 eV) temperature would compensate the missing of energetic particles, but this is obviously impossible. To get the 3.8 nPa upstream pressure with the given $n_i$, the average temperature would be as high as 6000 eV. This won't make much of a difference to the magnetopause location because the pressure balance is predominantly determined by the magnetic pressure and dynamic pressure.
+
 They do not specify the inner boundary conditions in the published paper.
 While they have kinetic ions in their model, only the simulated electric and magnetic fields are used in another test particle model to compute the precipitation fluxes for the energetic particles. This probably means that there are some issues with the hybrid model itself, otherwise why not use the information from the model directly?
 
@@ -302,3 +310,4 @@ There are two test particle models for Ganymede in 2020: [Plainaki+, 2020](Plain
 [Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
 [Plainaki+2020]: https://doi.org/10.3847/1538-4357/aba94c
 [Liuzzo+2020]: https://doi.org/10.1029/2020JA028347
+[Kivelson+2004](https://lasp.colorado.edu/home/mop/files/2015/08/jupiter_ch21-1.pdf)
