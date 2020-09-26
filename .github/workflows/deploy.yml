@@ -7,7 +7,7 @@ on:
     # `   - master`; also, at the end of the file, change to `BRANCH: gh-pages`
     #
     #   For a **personal** site (username.github.io/), push things to a **dev**
-    #     branch  and make sure to set the line  below to `- dev` this is
+    #     branch and make sure to set the line below to `- dev` this is
     #     because for user pages GitHub pages **requires** the deployment to be
     #     on the master branch; also, at the end of the file, change to
     #    `BRANCH: master`
@@ -38,7 +38,7 @@ jobs:
     - name: Install Julia
       uses: julia-actions/setup-julia@v1
       with:
-        version: 1.4.1
+        version: 1.5.2
     # NOTE
     #   The steps below ensure that NodeJS and Franklin are loaded then it
     #   installs highlight.js which is needed for the prerendering step.
