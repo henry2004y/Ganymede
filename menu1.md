@@ -425,11 +425,13 @@ S_\rho &= \dot{\rho} - \alpha_\text{rec}\rho \\
 S_E &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)\mathbf{U}_{n}^2 - \frac{1}{2}\rho \mathbf{U}^2 (C_\text{ex} - \alpha_\text{rec}) - \frac{3}{2}\alpha_\text{rec}p + \frac{3}{2}C_\text{ex}p \\
 S_P &= \frac{1}{2}(\dot{\rho} + C_\text{ex}\rho)|\mathbf{U} - \mathbf{U}_{n}|^2 - \frac{3}{2}\alpha_\text{rec}p
 \end{align}
-where $C_\text{ex} = \dot{\rho} - n_n \sigma |\mathbf{U} - \mathbf{U}_n|$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.[^3] [^4]
+where $C_\text{ex}$ is the charge-exchange rate, $\mathbf{U}_n$ is the Keplerian velocity of neutral particles orbiting Jupiter, and $\alpha_\text{rec}$ is the recombination rate, which is set to 0.[^3] [^4] [^5]
 
 [^3]: The mass and momentum equations are consistent with K.C.Hansen's thesis. The energy equation in Yash's paper is wrong, but the pressure equation is probably correct.
 
 [^4]: Initially I made many mistakes on the velocity. I don't quite understand the terms especially in the pressure equation: why does it look like a source term?
+
+[^5]: $C_\text{ex}$ is the same as $\eta$ in K.C's thesis; $\alpha_\text{rec}$ is the same as $L_e$.
 
 \begin{align}
 \nu_\text{ion} &= 2.2 \times 10^{-8}\, &[\text{s}^{-1}] \\
@@ -438,17 +440,20 @@ n_{n,0} &= 9.8 \times 10^{13}\, &[\text{m}^{-3}] \\
 M_\text{ion} &= 32 \, &[\text{amu}]
 \end{align}
 
-In a steady state, when we equalize the production with loss, the plasma density at the surface should be
-$$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}} \approx 1500\, \text{cm}^{-3} $$
+In a steady state, when we equalize the production with loss, the plasma number density at the surface should be
+$$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}} \approx 5257\, \text{cm}^{-3}, $$
+or, assuming all $O_2^+$, the mass density will be $1.7\times 10^5\,\text{amu}/\text{cc}$.
 
 As an estimation, the source term in the mass equation gives
 \begin{align}
 \dot{\rho} &= n_n(r) \nu_\text{ion} M_\text{ion}
 &= 9.8 \times 10^{13} \cdot 2.2 \times 10^{-8} \cdot 32\, [\text{amu}\cdot\text{m}^{-3}\text{s}^{-1}]
-&= 2\, [\text{amu}\cdot\text{cm}^{-3}\text{s}^{-1}]
+&= 69\, [\text{amu}\cdot\text{cm}^{-3}\text{s}^{-1}]
 \end{align}
 
-This is very small! For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-3}$s. For 1000 steps in local timestepping, the increase in density is only 1! Maybe this is the reason why the German group run their model in steady state for 1.2 million steps: if they have approximately the same time step, then the final density near the surface will be on the order of $10^{3}\, [\text{cm}^{-3}]$, which is consistent with the contour plots in their paper. I don't know if I can speed this up.
+For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-2}$s. For 1000 steps in local timestepping, the increase in density is about 700. This is very small compared to the expected value above.
+
+After normalization, the unit for density is [amu/cc] and for velocity is [R/s].
 
 For my specific problem, I need to have a feeling about the surface density, pressure and temperature in equilibrium. If I trust [Fatemi+, 2018]'s result, than it means that the thermal pressure does not matter much. Similar things may happen in [Duling+, 2014][Duling+2014].
 According to my simple test, the upstream pressure has little influence on the magnetic field topology.

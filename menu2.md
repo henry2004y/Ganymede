@@ -180,6 +180,8 @@ The estimated surface density the therefore around $n_s\approx 1500\, \text{cm}^
 
 In order to achieve this equilibrium, they ran the model for approximately 1.2 million iterations with a time step controlled by the Courant‐Friedrichs‐Lewy criterion which respects all physical effects.
 
+One thing worth noticing here is that in the final simulation result, the peak density is about 2350 [$\text{amu}/\text{cc}$], or 75 [$\text{cc}^{-1}$], which is 20 time smaller than the estimated value above. They claimed that it is because the convection term partly balances the source term instead.
+
 ## Aurora Estimation, 2015
 
 Payan
