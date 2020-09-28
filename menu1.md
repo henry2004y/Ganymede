@@ -444,6 +444,10 @@ In a steady state, when we equalize the production with loss, the plasma number 
 $$ n_s = \sqrt{\frac{\nu_\text{ion}n_{n,0}}{\alpha}} \approx 5257\, \text{cm}^{-3}, $$
 or, assuming all $O_2^+$, the mass density will be $1.7\times 10^5\,\text{amu}/\text{cc}$.
 
+This is very large compared to the previous fixed density $550$ [amu/cc] in our runs, or the $\sim 10^3$ [amu/cc] in both [Duling+, 2014][Duling+2014][^6] and [Fatemi+, 2018][Fatemi+2018].
+
+[^6]: See the discussion and some of my opinion [here](https://henry2004y.github.io/Ganymede/menu2/#atmosphere_and_ionosphere).
+
 As an estimation, the source term in the mass equation gives
 \begin{align}
 \dot{\rho} &= n_n(r) \nu_\text{ion} M_\text{ion}
@@ -451,13 +455,14 @@ As an estimation, the source term in the mass equation gives
 &= 69\, [\text{amu}\cdot\text{cm}^{-3}\text{s}^{-1}]
 \end{align}
 
-For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-2}$s. For 1000 steps in local timestepping, the increase in density is about 700. This is very small compared to the expected value above.
+For the coarse grid run with about 0.3 million cells, the time step at the surface is on the order of $10^{-2}$s. For 1000 steps in local timestepping, the increase in density is about 700. This is very small compared to the expected value above. I have no idea how long it takes to reach equilibrium or will it ever reach equilibrium.
 
 After normalization, the unit for density is [amu/cc] and for velocity is [R/s].
 
-For my specific problem, I need to have a feeling about the surface density, pressure and temperature in equilibrium. If I trust [Fatemi+, 2018]'s result, than it means that the thermal pressure does not matter much. Similar things may happen in [Duling+, 2014][Duling+2014].
+For my specific problem, I need to have a feeling about the surface density, pressure and temperature in equilibrium. If I trust [Fatemi+, 2018][Fatemi+2018]'s result, than it means that the thermal pressure does not matter much. Similar things may happen in [Duling+, 2014][Duling+2014].
 According to my simple test, the upstream pressure has little influence on the magnetic field topology.
 
+Single fluid description is clearly a deficiency here, but the question is: is it enough or do we need more complex physical description? In terms of overall magnetic field topology, this probably won't matter much; but is it crucial for energetic species near the moon?
 Use MHD just to simulate the thermal plasma background, and use PIC to get the energetic part done?
 
 
@@ -677,4 +682,5 @@ K-H instability driven surface waves --> mode conversion to Alfvén wave inside 
 [Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
 [Duling+2014]: https://doi.org/10.1002/2013JA019554
 [Tóth+2016]: https://doi.org/10.1002/2015JA021997
+[Fatemi+2018]: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363
 [Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
