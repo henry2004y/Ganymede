@@ -35,6 +35,7 @@ They want to incorporate the effect of multiple ion species. However, the model 
 
 ## Single fluid MHD, 2008-2010
 
+[Jia+, 2008][Jia+2008]
 [Jia+, 2009][Jia+2009]
 
 4 Eqs. stretched spherical coordinates, leapfrog time marching, central differencing in space.
@@ -281,7 +282,7 @@ This results in better comparison against the electron number density:
 
 ## MHD-EPIC, 2019-2020
 
-Zhou
+[Zhou+, 2019][Zhou+2019][https://doi.org/10.1029/2019JA026643], [Zhou+, 2020][Zhou+2020][https://doi.org/10.1029/2020JA028162]
 
 | Variables | Core Boundary ($r=0.5R_G$) | Surface Boundary ($r=1R_G$) | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
 |---|---|---|---|---|
@@ -302,6 +303,7 @@ There are two test particle models for Ganymede in 2020: [Plainaki+, 2020](Plain
 [Paty1]: https://doi.org/10.1029/2004GL021220
 [Paty2]: https://doi.org/10.1029/2005GL025273
 [Paty3]: https://doi.org/10.1029/2007JA012848
+[Jia+2008]: https://doi.org/10.1029/2007JA012748
 [Jia+2009]: https://doi.org/10.1029/2009JA014375
 [Duling+2014]: https://doi.org/10.1002/2013JA019554
 [Tóth+2016]: https://doi.org/10.1002/2015JA021997
@@ -313,3 +315,5 @@ There are two test particle models for Ganymede in 2020: [Plainaki+, 2020](Plain
 [Plainaki+2020]: https://doi.org/10.3847/1538-4357/aba94c
 [Liuzzo+2020]: https://doi.org/10.1029/2020JA028347
 [Kivelson+2004](https://lasp.colorado.edu/home/mop/files/2015/08/jupiter_ch21-1.pdf)
+[Zhou+2019]: https://doi.org/10.1029/2019JA026643
+[Zhou+2020]: https://doi.org/10.1029/2020JA028162

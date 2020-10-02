@@ -216,7 +216,15 @@ Commonly we are using GPhiO coordinate system.
 ## Numerical Schemes
 
 BATSRUS has the option of using conservative scheme or nonconservative scheme. The difference lies in whether we are solving the pressure equation or the energy equation.
-According to Gabor's experience, these two behave differently especially for shocks.
+According to Gabor's experience, these two behave differently especially for shocks. I have seen that in Ganymede's case, solving the pressure equation will lead to an increase of density along the Alfvén wing edges, which does not appear when solving the energy equation.
+Physically, the shock discontinuity is described by the conservation laws. Using a pressure equation indicates that we assume some kind of physical processes, e.g. adiabatic, which may not hold across the discontinuity.
+The default choice for BATSRUS is to only apply nonconservative scheme near the Earth, which makes sense in this regard.
+
+In [Jia+, 2008][Jia+2008], they solved the pressure equation everywhere;
+in [Duling+, 2014][Duling+2014], they solved the energy equation everywhere;
+in [Fatemi+, 2018][Fatemi+2018], the hybrid model seems to use pressure equation or equivalence;
+in [Zhou+, 2019][Zhou+2019] and [Zhou+, 2020][Zhou+2020], I solved the energy equation everywhere.
+
 
 ### Fully explicit method
 
@@ -462,6 +470,8 @@ After normalization, the unit for density is [amu/cc] and for velocity is [R/s].
 For my specific problem, I need to have a feeling about the surface density, pressure and temperature in equilibrium. If I trust [Fatemi+, 2018][Fatemi+2018]'s result, than it means that the thermal pressure does not matter much. Similar things may happen in [Duling+, 2014][Duling+2014].
 According to my simple test, the upstream pressure has little influence on the magnetic field topology.
 
+Now that this is partly working, the next thing I would like to add is the term in the electron pressure equation. This may not matter much, but it would be better if I have those electron source/sink terms included.
+
 Single fluid description is clearly a deficiency here, but the question is: is it enough or do we need more complex physical description? In terms of overall magnetic field topology, this probably won't matter much; but is it crucial for energetic species near the moon?
 Use MHD just to simulate the thermal plasma background, and use PIC to get the energetic part done?
 
@@ -680,7 +690,10 @@ The Kelvin–Helmholtz instability is a favorite excitation mechanism for compre
 K-H instability driven surface waves --> mode conversion to Alfvén wave inside the magnetosphere?
 
 [Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
+[Jia+2008]: https://doi.org/10.1029/2007JA012748
 [Duling+2014]: https://doi.org/10.1002/2013JA019554
 [Tóth+2016]: https://doi.org/10.1002/2015JA021997
 [Fatemi+2018]: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068363
+[Zhou+2019]: https://doi.org/10.1029/2019JA026643
+[Zhou+2020]: https://doi.org/10.1029/2020JA028162
 [Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
