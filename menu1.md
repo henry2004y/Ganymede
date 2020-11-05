@@ -656,6 +656,10 @@ My first attempt to check the local reconnection rate failed. Many possible reas
 
 The electric field from PIC output is about one order magnitude higher than the expected reconnection electric field calculated from $\rho$ and $\mathbf{B}$. This may due to some other waves and instabilities (e.g. low hybrid drifting waves).
 
+### Analytical Estimation
+
+[Kaweeyanun+2020] proposed a way to check the onset condition for reconnection on the upstream magnetopause with an analytical model. What is in agreement with us is that they found a large region on the magnetopause is valid for reconnection to happen. However, this analytical model cannot distinguish between different models of flux ropes, the field of which in general lacks fundamental theory.
+
 ## Potential Drop
 
 I tried a new way of doing Potential drop calculation, with z=2 cut and integrate along the magnetosphere boundary. When doing it in steady state, I can get a quite nice potential field; however, if I went into the time-accurate mode, for example t=100s, I couldn't get 0 after integrating along the boundary to the starting point. One obvious explanation is that you don't have the potential field assumption in time-accurate runs: there's no guarantee that the flux coming in equals the flux coming out at the same time!
@@ -689,6 +693,13 @@ The Kelvin–Helmholtz instability is a favorite excitation mechanism for compre
 
 K-H instability driven surface waves --> mode conversion to Alfvén wave inside the magnetosphere?
 
+## KH Instability
+
+There are some interests in analyzing the K-H instability on the flanks of the magnetopause. Nawapat Kaweeyanun, the student of Adam Masters, also has a paper on this subject. From the plasma-moon interaction workshop discussion with him, we are still not so sure about the effect of multiple ion species and different energy levels. 
+
+One big factor in the onset condition is the $M/Q$ ratio. Since most of the heavy ions are O+ and S++, both of which have $M/Q=16$, it does not matter if we distinguish them or not.
+The linear K-H instability onset condition only relies on the bulk plasma properties. However, the linear growth rate, $\gamma$, depends on the particle temperature. We know that in Ganymede's case the energetic particles contributes to most of the thermal pressures, despite the fact that the number densities are small compared to their cold bulk brothers. Currently I am not clear about the exact expression of the dependence of $\gamma$ on velocity/energy/pressure/density, but definitely a strict theory requires the relation of these basic factors other than temperature. In my point of view, temperature is such an ambiguous quantity that is almost meaningless in space. When people talk about energetic particles, they use energies in eV.
+
 [Neubauer1980]: https://doi.org/10.1029/JA085iA03p01171
 [Jia+2008]: https://doi.org/10.1029/2007JA012748
 [Duling+2014]: https://doi.org/10.1002/2013JA019554
@@ -697,3 +708,4 @@ K-H instability driven surface waves --> mode conversion to Alfvén wave inside 
 [Zhou+2019]: https://doi.org/10.1029/2019JA026643
 [Zhou+2020]: https://doi.org/10.1029/2020JA028162
 [Carnielli+2020]: https://doi.org/10.1016/j.icarus.2020.113691
+[Kaweeyanun+2020]: https://doi.org/10.1029/2019GL086228
