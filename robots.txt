@@ -1,0 +1,4 @@
+Sitemap: https://henry2004y.github.io/Ganymede/sitemap.xml
+
+User-agent: *
+Disallow:

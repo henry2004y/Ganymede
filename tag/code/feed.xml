@@ -4,7 +4,7 @@
   <description><![CDATA[Notes about our attempts to understand Ganymede
 ]]></description>
   <link>https://henry2004y.github.io/Ganymede/</link>
-  <atom:link href="https://henry2004y.github.io/Ganymede/feed.xml" rel="self" type="application/rss+xml" />
+  <atom:link href="https://henry2004y.github.io/Ganymede/tag/code/feed.xml" rel="self" type="application/rss+xml" />
   <item>
     <title>Research Log</title>
     <link>https://henry2004y.github.io/Ganymede/menu1/</link>
