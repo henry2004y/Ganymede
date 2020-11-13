@@ -282,7 +282,7 @@ This results in better comparison against the electron number density:
 
 ## MHD-EPIC, 2019-2020
 
-[Zhou+, 2019][Zhou+2019][https://doi.org/10.1029/2019JA026643], [Zhou+, 2020][Zhou+2020][https://doi.org/10.1029/2020JA028162]
+[Zhou+, 2019][Zhou+2019], [Zhou+, 2020][Zhou+2020]
 
 | Variables | Core Boundary ($r=0.5R_G$) | Surface Boundary ($r=1R_G$) | Outer Boundary (upstream, downstream) | Outer Boundary (sides)|
 |---|---|---|---|---|
