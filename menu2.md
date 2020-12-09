@@ -210,6 +210,28 @@ The standoff distance is 6% larger than observation.
 
 ## Hybrid Model
 
+Ions treated as fully kinetic particles:
+\[
+\frac{d\mathbf{u}}{dt} = \mathbf{E} + \mathbf{u}\times\mathbf{B} -\nu (\mathbf{u}_i - \mathbf{u}_e)
+\]
+
+Electrons treated as massless fluid: (?)
+\[
+\mathbf{u}_e = \mathbf{u}_i - \frac{\nabla\times\mathbf{B}}{\alpha N}
+\]
+
+The electric field is calculated from the electron momentum equation:
+\[
+\mathbf{E} = -\mathbf{u}_e\times\mathbf{B} - \frac{\nabla \tensor{P}_e}{N} -\nu(\mathbf{u}_e - \mathbf{u}_i)     
+\]
+
+The magnetic field advanced in time using Faraday's law:
+\[
+\frac{\partial\mathbf{B}}{\partial t} = -\nabla\times\mathbf{E}
+\]
+
+
+
 ### Parallel hybrid multi-grid model
 
 [Leclercq+, 2016][Leclercq+2016]
