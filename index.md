@@ -9,6 +9,8 @@
 * [Overview of simulation attempts](/menu2/)
 * [Practical Issues](/menu3/)
 * [Extra](/menu4)
+* [ULF Waves](/menu5)
+* [Run in Action](/menu6)
 
 ## Introduction
 
