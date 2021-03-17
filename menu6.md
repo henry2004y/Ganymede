@@ -83,7 +83,7 @@ T                       DoCheckStop
 PC                      NameComp
 F                       UseComp
 
-#BEGIN_COMP GM ---------------------------------------------------------------
+#BEGIN_COMP GM --------------------------------------------------------------
 
 ! Restart header for GM
 INCLUDE
@@ -133,7 +133,7 @@ F                       UseNonConservative
 #RESTARTOUTFILE
 one                     TypeRestartOutFile
 
----------------grid structure-----------------
+grid structure---------------------------------------------------------------
 #GRIDGEOMETRY
 spherical_lnr           TypeGeometry
 
@@ -188,9 +188,10 @@ box_gen                 TypeRegion
 15.0                    rmax
 70.0                    LonMax
 -65.0                   LatMax
-----------------end grid structure--------------
 
-----------------BC-----------------
+end grid structure-----------------------------------------------------------
+
+BC---------------------------------------------------------------------------
 #OUTERBOUNDARY
 fixedb1                 TypeCellBc1
 none                    TypeCellBc2
@@ -227,7 +228,7 @@ sphere                  TypeSolidGeometry
 1.0                     rSolid
 5e-3                    SolidLimitDt
 
--------------end BC--------------
+end BC-----------------------------------------------------------------------
 
 #RESISTIVITY
 T                       UseResistivity
@@ -237,7 +238,7 @@ user                    TypeResistivity
 #USERSWITCH
 +init +ic +source       StringSwitch
 
-#USERINPUTBEGIN --------------------
+#USERINPUTBEGIN -------------------------------------------------------------
 
 #INITTYPE
 B1U1
@@ -264,7 +265,7 @@ B1U1
 #SOLIDBOUNDARY
 3
 
-#USERINPUTEND ----------------------
+#USERINPUTEND --------------------------------------------------------------
 
 #TIMESTEPPING
 2                       nStage
