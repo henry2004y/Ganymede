@@ -31,6 +31,7 @@ The run can be split into multiple stages:
 
 It is not necessary to strictly follow this order: we do this only to speed things up assuming that the same solution will be reached given the same initial and boundary condition, no matter which timestepping mode or which numerical model is chosen in the intermediate stages.
 The validity of this statement is hard to prove mathematically, but based on practical experience it generally works pretty well.
+An analogy to this would be the steady state in a Markov chain: you are guaranteed to stay in the steady state once you reach it, but it is not guaranteed that you will reach the steady state from an arbirary state, even though for many cases it does.
 
 ## Steady State Ideal MHD
 
