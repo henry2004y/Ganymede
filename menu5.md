@@ -8,25 +8,51 @@
 
 [Menk, 2011][Menk2011]的综述文章只能硬着头皮看。太多从文章中抄出来的经验性总结了。
 
-ULF wave, $f \in [0.001, 10]$ Hz, inside MHD regime, easily detected.
+Ultra-low frequency (ULF) wave, $f \in [0.001, 10]$ Hz, inside MHD regime, easily detected.
 
-2 types:
-* Originates from solar wind
-* Originates from within the magnetosphere
+ULF waves were originally called micropulsations or magnetic pulsations since they were first observed by ground magnetometers. ULF pulsations are classified into two types: *pulsations continuous (Pc)* and *pulsations irregular (Pi)* with several subclasses (Pc1–5 and Pi1–2) according to their frequencies and durations.[^1]
+
+| Notation | Period Range [s] |
+|----------|------------------|
+| Pc1      | 0.2 - 5          |
+| Pc2      | 5 - 10           |
+| Pc3      | 10 - 45          |
+| Pc4      | 45 - 150         |
+| Pc5      | 150 - 600        |
+---
+| Pi1      | 1 - 40           |
+| Pi2      | 40 - 150         |
+
+[^1]: The Pc5 range originates from the Mariner 5 (1967) detection limitation to a Nyquist frequency of 1.67mHz, which corresponds to 600s.
+
+With respect to polarization, ULF waves can be categorized into three modes: poloidal ($\Delta B_r,\, \Delta E_\phi$), compressional ($\Delta B_\parallel,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively.
+
+Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfven waves.
+
+2 types of origins:
+* solar wind
+* within the magnetosphere
 
 Hypothesis:
 Near radial (?) IMF conditions -->
 Alfvén/ion cyclotron and mirror modes in the magnetosheath --> 
 Magnetospheric ULF waves: propagate without significant change to their spectrum
 
-Electron and ion foreshock are where ULF waves are generated 
+Electron and ion foreshocks are where ULF waves are generated.
 
-Driver: periodic compressional or Alfvénic fluctuations in the solar wind, like density or pressure
-Observation: discrete magic frequencies
+
 
 Changing parameters:
-* Wind speed
-* Cone angle(?)
+* wind speed
+* cone angle(?)
+
+## Drivers
+
+Driver in the solar wind: 
+* periodic compressional fluctuations
+* Alfvénic fluctuations
+
+Observation: discrete magic frequencies
 
 _Phase coherent technique_(?) is used to check the relation of one frequency oscillation to another.
 
