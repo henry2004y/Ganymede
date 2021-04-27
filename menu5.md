@@ -19,15 +19,15 @@ ULF waves were originally called micropulsations or magnetic pulsations since th
 | Pc3      | 10 - 45          |
 | Pc4      | 45 - 150         |
 | Pc5      | 150 - 600        |
----
+|          |                  |
 | Pi1      | 1 - 40           |
 | Pi2      | 40 - 150         |
 
-[^1]: The Pc5 range originates from the Mariner 5 (1967) detection limitation to a Nyquist frequency of 1.67mHz, which corresponds to 600s.
+[^1]: The Pc5 range originates from the Mariner 5 (1967) detection limitation to a Nyquist frequency of 1.67mHz, which corresponds to 600s. It roughly maps to $60^o\sim 70^o$ latitude on Earth's surface.
 
 With respect to polarization, ULF waves can be categorized into three modes: poloidal ($\Delta B_r,\, \Delta E_\phi$), compressional ($\Delta B_\parallel,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively.
 
-Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfven waves.
+Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfvén waves.
 
 2 types of origins:
 * solar wind
@@ -49,12 +49,18 @@ Changing parameters:
 ## Drivers
 
 Driver in the solar wind: 
-* periodic compressional fluctuations
-* Alfvénic fluctuations
+* periodic compressional fluctuations --> magnetopause surface waves
+* Alfvénic fluctuations $\delta \mathbf{V}/ \mathbf{V}_A = \pm \delta \mathbf{B}/ \mathbf{B}_0$ direct excitation
+* fast stream --> KHI on the magnetopause --> surface mode/ waveguide
+
+When the magnetopause can be described as a tangential discontinuity ($B_n = 0$), the MHD wave transmission is not efficient;
+when the magnetopause is a rotational discontinuity ($B_n\neq 0$), MHD wave transmission can occur over a wide range of incident angle and that the transmitted waves are usually amplified. The favored ULF wave range may lie within Pc5.
 
 Observation: discrete magic frequencies
 
-_Phase coherent technique_(?) is used to check the relation of one frequency oscillation to another.
+Field line resonance (FIR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines, are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz. Possible mechanisim:
+* MHD waveguide
+* MHD cavity modes
 
 The correlation between solar wind speed and ULF power in the magnetosphere suggests that the Kelvin-Helmholtz instability (KHI) resulting from the velocity shear at the magnetopause may be a significant source of ULF wave energy.
 
@@ -63,7 +69,7 @@ Boundary layer thickness --> over-reflection modes at the magnetopause
 This may explain the production of discrete frequency ULF waves in the magnetosphere and statistical correlations between Pc5 power on the ground and solar wind velocity
 
 Opinion:
-Alfvénic waves propagating along the magnetopause surface may develop into standing Alfvén waves on the boundary due to reflection from the conjugate ionospheres (i.e. Kruskal-Schwarzschild modes). The surface waves are likely due to magnetopause displacements as a result of local pressure perturbations in the magnetosheath, while the eigenfrequencies of the standing modes are determined by the magnetopause geometry and are strikingly similar to the Samson ‘magic’ frequencies.
+Alfvénic waves propagating along the magnetopause surface may develop into standing Alfvén waves on the boundary due to reflection from the conjugate ionospheres (i.e. Kruskal-Schwarzschild modes). The surface waves are likely due to magnetopause displacements as a result of local pressure perturbations in the magnetosheath, while the eigenfrequencies of the standing modes are determined by the magnetopause geometry and are strikingly similar to the Samson "magic" frequencies.
 This combination of conditions suggests that the oscillations are more likely due to Kruskal-Schwarzshild modes than solar wind pressure perturbations or the KHI at the flanks.
 
 Within the magnetosphere, there are two possible mechanics:
@@ -107,9 +113,6 @@ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in 
 However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about
 11◦, with minimal reflection at the ionosphere.
-
-automated ULF wave detection algorithms using FFT
-wavelet transform technique(?)
 
 
 ## Simulations
@@ -160,6 +163,26 @@ McCollough et al. (2009) using a 3-D test particle solver coupled to the time-de
 
 Test-particle simulations have shown that perturbations in electric and magnetic fields are induced across wide regions of the magnetosphere by global magnetospheric compressions due to ULF variations in solar wind dynamic pressure and presumably also FLRs and
 magnetosonic waves (Ukhorskiy et al. 2006).
+
+## Techniques
+
+### Field aligned coordinates
+
+This is a local coordinate system that relates to the geomagnetic field. In the ecliptic plane, the parallel direction is more or less aligned with z in GSE, the first perpendicular direction pointing from Earth to the region of interest, and the second perpendicular direction completing the right hand rule. 
+
+### Phase coherent technique
+
+It is used to check the relation of one frequency oscillation to another.
+
+### Fourier transform
+
+It can be used for
+* determining the energy spectrum density for waves in a certain range
+* automated ULF wave detection algorithms.
+
+### Wavelet transform technique
+
+?
 
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
