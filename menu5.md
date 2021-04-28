@@ -80,9 +80,11 @@ strongly compressional, high azimuthal wave number m, attenuated on the ground.
 
 ## Physics
 
-Margy has done a lot in this field.
+[^2]: Margy has done a lot in this field.
 
 ### Wave Generation and Propagation Mechanisms
+
+anisotropy conditions
 
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
 
@@ -166,9 +168,53 @@ magnetosonic waves (Ukhorskiy et al. 2006).
 
 ## Techniques
 
-### Field aligned coordinates
+### Mean field aligned coordinates
 
-This is a local coordinate system that relates to the geomagnetic field. In the ecliptic plane, the parallel direction is more or less aligned with z in GSE, the first perpendicular direction pointing from Earth to the region of interest, and the second perpendicular direction completing the right hand rule. 
+The magnetic field satellite data are usually referred to geocentric coordinate reference frames such as geocentric solar ecliptic (GSE) frame. Conversely, the MHD waves modes in magnetized plasma depend on the ambient magnetic field, and is then useful to rotate the magnetic field measurements into the _mean field-aligned (MFA) coordinate system_. This reference frame is useful to study the ultra-low frequency magnetic field variations along and perpendicular to the direction of the mean field. 
+
+The MFA coordinate system is a local coordinate system that relates to the geomagnetic field. In the ecliptic plane, the parallel direction is more or less aligned with z in GSE, the first perpendicular direction pointing from Earth to the region of interest, and the second perpendicular direction completing the right hand rule. 
+
+In order to identify the mean magnetic field the classical moving average (MAVG) approach is usually adopted, but does not always give reliable performance.
+In the solarwind, a technique widely used to study parallel and perpendicular magnetic field components of waves is the minimum variance analysis (MVA). However, the minimum variance direction does not necessarily coincide with that of the ambient magnetic field.
+
+If a time scale separation exists within the magnetic field measurements, these time series can be thought as a superposition of  a slowly varying (amplitude) ambient field $\mathbf{B}_0(t)$, an higher frequency signal $\mathbf{b}(t)$(or perturbation) and an incoherent noise $\mathbf{n}(t)$:
+
+$$
+\mathbf{B}(t) = \mathbf{B}_0(t) + \mathbf{b}(t) + \mathbf{n}(t).
+$$
+
+\fig{/assets/MFA_coordinate_magnetosphere.png}
+MFA coordinate system in the magnetosphere: the MFA directions $\mathbf{\mu}$, $\mathbf{\phi}$ and $\mathbf{\nu}$ are showed together with the satellite position (red dot). The geomagnetic field line (blue line) is computed through T96 magnetosphere model [Tsyganenko 1995] during solar quiet conditions. [Regi+, 2016](Regi2016)
+
+The MFA coordinates system, showed in the figure for an assigned position in the inner magnetosphere, is established by means of  the unit vectors defined as
+\begin{align}
+\mathbf{\mu}(t) = \mathbf{B}_0(t) / |\mathbf{B}_0(t)|, \\
+\mathbf{\phi}(t) = \mathbf{r}(t) \times \mathbf{B}_0(t) / |\mathbf{r}(t) \times \mathbf{B}_0(t)|, \\
+\mathbf{\nu}(t) = \mathbf{\mu}(t) \times \mathbf{\phi}(t),
+\end{align}
+where $\mathbf{\mu}$, $\mathbf{\phi}$ and $\mathbf{\nu}$ are usually associated with compressional, toroidal and poloidal ULF waves modes respectively, while $\mathbf{r}(t)$ represents the position vector of the spacecraft.
+
+This definition may also be extended in upstream regions, but in this case the $\mathbf{\phi}, \mathbf{\nu}$ components are simply related with transverse oscillations in the interplanetary region (e.g. foreshock upstream waves).
+
+Then we can define the instantaneous rotation matrix from geocentric to MFA reference frame as
+\begin{align}
+\mathbf{R}(t) = 
+\begin{pmatrix}
+\mu_x(t) & \mu_y(t) & \mu_z(t) \\
+\phi_x(t) & \phi_y(t) & \phi_z(t) \\
+\nu_x(t) & \nu_y(t) & \nu_z(t)
+\end{pmatrix}
+\end{align}
+that allows us to project the instantaneous magnetic field vector from the original geocentric reference frame into the MFA one:
+$$
+\mathbf{B}^{MFA}(t) = \mathbf{R}(t)\mathbf{B}^{GSE}(t). 
+$$
+
+It is clear that in order to obtain the time series $\mathbf{B}^{MFA}(t)$ in the MFA reference system, the slowly varying mean field vector $\mathbf{B}_0(t)$ must be found through an appropriate filtering procedure. The moving average (MAVG) is a good  choice with respect to any low-pass filter, as it introduces no artifacts.
+However in applying the MAVG method it is assumed that the characteristic fluctuation time $T_0$ related to $\mathbf{B}_0(t)$ is much greater than the period $T_b$ of the perturbation $\mathbf{b}(t)$. Moreover, $T_0$ depends on both satellite motion and natural magnetic field variation (e.g. high velocity stream, coronal mass ejections, corotating interaction regions), and could be related to nonlinear and non stationary phenomena.
+Under these conditions the MAVG might be unsuitable in the rotation procedure, while a method such as the _empirical mode decomposition (EMD)_, is useful to identify nonlinear and nonstationary processes.
+
+This is discussed thoroughly in [Regi+, 2016](Regi2016). I am going to write a script for implementing the ideas!
 
 ### Phase coherent technique
 
@@ -190,3 +236,4 @@ It can be used for
 [GamayunovKhazanov2008]:  https://doi.org/10.1029/2008JA013494
 [Lee2008]: https://doi.org/10.1029/2008JA013088
 [Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
+[Regi2016]: https://doi.org/10.4401/ag-7067
