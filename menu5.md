@@ -228,7 +228,30 @@ It can be used for
 
 ### Wavelet transform technique
 
-?
+Wavelet Transform decomposes a function into a set of wavelets. A Wavelet is a wave-like oscillation that is localized in time.
+Two basic properties of a wavelet are scale and location.
+
+Key advantages of Wavelet Transform compared with Fourier Tranform:
+* Wavelet transform can extract _local_ spectral and temporal information simultaneously, while FT only extract global information.
+* There are various wavelets to choose from. In practice, if you have any prior knowledge to the signal you want to identify, you can find for an appropriate wavelet that is close to that shape.
+
+A nice introduction can be found [here](https://towardsdatascience.com/the-wavelet-transform-e9cfa85d7b34).
+A practical example of [R Wave Detection in the ECG](https://se.mathworks.com/help/wavelet/ug/r-wave-detection-in-the-ecg.html) using wavelet transform is given in Matlab.
+
+For example, [Morlet/Gabor wavelet](https://en.wikipedia.org/wiki/Morlet_waveletsuper) is a wavelet composed of a complext exponential (carrier) multiplied by a Gaussian window (envelope).
+
+### Superposed epoch analysis
+
+A statistical tool to detect periodicities within a time sequence or to reveal a correlation in time between two time series.
+
+1. Define each occurrence of an event in one data sequence as a key time.
+2. Extract subsets of data from the other sequence within some time range near each key time.
+3. Superpose all extracted subsets from series 2.
+
+An example of sunspot analysis can be found [here](https://github.com/lkilcommons/sea_tutorial).
+This sounds easy, or even too easy. I won't even consider it a standard method...
+
+
 
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
