@@ -124,6 +124,31 @@ Spacecraft measurements have shown that EMICW propagation is almost exclusively 
 LFM model by [Claudepierre+, 2008][Claudepierre2008]:
 The phase velocities of the modes were different but the frequencies were the same and depended on the solar wind driving velocity. For both modes the preferred wavenumber was related to the boundary thickness, so that the KH waves are monochromatic.
 
+In [Claudepierre+, 2009][Claudepierre2009], LFM is used to study the magnetospheric response to only a fluctuating upstream dynamic pressure. The changing of dynamic pressure is done through changing number density while keeping bulk velocity constant.
+The input dynamic pressure has frequency components spreading across Pc3 to Pc5 ranges:
+| Frequency (mHz) | Relative Oscillation Amplitude (%) |
+|----------|------------------|
+| 5 | 20 |
+| 10 | 20 |
+| 18 | 30 |
+| 25 | 40 |
+| 0-50 | 20 |
+
+Background $\rho = 5$ amu/cc, $B = (0, 0, -5)$ nT, and $V = (-600, 0, 0)$ km/s. In Figure 1, the authors demonstrate the filtering/attenuation of the higher frequency spectral components, which is an expected artifact of the numeric solver, unfortunately. I haven't checked the shift or attenuation of frequency in Vlasiator (numerical Vlasov solver), but obviously the amplitude decreases.
+
+Results:
+1. Strong peak signal observed around 10 mHz in the continuum band input run.
+2. PSD of $B_z$, $E_\phi$, the two compressional components of EM fields along the noon-meridional line, shows strong $B_z$ signals near the magnetopause.
+3. They argue that the outputs represent MHD cavity modes, which in the simplest interpretation, can be thought of as standing waves in the electric and magnetic fields between a cavity inner and outer boundary. [Kivelson and Southwood, 1985]
+The cavity frequency in a simple box geometry configuration with perfect conductor boundary conditions:
+\[
+f_n = \frac{V_A}{2a}n,\, \text{for} n = 1,2,3,...
+\]
+where a is the box length in x direction.
+
+In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic solar wind dynamic pressure fluctuations drive toroidal mode field line resonances (FLRs) on the dayside at locations wherethe upstream driving frequency matches a local field line eigenfrequency.
+
+
 ###
 
 [Wright and Allan, 2008][WrightAllan2008]:
@@ -255,6 +280,8 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
+[Claudepierre2009]: https://doi.org/10.1029/2009GL039045
+[Claudepierre2010]: https://doi.org/10.1029/2010JA015399
 [WrightAllan2008]: https://doi.org/10.1029/2007JA012464
 [GamayunovKhazanov2008]:  https://doi.org/10.1029/2008JA013494
 [Lee2008]: https://doi.org/10.1029/2008JA013088
