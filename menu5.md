@@ -51,18 +51,12 @@ Changing parameters:
 Driver in the solar wind: 
 * periodic compressional fluctuations --> magnetopause surface waves
 * Alfvénic fluctuations $\delta \mathbf{V}/ \mathbf{V}_A = \pm \delta \mathbf{B}/ \mathbf{B}_0$ direct excitation
-* fast stream --> KHI on the magnetopause --> surface mode/ waveguide
+* fast stream --> KHI on the magnetopause --> surface mode/waveguide
 
 When the magnetopause can be described as a tangential discontinuity ($B_n = 0$), the MHD wave transmission is not efficient;
 when the magnetopause is a rotational discontinuity ($B_n\neq 0$), MHD wave transmission can occur over a wide range of incident angle and that the transmitted waves are usually amplified. The favored ULF wave range may lie within Pc5.
 
-Observation: discrete magic frequencies
-
-Field line resonance (FIR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines, are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz. Possible mechanisim:
-* MHD waveguide
-* MHD cavity modes
-
-The correlation between solar wind speed and ULF power in the magnetosphere suggests that the Kelvin-Helmholtz instability (KHI) resulting from the velocity shear at the magnetopause may be a significant source of ULF wave energy.
+The correlation between solar wind speed and ULF power in the magnetosphere suggests that the Kelvin-Helmholtz instability (KHI) resulting from the velocity shear at the magnetopause may be a significant source of ULF wave energy. KHI studies were very active in the 1980s, but since then nothing really significant has been reached.
 
 Boundary layer thickness --> over-reflection modes at the magnetopause
 *Over-reflection* occurs when the characteristic scales of the wave and the inhomogeneity are comparable, and may provide an efficient process for the extraction of energy from the magnetosheath to magnetospheric waveguide modes on the flanks during fast solar wind speed intervals.
@@ -90,11 +84,6 @@ The propagation of magnetospheric ULF plasma waves has been described usually us
 
 global eigenoscillations of the magnetosphere or the plasmasphere
 
-In fact, the coupling of cavity or waveguide eigenmodes to FLRs may explain how discrete spectra are produced across a range of latitudes, including at the "magic" frequencies.
-
-The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic"
-frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting!)
-
 termed the plasmaspheric global mode a virtual resonance (?)
 
 The mathematical description of field line resonance (FLR) often assume a simple dipole magnetic field which is not appropriate to high latitudes where field lines experience significant temporal distortion.
@@ -116,10 +105,31 @@ However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about
 11◦, with minimal reflection at the ionosphere.
 
+The MHD wave equations that describe the coupling between the fast compressional mode and the shear Alfvén mode are complicated and have not been completely solved analytically, even in a simple dipole geometry.
+
+## Observation
+
+1. discrete magic frequencies
+Field line resonance (FLR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines (i.e closed field lines whose foot points lie in the ionosphere), are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz. Possible mechanisim:
+* MHD waveguide
+* MHD cavity modes
+
+In fact, the coupling of cavity or waveguide eigenmodes to FLRs may explain how discrete spectra are produced across a range of latitudes, including at the "magic" frequencies.
+The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic"
+frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting!)
+
+In the 1970s, KHI is cited as the source of compressional energy required for the excitation of FLRs. However, later people have found that the same can be triggered by solar wind dynamic pressure fluctuation. 
+Simultaneous measurements are applied to show that periodic fluctuations in the solar wind dynamic pressure drives ULF pulsations in the magnetosphere. A one‐to‐one correspondence was observed between the solar wind number density oscillation frequencies and oscillation frequencies in dayside magnetic field measurements from the GOES satellite. Even magnetotail lobe oscillations have been associated with upstream dynamic pressure fluctuation. One statistical study in 2009 by Viall+ is trying to argue that 50% of the ULF waves in the magnetosphere is driven by upstream solar wind dynamic pressure fluctuations. 
+
+In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
 
 ## Simulations
 
 ### LFM
+
+Single-fluid, ideal MHD, $\sim 0.25\, \text{R}_E$ resolution in the inner magnetosphere, upstream boundary at $x=30\, \text{R}_E$ in GSM coordinates. Fixed upstream solar wind condition, outflow on all other sides.
+
+Inner boundary: 2D electrostatic model of the ionosphere, with electric potential obtained from Poisson's equation and then mapped along the dipole field lines back to the inner boundary of MHD at about $2\, \text{R}_E$. The ionospheric conductance, needed for the potential solver, is specified by an empirical extreme ultra-violet (EUV) conductance model and by a contribution from particle precipitation.
 
 LFM model by [Claudepierre+, 2008][Claudepierre2008]:
 The phase velocities of the modes were different but the frequencies were the same and depended on the solar wind driving velocity. For both modes the preferred wavenumber was related to the boundary thickness, so that the KH waves are monochromatic.
@@ -131,7 +141,7 @@ The input dynamic pressure has frequency components spreading across Pc3 to Pc5 
 | 5 | 20 |
 | 10 | 20 |
 | 18 | 30 |
-| 25 | 40 |
+| 25 | 40^[3] |
 | 0-50 | 20 |
 
 Background $\rho = 5$ amu/cc, $B = (0, 0, -5)$ nT, and $V = (-600, 0, 0)$ km/s. In Figure 1, the authors demonstrate the filtering/attenuation of the higher frequency spectral components, which is an expected artifact of the numeric solver, unfortunately. I haven't checked the shift or attenuation of frequency in Vlasiator (numerical Vlasov solver), but obviously the amplitude decreases.
@@ -148,6 +158,14 @@ where a is the box length in x direction.
 
 In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic solar wind dynamic pressure fluctuations drive toroidal mode field line resonances (FLRs) on the dayside at locations wherethe upstream driving frequency matches a local field line eigenfrequency.
 
+| Frequency (mHz) | Relative Oscillation Amplitude (%) |
+|----------|------------------|
+| 10 | 20 |
+| 15 | 20 |
+| 25 | 40^[3] |
+| 0-50 | 20 |
+
+[3]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
 
 ###
 
@@ -277,7 +295,7 @@ An example of sunspot analysis can be found [here](https://github.com/lkilcommon
 This sounds easy, or even too easy. I won't even consider it a standard method...
 
 
-
+[SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
 [Claudepierre2009]: https://doi.org/10.1029/2009GL039045
