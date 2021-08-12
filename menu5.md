@@ -127,9 +127,15 @@ In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavi
 
 ### LFM
 
-Single-fluid, ideal MHD, $\sim 0.25\, \text{R}_E$ resolution in the inner magnetosphere, upstream boundary at $x=30\, \text{R}_E$ in GSM coordinates. Fixed upstream solar wind condition, outflow on all other sides.
+nonlinear TVD scheme switches to allow shock capturing
+
+Boris correction is applied to the perpendicular component of the displacement current in the $\mathbf{J}\times\mathbf{B}$ force of the MHD momentum equation, but with an artifically low speed of light.
+
+Single-fluid, ideal MHD, $\sim 0.25\, \text{R}_E$ resolution in the inner magnetosphere, upstream boundary at $x=30\, \text{R}_E$ in GSM coordinates. Fixed upstream solar wind condition ($B_x$, $V_x$), outflow on all other sides. They introduce an out-of-phase oscillation in the input sound speed time series (~ 40 km/s), so as to hold the thermal pressure constant in the upstream solar wind ($p_{th} \propto nC_S^2$). I don't quite understand this technique.
 
 Inner boundary: 2D electrostatic model of the ionosphere, with electric potential obtained from Poisson's equation and then mapped along the dipole field lines back to the inner boundary of MHD at about $2\, \text{R}_E$. The ionospheric conductance, needed for the potential solver, is specified by an empirical extreme ultra-violet (EUV) conductance model and by a contribution from particle precipitation.
+
+When starting the runs, they choose to flip the IMF direction multiple times which they call "precondition". Reason? Faster? Higher accuracy? Stability?
 
 LFM model by [Claudepierre+, 2008][Claudepierre2008]:
 The phase velocities of the modes were different but the frequencies were the same and depended on the solar wind driving velocity. For both modes the preferred wavenumber was related to the boundary thickness, so that the KH waves are monochromatic.
@@ -167,6 +173,30 @@ In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic sol
 | 0-50 | 20 |
 
 [^3]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
+
+In Figure 2 of this paper, you can clearly see the attentuation in shorter wavelengths beyond 15 mHz after propagating for 10 $\text{R}_E$.
+
+A useful quantity called \emph{root-integrated power (RIP)} for a given time series:
+\[
+RIP = [\int_{f_a}^{f_b}P(f) df]^{1/2}
+\]
+where $P(f)$ is the power spectral density of the given time series and the integration is carried out over a given frequency band of interest, $[f_a, f_b]$.
+
+In this paper, the RIPs are calculated for $E_r$ and $B_\phi$ under the cyclindrical polar coordinates (which I believe are the two compressional components?).
+
+From Alfvén speed profiles, we can compute estimates to the natural oscillation frequency for a given field line. For example, the WKB estimate to the field line eigenfrequency is given by [Radoski, 1966][^4]
+\[
+f_n = n[2\int_S^N \frac{ds}{v_A(s)}]^{-1} \, \text{for } n=1,2,3,...
+\]
+where n is the harmonic number of the FLR, s is the arc length along the field line, and the integration is carried out from the southern field line foot point (S) to the northern foot point (N). This estimate to the field line eigenfrequency is essentially the inverse of the travel time for an Alfvén wave propagating along the magnetic field line to bounce off the reflecting ionospheres and return to its starting point. It is a good approximation for the higher harmonics (large n) and predicts a value about 20% higher than the actual fundamental mode. The factor of 2 in the above equation is due to the a forementioned "bouncing" and due to the perfectly conducting ionospheric boundary condition assumed in FLR theory.
+
+[^4]: This WKB approximation assumes dipole field, but the real magnetic field is compressed on the dayside.
+
+Figure 3 is the most important and informative plot. In order to reproduce this kind of plot, I need:
+* field tracer
+* density and magnetic field along the traced field line
+
+In later sections there are additional discussions about polarization and energy flux (Poynting vector), but those are minor details.
 
 ###
 
