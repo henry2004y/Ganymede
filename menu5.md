@@ -136,12 +136,13 @@ The phase velocities of the modes were different but the frequencies were the sa
 
 In [Claudepierre+, 2009][Claudepierre2009], LFM is used to study the magnetospheric response to only a fluctuating upstream dynamic pressure. The changing of dynamic pressure is done through changing number density while keeping bulk velocity constant.
 The input dynamic pressure has frequency components spreading across Pc3 to Pc5 ranges:
+
 | Frequency (mHz) | Relative Oscillation Amplitude (%) |
 |----------|------------------|
 | 5 | 20 |
 | 10 | 20 |
 | 18 | 30 |
-| 25 | 40^[3] |
+| 25 | 40[^3] |
 | 0-50 | 20 |
 
 Background $\rho = 5$ amu/cc, $B = (0, 0, -5)$ nT, and $V = (-600, 0, 0)$ km/s. In Figure 1, the authors demonstrate the filtering/attenuation of the higher frequency spectral components, which is an expected artifact of the numeric solver, unfortunately. I haven't checked the shift or attenuation of frequency in Vlasiator (numerical Vlasov solver), but obviously the amplitude decreases.
@@ -162,10 +163,10 @@ In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic sol
 |----------|------------------|
 | 10 | 20 |
 | 15 | 20 |
-| 25 | 40^[3] |
+| 25 | 40[^3] |
 | 0-50 | 20 |
 
-[3]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
+[^3]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
 
 ###
 
