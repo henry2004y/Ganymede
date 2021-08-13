@@ -158,6 +158,9 @@ where $t_c$ is just an arbitrarily chosen parameter.
 
 Interaction outcomes: fast mode --> shock, slow mode, entropy wave.
 
+[Lee+, 2008][Lee2008]: on the role of heavy ion hybrid resonances near the equator
+full wave equations for a cold plasma
+
 ### LFM
 
 nonlinear TVD scheme switches to allow shock capturing
@@ -250,11 +253,6 @@ Plasma density is one of the most important parameters controlling EMIC wave gen
 It also suggests that for best data comparison the EMICW source is located at the equator and that waves reflect at off-equatorial latitudes at the bi-ion hybrid frequencies in conjugate hemispheres.
 
 self-written model, no name, ray-tracing equations in plasma
-
-###
-
-[Lee+, 2008][Lee2008]: on the role of heavy ion hybrid resonances near the equator
-full wave equations for a cold plasma
 
 ###
 
