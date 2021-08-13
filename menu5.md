@@ -78,6 +78,8 @@ strongly compressional, high azimuthal wave number m, attenuated on the ground.
 
 ### Wave Generation and Propagation Mechanisms
 
+One kind of wave types that I am not so familar with is called entropy wave. It is a comparessional wave (i.e., fluctuations in pressure and density) that can be either hydrodynamic or magnetohydrodynamic in which the internal energy and velocity remains constant.
+
 anisotropy conditions
 
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
@@ -124,6 +126,37 @@ Simultaneous measurements are applied to show that periodic fluctuations in the 
 In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
 
 ## Simulations
+
+### Korean MHD Model
+
+[Park+, 2002]: the interaction of solar wind density pulse with the bow shock.
+
+spherical, $10 \text{R}_E$ < r < $40 \text{R}_E$, $10^o < \theta < 170^o$, $0^o < \phi < 180^o$.[^gridthought]
+
+[^gridthought]: For bow shock and sheath study, this might be good enough since it's super-Alfvénic and super-sonic.
+
+$n = 5$ amu/cc, $B_0 = 10$ nT with $45^o$ from the x axis, $T = 10^6$ K, $V = (-500,0,0)$ km/s, which turns to $M_A \sim 5$, $V_A \sim 100$ km/s, $\beta \sim 1.7$.
+
+3 types of density pulses:
+* density only, everything else constant
+\[
+\delta \rho = \rho_0 sin(\omega t) \text{for } 0 \le t \le T/2
+\]
+where $T = 2\pi/\omega \sim 100s$. Note that this perturbation is relatively large (max 100%).
+* fast/slow mode
+\begin{align}
+\delta \rho = \rho_0 sin(\omega t) \\
+\delta p = C_s^2 \delta\rho \\
+\delta B_x = \delta B_z = 0, \delta B_y = \pm B_{y0}\delta \rho/\rho_0
+\end{align}
+where $C_s$ is the sound speed in the solar wind and the $+/-$ sign refers to the fast/slow type perturbation.
+* density only, but stronger peak
+\[
+\delta \rho = 4\rho_0 exp[-(t-t_c)^8] 
+\]
+where $t_c$ is just an arbitrarily chosen parameter.
+
+Interaction outcomes: fast mode --> shock, slow mode, entropy wave.
 
 ### LFM
 
@@ -195,6 +228,7 @@ where n is the harmonic number of the FLR, s is the arc length along the field l
 Figure 3 is the most important and informative plot. In order to reproduce this kind of plot, I need:
 * field tracer
 * density and magnetic field along the traced field line
+* conversion from Cartesian to spherical coordinates
 
 In later sections there are additional discussions about polarization and energy flux (Poynting vector), but those are minor details.
 
