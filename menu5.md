@@ -232,6 +232,9 @@ Figure 3 is the most important and informative plot. In order to reproduce this 
 * field tracer
 * density and magnetic field along the traced field line
 * conversion from Cartesian to spherical coordinates
+* outputs from a time series[^5]
+
+[^5]: In order to obtain PSD, the total simulation time shall be much larger than the enforced frequency. In MHD simulations which are relatively cheap, it is quite easy to run for hours and look at PSD of frequency in the Pc3-5 range. For Vlasov simulation, even in 2D, up until now (2021/08/16) I only have ~300s, which is only 2 periods of the enforced perturbation in density. 
 
 In later sections there are additional discussions about polarization and energy flux (Poynting vector), but those are minor details.
 
