@@ -205,10 +205,10 @@ In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic sol
 |----------|------------------|
 | 10 | 20 |
 | 15 | 20 |
-| 25 | 40[^3] |
+| 25 | 40[^4] |
 | 0-50 | 20 |
 
-[^3]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
+[^4]: The larger oscillation amplitude for the input time series in the 25 mHz simulation is used to combat the effects of anumerical attenuation/filtering of higher‐frequency compo-nents in the LFM simulation.
 
 In Figure 2 of this paper, you can clearly see the attentuation in shorter wavelengths beyond 15 mHz after propagating for 10 $\text{R}_E$.
 
@@ -220,21 +220,21 @@ where $P(f)$ is the power spectral density of the given time series and the inte
 
 In this paper, the RIPs are calculated for $E_r$ and $B_\phi$ under the cyclindrical polar coordinates (which I believe are the two compressional components?).
 
-From Alfvén speed profiles, we can compute estimates to the natural oscillation frequency for a given field line. For example, the WKB estimate to the field line eigenfrequency is given by [Radoski, 1966][^4]
+From Alfvén speed profiles, we can compute estimates to the natural oscillation frequency for a given field line. For example, the WKB estimate to the field line eigenfrequency is given by [Radoski, 1966][^5]
 \[
 f_n = n[2\int_S^N \frac{ds}{v_A(s)}]^{-1} \, \text{for } n=1,2,3,...
 \]
 where n is the harmonic number of the FLR, s is the arc length along the field line, and the integration is carried out from the southern field line foot point (S) to the northern foot point (N). This estimate to the field line eigenfrequency is essentially the inverse of the travel time for an Alfvén wave propagating along the magnetic field line to bounce off the reflecting ionospheres and return to its starting point. It is a good approximation for the higher harmonics (large n) and predicts a value about 20% higher than the actual fundamental mode. The factor of 2 in the above equation is due to the a forementioned "bouncing" and due to the perfectly conducting ionospheric boundary condition assumed in FLR theory.
 
-[^4]: This WKB approximation assumes dipole field, but the real magnetic field is compressed on the dayside.
+[^5]: This WKB approximation assumes dipole field, but the real magnetic field is compressed on the dayside.
 
 Figure 3 is the most important and informative plot. In order to reproduce this kind of plot, I need:
 * field tracer
 * density and magnetic field along the traced field line
 * conversion from Cartesian to spherical coordinates
-* outputs from a time series[^5]
+* outputs from a time series[^6]
 
-[^5]: In order to obtain PSD, the total simulation time shall be much larger than the enforced frequency. In MHD simulations which are relatively cheap, it is quite easy to run for hours and look at PSD of frequency in the Pc3-5 range. For Vlasov simulation, even in 2D, up until now (2021/08/16) I only have ~300s, which is only 2 periods of the enforced perturbation in density. 
+[^6]: In order to obtain PSD, the total simulation time shall be much larger than the enforced frequency. In MHD simulations which are relatively cheap, it is quite easy to run for hours and look at PSD of frequency in the Pc3-5 range. For Vlasov simulation, even in 2D, up until now (2021/08/16) I only have ~300s, which is only 2 periods of the enforced perturbation in density. 
 
 In later sections there are additional discussions about polarization and energy flux (Poynting vector), but those are minor details.
 
