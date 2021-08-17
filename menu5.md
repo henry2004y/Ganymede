@@ -212,7 +212,7 @@ In [Claudepierre+, 2010][Claudepierre2010], they show that the monochromatic sol
 
 In Figure 2 of this paper, you can clearly see the attentuation in shorter wavelengths beyond 15 mHz after propagating for 10 $\text{R}_E$.
 
-A useful quantity called \emph{root-integrated power (RIP)} for a given time series:
+A useful quantity called *root-integrated power (RIP)* for a given time series:
 \[
 RIP = [\int_{f_a}^{f_b}P(f) df]^{1/2}
 \]
