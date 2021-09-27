@@ -27,8 +27,6 @@ ULF waves were originally called micropulsations or magnetic pulsations since th
 
 With respect to polarization, ULF waves can be categorized into three modes: poloidal ($\Delta B_r,\, \Delta E_\phi$), compressional ($\Delta B_\parallel,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively.
 
-Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfvén waves.
-
 2 types of origins:
 * solar wind
 * within the magnetosphere
@@ -70,17 +68,33 @@ Within the magnetosphere, there are two possible mechanics:
 * drift-mirror instabilities (?) due to high $\beta$ pressure anisotropies
 * drift-bounce resonance (?) with trapped energetic ions
 
+From observation, $T_\perp / T_\parallel > 5$ is practically treated as high anisotropies.
+
 strongly compressional, high azimuthal wave number m, attenuated on the ground.
 
-## Physics
+## Wave Generation and Propagation Mechanisms
 
-[^2]: Margy has done a lot in this field.
+David Southwood, Margy Kivelson, and Steven Schwartz have done a lot in this field.
 
-### Wave Generation and Propagation Mechanisms
+Quote from Steven Schwartz's paper:
+> For most aspects of space plasmas, and certainly for the waves observed in the magnetosheath, fluid-based descriptions of any kind are inadequate, particularly under the $\beta > 1$ conditions found there. And we have not yet considered complications due to inhomogeneity and nonlinearity!
 
-One kind of wave types that I am not so familar with is called entropy wave. It is a comparessional wave (i.e., fluctuations in pressure and density) that can be either hydrodynamic or magnetohydrodynamic in which the internal energy and velocity remains constant.
+Given a background plasma state, a wave mode is a normal mode or eigenstate of the system.
+The eigen-value is usually taken to be the (complex) wave frequency $\omega$, with the real wave-vector $\mathbf{k}$ prescribed.
+The associated eigenvector is the set of fluctuating fields ($\delta\mathbf{E},\delta\mathbf{B}$) and plasma parameters ($\delta \rho, \delta\mathbf{u}, \delta P$ in the case of MHD or $\delta f_j(\mathb f{v})$ for kinetic waves where j stands for each species).
+Mode identification is the process of comparing the observed eigenvalue/eigenvector with the possible theoretical ones and finding the one which matches.
 
-anisotropy conditions
+The practical implementation of mode identification is strewn with pitfalls and complications, including:
+* There is usually a mixture, possibly phase-coherent, of modes and/or frequencies, rather than an isolated mode.
+* Frequencies are often Doppler shifted by an unknown, or poorly known, amount.
+* Wave vectors are difficult to determine from the one-(or few-) point measurements available from spacecraft.
+* The mode eigenstate can depend sensitively on the wave vector, plasma $\beta$, and temperature anisotropy, as well as on the contributions of multi-species or non-Maxwellian kinetic features.
+* The temporal resolution and accuracy of some measurements, notably those related to particle populations and plasma moments, are often insufficient or marginal. Some important species or sub-population may not be measured at all. The result is that either or both the background state or fluctuations are not accurately known.
+* Wave amplitudes are often large (of order unity), implying nonlinear processes may be present and distort the eigenstate from its linear form, or give rise to intrinsically nonlinear eigenstates.
+* Similarly, inhomogeneities can distort the wave propagation or eigenstate in ways which have largely been unexplored.
+* As we have seen, the theoretical wave properties depend on the framework in which the theory is performed. There is a trade-off between the simplicity/dubious applicability of MHD or fluid treatments and the complexity associated with the infinite degrees of freedom of kinetic theory.
+
+Our ultimate goal, is to build a tool for identifying wave modes automatically. Steven has already envisioned two types of models (decision tree, N-dimensional distance sampling) in 1996. 20 years later, people would find it more appealing to use machine learning.
 
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
 
@@ -99,15 +113,98 @@ Estimation on how much energy does a FLR deposit into the ionosphere, the energy
 
 Simply speaking, the nice math derivations does not work for nonideal magnetic field setup. Observers are clueless in knowing what is really going on.
 
-Electromagnetic Ion-Cyclotron Waves (EMICWs)
-
-The waves are generally believed to be generated in the equatorial magnetosphere by ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms. The characteristic fine structure appearance of ‘pearl’
-Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres.
-However, this still lacks observation support.
-Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about
-11◦, with minimal reflection at the ionosphere.
-
 The MHD wave equations that describe the coupling between the fast compressional mode and the shear Alfvén mode are complicated and have not been completely solved analytically, even in a simple dipole geometry.
+
+Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.(Why? Magnetic field draping effect?) This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
+EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
+Slow modes may also bepresent within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
+
+**One thing I don't quite understand from Schwartz's paper, is that why does he alway write Alfvén/ion-cyclotron modes together?**
+
+All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes.
+
+Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuations in density, bulk velocity, and magnetic field over a broad range of frequencies.
+
+### Isotropic MHD waves
+
+#### Fast/Slow wave
+
+In linearized ideal isotropic MHD, fast, slow, and Alfvén mode are all linearly dispersive, i.e. phase velocity independent of the wavelength.
+
+compressive, $P_B$ and $P_t$ in phase for fast mode and in anti-phase for slow mode
+
+fast mode nearly isotropic for phase speed, while the slow mode is strongly guided by magnetic field direction
+
+Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfvén waves.
+
+#### Alfvén wave
+
+non-compressive, travels along the magnetic field, i.e. group velocity is field-aligned, $\delta{u} \parallel \delta{\mathbf{B}}$
+
+#### Entropy wave
+
+There is a 4th zero-frequency mode from MHD theory, referred to as entropy mode, which is often ignored.
+It is a compressional wave (i.e., fluctuations in pressure and density) that can be either hydrodynamic or magnetohydrodynamic in which the internal energy and velocity remains constant.
+It represents a spatially structured medium in static equilibrium???
+
+\[
+\frac{Ds}{Dt} = \frac{\partial s}{partial t} + \mathbf{u}\cdot\nabla{s} = 0
+\]
+and it travels at the bulk velocity.
+
+### Anisotropic MHD waves
+
+CGL theory (Chew+ 1956)
+
+#### Firehose instability
+
+The Alfvén wave remains transverse but becomes the firehose instability for $P_{0\parallel} > P_{0\perp} + B_O^2/\mu_0$.
+
+#### Fast mode
+
+very similar to the isotropic case
+
+#### Mirror mode wave
+
+The slow magnetosonic mode becomes the mirror instability for anisotropies satisfying
+\[
+\frac{P_{0\perp}}{P_{0\parallel}} > 6 \Big( 1 + \frac{B_0^2}{2\mu_0 P_{0\perp}} \Big) = 6 \Big( 1 + \frac{P_B}{P_{0\perp}} \Big).
+\]
+The lowest threshold corresponds to wave-vectors perpendicular to the background magnetic field.
+
+Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
+
+### Electromagnetic Ion-Cyclotron Waves (EMICWs)
+
+Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. The mode is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with  the protons. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
+
+
+The waves are generally believed to be generated in the equatorial magnetosphere by ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms. The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
+Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about 11◦, with minimal reflection at the ionosphere.
+
+Recent modeling efforts have focused on clarifying the locations and conditions for EMICW generation, including the effect of heavy ion populations, and explaining the modulated appearance of wave packets. However, there is no clear consensus on a dominant mechanism.
+These are important questions since EMIC waves may control the precipitation of energetic ions and relativistic electrons.
+
+Plasma density is one of the most important parameters controlling EMIC wave generation. Growth models which assume the total plasma is dominated by thermal plasma may not relate to regions where both cold plasmaspheric plasma and ring current ions are important.
+
+[Gamayunov and Khazanov, 2008][GamayunovKhazanov2008] using a global RCEMIC simulation model suggests that suprathermal plasma plays a role in destabilizing the more energetic ring current and/or plasma sheet distributions to a high energy anisotropy.
+It also suggests that for best data comparison the EMICW source is located at the equator and that waves reflect at off-equatorial latitudes at the bi-ion hybrid frequencies in conjugate hemispheres.
+
+self-written model, no name, ray-tracing equations in plasma
+
+Yoshiharu Omura and his students once had a proceeding about _Competition Between the Mirror Mode Instability and the L-Mode Electromagnetic Ion Cyclotron Instability_. They performend hybrid 1D-3D simulations and tried to explain the observation that mirror instability dominates the L-mode EMIC instability in the Earth's magnetosheath. This is puzzling since the EMIC instability generally has higher linear growth rate than that of the mirror instability.
+
+During the linear stage, they found that EMIC waves saturates at an earlier stage in higher dimensions, and mirror mode wave can gain more free energy from the temperature anisotropy.
+
+During the nonlinear stage:
+> In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the 
+structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the 
+nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel 
+direction larger.
+
+简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后
+
+particle scattering and trapping by waves. Hmm, I'm not familiar with these at all.
 
 ## Observation
 
@@ -247,18 +344,6 @@ self-written model with no name
 
 ###
 
-Recent modeling efforts have focused on clarifying the locations and conditions for EMICW generation, including the effect of heavy ion populations, and explaining the modulated appearance of wave packets. However, there is no clear consensus on a dominant mechanism.
-These are important questions since EMIC waves may control the precipitation of energetic ions and relativistic electrons.
-
-Plasma density is one of the most important parameters controlling EMIC wave generation. Growth models which assume the total plasma is dominated by thermal plasma may not relate to regions where both cold plasmaspheric plasma and ring current ions are important.
-
-[Gamayunov and Khazanov, 2008][GamayunovKhazanov2008] using a global RCEMIC simulation model suggests that suprathermal plasma plays a role in destabilizing the more energetic ring current and/or plasma sheet distributions to a high energy anisotropy.
-It also suggests that for best data comparison the EMICW source is located at the equator and that waves reflect at off-equatorial latitudes at the bi-ion hybrid frequencies in conjugate hemispheres.
-
-self-written model, no name, ray-tracing equations in plasma
-
-###
-
 [Jordanova+, 2007][Jordanova2007] used a global ring current-atmosphere interactions model (RAM) including a time-dependent plasmasphere to determine the EMIC growth rate with time. 
 
 
@@ -362,6 +447,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 
 
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
+[Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
 [Claudepierre2009]: https://doi.org/10.1029/2009GL039045
