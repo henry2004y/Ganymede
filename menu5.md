@@ -117,9 +117,7 @@ The MHD wave equations that describe the coupling between the fast compressional
 
 Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.(Why? Magnetic field draping effect?) This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
-Slow modes may also bepresent within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
-
-**One thing I don't quite understand from Schwartz's paper, is that why does he alway write Alfvén/ion-cyclotron modes together?**
+Slow modes may also be present within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
 
 All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes.
 
@@ -148,7 +146,7 @@ It is a compressional wave (i.e., fluctuations in pressure and density) that can
 It represents a spatially structured medium in static equilibrium???
 
 \[
-\frac{Ds}{Dt} = \frac{\partial s}{partial t} + \mathbf{u}\cdot\nabla{s} = 0
+\frac{Ds}{Dt} = \frac{\partial s}{\partial t} + \mathbf{u}\cdot\nabla{s} = 0
 \]
 and it travels at the bulk velocity.
 
@@ -174,10 +172,22 @@ The lowest threshold corresponds to wave-vectors perpendicular to the background
 
 Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
 
+Interestingly, the mirror mode is unstable in kinetic theory for temperature anisotropies satisfying
+\[
+\frac{T_\perp}{T_\parallel} > 1 + \frac{1}{\beta_\perp},
+\]
+which is similar to that found in mixed kinetic-fluid treatments, and disagrees by a factor of 6 with the result in CGS approximations given above. This relation confirms that the mirror mode is favored by large $\beta$.
+
+As this threshold is reached, the first unstable mode hasaa wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}^'$s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
+
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
-Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. The mode is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with  the protons. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
+Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. The mode is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with  the ions. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
 
+Ion-cyclotron wave can be derived in a Hall MHD framework: it comes as one of the two solutions from the dispersion relation, the other being electron-cyclotron wave, more commonly known as whistler wave.
+In Schwartz's review paper, he always wrote Alfvén/ion-cyclotron modes together, most likely to stress the fact that ion-cyclotron wave is left-hand polarized.
+
+[A dissertation on EMIC waves in the Earth’s Magnetosphere](Lee2014)
 
 The waves are generally believed to be generated in the equatorial magnetosphere by ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms. The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about 11◦, with minimal reflection at the ionosphere.
@@ -205,6 +215,15 @@ direction larger.
 简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后
 
 particle scattering and trapping by waves. Hmm, I'm not familiar with these at all.
+
+In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
+
+[Medeiros+ 2020][Medeiros2020] introduces a machine learning model for recognizing EMICWs from spectrograms. First she introduces the traditional approach of EMICW identification in near-Earth space via Fourier analyses of locally measured magnetic field data:
+1. The Fourier power spectral density (PSD) in units of ${nT}^2 Hz^{−1}$ is plotted in a frequency-versus-time graph, yielding the so-called spectrogram.
+2. Eye inspection of the wave packets' magnetic field amplitude, which in turn translates to (usually) localized, in both time and frequency, enhancements of PSDs relative to background values.
+3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
+
+When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
 
 ## Observation
 
@@ -457,3 +476,5 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Lee2008]: https://doi.org/10.1029/2008JA013088
 [Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
 [Regi2016]: https://doi.org/10.4401/ag-7067
+[Lee2014]: https://escholarship.org/uc/item/3dh4j07v
+[Medeiros2020]: https://iopscience.iop.org/article/10.3847/1538-4365/ab9697
