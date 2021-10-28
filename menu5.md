@@ -135,9 +135,13 @@ fast mode nearly isotropic for phase speed, while the slow mode is strongly guid
 
 Theoretically, slow and fast MHD waves usually are quickly damped in collisionless plasmas with moderate to high plasma β (Barnes, 1966), leaving only outward propagating Alfvén waves.
 
+Fast mode: ion/ion right-hand resonant
+
 #### Alfvén wave
 
 non-compressive, travels along the magnetic field, i.e. group velocity is field-aligned, $\delta{u} \parallel \delta{\mathbf{B}}$
+
+ion/ion left-hand resonant
 
 #### Entropy wave
 
@@ -157,6 +161,8 @@ CGL theory (Chew+ 1956)
 #### Firehose instability
 
 The Alfvén wave remains transverse but becomes the firehose instability for $P_{0\parallel} > P_{0\perp} + B_O^2/\mu_0$.
+
+ion/ion nonresonant
 
 #### Fast mode
 
@@ -187,10 +193,17 @@ Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\pa
 Ion-cyclotron wave can be derived in a Hall MHD framework: it comes as one of the two solutions from the dispersion relation, the other being electron-cyclotron wave, more commonly known as whistler wave.
 In Schwartz's review paper, he always wrote Alfvén/ion-cyclotron modes together, most likely to stress the fact that ion-cyclotron wave is left-hand polarized.
 
-[A dissertation on EMIC waves in the Earth’s Magnetosphere](Lee2014)
+[A dissertation on EMIC waves in the Earth’s Magnetosphere][Lee2014]
 
-The waves are generally believed to be generated in the equatorial magnetosphere by ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms. The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
+The waves are generally believed to be generated in the equatorial magnetosphere by
+
+* ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms
+* during compressions of the day-side magnetopause (??? Thorne 2013)
+
+The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about 11◦, with minimal reflection at the ionosphere.
+
+The preferential region of occurrence of EMIC waves is known to be the afternoon magnetic local time (MLT) sector from ∼12:00 to ∼18:00 MLT in the region near the plasmapause and the plasmaspheric plume.
 
 Recent modeling efforts have focused on clarifying the locations and conditions for EMICW generation, including the effect of heavy ion populations, and explaining the modulated appearance of wave packets. However, there is no clear consensus on a dominant mechanism.
 These are important questions since EMIC waves may control the precipitation of energetic ions and relativistic electrons.
@@ -203,6 +216,8 @@ It also suggests that for best data comparison the EMICW source is located at th
 self-written model, no name, ray-tracing equations in plasma
 
 Yoshiharu Omura and his students once had a proceeding about _Competition Between the Mirror Mode Instability and the L-Mode Electromagnetic Ion Cyclotron Instability_. They performend hybrid 1D-3D simulations and tried to explain the observation that mirror instability dominates the L-mode EMIC instability in the Earth's magnetosheath. This is puzzling since the EMIC instability generally has higher linear growth rate than that of the mirror instability.
+
+[Shoji+2009][Shoji]
 
 During the linear stage, they found that EMIC waves saturates at an earlier stage in higher dimensions, and mirror mode wave can gain more free energy from the temperature anisotropy.
 
@@ -224,6 +239,8 @@ In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
 3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
 
 When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
+
+我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。根据我现在的理解，EMIC波在平行于背景磁场方向最为显著。有点怀疑在垂直磁场平面内我们能不能看到EMIC波......而且根据产生条件垂直方向温度大于平行方向温度，在一个2D垂直平面上，第三个方向也就是平行方向永远是周期性边界，我该怎么理解这件事情？在我们的模拟中，我的确看到了很强的垂直温度，所以理论上EMIC
 
 ## Observation
 
@@ -381,6 +398,12 @@ magnetosonic waves (Ukhorskiy et al. 2006).
 
 ## Techniques
 
+### Polarization analysis
+
+Singular Value Decomposition (SVD): [Lee & Angelopoulos][Lee2014b]
+
+hodogram of field components
+
 ### Mean field aligned coordinates
 
 The magnetic field satellite data are usually referred to geocentric coordinate reference frames such as geocentric solar ecliptic (GSE) frame. Conversely, the MHD waves modes in magnetized plasma depend on the ambient magnetic field, and is then useful to rotate the magnetic field measurements into the _mean field-aligned (MFA) coordinate system_. This reference frame is useful to study the ultra-low frequency magnetic field variations along and perpendicular to the direction of the mean field. 
@@ -475,6 +498,8 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [GamayunovKhazanov2008]:  https://doi.org/10.1029/2008JA013494
 [Lee2008]: https://doi.org/10.1029/2008JA013088
 [Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
+[Shoji2009]: (https://doi.org/10.1029/2008JA014038)
 [Regi2016]: https://doi.org/10.4401/ag-7067
 [Lee2014]: https://escholarship.org/uc/item/3dh4j07v
+[Lee2014b]: https://doi.org/10.1002/2014JA020469
 [Medeiros2020]: https://iopscience.iop.org/article/10.3847/1538-4365/ab9697
