@@ -115,9 +115,11 @@ Simply speaking, the nice math derivations does not work for nonideal magnetic f
 
 The MHD wave equations that describe the coupling between the fast compressional mode and the shear Alfvén mode are complicated and have not been completely solved analytically, even in a simple dipole geometry.
 
-Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.(Why? Magnetic field draping effect?) This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
+Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.[^heating] This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
 Slow modes may also be present within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
+
+[^heating]: Yuxi provides me with a nice starting point to think about this. The 1st adiabatic invariant, i.e. magnetic moment $\mu_m = \frac{1}{2}m v_\perp^2 / B$ is almost conserved if the gyromotion is not violated. Across the quasi-perpendicular shock, the strength of the magnetic field increases, so the perpendicular thermal velocities must increase to maintain the magnetic moment. Therefore the perpendicular direction is preferentially heated downstream of the shock. For example, if the B field is increased by a factor of 2, then the ion perpendicular thermal velocity should increase by a factor of $\sqrt{2}$, and the ion perpendicular pressure should also increase by a factor of 2? In my 2D equatorial run with $Bz=-5$ nT, at downstream $Bz=-15$ nT, but the pressure anisotropy ($P_\perp / P_\parallel$) reaches ~20. Why is that?
 
 All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes.
 
