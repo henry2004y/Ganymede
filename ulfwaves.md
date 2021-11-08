@@ -438,31 +438,31 @@ where $\delta \mathbf{v}$, $\delta \mathbf{B}$, and $\delta \rho$ are perturbed 
 For slow and fast waves, the phase speeds are
 
 \[
-v_{p\pm}^2 = \big(\frac{\omega}{k} \big) = \frac{1}{2}(v_s^2 + v_A^2) \pm \frac{1}{2}\Big[ (v_s^2 + v_A^2)^2 - 4v_s^2 v_A^2 \cos^2{\theta}\Big]^{1/2}
+v_{p\pm}^2 = \big(\frac{\omega}{k} \big) = \frac{1}{2}(V_s^2 + V_A^2) \pm \frac{1}{2}\Big[ (V_s^2 + V_A^2)^2 - 4V_s^2 V_A^2 \cos^2{\theta}\Big]^{1/2}
 \]
 
-The "+" is for fast waves and "−" for slow waves, and $v_S$ is the sound speed. The perturbed quantities for fast and slow waves are
+The "+" is for fast waves and "−" for slow waves, and $V_S$ is the sound speed. The perturbed quantities for fast and slow waves are
 
-\[
+\begin{align}
 \delta \rho &= \frac{\rho_0}{v_p}\frac{v_A^2\sin\theta}{B_0 (v_p - v_s^2/v_p)}\delta B, \\
 \delta \mathbf{v} &= -\frac{v_A^2 \cos{\theta}}{B_0 v_p}\delta\mathbf{B} + \frac{v_A^2 \sin{\theta}\delta B}{B_0 (v_p - v_s^2/v_p)}\frac{\mathbf{k}}{k}.
-\]
+\end{align}
 
 Thus generally the Alfvén wave is identified by the correlations between velocity and magnetic field perturbations, and the fast and slow waves are identified by the negative (for slow waves) or positive (for fast waves) correlations between either density and magnetic field perturbation or thermal pressure and magnetic pressure perturbation.
 
 The second equation above can also be expressed in terms of magnetic and thermal pressure pertubations
 
 \[
-\delta P_B = \frac{\mathbf{B}_0 \cdot \mathbf{B}}{\mu_0 = \frac{V_A^2}{V_S^2}\left(1-\frac{k^2 V_S^{2} \cos^2\theta}{\omega^2}\right)\delta P_t
+\delta P_B = \frac{\mathbf{B}_0 \cdot \mathbf{B}}{\mu_0} = \frac{V_A^2}{V_S^2}\left(1-\frac{k^2 V_S^{2} \cos^2\theta}{\omega^2}\right)\delta P_t
 \]
 
 See the [lecture notes](https://farside.ph.utexas.edu/teaching/plasma/lectures1/node65.html) for more details.
 
 For the magnetosonic waves, consider using $\delta \mathbf{E}$ and $\delta \mathbf{B}$ for identifying speed. The slopes of the curves $\delta E∕\delta B$ correspond to the wave propagation speed in the spacecraft frame.
 
-Transverse and shear Alfvén wave refer to actually the same thing: the descriptions arise from  $\mathbf{k}\cdot\mathbf{V}=0$ and $\mathbf{V}\cdot\mathbf{B}_0=0$.
+Transverse and shear Alfvén wave refer to actually the same thing: the descriptions arise from  $\mathbf{k}\cdot\mathbf{V} = 0$ and $\mathbf{V}\cdot\mathbf{B}_0 = 0$.
 
-The fast and slow magnetosonic waves are associated with non-zero perturbations in the plasma density and pressure, and also involve plasma motion parallel, as well as perpendicular, to the magnetic field. The latter observation suggests that the dispersion relations $\omega=kV_{\pm}$ are likely to undergo significant modification in collisionless plasmas. In order to better understand the nature of the fast and slow waves, let us consider the cold-plasma limit, which is obtained by letting the sound speed $V_S$ tend to zero. In this limit, the slow wave ceases to exist (in fact, its phase velocity tends to zero) whereas the dispersion relation for the fast wave reduces to
+The fast and slow magnetosonic waves are associated with non-zero perturbations in the plasma density and pressure, and also involve plasma motion parallel, as well as perpendicular, to the magnetic field. The latter observation suggests that the dispersion relations $\omega = kV_{\pm}$ are likely to undergo significant modification in collisionless plasmas. In order to better understand the nature of the fast and slow waves, let us consider the cold-plasma limit, which is obtained by letting the sound speed $V_S$ tend to zero. In this limit, the slow wave ceases to exist (in fact, its phase velocity tends to zero) whereas the dispersion relation for the fast wave reduces to
 
 \[
 \omega = kV_A.
