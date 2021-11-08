@@ -6,7 +6,7 @@
 
 # ULF Waves
 
-[Menk, 2011][Menk2011]的综述文章只能硬着头皮看。太多从文章中抄出来的经验性总结了。
+\toc
 
 Ultra-low frequency (ULF) wave, $f \in [0.001, 10]$ Hz, inside MHD regime, easily detected.
 
@@ -28,7 +28,8 @@ ULF waves were originally called micropulsations or magnetic pulsations since th
 With respect to polarization, ULF waves can be categorized into three modes: poloidal ($\Delta B_r,\, \Delta E_\phi$), compressional ($\Delta B_\parallel,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively.
 
 2 types of origins:
-* solar wind
+
+* from the solar wind
 * within the magnetosphere
 
 Hypothesis:
@@ -38,15 +39,15 @@ Magnetospheric ULF waves: propagate without significant change to their spectrum
 
 Electron and ion foreshocks are where ULF waves are generated.
 
-
-
 Changing parameters:
+
 * wind speed
 * cone angle(?)
 
 ## Drivers
 
 Driver in the solar wind: 
+
 * periodic compressional fluctuations --> magnetopause surface waves
 * Alfvénic fluctuations $\delta \mathbf{V}/ \mathbf{V}_A = \pm \delta \mathbf{B}/ \mathbf{B}_0$ direct excitation
 * fast stream --> KHI on the magnetopause --> surface mode/waveguide
@@ -65,6 +66,7 @@ Alfvénic waves propagating along the magnetopause surface may develop into stan
 This combination of conditions suggests that the oscillations are more likely due to Kruskal-Schwarzshild modes than solar wind pressure perturbations or the KHI at the flanks.
 
 Within the magnetosphere, there are two possible mechanics:
+
 * drift-mirror instabilities (?) due to high $\beta$ pressure anisotropies
 * drift-bounce resonance (?) with trapped energetic ions
 
@@ -73,6 +75,8 @@ From observation, $T_\perp / T_\parallel > 5$ is practically treated as high ani
 strongly compressional, high azimuthal wave number m, attenuated on the ground.
 
 ## Wave Generation and Propagation Mechanisms
+
+[Menk, 2011][Menk2011]的综述文章只能硬着头皮看。太多从文章中抄出来的经验性总结了,对于入门新手极不友好。
 
 David Southwood, Margy Kivelson, and Steven Schwartz have done a lot in this field.
 
@@ -85,6 +89,7 @@ The associated eigenvector is the set of fluctuating fields ($\delta\mathbf{E},\
 Mode identification is the process of comparing the observed eigenvalue/eigenvector with the possible theoretical ones and finding the one which matches.
 
 The practical implementation of mode identification is strewn with pitfalls and complications, including:
+
 * There is usually a mixture, possibly phase-coherent, of modes and/or frequencies, rather than an isolated mode.
 * Frequencies are often Doppler shifted by an unknown, or poorly known, amount.
 * Wave vectors are difficult to determine from the one-(or few-) point measurements available from spacecraft.
@@ -154,6 +159,7 @@ It represents a spatially structured medium in static equilibrium???
 \[
 \frac{Ds}{Dt} = \frac{\partial s}{\partial t} + \mathbf{u}\cdot\nabla{s} = 0
 \]
+
 and it travels at the bulk velocity.
 
 ### Anisotropic MHD waves
@@ -173,17 +179,21 @@ very similar to the isotropic case
 #### Mirror mode wave
 
 The slow magnetosonic mode becomes the mirror instability for anisotropies satisfying
+
 \[
 \frac{P_{0\perp}}{P_{0\parallel}} > 6 \Big( 1 + \frac{B_0^2}{2\mu_0 P_{0\perp}} \Big) = 6 \Big( 1 + \frac{P_B}{P_{0\perp}} \Big).
 \]
+
 The lowest threshold corresponds to wave-vectors perpendicular to the background magnetic field.
 
 Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
 
 Interestingly, the mirror mode is unstable in kinetic theory for temperature anisotropies satisfying
+
 \[
 \frac{T_\perp}{T_\parallel} > 1 + \frac{1}{\beta_\perp},
 \]
+
 which is similar to that found in mixed kinetic-fluid treatments, and disagrees by a factor of 6 with the result in CGS approximations given above. This relation confirms that the mirror mode is favored by large $\beta$.
 
 As this threshold is reached, the first unstable mode hasaa wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}^'$s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
@@ -219,7 +229,7 @@ self-written model, no name, ray-tracing equations in plasma
 
 Yoshiharu Omura and his students once had a proceeding about _Competition Between the Mirror Mode Instability and the L-Mode Electromagnetic Ion Cyclotron Instability_. They performend hybrid 1D-3D simulations and tried to explain the observation that mirror instability dominates the L-mode EMIC instability in the Earth's magnetosheath. This is puzzling since the EMIC instability generally has higher linear growth rate than that of the mirror instability.
 
-[Shoji+2009][Shoji]
+[Shoji+2009][Shoji2009]
 
 During the linear stage, they found that EMIC waves saturates at an earlier stage in higher dimensions, and mirror mode wave can gain more free energy from the temperature anisotropy.
 
@@ -236,6 +246,7 @@ particle scattering and trapping by waves. Hmm, I'm not familiar with these at a
 In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
 
 [Medeiros+ 2020][Medeiros2020] introduces a machine learning model for recognizing EMICWs from spectrograms. First she introduces the traditional approach of EMICW identification in near-Earth space via Fourier analyses of locally measured magnetic field data:
+
 1. The Fourier power spectral density (PSD) in units of ${nT}^2 Hz^{−1}$ is plotted in a frequency-versus-time graph, yielding the so-called spectrogram.
 2. Eye inspection of the wave packets' magnetic field amplitude, which in turn translates to (usually) localized, in both time and frequency, enhancements of PSDs relative to background values.
 3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
@@ -273,6 +284,7 @@ spherical, $10 \text{R}_E$ < r < $40 \text{R}_E$, $10^o < \theta < 170^o$, $0^o 
 $n = 5$ amu/cc, $B_0 = 10$ nT with $45^o$ from the x axis, $T = 10^6$ K, $V = (-500,0,0)$ km/s, which turns to $M_A \sim 5$, $V_A \sim 100$ km/s, $\beta \sim 1.7$.
 
 3 types of density pulses:
+
 * density only, everything else constant
 \[
 \delta \rho = \rho_0 sin(\omega t) \text{for } 0 \le t \le T/2
@@ -325,6 +337,7 @@ The input dynamic pressure has frequency components spreading across Pc3 to Pc5 
 Background $\rho = 5$ amu/cc, $B = (0, 0, -5)$ nT, and $V = (-600, 0, 0)$ km/s. In Figure 1, the authors demonstrate the filtering/attenuation of the higher frequency spectral components, which is an expected artifact of the numeric solver, unfortunately. I haven't checked the shift or attenuation of frequency in Vlasiator (numerical Vlasov solver), but obviously the amplitude decreases.
 
 Results:
+
 1. Strong peak signal observed around 10 mHz in the continuum band input run.
 2. PSD of $B_z$, $E_\phi$, the two compressional components of EM fields along the noon-meridional line, shows strong $B_z$ signals near the magnetopause.
 3. They argue that the outputs represent MHD cavity modes, which in the simplest interpretation, can be thought of as standing waves in the electric and magnetic fields between a cavity inner and outer boundary. [Kivelson and Southwood, 1985]
@@ -364,6 +377,7 @@ where n is the harmonic number of the FLR, s is the arc length along the field l
 [^5]: This WKB approximation assumes dipole field, but the real magnetic field is compressed on the dayside.
 
 Figure 3 is the most important and informative plot. In order to reproduce this kind of plot, I need:
+
 * field tracer
 * density and magnetic field along the traced field line
 * conversion from Cartesian to spherical coordinates
@@ -399,6 +413,78 @@ Test-particle simulations have shown that perturbations in electric and magnetic
 magnetosonic waves (Ukhorskiy et al. 2006).
 
 ## Techniques
+
+### ULF Wave Detection
+
+ULF waves are MHD waves: Alfvén wave, fast wave and slow wave. One basic approach to identify waves is to check the correlation of quantity perturbations.
+
+The phase speed of shear Alfvén wave is
+
+\[
+v_{pA} = \frac{\omega}{k} = v_A \cos{\theta}
+\]
+
+where $v_A$ is the Alfvén speed and $\theta$ is the angle between wave vector $\mathbf{k}$ and magnetic field $\mathbf{B}$.
+
+The perturbed quantities of Alfvén waves follow the relations
+
+\begin{align}
+\frac{\delta \mathbf{v}}{v_A} &= \pm \frac{\delta \mathbf{B}}{B_0}, \\
+\delta \rho &= 0,
+\end{align}
+
+where $\delta \mathbf{v}$, $\delta \mathbf{B}$, and $\delta \rho$ are perturbed plasma velocity, magnetic fields, and plasma density, respectively, and $B_0$ is the background magnetic magnitude.
+
+For slow and fast waves, the phase speeds are
+
+\[
+v_{p\pm}^2 = \big(\frac{\omega}{k} \big) = \frac{1}{2}(v_s^2 + v_A^2) \pm \frac{1}{2}\Big[ (v_s^2 + v_A^2)^2 - 4v_s^2 v_A^2 \cos^2{\theta}\Big]^{1/2}
+\]
+
+The "+" is for fast waves and "−" for slow waves, and $v_S$ is the sound speed. The perturbed quantities for fast and slow waves are
+
+\[
+\delta \rho &= \frac{\rho_0}{v_p}\frac{v_A^2\sin\theta}{B_0 (v_p - v_s^2/v_p)}\delta B, \\
+\delta \mathbf{v} &= -\frac{v_A^2 \cos{\theta}}{B_0 v_p}\delta\mathbf{B} + \frac{v_A^2 \sin{\theta}\delta B}{B_0 (v_p - v_s^2/v_p)}\frac{\mathbf{k}}{k}.
+\]
+
+Thus generally the Alfvén wave is identified by the correlations between velocity and magnetic field perturbations, and the fast and slow waves are identified by the negative (for slow waves) or positive (for fast waves) correlations between either density and magnetic field perturbation or thermal pressure and magnetic pressure perturbation.
+
+The second equation above can also be expressed in terms of magnetic and thermal pressure pertubations
+
+\[
+\delta P_B = \frac{\mathbf{B}_0 \cdot \mathbf{B}}{\mu_0 = \frac{V_A^2}{V_S^2}\left(1-\frac{k^2 V_S^{2} \cos^2\theta}{\omega^2}\right)\delta P_t
+\]
+
+See the [lecture notes](https://farside.ph.utexas.edu/teaching/plasma/lectures1/node65.html) for more details.
+
+For the magnetosonic waves, consider using $\delta \mathbf{E}$ and $\delta \mathbf{B}$ for identifying speed. The slopes of the curves $\delta E∕\delta B$ correspond to the wave propagation speed in the spacecraft frame.
+
+Transverse and shear Alfvén wave refer to actually the same thing: the descriptions arise from  $\mathbf{k}\cdot\mathbf{V}=0$ and $\mathbf{V}\cdot\mathbf{B}_0=0$.
+
+The fast and slow magnetosonic waves are associated with non-zero perturbations in the plasma density and pressure, and also involve plasma motion parallel, as well as perpendicular, to the magnetic field. The latter observation suggests that the dispersion relations $\omega=kV_{\pm}$ are likely to undergo significant modification in collisionless plasmas. In order to better understand the nature of the fast and slow waves, let us consider the cold-plasma limit, which is obtained by letting the sound speed $V_S$ tend to zero. In this limit, the slow wave ceases to exist (in fact, its phase velocity tends to zero) whereas the dispersion relation for the fast wave reduces to
+
+\[
+\omega = kV_A.
+\]
+
+This can be identified as the dispersion relation for the compressional-Alfvén wave. Thus, we can identify the fast wave as the compressional-Alfvén wave modified by a non-zero plasma pressure.
+
+In the limit $V_A\gg V_S$, which is appropriate to low-β plasmas, the dispersion relation for the slow wave reduces to
+
+\[
+\omega \simeq k\,V_S\,\cos\theta.
+\]
+
+This is actually the dispersion relation of a sound wave propagating along magnetic field-lines. Thus, in low-β plasmas the slow wave is a sound wave modified by the presence of the magnetic field.
+
+In reality, waves can be mixed together with mode conversions. Also, notice that the classical wave theory is based on spatially homogeneous plasma assumption, which is rarely the case in nature such as the magnetosphere.
+
+A tricky part in practice is how to get the average through smoothing. Note that a real satellite moves both in time and space. Usually people do moving-box-average to get an average state within a short period.
+
+A more careful analysis is called Walén test.
+
+However, always keep in mind that the most reliable way of identifying waves is to calculate the dispersion relation.
 
 ### Polarization analysis
 
@@ -461,6 +547,7 @@ It is used to check the relation of one frequency oscillation to another.
 ### Fourier transform
 
 It can be used for
+
 * determining the energy spectrum density for waves in a certain range
 * automated ULF wave detection algorithms.
 
@@ -470,6 +557,7 @@ Wavelet Transform decomposes a function into a set of wavelets. A Wavelet is a w
 Two basic properties of a wavelet are scale and location.
 
 Key advantages of Wavelet Transform compared with Fourier Tranform:
+
 * Wavelet transform can extract _local_ spectral and temporal information simultaneously, while FT only extract global information.
 * There are various wavelets to choose from. In practice, if you have any prior knowledge to the signal you want to identify, you can find for an appropriate wavelet that is close to that shape.
 
