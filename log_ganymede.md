@@ -1,10 +1,10 @@
-@def title = "Research Log"
+@def title = "Ganymede Log"
 @def hascode = false
 @def date = Date(2020, 7, 24)
-@def rss = "research log"
+@def rss = "Ganymede research log"
 @def tags = ["syntax", "code"]
 
-# Research Log
+# Ganymede Research Log
 
 \toc
 
@@ -454,7 +454,7 @@ or, assuming all $O_2^+$, the mass density will be $1.7\times 10^5\,\text{amu}/\
 
 This is very large compared to the previous fixed density $550$ [amu/cc] in our runs, or the $\sim 10^3$ [amu/cc] in both [Duling+, 2014][Duling+2014][^6] and [Fatemi+, 2018][Fatemi+2018].
 
-[^6]: See the discussion and some of my opinion [here](https://henry2004y.github.io/Ganymede/menu2/#atmosphere_and_ionosphere).
+[^6]: See the discussion and some of my opinion [here](https://henry2004y.github.io/Ganymede/simulations_ganymede/#atmosphere_and_ionosphere).
 
 As an estimation, the source term in the mass equation gives
 \begin{align}
