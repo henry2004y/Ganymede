@@ -225,7 +225,6 @@ in [Duling+, 2014][Duling+2014], they solved the energy equation everywhere;
 in [Fatemi+, 2018][Fatemi+2018], the hybrid model seems to use pressure equation or equivalence;
 in [Zhou+, 2019][Zhou+2019] and [Zhou+, 2020][Zhou+2020], I solved the energy equation everywhere.
 
-
 ### Fully explicit method
 
 If we update everything explicitly, the large density inside the body to reduce large Alfvén speed for timestep calculation.
@@ -290,6 +289,7 @@ For the high resolution runs (AMR3), the density peak at dayside near the surfac
 [Duling+, 2014][Duling+2014] and [Toth+, 2016][Tóth+2016] uses `float` density.
 
 For the velocity, we have three choices:
+
 1. absorb, which means that plasma velocity can only goes into the body;
 2. reflect, or solid, which means that plasma flow cannot penetrate the surface;
 3. $\mathbf{B}$ dependent, which means that we remove the plasma velocity parallel to the surface, but keep the perpendicular components.
@@ -355,9 +355,11 @@ Checked the cell innerBC results with $\eta=3,4,5\times10^{11}m^2/s$, and found 
 Two `PARAM.in` files only differ in solid timestep: one used $5^{-4}s$ and the other used $1e^{-4}s$. The larger timestep run gives better comparison with Galileo data.
 
 Say we are solving $\frac{\partial \mathbf{B}}{\partial t}=\eta\nabla^2\mathbf{B}$. The timestep limit requires that
+
 \[
 \Delta t < c\frac{\Delta x^2}{\eta} = c \frac{(0.02 R_G)^2}{3\times 10^{11}}\approx c \times 10^{-6}s
 \]
+
 However, this is only true for the smallest cells inside the body!
 
 Resistivity at the boundary cells is crucial in getting the correct solution! We need to have at least 2 layers of 0 resistivity cells to produce the correct $\mathbf{B}_1$ field around the core boundary.
@@ -406,8 +408,8 @@ Ionization source terms in primitive and conservative form:
 | Pressure | $-\frac{1}{2}\dot{\rho}\mathbf{U}$       | -       |
 | Energy | -       | 0        |
 
-
 Mass loading/loss:
+
 * **photo-ionization**
 * **dissociative recombination**
 * **electron impact**
@@ -475,7 +477,6 @@ Now that this is partly working, the next thing I would like to add is the term 
 Single fluid description is clearly a deficiency here, but the question is: is it enough or do we need more complex physical description? In terms of overall magnetic field topology, this probably won't matter much; but is it crucial for energetic species near the moon?
 Use MHD just to simulate the thermal plasma background, and use PIC to get the energetic part done?
 
-
 ## Outer BCs
 
 There are two types of outer boundary conditions: cell BC (`#OUTERBOUNDARY`) and face BC (`#BOXBOUNDARY`).
@@ -515,15 +516,18 @@ I went through the commands of GM-PC coupling with Yuxi. Now it seems to work. I
 Steps towards GM/PC coupling:
 
 In SWMF,
+
 * `#COUPLE2`: this command determines the master component and the slave component. Dncouple is the step interval for coupling, and Dtcouple is the time interval for coupling. I discussed with Yuxi about the time interval coupling option: this means that if the physical time of either component exceeds Dtcouple, then it's time to do the coupling. The problem here might be that the coupling may happen not exactly at the same physical time.
 * `#COUPLETIME`: Together with the prior command, this determines if the chosen component does the coupling at exact the same time. For example, say your timestep for PC is 0.1s, and DtCouple in the prior command is set to 0.51s. Then the coupling time must be 0.51s, so the $6^{th}$ step in PC can only advance in 0.1s.
 This command is usually used for both components.
 
 In GM,
+
 * `#PICUNIT`: define the length and velocity units for the PIC model.
 * `#PICREGION`: define the number, location, and grid resolution for iPIC3D.
 
 In PC,
+
 * `#TIMESTEPPING`: determine if to use SWMFDt or not, if to use fixedDt or not, and a suitable CFL number for PIC advancing. According to Yuxi, this is similar to CFL number in solving PDEs, but slightly different. Theoretically, implicit PIC is unconditionally stable, but there is still a restriction from the accuracy requirement:
 \[ \Delta t< v_{th}/\Delta x. \]
 Stefano said right now implicit PIC can have $10$ times larger timestep than explicit PIC.
@@ -570,6 +574,7 @@ After talking to Gabor, I realize that it is more natural to change `#ELECTRON` 
 FTEs, EM fields, FFT of B.
 
 In PC solution:
+
 * $B_x,B_y,B_z$: they change little during the run, but the overall contour shifted upwards a little bit. $B_y$ is what they call Hall magnetic field with a quadrupole configuration.
 
 * $E_x,E_y,E_z$: $E_x$ is positive on the upstream side and negative on the downstream side; $E_y$ is very noisy; $E_z$ is very boring with most of the part $0$ and nonzero in a line near the cusp region.
@@ -579,6 +584,7 @@ In PC solution:
 * FTEs: one thing I am thinking about is whether the $1s$ output resolution can fully capture the FTEs. In $100s\sim500s$, to be honest, I only see one very typical FTE at 235s. If I zoom in, 121s,216s,228s,234s,235s,241s,297s,298s.
 
 In GM solution:
+
 * $z=0$ cut, $p; ux;uy$: $368s$ a huge flux rope on sub-Jovian flank; $403s$ pressure pulse/release in the tail?; very strange vortexes in $x\in[-0.5,0.5],y\in[-1.5,-0.9]$, but the velocity is about $30km/s$ (very small); $j$ in the tail at $351s,401s$ looks like a energy release; $|\nabla\cdot\mathbf{B}|$ and $hyp$ pile up at the PIC box boundary, largest $|\nabla\cdot\mathbf{B}|$ is about 1400.
 
 * $y=0$ cut: 424s very clear plasmoid in the tail, but this is not PIC result; almost nothing happens on the dayside, and you can hardly see FTEs; if I zoom in, I can see small FTEs at 181s,209s,216s,234s,235s,297s,298s. The overall configuration moves slightly inward.
@@ -593,13 +599,15 @@ I need to run a new steady state solution and a PIC-coupled run based on that.
 I want to emphasize the importance of grid resolution here: with enough resolution, even ideal MHD can generate flux ropes! The key is the generation mechansim of reconnection and flux topes: Hall MHD already includes the important Hall resistivity besides numerical resistivity, and PIC model (with enough resolution and particles) literally includes everything. The GEM challenge more than 10 years ago showed that with enough resolution, Hall MHD can have similar reconnection rate compared with explicit PIC. Implicit PIC is quite different, in the sense that there's no constraint on the spatial resolution of Debye length for numerical stability, but we do need to explain what is going on for the under-resolved simulation. However, for our simulation right now, we do not fully resolve electron scales, which suggests the model should behave more or less like hybrid models. However, in reality things may not be that simple. What is the true relationship between these models?
 
 Response from Gabor:
+
 > * The electron motion is resolved, because particle positions are continuous. The electro-magnetic field is smooth over the grid cell, but the electron distribution function does not have to be smooth.
 > * Collisionless magnetic reconnection is due to the decoupling of electrons and the magnetic field, and one major driving force is the non-diagonal term in the electron pressure tensor. Neither of these are represented by hybrid codes, both of these are represented by implicit PIC codes, even if the grid is coarser than the electron skin depth.
 > * In hybrid codes the electrons are described as a massless charge neutralizing fluid. If the Hall term is kept in the induction equation, then the equations support whistler waves, which then requires an implicit solver or some other trick. So it is not really simpler than the implicit PIC method. If the Hall term is not included, then the hybrid scheme does not even have the Hall physics. So hybrid codes have the same issues as MHD codes with respect to reconnection: they rely on numerical diffusion. Implicit PIC relies on proper physics.
-> * We performed a grid convergence study for the GEM reconnection challenge with implicit PIC. See Figures 11 and 12 in Yuxi’s 2019 paper https://doi.org/10.1016/j.jcp.2019.02.032. As the grid resolution is degraded, some details get lost, but the overall reconnection physics is still properly captured. The coarsest grid has only 1 cell per electron skin depth, still the reconnection rate is correct, and the solution looks reasonable.
+> * We performed a grid convergence study for the GEM reconnection challenge with implicit PIC. See Figures 11 and 12 in [Yuxi’s 2019 paper](https://doi.org/10.1016/j.jcp.2019.02.032). As the grid resolution is degraded, some details get lost, but the overall reconnection physics is still properly captured. The coarsest grid has only 1 cell per electron skin depth, still the reconnection rate is correct, and the solution looks reasonable.
 > * The time steps and required grid resolution are very similar for hybrid and implicit PIC. The implicit PIC has more particles (electrons), but otherwise the cost is quite comparable. So the argument that hybrid codes are much cheaper than implicit PIC is not true.
 
 Response from Stefano:
+
 > * I totally agree with Gabor. In addition to his comments, I would like to add that the implicit PIC still retains all the electron kinetic physics even when the simulation doesn’t resolve the electron scales. However, in such coarse configurations the dynamics of electrons is described at lower accuracy. That means that the length that we don’t resolve become equal to the grid spacing and frequency of wave we don’t resolved are compressed to the Nyquist frequency and damp with a rate that is proportional to the time step.
 > * While hybrid and implicit PIC might operate over the same spatial and time scale, implicit PIC still retain all the kinetic physics - it might though at low accuracy- while the hybrid can’t do only fluid description. In particular, fluid electrons can’t interact with waves (heating, acceleration and instability) making impossible to transfer energies between waves and particles. So there are very different when it comes to modeling capability.
 
@@ -629,6 +637,7 @@ I tried to see the electron velocity from PIC outputs in the boundary normal coo
 ## Reconnection, FTEs and Flux Ropes
 
 Quote from a magnetic reconnection paper by Sonnerup [1981]:
+
 > First, reconnection can be defined in a manner that does not involve 'frozen fields' or MHD terminology: reconnection occurs when an electric field is present along a magnetic separator (X line, re-connection line) in a plasma. Thus the fact that most theories of reconnection have used the MHD approach and associated language does not necessarily mean that the process exists only in the minds of those using the MHD approach. It can be discussed, albeit at some inconvenience, without the use of phrases such as 'moving field lines' or 'magnetic flux transfer.' The name 'reconnection' itself does, of course, have it roots in the frozen field concept, but those who find it offensive may use the more innocuous term 'merging' without creating communication difficulties.
 
 > Second, we shall demonstrate that certain predictions of simple MHD reconnection models, specifically the occurence of plasma acceleration at the magnetopause, are borne out by the observations to be presented here.While these results by no means prove that MHD offers an adequate description of all aspects of magnetopause reconnection, (it almost certainly does not), they, at least, demonstrated that MHD models can serve as an useful guide in the interpretation of certain basic magnetopause observations. The reason is that MHD, after all, is based on simple conservation laws, which have global validity even when MHD fails to provide an accurate description in certain narrow local regions, such as the interior of the magnetopause.
@@ -639,6 +648,7 @@ $$ \frac{B_n}{B} = \frac{v_n}{v_A} = M_{An}\sim 0.1 $$
 
 There are three categories of magnetic reconnections: patchy, bursty, single/multiple X line. See references, for example,
 Core magnetic field enhancement in single X line, multiple X line and patchy reconnection, JGR, 1994. The common questions people asked are:
+
 * Is their any flux tube coalescence with these various kinds of reconnection?
 * What about the energy dissipation, $\mathbf{j}\cdot\mathbf{E}>0$ ?
 * Is current sheet related to FTE? Russell challenged the idea.
@@ -649,6 +659,7 @@ I saw a new way of treating the Ohm's law: separate each one with mean and pertu
 ### Local reconnection rate
 
 My first attempt to check the local reconnection rate failed. Many possible reasons:
+
 * the way of capturing upstream conditions;
 * the location of magnetopause;
 * clock angle dependency;
@@ -671,6 +682,7 @@ The FTEs are maybe cascading processes, meaning that there are flux ropes in lar
 When I tried to compare the CPCP calculations from x=0 cut and z=2 box cut, I found some differences that shouldn't happen. If this is a deterministic system, then the results should be the same no matter how I do the restart runs.
 
 I compared the $E_y$ line plots at t=0s, t=50s, t=100s and t=200s. The lines look similar, but not exactly the same. Some possible explanations are:
+
 * interpolation interval is different;
 * `griddata` from scatter points uses a different algorithm.
 
