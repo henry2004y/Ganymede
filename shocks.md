@@ -57,7 +57,7 @@ The following derivations originate from [Erkaev+ 2001][Erkaev2001].
 Let us introduce two dimensionless parameters, $A_s$ and $A_m$, which are determined for upstream conditions as
 
 \begin{align}
-A_s &= \frac{p_\perp 1}{\rho_1 v_1^2} \\
+A_s &= \frac{p_{\perp 1}}{\rho_1 v_1^2} \\
 A_m &= \frac{1}{M_A^2}, 
 \end{align}
 
@@ -66,7 +66,7 @@ where $M_A$ is the upstream Alfvén Mach number. For common solar wind condition
 For shocks, the tangential components of the electric and magnetic fields are coplanar.[^coplanar] Thus, the components of the magnetic field upstream of the shock are given as $B_{n1} = B_1 \cos\gamma$ and $B_{t1} = B_1 \sin\gamma$, where γ is the angle between the magnetic field vector and the vector $\widehat{n}$ normal to the discontinuity. Similarly, the components of the bulk velocity upstream of the shock are chosen as $v_{n1} = v_1 \cos\alpha$ and $v_{t1} = B_1 \sin\alpha$, where α the angle between the bulk velocity and the normal component of the velocity. Furthermore, a parameter λ is used to denote the pressure anisotropy
 
 \[
-$\lamba = p_\perp / p_\parallel$,
+\lamba = p_\perp / p_\parallel,
 \]
 
 and another parameter x is used to denote the ratio of density
@@ -162,7 +162,7 @@ On the other hand, the opposite case, $T_\perp > T_\parallel$, is also observed 
 Here I list the mirror instability criterion as an additional relation to determine the pressure anisotropy downstream of the shock from the book Plasma instabilities and nonlinear effects by Hasegawa 1975,
 
 \[
-1 + \sum_{\textrm{species} \beta_\perp \big( 1 - \frac{\beta_\perp}{\beta_\parallel} \big) < 0}.   
+1 + \sum_{\textrm{species}} \beta_\perp \big( 1 - \frac{\beta_\perp}{\beta_\parallel} \big) < 0.   
 \]
 
 ### Earth bow shock
