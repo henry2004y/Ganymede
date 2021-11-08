@@ -414,7 +414,7 @@ magnetosonic waves (Ukhorskiy et al. 2006).
 
 ## Techniques
 
-### ULF Wave Detection
+### MHD Waves Detection
 
 ULF waves are MHD waves: Alfvén wave, fast wave and slow wave. One basic approach to identify waves is to check the correlation of quantity perturbations.
 
