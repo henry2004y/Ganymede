@@ -1,5 +1,5 @@
 @def title = "Shocks"
-@def hascode = false
+@def hascode = true
 @def rss = ""
 @def rss_title = "Review and research of shocks"
 @def rss_pubdate = Date(2021, 11, 8)
@@ -125,6 +125,32 @@ Substituting these into the energy equation leads to
 \end{align}
 
 where $y = 1/x$.
+
+Now we can do some simple estimations. Assume we have isotropic upstream solar wind with $n = 2 \textrm{amu/cc}$, $\mathbf{v} = [600, 0, 0] \textrm{km/s}$, $\mathbf{B} = [0, 0, -5] \textrm{nT}$ in GSM coordinates, and $T = 5\time 10^5 \textrm{K}$.
+We want to estimate the downstream anisotropy given a density/tangential magnetic field jump of 3.
+
+```julia
+using Vlasiator: kB, μ₀, mᵢ
+
+n1 = 2e6  # [m^3]
+v1 = 6e5  # [m/s]
+B1 = 5e-9 # [T]
+T1 = 5e5  # [K]
+λ1 = 1.0
+
+As = kB * T1 / (mᵢ  * v1^2)       # 0.011
+Am = B1^2 / (μ₀ * mᵢ * n1 * v1^2) # 0.016
+
+x = 3     # downstream/upstream jump density ratio
+y = 1 / x
+
+λ2 = (-2λ1*y^3 + λ1*(2As+Am+2)*y^2 - Am*λ1) /
+   (6λ1*y^3 - 4λ1*(2As+Am+2)*y^2 + (2λ1*(4As+1+2Am)+2As)*y)
+
+@show λ2
+```
+
+which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial plane with spatial resolution $300 km$ downstream near the shock, which is much larger than this.
 
 ### Anisotropy in the solar wind
 
