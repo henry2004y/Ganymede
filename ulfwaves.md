@@ -164,7 +164,7 @@ and it travels at the bulk velocity.
 
 ### Anisotropic MHD waves
 
-CGL theory (Chew+ 1956)
+Chew, Goldberger, and Low ([CGL][CGL1956]) theory
 
 #### Firehose instability
 
@@ -577,7 +577,7 @@ A statistical tool to detect periodicities within a time sequence or to reveal a
 An example of sunspot analysis can be found [here](https://github.com/lkilcommons/sea_tutorial).
 This sounds easy, or even too easy. I won't even consider it a standard method...
 
-
+[CGL1956]: https://doi.org/10.1098/rspa.1956.0116
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
