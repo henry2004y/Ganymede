@@ -1,7 +1,7 @@
 @def title = "Space Physics Reseach Log"
 @def tags = ["syntax", "code"]
 
-# Simulations on Ganymede
+# Space Physics Research Log
 
 \tableofcontents <!-- you can use \toc as well -->
 
