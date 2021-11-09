@@ -6,11 +6,35 @@
 
 # Shocks
 
+\toc
+
 Let subscripts 1 and 2 refer to the upstream and downstream of the shock. All the basic derivations assume a 1D shock.
 
 ## MHD Regime
 
 The basic RH relations are listed in [MHD shocks](https://en.wikipedia.org/wiki/Shocks_and_discontinuities_(magnetohydrodynamics)).
+
+There are 6 scalar equations and 12 scalar variables ($\rho, v_t, v_n, p, B_t, B_n$ for both upstream and downstream). This means that given all the upstream quantities, the downstream values are deterministic[^mhdshock].
+
+[^mhdshock]: I am not entirely sure. 
+
+The categories are shown in the following table. We refer the changes of the downstream compared with the upstream.
+
+
+|     Type      | Particle Transport | $\rho$ | $\mathbf{v}$ | $p$ | $\mathbf{B}$ | T |
+|:-------------:|:------------------:|:------:|:------------:|:---:|:------------:|:---:|
+| Contact    | No | $\pm$  | continuous | continuous  | continuous | $\pm$ |
+| Tangential[^pause] | No | $\pm$  | continuous | $\pm$  | $B_n$ = 0  | $\pm$ |
+| Slow    | Yes | + | - | + | $B_t$ - | + |
+| Intermediate[^special] | Yes | continuous | $\pm$ | $\pm$  | rotation?  | $\pm$ |
+| Fast[^bow]    | Yes | + | - | + | $B_t$ + | + |
+
+
+[^pause]: The Earth's magnetopause is generally a tangential discontinuity.
+
+[^special]: A special case is called *rotational discontinuity*. All are isentropic. Their existence are still a matter of debate.
+
+[^bow]: The Earth's bow shock is a fast mode shock.
 
 ## Double Adiabatic Theory
 
@@ -36,8 +60,6 @@ Note that these are constants at a fixed location in time: it is not correct to 
 
 The general jump conditions for discontinuities in a collisionless anisotropic magnetoplasma in the CGL approximation were derived by [Abraham-Shrauner 1967][Abraham-Sharuner1967].
 
-To solve the jump equations for anisotropic plasma conditions upstream and downstream of the shock, one has to use an additional equation, since the set of equations is underdetermined.
-
 The general jump conditions for an anisotropic plasma are given by [Hudson 1970][Hudson1970]
 
 \begin{align}
@@ -51,7 +73,7 @@ The general jump conditions for an anisotropic plasma are given by [Hudson 1970]
 \end{align}
 
 where ρ is the mass density, v and B are the velocity and magnetic field strength. Subscripts t and n indicate tangential and normal components with respect to the discontinuity. Quantities $p_\perp$ and $p_\parallel$ are the elements of the plasma pressure
-tensor perpendicular and parallel with respect to the magnetic field. Quantity $\epsilon$ is the internal energy, $\epsilon = p_\perp + p_\parallel/2$, and $[\![ Q ]\!] = Q_2 - Q_1$, where subscripts 1 and 2 signify the quantity Q upstream and downstream of the discontinuity. These equations refer to the conservation of physical quantities, i.e. the mass flux, the tangential component of the electric field, the normal and tangential components of the momentum flux, the energy flux, and, finally, the normal component of the magnetic field.
+tensor perpendicular and parallel with respect to the magnetic field. Quantity $\epsilon$ is the internal energy, $\epsilon = p_\perp + p_\parallel/2$, and $[\![ Q ]\!] = Q_2 - Q_1$, where subscripts 1 and 2 signify the quantity Q upstream and downstream of the discontinuity. These equations refer to the conservation of physical quantities, i.e. the mass flux, the tangential component of the electric field, the normal and tangential components of the momentum flux, the energy flux, and, finally, the normal component of the magnetic field. To solve the jump equations for anisotropic plasma conditions upstream and downstream of the shock, one has to use an additional equation, since the set of equations is underdetermined.
 
 The following derivations originate from [Erkaev+ 2001][Erkaev2001].
 Let us introduce two dimensionless parameters, $A_s$ and $A_m$, which are determined for upstream conditions as
@@ -108,7 +130,10 @@ where $y = 1/x$.
 
 Observationally, Pioneer 6 showed that the ion temperature anisotropy in the solar wind at 1AU generally has $T_\parallel > T_\perp$[^pioneer6]. It may possibly be explained by the conservation of the 1st adiabatic invariant [Scarf+, 1967][Scarf1967][^oldpaper].
 
-[^pioneer6]: There are 3 interesting discoveries from Pioneer 6 ARC plasma measurements: 1. high fluctuations of flow velocity outside the solar ecliptic plane; 2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$); 3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
+[^pioneer6]: There are 3 interesting discoveries from Pioneer 6 ARC plasma measurements:
+1. high fluctuations of flow velocity outside the solar ecliptic plane;
+2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$);
+3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
 
 [^oldpaper]: I love this old paper. The pioneers in our field did real physics.
 
