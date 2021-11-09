@@ -150,7 +150,7 @@ y = 1 / x
 @show λ2
 ```
 
-which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial plane with spatial resolution $300 km$ downstream near the shock, which is much larger than this.
+which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial plane with spatial resolution 300 km downstream near the shock, which is much larger than this.
 
 ### Anisotropy in the solar wind
 
