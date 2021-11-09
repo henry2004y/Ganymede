@@ -88,7 +88,7 @@ where $M_A$ is the upstream Alfvén Mach number. For common solar wind condition
 For shocks, the tangential components of the electric and magnetic fields are coplanar.[^coplanar] Thus, the components of the magnetic field upstream of the shock are given as $B_{n1} = B_1 \cos\gamma$ and $B_{t1} = B_1 \sin\gamma$, where γ is the angle between the magnetic field vector and the vector $\widehat{n}$ normal to the discontinuity. Similarly, the components of the bulk velocity upstream of the shock are chosen as $v_{n1} = v_1 \cos\alpha$ and $v_{t1} = B_1 \sin\alpha$, where α the angle between the bulk velocity and the normal component of the velocity. Furthermore, a parameter λ is used to denote the pressure anisotropy
 
 \[
-\lamba = p_\perp / p_\parallel,
+\lambda = p_\perp / p_\parallel,
 \]
 
 and another parameter x is used to denote the ratio of density
@@ -126,7 +126,7 @@ Substituting these into the energy equation leads to
 
 where $y = 1/x$.
 
-Now we can do some simple estimations. Assume we have isotropic upstream solar wind with $n = 2 \textrm{amu/cc}$, $\mathbf{v} = [600, 0, 0] \textrm{km/s}$, $\mathbf{B} = [0, 0, -5] \textrm{nT}$ in GSM coordinates, and $T = 5\time 10^5 \textrm{K}$.
+Now we can do some simple estimations. Assume we have isotropic upstream solar wind with $n = 2 \textrm{amu/cc}$, $\mathbf{v} = [600, 0, 0] \textrm{km/s}$, $\mathbf{B} = [0, 0, -5] \textrm{nT}$ in GSM coordinates, and $T = 5\times 10^5 \textrm{K}$.
 We want to estimate the downstream anisotropy given a density/tangential magnetic field jump of 3.
 
 ```julia
@@ -184,7 +184,7 @@ B_\phi(r) \simeq \frac{\Omega_r}{u(r)}B_r(r)
 
 from the Parker spiral solar wind model and $\Omega_r = 2.94\times 10^{-6}$ rad/s being the angular frequency of the rotation of the sun.
 
-The adiabatic equation in the perpendicular direction indicates that the perpendicular thermal energy $<mv_\perp^2/2> = k_B T_\perp$ declines with B. Assuming in the rest frame the distribution function is a bi-Maxwellian of the form
+The adiabatic equation in the perpendicular direction indicates that the perpendicular thermal energy $\<m v_\perp^2/2\> = k_B T_\perp$ declines with B. Assuming in the rest frame the distribution function is a bi-Maxwellian of the form
 
 \[
 f(v) = \Big( \frac{m}{2\pi}  \Big)^{3/2}\frac{1}{k_B T_\perp (k_B T_\parallel)^{1/2}} exp\Big( -\frac{mv_\perp^2}{2k_B T_\perp} -\frac{mv_\parallel^2}{2k_B T_\parallel} \Big),
