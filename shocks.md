@@ -138,7 +138,7 @@ B1 = 5e-9 # [T]
 T1 = 5e5  # [K]
 λ1 = 1.0
 
-As = kB * T1 / (mᵢ  * v1^2)       # 0.011
+As = kB * T1 / (mᵢ * v1^2)        # 0.011
 Am = B1^2 / (μ₀ * mᵢ * n1 * v1^2) # 0.016
 
 x = 3     # downstream/upstream jump density ratio
