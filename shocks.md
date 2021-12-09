@@ -16,10 +16,9 @@ The basic RH relations are listed in [MHD shocks](https://en.wikipedia.org/wiki/
 
 There are 6 scalar equations and 12 scalar variables ($\rho, v_t, v_n, p, B_t, B_n$ for both upstream and downstream). This means that given all the upstream quantities, the downstream values are deterministic[^mhdshock].
 
-[^mhdshock]: I am not entirely sure. 
+[^mhdshock]: I am not entirely sure.
 
 The categories are shown in the following table. We refer the changes of the downstream compared with the upstream.
-
 
 |     Type      | Particle Transport | $\rho$ | $\mathbf{v}$ | $p$ | $\mathbf{B}$ | T |
 |:-------------:|:------------------:|:------:|:------------:|:---:|:------------:|:---:|
@@ -28,7 +27,6 @@ The categories are shown in the following table. We refer the changes of the dow
 | Slow    | Yes | + | - | + | $B_t$ - | + |
 | Intermediate[^special] | Yes | continuous | $\pm$ | $\pm$  | rotation?  | $\pm$ |
 | Fast[^bow]    | Yes | + | - | + | $B_t$ + | + |
-
 
 [^pause]: The Earth's magnetopause is generally a tangential discontinuity.
 
@@ -55,8 +53,9 @@ by two adiabatic equations,
 \frac{d}{dt}\Big( \frac{p_\perp}{\rho B} \Big) &= 0.
 \end{align}
 
-This is also known as the double adiabatic theory.
-Note that these are constants at a fixed location in time: it is not correct to apply these across the shock!
+This is also known as the double adiabatic theory.[^note]
+
+[^note]: These are constants at a fixed location in time: it is **not** correct to apply these across the shock!
 
 The general jump conditions for discontinuities in a collisionless anisotropic magnetoplasma in the CGL approximation were derived by [Abraham-Shrauner 1967][Abraham-Sharuner1967].
 
@@ -73,14 +72,14 @@ The general jump conditions for an anisotropic plasma are given by [Hudson 1970]
 \end{align}
 
 where ρ is the mass density, v and B are the velocity and magnetic field strength. Subscripts t and n indicate tangential and normal components with respect to the discontinuity. Quantities $p_\perp$ and $p_\parallel$ are the elements of the plasma pressure
-tensor perpendicular and parallel with respect to the magnetic field. Quantity $\epsilon$ is the internal energy, $\epsilon = p_\perp + p_\parallel/2$, and $[\![ Q ]\!] = Q_2 - Q_1$, where subscripts 1 and 2 signify the quantity Q upstream and downstream of the discontinuity. These equations refer to the conservation of physical quantities, i.e. the mass flux, the tangential component of the electric field, the normal and tangential components of the momentum flux, the energy flux, and, finally, the normal component of the magnetic field. To solve the jump equations for anisotropic plasma conditions upstream and downstream of the shock, one has to use an additional equation, since the set of equations is underdetermined.
+tensor perpendicular and parallel with respect to the magnetic field. Quantity $\epsilon$ is the internal energy, $\epsilon = p_\perp + p_\parallel/2$, and $[\![ Q ]\!] = Q_2 - Q_1$, where subscripts 1 and 2 signify the quantity upstream and downstream of the discontinuity. These equations refer to the conservation of physical quantities, i.e. the mass flux, the tangential component of the electric field, the normal and tangential components of the momentum flux, the energy flux, and, finally, the normal component of the magnetic field. To solve the jump equations for anisotropic plasma conditions upstream and downstream of the shock, one has to use an additional equation, since the set of equations is underdetermined.
 
 The following derivations originate from [Erkaev+ 2001][Erkaev2001].
 Let us introduce two dimensionless parameters, $A_s$ and $A_m$, which are determined for upstream conditions as
 
 \begin{align}
 A_s &= \frac{p_{\perp 1}}{\rho_1 v_1^2} \\
-A_m &= \frac{1}{M_A^2}, 
+A_m &= \frac{1}{M_A^2},
 \end{align}
 
 where $M_A$ is the upstream Alfvén Mach number. For common solar wind conditions, both of these parameters are quite small ($\sim 0.01$).
@@ -184,7 +183,7 @@ B_\phi(r) \simeq \frac{\Omega_r}{u(r)}B_r(r)
 
 from the Parker spiral solar wind model and $\Omega_r = 2.94\times 10^{-6}$ rad/s being the angular frequency of the rotation of the sun.
 
-The adiabatic equation in the perpendicular direction indicates that the perpendicular thermal energy $\<m v_\perp^2/2\> = k_B T_\perp$ declines with B. Assuming in the rest frame the distribution function is a bi-Maxwellian of the form
+The adiabatic equation in the perpendicular direction indicates that the perpendicular thermal energy $\langle m v_\perp^2/2\rangle = k_B T_\perp$ declines with B. Assuming in the rest frame the distribution function is a bi-Maxwellian of the form
 
 \[
 f(v) = \Big( \frac{m}{2\pi}  \Big)^{3/2}\frac{1}{k_B T_\perp (k_B T_\parallel)^{1/2}} exp\Big( -\frac{mv_\perp^2}{2k_B T_\perp} -\frac{mv_\parallel^2}{2k_B T_\parallel} \Big),
