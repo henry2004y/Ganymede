@@ -176,7 +176,7 @@ ion/ion nonresonant
 
 very similar to the isotropic case
 
-#### Mirror mode wave
+#### Mirror instability
 
 The slow magnetosonic mode becomes the mirror instability for anisotropies satisfying
 
@@ -186,7 +186,12 @@ The slow magnetosonic mode becomes the mirror instability for anisotropies satis
 
 The lowest threshold corresponds to wave-vectors perpendicular to the background magnetic field.
 
+### Mirror Mode
+
+The mirror mode is unusual in that it has zero frequency in the plasma rest frame.[^mirror_prop]
 Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
+
+[^mirror_prop]: Does this mean that the mirror mode cannot propagate?
 
 Interestingly, the mirror mode is unstable in kinetic theory for temperature anisotropies satisfying
 
@@ -197,6 +202,10 @@ Interestingly, the mirror mode is unstable in kinetic theory for temperature ani
 which is similar to that found in mixed kinetic-fluid treatments, and disagrees by a factor of 6 with the result in CGS approximations given above. This relation confirms that the mirror mode is favored by large $\beta$.
 
 As this threshold is reached, the first unstable mode has a wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}$'s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
+
+This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
+
+Important question: to what extent of model do I need to describe mirror mode?
 
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
@@ -578,6 +587,7 @@ An example of sunspot analysis can be found [here](https://github.com/lkilcommon
 This sounds easy, or even too easy. I won't even consider it a standard method...
 
 [CGL1956]: https://doi.org/10.1098/rspa.1956.0116
+[HASEGAWA1969]: https://doi.org/10.1063/1.1692407
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
