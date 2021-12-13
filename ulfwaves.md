@@ -178,7 +178,7 @@ very similar to the isotropic case
 
 #### Mirror instability
 
-The slow magnetosonic mode becomes the mirror instability for anisotropies satisfying
+The slow magnetosonic mode "becomes"[^slow_mode] the mirror instability for anisotropies satisfying
 
 \[
 \frac{P_{0\perp}}{P_{0\parallel}} > 6 \Big( 1 + \frac{B_0^2}{2\mu_0 P_{0\perp}} \Big) = 6 \Big( 1 + \frac{P_B}{P_{0\perp}} \Big).
@@ -186,7 +186,16 @@ The slow magnetosonic mode becomes the mirror instability for anisotropies satis
 
 The lowest threshold corresponds to wave-vectors perpendicular to the background magnetic field.
 
+[^slow_mode]: After reading [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] carefully, I think Schwartz falsely claimed this in his [review paper][Schwartz1997]. Under the CGL framework, even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
+
+
 ### Mirror Mode
+
+Back to the 1960s, people found a new type of instability when conducting experiments on ohmic heating of a plasma by means of a current directed along an intense magnetic field. This instability cannot be explained by ideal MHD, and [Rudakov & Sagdeyev][Rudakov1961] explained its physics in a paper written in Russian.
+
+In 1967, Masayoshi Tajiri derived a kinetic description of the mirror mode when considering the propagation of linear hydromagnetic waves in a collisionless plasma under homogeneous background. The key difference when compared against the CGL fluid approach is that is mirror mode is shown to be an **non-oscillating** mode with vanishing real part of the frequency. Under proper conditions, the non-oscillating wave causes the mirror instability in the direction nearly **perpendicular** to a magnetic field.
+
+In 1969, Akira Hasegawa extend the kinetic theory to a nonuniform medium which takes magnetic field gradient and finite-Larmor-radius effect into account.
 
 The mirror mode is unusual in that it has zero frequency in the plasma rest frame.[^mirror_prop]
 Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
@@ -203,6 +212,8 @@ which is similar to that found in mixed kinetic-fluid treatments, and disagrees 
 
 As this threshold is reached, the first unstable mode has a wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}$'s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
 
+In 1993, David Southwood and Margeret Kivelson accounted the source of the anisotropy to the planetary bow shock, but there were no further information.
+
 This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
 
 Important question: to what extent of model do I need to describe mirror mode?
@@ -213,6 +224,8 @@ Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\pa
 
 Ion-cyclotron wave can be derived in a Hall MHD framework: it comes as one of the two solutions from the dispersion relation, the other being electron-cyclotron wave, more commonly known as whistler wave.
 In Schwartz's review paper, he always wrote Alfvén/ion-cyclotron modes together, most likely to stress the fact that ion-cyclotron wave is left-hand polarized.
+The development of the ion cyclotron wave is usually described by the standard quasi-linear theory in which the unstable distribution equilibrates through a spatially smooth process of velocity space diffusion.
+
 
 [A dissertation on EMIC waves in the Earth’s Magnetosphere][Lee2014]
 
@@ -263,6 +276,13 @@ In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
 When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
 
 我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。根据我现在的理解，EMIC波在平行于背景磁场方向最为显著。有点怀疑在垂直磁场平面内我们能不能看到EMIC波......而且根据产生条件垂直方向温度大于平行方向温度，在一个2D垂直平面上，第三个方向也就是平行方向永远是周期性边界，我该怎么理解这件事情？在我们的模拟中，我的确看到了很强的垂直温度，所以理论上EMIC
+
+### Mirror Instability & Ion Cyclotron Instability
+
+In the 1990s, there is a debate regarding the occurence of the mirror instability, initiated by Gary. The ion cyclotron instability also occurs at frequencies below the ion gyrofrequency in the presence of ion pitch angle anisotropy, which mostly overlaps with the mirror instability. The basic ideas in comparing these two are:
+
+* which instability possesses higher growth rate under the same $\beta$ condition?
+* which is affected by the ion mass?
 
 ## Observation
 
@@ -587,8 +607,10 @@ An example of sunspot analysis can be found [here](https://github.com/lkilcommon
 This sounds easy, or even too easy. I won't even consider it a standard method...
 
 [CGL1956]: https://doi.org/10.1098/rspa.1956.0116
+[Rudakov1961]: https://archive.org/details/nasa_techdoc_19660020059/
 [HASEGAWA1969]: https://doi.org/10.1063/1.1692407
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
+[SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
