@@ -184,10 +184,11 @@ The slow magnetosonic mode "becomes"[^slow_mode] the mirror instability for anis
 \frac{P_{0\perp}}{P_{0\parallel}} > 6 \Big( 1 + \frac{B_0^2}{2\mu_0 P_{0\perp}} \Big) = 6 \Big( 1 + \frac{P_B}{P_{0\perp}} \Big).
 \]
 
-The lowest threshold corresponds to wave-vectors perpendicular to the background magnetic field.
+The lowest threshold corresponds to wave-vectors **perpendicular** to the background magnetic field.[^question]
+
+[^question]: I must miss something. The slow mode cannot propagate in the perpendicular direction!
 
 [^slow_mode]: After reading [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] carefully, I think Schwartz falsely claimed this in his [review paper][Schwartz1997]. Under the CGL framework, even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
-
 
 ### Mirror Mode
 
@@ -217,6 +218,10 @@ In 1993, David Southwood and Margeret Kivelson accounted the source of the aniso
 This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
 
 Important question: to what extent of model do I need to describe mirror mode?
+
+*Drift*[^drift] mirror instability
+
+[^drift]: Drift indicates finite Larmor radius effect, which leads to the $r^2_L \nabla^2$ term in the drift velocity. The Larmor radius is much larger for ions than for electrons, so the drift will create charge separation and electric fields.
 
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
