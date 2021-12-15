@@ -53,7 +53,7 @@ by two adiabatic equations,
 \frac{d}{dt}\Big( \frac{p_\perp}{\rho B} \Big) &= 0.
 \end{align}
 
-This is also known as the double adiabatic theory.[^note]
+This is also known as the double adiabatic theory,[^note] which is also what many people remember to be the key conclusion from the CGL theory. Here I want to emphasize the meaning of *adiabatic* again: this assumes zero heat flux. If the system is not adiabatic, the conservation of these two quantities related to the parallel and perpendicular pressure is no longer valid, and additional terms may come into play such as the stochastic heating.
 
 [^note]: These are constants at a fixed location in time: it is **not** correct to apply these across the shock!
 
