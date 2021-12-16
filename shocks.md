@@ -98,6 +98,8 @@ x \equiv \frac{\rho_2}{\rho_1} = \frac{v_{n1}}{v_{n2}}.
 
 [^coplanar]: I still don't fully get it...
 
+### Perpendicular Shock
+
 For a perpendicular shock, $B_n = 0$, we have the conservation relations reduce to
 
 \begin{align}
@@ -150,6 +152,11 @@ y = 1 / x
 ```
 
 which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial plane with spatial resolution 300 km downstream near the shock, which is much larger than this.
+
+### Parallel Shock
+
+Parallel shocks are more special in that the magnetic field strength remains unchanged so the equations effectively describe pure gasdynamic solutions.
+[Kuznetsov & A.I.Osin, 2018][Kuznetsov2018] presents a simplified solution in a 1D parallel shock case with parallel and perpendicular thermal energy heat fluxes $S_\parallel$ and $S_\perp$ included. Note again the original CGL theory assumes 0 heat fluxes.
 
 ### Anisotropy in the solar wind
 
@@ -232,3 +239,4 @@ using WIND spacecraft data. They report that most parts of the magnetosheath are
 [Hill1995]: https://doi.org/10.1029/94JA03194
 [Phan1996]: https://doi.org/10.1029/96GL00845
 [Erkaev2001]: https://doi.org/10.1017/S002237780000893X
+[Kuznetsov2018]: https://doi.org/10.1016/j.physleta.2018.05.029
