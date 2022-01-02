@@ -154,7 +154,7 @@ ion/ion left-hand resonant
 
 There is a 4th zero-frequency mode from MHD theory, referred to as entropy mode, which is often ignored.
 It is a compressional wave (i.e., fluctuations in pressure and density) that can be either hydrodynamic or magnetohydrodynamic in which the internal energy and velocity remains constant.
-It represents a spatially structured medium in static equilibrium???
+It represents a spatially structured medium in static equilibrium, being characterized by the sole density variation with the other variables like $\mathbf{B}$ and $p$ being kept constant.
 
 \[
 \frac{Ds}{Dt} = \frac{\partial s}{\partial t} + \mathbf{u}\cdot\nabla{s} = 0
@@ -305,6 +305,32 @@ Simultaneous measurements are applied to show that periodic fluctuations in the 
 
 In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
 
+### Types of Variations
+
+#### Alfvénic
+
+
+
+#### Rotational Discontinuity
+
+
+#### Pressure Variation
+
+1. Solar wind dynamic pressure pulses identified by
+
+  * depressed magnetic field strength;
+  * enhanced plasma density;
+  * compressed magnetosphere;
+  * enhanced magnetic field strength observed by "static" satellites.
+
+One possible physical process is that the pressure pulses first strike the magnetopause and then launched sunward moving boundary waves on the magnetopause.
+
+2. Pressure pulses can also be generated in the foreshock region as a result of the instability due to ions backstreaming from the shock.
+
+  * The density perturbations in this case often have a positive correlation with magnetic fields.
+
+The impact of pressure pulses on the magnetopause is known to be related to traveling convection vortices, flux transfer events,and auroral activities.
+
 ## Simulations
 
 ### Korean MHD Model
@@ -315,11 +341,11 @@ spherical, $10 \text{R}_E$ < r < $40 \text{R}_E$, $10^o < \theta < 170^o$, $0^o 
 
 [^gridthought]: For bow shock and sheath study, this might be good enough since it's super-Alfvénic and super-sonic.
 
-$n = 5$ amu/cc, $B_0 = 10$ nT with $45^o$ from the x axis, $T = 10^6$ K, $V = (-500,0,0)$ km/s, which turns to $M_A \sim 5$, $V_A \sim 100$ km/s, $\beta \sim 1.7$.
+$n = 5$ amu/cc, $B_0 = 10$ nT with $45^o$ from the x axis (in the x-y plane, Parker-spiral like), $T = 10^6$ K, $V = (-500,0,0)$ km/s, which turns to $M_A \sim 5$, $V_A \sim 100$ km/s, $\beta \sim 1.7$.
 
 3 types of density pulses:
 
-* density only, everything else constant
+* density variation only, everything else constant
 \[
 \delta \rho = \rho_0 sin(\omega t) \text{for } 0 \le t \le T/2
 \]
