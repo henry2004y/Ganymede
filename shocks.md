@@ -8,15 +8,23 @@
 
 \toc
 
-Let subscripts 1 and 2 refer to the upstream and downstream of the shock. All the basic derivations assume a 1D shock.
+Consider a subsonic disturbance moving through a conventional neutral fluid. As is well-known, sound waves propagating ahead of the disturbance give advance warning of its arrival, and, thereby, allow the response of the fluid to be both smooth and adiabatic. Now, consider a supersonic disturbance. In this case, sound waves are unable to propagate ahead of the disturbance, and so there is no advance warning of its arrival, and, consequently, the fluid response is _sharp_ and _non-adiabatic_. This type of response is generally known as a _shock_. 
+
+Let us investigate shocks first in MHD fluids. Since information in such fluids is carried via three different waves -- namely, _fast_ or _compressional-Alfvén waves_, _intermediate_ or _shear-Alfvén waves_, and _slow_ or _magnetosonic waves_ -- we might expect MHD fluids to support three different types of shock, corresponding to disturbances traveling faster than each of the aforementioned waves.
+
+In general, a shock propagating through an MHD fluid produces a significant difference in plasma properties on either side of the shock front. The thickness of the front is determined by a balance between convective and dissipative effects. However, dissipative effects in high temperature plasmas are only comparable to convective effects when the spatial gradients in plasma variables become extremely large. Hence, MHD shocks in such plasmas tend to be _extremely narrow_, and are well-approximated as _discontinuous_ changes in plasma parameters. The MHD equations, and Maxwell's equations, can be integrated across a shock to give a set of jump conditions which relate plasma properties on each side of the shock front. If the shock is sufficiently narrow then these relations become independent of its detailed structure. Let us derive the jump conditions for a narrow, planar, steady-state, MHD shock.
 
 ## MHD Regime
 
+Starting from the differential equations listed [here](https://farside.ph.utexas.edu/teaching/plasma/lectures/node79.html), we move into the rest frame of the shock. For a 1D shock, suppose that the shock front coincides with the $y$-$z$ plane. Furthermore, let the regions of the plasma upstream and downstream of the shock, which are termed regions 1 and 2, respectively, be _spatially uniform_ and _time-static_, i.e. $\partial/\partial t = \partial/\partial x = \partial/\partial y = 0$. Moreover, $\partial/\partial x=0$, except in the immediate vicinity of the shock. Finally, let the velocity and magnetic fields upstream and downstream of the shock all lie in the $x$-$y$ plane. The situation under discussion is illustrated in the figure below.
+
+\fig{/assets/shock_setup.png}
+
+Here, $\rho_1$, $p_1$, ${\mathbf{V}_1$, and $\mathbf{B}_1$ are the downstream mass density, pressure, velocity, and magnetic field, respectively, whereas $\rho_2$, $p_2$, $\mathbf{V}_2$, and $\mathbf{B}_2$ are the corresponding upstream quantities.
+
 The basic RH relations are listed in [MHD shocks](https://en.wikipedia.org/wiki/Shocks_and_discontinuities_(magnetohydrodynamics)).
 
-There are 6 scalar equations and 12 scalar variables ($\rho, v_t, v_n, p, B_t, B_n$ for both upstream and downstream). This means that given all the upstream quantities, the downstream values are deterministic[^mhdshock].
-
-[^mhdshock]: I am not entirely sure.
+There are 6 scalar equations and 12 scalar variables ($\rho, v_t, v_n, p, B_t, B_n$ for both upstream and downstream). This means that given all the upstream quantities, the downstream values are deterministic.
 
 The categories are shown in the following table. We refer the changes of the downstream compared with the upstream.
 
@@ -33,6 +41,70 @@ The categories are shown in the following table. We refer the changes of the dow
 [^special]: A special case is called *rotational discontinuity*. All are isentropic. Their existence are still a matter of debate.
 
 [^bow]: The Earth's bow shock is a fast mode shock.
+
+### Parallel Shocks
+
+The first special case is the so-called parallel shock in which both the upstream and downstream plasma flows are parallel to the magnetic field, as well as perpendicular to the shock front.
+
+As you may have probably guessed, a parallel shock is _unaffected_ by the presence of a magnetic field. In fact, this type of shock is identical to that which occurs in neutral fluids, and is, therefore, usually called a _hydrodynamic shock_.
+
+Is there a preferential direction from the upstream to the downstream? Yes, with the additional physics principle of the _second law of thermodynamics_. This law states that the _entropy_ of a closed system can spontaneously increase, but can never spontaneously decrease. Now, in general, the entropy per particle is different on either side of a hydrodynamic shock front. Accordingly, the second law of thermodynamics mandates that the downstream entropy must _exceed_ the upstream entropy, so as to ensure that the shock generates a net increase, rather than a net decrease, in the overall entropy of the system, as the plasma flows through it. 
+
+The (suitably normalized) entropy per particle of an ideal plasma takes the form
+
+\[
+S = ln(\frac{p}{\rho^\gamma}).
+\]
+
+After some derivations, it follows that the second law of thermodynamics requires hydrodynamic shocks to be _compressive_: i.e., $r>1$, where $r$ is the density jump ratio $\rho_2 / \rho_1$. In other words, the plasma density must always _increase_ when a shock front is crossed in the direction of the relative plasma flow. It turns out that this is a general rule which applies to all three types of MHD shock. In the shock rest frame, the shock is associated with an irreversible (since the entropy suddenly increases) transition from supersonic to subsonic flow.
+
+Note that $r\equiv \rho_2/\rho_1\rightarrow (\gamma+1)/(\gamma-1)$, whereas $R\equiv p_2/p_1\rightarrow\infty$, in the limit $M_1\rightarrow \infty$. In other words, as the shock strength increases, the compression ratio, $r$, asymptotes to a finite value, whereas the pressure ratio, $P$, increases without limit. For a conventional plasma with $\gamma=5/3$, the limiting value of the compression ratio is 4: i.e., the downstream density can never be more than four times the upstream density. We conclude that, in the strong shock limit, $M_1\gg 1$, the large jump in the plasma pressure across the shock front must be predominately a consequence of a large jump in the plasma _temperature_, rather than the plasma _density_.
+
+### Perpendicular Shocks
+
+The second special case is the so-called _perpendicular shock_ in which both the upstream and downstream plasma flows are perpendicular to the magnetic field, as well as the shock front.
+
+Going through the derivations, we find that the condition for the existence of a perpendicular shock is that the relative upstream plasma velocity must be _greater_ than the upstream fast wave velocity,
+
+\[
+\mathbf{V}_1^2 > \mathbf{V}_{s1}^2 + \mathbf{V}_{A1}^2
+\]
+
+Incidentally, it is easily demonstrated that if this is the case then the downstream plasma velocity is less than the downstream fast wave velocity. We can also deduce that, in a stationary plasma, a perpendicular shock propagates across the magnetic field with a velocity which exceeds the fast wave velocity. 
+
+In the strong shock limit, $M_1\gg 1$, a strong perpendicular shock is very similar to a strong hydrodynamic shock (except that the former shock propagates perpendicular, whereas the latter shock propagates parallel, to the magnetic field). In particular, just like a hydrodynamic shock, a perpendicular shock cannot compress the density by more than a factor $(\gamma+1)/(\gamma-1)$. However, according to the RH jump conditions, a perpendicular shock compresses the magnetic field by the same factor that it compresses the plasma density. It follows that there is also an upper limit to the factor by which a perpendicular shock can compress the magnetic field. 
+
+### Oblique Shocks
+
+Let us now consider the general case in which the plasma velocities and the magnetic fields on each side of the shock are neither parallel nor perpendicular to the shock front. It is convenient to transform into the so-called de Hoffmann-Teller frame in which $|\mathbf{V}_1\times \mathbf{B}_1|=0$, or
+
+\[
+V_{x1}B_{y1} - V_{y1}B_{x1} = 0.
+\]
+
+In other words, it is convenient to transform to a frame which moves at the local $\mathbf{E}\times\mathbf{B}$ velocity of the plasma.[^HT_frame] It immediately follows from the jump condition of the magnetic convection equation that
+
+[^HT_frame]: for a parallel shock, the HT frame can be just itself; for a perpendicular shock, the HT frame can be chosen by shifting the velocity by $\mathbf{V}_1$ s.t. $\mathbf{V}_1 = 0$.
+
+\[
+V_{xx}B_{y2} - V_{y2}B_{x2} = 0,
+\]
+
+or $|\mathbf{V}_2\times \mathbf{B}_2|=0$. Thus, in the de Hoffmann-Teller frame, the upstream plasma flow is parallel to the upstream magnetic field, and the downstream plasma flow is also parallel to the downstream magnetic field.
+
+As before, the second law of thermodynamics mandates that $r>1$.
+
+Let us first consider the weak shock limit $r\rightarrow 1$. In this case, it is easily seen that the three roots of the shock adiabatic reduce to the slow, intermediate (or Shear-Alfvén), and fast waves, respectively, propagating in the normal direction to the shock front. We conclude that slow, intermediate, and fast MHD shocks degenerate into the associated MHD waves in the limit of small shock amplitude. Conversely, we can think of the various MHD shocks as _nonlinear_ versions of the associated MHD waves.
+
+We can conclude that (in the de Hoffmann-Teller frame) fast shocks refract the magnetic field and plasma flow (recall that they are parallel in our adopted frame of the reference) away from the normal to the shock front, whereas slow shocks refract these quantities toward the normal. Moreover, the tangential magnetic field and plasma flow generally reverse across an intermediate shock front.
+
+Let us now consider the strong shock limit, $v_1^{\,2}\gg 1$. There is only one root for the shock adiabatic, which is a fast shock. The fact that there is only one real root suggests that there exists a critical shock strength above which the slow and intermediate shock solutions cease to exist. (In fact, they merge and annihilate one another.) In other words, there is a limit to the strength of a slow or an intermediate shock. On the other hand, there is no limit to the strength of a fast shock. Note, however, that the plasma density and tangential magnetic field cannot be compressed by more than a factor $(\gamma+1)/(\gamma-1)$ by any type of MHD shock. 
+
+Consider the special case $\theta_1=0$ in which both the plasma flow and the magnetic field are normal to the shock front. There we have "switch-on" and "switch-off" shocks which refer to the generation and elimination of tangential components of the plasma flow and the magnetic field.
+
+Consider another special case $\theta_1=\pi/2$. We have only one root that corresponds to the fast shock, except that there is no plasma flow across the shock front in this case.[^HT_transition] The fact that the two other roots are zero indicates that, like the corresponding MHD waves, slow and intermediate MHD shocks do not propagate perpendicular to the magnetic field.
+
+[^HT_transition]: is it because of the HT frame?
 
 ## Double Adiabatic Theory
 
