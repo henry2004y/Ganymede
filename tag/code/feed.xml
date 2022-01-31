@@ -9,14 +9,14 @@
 
   <channel>
     <title>
-      <![CDATA[  {{fd2rss website_title}}  ]]>
+      <![CDATA[  Ganymede&#39;s Simulations  ]]>
     </title>
-    <link> {{website_url}} </link>
+    <link> https://henry2004y.github.io/Ganymede/ </link>
     <description>
-      <![CDATA[  {{fd2rss website_description}}  ]]>
+      <![CDATA[  Notes about our attempts to understand Ganymede  ]]>
     </description>
     <atom:link
-      href="{{fd_rss_feed_url}}"
+      href="https://henry2004y.github.io/Ganymede/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
