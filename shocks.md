@@ -230,6 +230,12 @@ which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial 
 Parallel shocks are more special in that the magnetic field strength remains unchanged so the equations effectively describe pure gasdynamic solutions.
 [Kuznetsov & A.I.Osin, 2018][Kuznetsov2018] presents a simplified solution in a 1D parallel shock case with parallel and perpendicular thermal energy heat fluxes $S_\parallel$ and $S_\perp$ included. Note again the original CGL theory assumes 0 heat fluxes.
 
+## Location of Shock
+
+In the observation comparison paper [Slavin and Holzer, 1981](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/JA086iA13p11401), they concluded that the variations in shock stand-off distance and shape are ordered by the sonic Mach number and not other Mach numbers involve magnetic field. In other words, they think the bow shock is a gasdynamic structure.
+
+However, even in neutral fluid theory, the determination of shock location as well as shape is still a research problem. Imagine the simplest scenario where there is a static ball in the air with infinite mass. Assuming purely homogenous air with known density, velocity and pressure in the upstream, can you tell me the exact location of shock stand-off distance with pen and paper? 
+
 ### Anisotropy in the solar wind
 
 Observationally, Pioneer 6 showed that the ion temperature anisotropy in the solar wind at 1AU generally has $T_\parallel > T_\perp$[^pioneer6]. It may possibly be explained by the conservation of the 1st adiabatic invariant [Scarf+, 1967][Scarf1967][^oldpaper].
