@@ -20,7 +20,7 @@ Starting from the differential equations listed [here](https://farside.ph.utexas
 
 \fig{/assets/shock_setup.png}
 
-Here, $\rho_1$, $p_1$, ${\mathbf{V}_1$, and $\mathbf{B}_1$ are the downstream mass density, pressure, velocity, and magnetic field, respectively, whereas $\rho_2$, $p_2$, $\mathbf{V}_2$, and $\mathbf{B}_2$ are the corresponding upstream quantities.
+Here, $\rho_1$, $p_1$, $\mathbf{V}_1$, and $\mathbf{B}_1$ are the downstream mass density, pressure, velocity, and magnetic field, respectively, whereas $\rho_2$, $p_2$, $\mathbf{V}_2$, and $\mathbf{B}_2$ are the corresponding upstream quantities.
 
 The basic RH relations are listed in [MHD shocks](https://en.wikipedia.org/wiki/Shocks_and_discontinuities_(magnetohydrodynamics)).
 
