@@ -232,9 +232,11 @@ Parallel shocks are more special in that the magnetic field strength remains unc
 
 ## Location of Shock
 
-In the observation comparison paper [Slavin and Holzer, 1981](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/JA086iA13p11401), they concluded that the variations in shock stand-off distance and shape are ordered by the sonic Mach number and not other Mach numbers involve magnetic field. In other words, they think the bow shock is a gasdynamic structure.
+In the observation comparison paper [Slavin and Holzer, 1981](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/JA086iA13p11401) for quasi-perpendicular shocks, they concluded that the variations in shock stand-off distance and shape are ordered by the sonic Mach number and not other Mach numbers involve magnetic field. In other words, they think the bow shock is a gasdynamic structure.
 
 However, even in neutral fluid theory, the determination of shock location as well as shape is still a research problem. Imagine the simplest scenario where there is a static ball in the air with infinite mass. Assuming purely homogenous air with known density, velocity and pressure in the upstream, can you tell me the exact location of shock stand-off distance with pen and paper? 
+
+On top of that, the introduction of EM field complicates the story. Especially in the case of a parallel shock, the plasmas get "shocked" both upstream and downstream, and the stand-off distance of the shock may not be a single point theoretically. In some sense, normal magnetic field to the boundary "thickens" the shock front.
 
 ### Anisotropy in the solar wind
 
