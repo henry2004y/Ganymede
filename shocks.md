@@ -48,7 +48,7 @@ The categories are shown in the following table. We refer the changes of the dow
 
 [^bow]: The Earth's bow shock is a fast mode shock.
 
-### Parallel Shocks
+### Parallel Shock
 
 The first special case is the so-called parallel shock in which both the upstream and downstream plasma flows are parallel to the magnetic field, as well as perpendicular to the shock front.
 
@@ -66,7 +66,7 @@ After some derivations, it follows that the second law of thermodynamics require
 
 Note that $r\equiv \rho_2/\rho_1\rightarrow (\gamma+1)/(\gamma-1)$, whereas $R\equiv p_2/p_1\rightarrow\infty$, in the limit $M_1\rightarrow \infty$. In other words, as the shock strength increases, the compression ratio, $r$, asymptotes to a finite value, whereas the pressure ratio, $P$, increases without limit. For a conventional plasma with $\gamma=5/3$, the limiting value of the compression ratio is 4: i.e., the downstream density can never be more than four times the upstream density. We conclude that, in the strong shock limit, $M_1\gg 1$, the large jump in the plasma pressure across the shock front must be predominately a consequence of a large jump in the plasma _temperature_, rather than the plasma _density_.
 
-### Perpendicular Shocks
+### Perpendicular Shock
 
 The second special case is the so-called _perpendicular shock_ in which both the upstream and downstream plasma flows are perpendicular to the magnetic field, as well as the shock front.
 
@@ -80,7 +80,7 @@ Incidentally, it is easily demonstrated that if this is the case then the downst
 
 In the strong shock limit, $M_1\gg 1$, a strong perpendicular shock is very similar to a strong hydrodynamic shock (except that the former shock propagates perpendicular, whereas the latter shock propagates parallel, to the magnetic field). In particular, just like a hydrodynamic shock, a perpendicular shock cannot compress the density by more than a factor $(\gamma+1)/(\gamma-1)$. However, according to the RH jump conditions, a perpendicular shock compresses the magnetic field by the same factor that it compresses the plasma density. It follows that there is also an upper limit to the factor by which a perpendicular shock can compress the magnetic field. 
 
-### Oblique Shocks
+### Oblique Shock
 
 Let us now consider the general case in which the plasma velocities and the magnetic fields on each side of the shock are neither parallel nor perpendicular to the shock front. It is convenient to transform into the so-called de Hoffmann-Teller frame in which $|\mathbf{V}_1\times \mathbf{B}_1|=0$, or
 
@@ -244,7 +244,7 @@ However, even in neutral fluid theory, the determination of shock location as we
 
 On top of that, the introduction of EM field complicates the story. Especially in the case of a parallel shock, the plasmas get "shocked" both upstream and downstream, and the stand-off distance of the shock may not be a single point theoretically. In some sense, normal magnetic field to the boundary "thickens" the shock front.
 
-### Anisotropy in the solar wind
+## Anisotropy in the Solar Wind
 
 Observationally, Pioneer 6 showed that the ion temperature anisotropy in the solar wind at 1AU generally has $T_\parallel > T_\perp$[^pioneer6]. It may possibly be explained by the conservation of the 1st adiabatic invariant [Scarf+, 1967][Scarf1967][^oldpaper].
 
@@ -308,7 +308,7 @@ Here I list the mirror instability criterion as an additional relation to determ
 1 + \sum_{\textrm{species}} \beta_\perp \big( 1 - \frac{\beta_\perp}{\beta_\parallel} \big) < 0.   
 \]
 
-### Earth bow shock
+## Earth Bow Shock
 
 Using data from the AMPTE/IRM spacecraft, [Hill+ 1995][Hill1995] have shown that the double adiabatic equations
 do not hold in the magnetosheath. Moreover, the thermal behaviour of the magnetosheath is studied by [Phan+ 1996][Phan1996]
