@@ -10,11 +10,11 @@
 
 Consider a subsonic disturbance moving through a conventional neutral fluid. As is well-known, sound waves propagating ahead of the disturbance give advance warning of its arrival, and, thereby, allow the response of the fluid to be both smooth and adiabatic. Now, consider a supersonic disturbance. In this case, sound waves are unable to propagate ahead of the disturbance, and so there is no advance warning of its arrival, and, consequently, the fluid response is _sharp_ and _non-adiabatic_. This type of response is generally known as a _shock_. 
 
-In space, shock is a dissipative structure in which the kinetic and magnetic energy of a directed plasma flow is partly transferred to heating of the plasma. The dissipation does not take place, however, by means of particle collisions for a shock in space. Collisionless shocks can be divided into _super_- and _sub-critical_: the **critical fast Mach number** $M_A^\ast$ is defined by equating the normal component of the downstream flow velocity in the shock frame to the sound speed.[^critical_mach] Above the first critical Mach number, resistivity alone is unable to provide all the dissipation needed for the required _Rankine-Hugoniot_ shock jump. Supercritical shocks are important because they usually produce much greater ion heating than subcritical shocks. In contrast to sub-critical shocks, resistivity in super-critical shocks cannot provide all the necessary dissipation for a shock transition according to the _Rankine–Hugoniot_ relationships. Thus, other processes like wave-particle interactions provide the dissipation required for supercritical shock formation. This is the reason why they are able to accelerate particles to high energies.[^earth_bow_shock]
+In space, shock is a dissipative structure in which the kinetic and magnetic energy of a directed plasma flow is partly transferred to heating of the plasma. The dissipation does not take place, however, by means of particle collisions for a shock in space. Collisionless shocks can be divided into _super_- and _sub-critical_: the **critical fast Mach number** $M_A^\ast$ is defined by equating the normal component of the downstream flow velocity in the shock frame to the sound speed.[^criticalMA] Above the first critical Mach number, resistivity alone is unable to provide all the dissipation needed for the required _Rankine-Hugoniot_ shock jump. Supercritical shocks are important because they usually produce much greater ion heating than subcritical shocks. In contrast to sub-critical shocks, resistivity in super-critical shocks cannot provide all the necessary dissipation for a shock transition according to the _Rankine–Hugoniot_ relationships. Thus, other processes like wave-particle interactions provide the dissipation required for supercritical shock formation. This is the reason why they are able to accelerate particles to high energies.[^earthBowShock]
 
-[^critical_mach]: In aerodynamics, the critical Mach number $M^\ast$ of an aircraft is the _lowest_ Mach number at which the airflow over some point of the aircraft reaches the speed of sound, but does not exceed it.
+[^criticalMA]: In aerodynamics, the critical Mach number $M^\ast$ of an aircraft is the _lowest_ Mach number at which the airflow over some point of the aircraft reaches the speed of sound, but does not exceed it.
 
-[^earth_bow_shock]: Most of the time we have supercritical bow shock at Earth, i.e. the sound speed in the magnetosheath is larger than the bulk speed.
+[^earthBowShock]: Most of the time we have supercritical bow shock at Earth, i.e. the sound speed in the magnetosheath is larger than the bulk speed.
 
 Let us investigate shocks first in MHD fluids. Since information in such fluids is carried via three different waves -- namely, _fast_ or _compressional-Alfvén waves_, _intermediate_ or _shear-Alfvén waves_, and _slow_ or _magnetosonic waves_ -- we might expect MHD fluids to support three different types of shock, corresponding to disturbances traveling faster than each of the aforementioned waves.
 
@@ -42,7 +42,7 @@ The categories are shown in the following table. We refer the changes of the dow
 | Intermediate[^special] | Yes | continuous | $\pm$ | $\pm$  | rotation?  | $\pm$ |
 | Fast[^bow]    | Yes | + | - | + | $B_t$ + | + |
 
-[^pause]: The Earth's magnetopause is generally a tangential discontinuity.
+[^pause]: The Earth's magnetopause is generally a tangential discontinuity. When there is no flux rope been generated, the magnetopause can be treated as the surface of pressure balance between magnetic pressure, ram pressure and thermal pressure. However, when reconnection triggers flux rope generation, it may become a rotational discontinuity (TO BE CONFIRMED!).
 
 [^special]: A special case is called *rotational discontinuity*. All are isentropic. Their existence are still a matter of debate.
 
@@ -249,9 +249,9 @@ On top of that, the introduction of EM field complicates the story. Especially i
 Observationally, Pioneer 6 showed that the ion temperature anisotropy in the solar wind at 1AU generally has $T_\parallel > T_\perp$[^pioneer6]. It may possibly be explained by the conservation of the 1st adiabatic invariant [Scarf+, 1967][Scarf1967][^oldpaper].
 
 [^pioneer6]: There are 3 interesting discoveries from Pioneer 6 ARC plasma measurements:
-1. high fluctuations of flow velocity outside the solar ecliptic plane;
-2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$);
-3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
+   1. high fluctuations of flow velocity outside the solar ecliptic plane;
+   2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$);
+   3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
 
 [^oldpaper]: I love this old paper. The pioneers in our field did real physics.
 
