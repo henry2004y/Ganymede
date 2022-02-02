@@ -249,9 +249,9 @@ On top of that, the introduction of EM field complicates the story. Especially i
 Observationally, Pioneer 6 showed that the ion temperature anisotropy in the solar wind at 1AU generally has $T_\parallel > T_\perp$[^pioneer6]. It may possibly be explained by the conservation of the 1st adiabatic invariant [Scarf+, 1967][Scarf1967][^oldpaper].
 
 [^pioneer6]: There are 3 interesting discoveries from Pioneer 6 ARC plasma measurements:
-   1. high fluctuations of flow velocity outside the solar ecliptic plane;
-   2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$);
-   3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
+  1. high fluctuations of flow velocity outside the solar ecliptic plane;
+  2. anisotropic ion thermal distribution ($T_\parallel / T_\perp \sim [2,5]$);
+  3. presence of a 3rd species, helium, from charge-to-mass ratio analysis of the angular and energy distributions.
 
 [^oldpaper]: I love this old paper. The pioneers in our field did real physics.
 
