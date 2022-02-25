@@ -178,17 +178,16 @@ very similar to the isotropic case
 
 #### Mirror instability
 
-The slow magnetosonic mode "becomes"[^slow_mode] the mirror instability for anisotropies satisfying
+The slow magnetosonic mode "becomes" the mirror instability for anisotropies satisfying
 
 \[
 \frac{P_{0\perp}}{P_{0\parallel}} > 6 \Big( 1 + \frac{B_0^2}{2\mu_0 P_{0\perp}} \Big) = 6 \Big( 1 + \frac{P_B}{P_{0\perp}} \Big).
 \]
 
-The lowest threshold corresponds to wave-vectors **perpendicular** to the background magnetic field.[^question]
+The lowest threshold corresponds to wave-vectors **perpendicular** to the background magnetic field.
 
-[^question]: I must miss something. The slow mode cannot propagate in the perpendicular direction!
-
-[^slow_mode]: After reading [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] carefully, I think Schwartz falsely claimed this in his [review paper][Schwartz1997]. Under the CGL framework, even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
+There is an important difference between slow mode and mirror mode. [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] derived under the CGL framework that even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
+[Schwartz's 1997 review paper](Schwartz1997) did not make this point clear. And again keep in mind that even setting $P_\perp = P_\parallel$ we cannot recover isotropic MHD equations from CGL equations (See [Hunana+, 2019][Hunana2019])! 
 
 ### Mirror Mode
 
@@ -655,4 +654,5 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Regi2016]: https://doi.org/10.4401/ag-7067
 [Lee2014]: https://escholarship.org/uc/item/3dh4j07v
 [Lee2014b]: https://doi.org/10.1002/2014JA020469
+[Hunana2019]: https://arxiv.org/abs/1901.09354
 [Medeiros2020]: https://iopscience.iop.org/article/10.3847/1538-4365/ab9697
