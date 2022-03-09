@@ -229,7 +229,13 @@ y = 1 / x
 @show λ2
 ```
 
-which shows $\lambda_2 \simeq 3.19$. In Vlasiator 2D I get 15 in the equatorial plane with spatial resolution 300 km downstream near the shock, which is much larger than this.
+which shows $\lambda_2 \simeq 3.19$.
+ 
+In Vlasiator 2D southward IMF equatorial run I get 15 in a large area with spatial resolution 300 km downstream near the shock, which is much larger than this. I later realized that this indicates that the run is problematic, because the periodic condition in the out-of-plane z direction, which is also the parallel direction, prohibits any parallel heating. This in turn causes unphysical anisotropy values in the downstream region.
+
+In Vlasiator 2D southward IMF meridional run I get over 10 in a narraw region downstream of the shock, but for most part of the magnetosheath, the value is between 1 to 5, except the region near the magnetopause where again we have values over 10.
+
+Another thing to note is that, if you set the jump ratio to 4 in the above calculations, the downstream anisotropy will become 0.6. This indicates that under this set of upstream conditions, the jump ratio shall never be close to 4 if you want anisotropy value > 1!
 
 ### Parallel Shock
 
