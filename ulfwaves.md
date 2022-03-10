@@ -25,7 +25,11 @@ ULF waves were originally called micropulsations or magnetic pulsations since th
 
 [^1]: The Pc5 range originates from the Mariner 5 (1967) detection limitation to a Nyquist frequency of 1.67mHz, which corresponds to 600s. It roughly maps to $60^o\sim 70^o$ latitude on Earth's surface.
 
-With respect to polarization, ULF waves can be categorized into three modes: poloidal ($\Delta B_r,\, \Delta E_\phi$), compressional ($\Delta B_\parallel,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively.
+With respect to polarization, ULF waves can be categorized into three modes: compressional ($\Delta B_\parallel,\, \Delta E_\phi$), poloidal ($\Delta B_r,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively. Referring to the basic MHD theory, the compressional modes are fast modes, whereas the poloidal and toriodal modes are Alfvén modes. The perturbed EM fields are related by $\mathbf{B}_1 = \frac{\mathbf{k}}{\omega} \times \mathbf{E}_1$. A phase shift is allowed, and actually in real observations (e.g. THEMIS) it is rare that you can find B and E changing in-phase.
+
+\fig{/assets/Menk2013_Fig17_poloidal_toroidal.png}
+
+ULF waves have a large overlap with MHD waves for large spatial and temporal scales. However if scales get smaller, we need kinetic descriptions, e.g. for the proper description of mirror modes.
 
 2 types of origins:
 
@@ -50,7 +54,9 @@ Driver in the solar wind:
 
 * periodic compressional fluctuations --> magnetopause surface waves
 * Alfvénic fluctuations $\delta \mathbf{V}/ \mathbf{V}_A = \pm \delta \mathbf{B}/ \mathbf{B}_0$ direct excitation
-* fast stream --> KHI on the magnetopause --> surface mode/waveguide
+* fast stream --> KHI on the magnetopause --> surface mode/waveguide[^guide]
+
+[^guide]: "guide" here refers to the fact that these modes are field-aligned, i.e. guided by the magnetic field. These are MHD Alfvén waves.
 
 When the magnetopause can be described as a tangential discontinuity ($B_n = 0$), the MHD wave transmission is not efficient;
 when the magnetopause is a rotational discontinuity ($B_n\neq 0$), MHD wave transmission can occur over a wide range of incident angle and that the transmitted waves are usually amplified. The favored ULF wave range may lie within Pc5.
@@ -73,6 +79,8 @@ Within the magnetosphere, there are two possible mechanics:
 From observation, $T_\perp / T_\parallel > 5$ is practically treated as high anisotropies.
 
 strongly compressional, high azimuthal wave number m, attenuated on the ground.
+
+From the energy perspective, it is important to estimate how much energy FLRs deposit into the ionosphere, the energy dissipated into the ionosphere via Joule heating.
 
 ## Wave Generation and Propagation Mechanisms
 
@@ -112,9 +120,6 @@ This affects the _frequency_ and _polarization_ properties of the FLRs.
 The latter is important because wave-particle energy transfer involves the wave electric field component parallel to the drift velocity of particle, i.e. the azimuthal field (poloidal mode) in a dipolar magnetic field.
 
 The Poynting flux is field aligned and away from the equatorial plane. These waves likely arise from incoming compressional mode
-waves coupling to guided Alfvén waves on the last closed field lines, exciting FLRs at lower latitudes.
-
-Estimation on how much energy does a FLR deposit into the ionosphere, the energy dissipated into the ionosphere via Joule heating
 
 Simply speaking, the nice math derivations does not work for nonideal magnetic field setup. Observers are clueless in knowing what is really going on.
 
@@ -123,10 +128,11 @@ The MHD wave equations that describe the coupling between the fast compressional
 Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.[^heating] This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
 Slow modes may also be present within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
+These instabilities, if exist, allow energy transfer from the plasma to the electromagnetic field and creates the waves via reducing the temperature anisotropy and creating magnetic field oscillations for the mirror instability. So in a sense the instability initiates the waves, and the waves are these oscillations once they are "established" in the plasma.
 
-[^heating]: Yuxi provides me with a nice starting point to think about this. The 1st adiabatic invariant, i.e. magnetic moment $\mu_m = \frac{1}{2}m v_\perp^2 / B$ is almost conserved if the gyromotion is not violated. Across the quasi-perpendicular shock, the strength of the magnetic field increases, so the perpendicular thermal velocities must increase to maintain the magnetic moment. Therefore the perpendicular direction is preferentially heated downstream of the shock. For example, if the B field is increased by a factor of 2, then the ion perpendicular thermal velocity should increase by a factor of $\sqrt{2}$, and the ion perpendicular pressure should also increase by a factor of 2? In my 2D equatorial run with $Bz=-5$ nT, at downstream $Bz=-15$ nT, but the pressure anisotropy ($P_\perp / P_\parallel$) reaches ~20. Why is that?
+[^heating]: Yuxi provides me with a nice starting point to think about this. The 1st adiabatic invariant, i.e. magnetic moment $\mu_m = \frac{1}{2}m v_\perp^2 / B$ is almost conserved if the gyromotion is not violated. Across the quasi-perpendicular shock, the strength of the magnetic field increases, so the perpendicular thermal velocities must increase to maintain the magnetic moment. Therefore the perpendicular direction is preferentially heated downstream of the shock. For example, if the B field is increased by a factor of 2, then the ion perpendicular thermal velocity should increase by a factor of $\sqrt{2}$, and the ion perpendicular pressure should also increase by a factor of 2? Never or less, keep in mind that in CGL theory we need at least 1 quantity from downstream besides the full upstream information to determine the downstream anisotropy (see more in the shock note).
 
-All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes.
+All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes. For example, in the nonuniform case the ULF waves can couple.
 
 Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuations in density, bulk velocity, and magnetic field over a broad range of frequencies.
 
