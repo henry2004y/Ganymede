@@ -166,6 +166,30 @@ and it travels at the bulk velocity.
 
 Chew, Goldberger, and Low ([CGL][CGL1956]) theory
 
+In CGL theory, we obtain the relationship between density and magnetic field fluctuations
+
+\[
+\frac{\delta n}{n} = \Big( \frac{P_\perp \sin^2\theta}{n m_p} \Big)^{-1}\Big[ \frac{\omega^2}{k^2} - \frac{B^2}{\mu_0 n m_p} - \frac{P_\perp}{n m_p} + \frac{P_\parallel \cos^2\theta}{n m_p} \Big] \frac{\delta B}{B},
+\]
+
+where $m_p$ is the proton mass, $\theta$ is the angle between the wave vector $\mathbf{k}$ and the magnetic field, and $P_\perp$, $P_\parallel$ are the perpendicular and parallel thermal pressures.
+
+This a general relationship between the density and magnetic fluctuations for the slow and fast modes. It can be shown that the fast mode always gives positively correlated δn and δB. The firehose instability arising from this mode will also induce in-phase density and magnetic field fluctuations, at least in its linear stage. The intermediate mode with a dispersion relation
+
+\[
+\frac{\omega^2}{k^2} = v_A^2 \Big( \frac{P_\perp - P_\parallel}{B^2/\mu_0} + 1 \Big) \cos^2\theta
+\]
+
+is not involved with the perturbations so that δn = δB = 0 across this mode as in the ordinary MHD theory. Here $v_A$ denotes the Alfvén speed.
+
+If we take $\theta \sim 90^o$, the general relation can be simplified to
+
+\[
+\frac{\delta n}{n} = -\Big( 1 + \frac{2}{\beta_\perp} \Big) \frac{\delta B}{B}
+\]
+
+for the slow mode. Don't mess this up with the slow wave in isotropic MHD, where it cannot propagate in the perpendicular direction!
+
 #### Firehose instability
 
 The Alfvén wave remains transverse but becomes the firehose instability for $P_{0\parallel} > P_{0\perp} + B_O^2/\mu_0$.
@@ -200,7 +224,15 @@ In 1969, Akira Hasegawa extend the kinetic theory to a nonuniform medium which t
 The mirror mode is unusual in that it has zero frequency in the plasma rest frame.[^mirror_prop]
 Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
 
-[^mirror_prop]: Does this mean that the mirror mode cannot propagate?
+[^mirror_prop]: This is true assuming a homogenous plasma neglecting finite Larmor radius (FLR) effect. If we consider FLR, there is a *drift* mirror instability, which leads to the $r^2_L \nabla^2$ term in the drift velocity. The Larmor radius is much larger for ions than for electrons, so the drift will create charge separation and electric fields. If we consider inhomogeneity, this is also no longer true.
+
+Mirror mode instabilities described by the kinetic theory produce anticorrelated density and magnetic field fluctuations following
+
+\[
+\frac{\delta n}{n} = -\big( \frac{T_\perp}{T_\parallel} - 1 \big)\frac{\delta B}{B} 
+\]
+
+for a bi-Maxwellian plasma, where δn and δB are perturbations in the background plasma density n and magnetic field strength B.
 
 Interestingly, the mirror mode is unstable in kinetic theory for temperature anisotropies satisfying
 
@@ -217,10 +249,6 @@ In 1993, David Southwood and Margeret Kivelson accounted the source of the aniso
 This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
 
 Important question: to what extent of model do I need to describe mirror mode?
-
-*Drift*[^drift] mirror instability
-
-[^drift]: Drift indicates finite Larmor radius effect, which leads to the $r^2_L \nabla^2$ term in the drift velocity. The Larmor radius is much larger for ions than for electrons, so the drift will create charge separation and electric fields.
 
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
@@ -550,6 +578,10 @@ However, always keep in mind that the most reliable way of identifying waves is 
 Singular Value Decomposition (SVD): [Lee & Angelopoulos][Lee2014b]
 
 hodogram of field components
+
+### Wave vector direction
+
+The direction of the wave vector can be estimated using MVA on the measured magnetic field. For plane waves, the propagation vector lies along the minimum variance direction.
 
 ### Mean field aligned coordinates
 
