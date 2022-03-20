@@ -91,6 +91,42 @@ Opinion:
 Alfvénic waves propagating along the magnetopause surface may develop into standing Alfvén waves on the boundary due to reflection from the conjugate ionospheres (i.e. Kruskal-Schwarzschild modes). The surface waves are likely due to magnetopause displacements as a result of local pressure perturbations in the magnetosheath, while the eigenfrequencies of the standing modes are determined by the magnetopause geometry and are strikingly similar to the Samson "magic" frequencies.
 This combination of conditions suggests that the oscillations are more likely due to Kruskal-Schwarzshild modes than solar wind pressure perturbations or the KHI at the flanks.
 
+#### Pressure Variation
+
+1. Solar wind dynamic pressure pulses identified by
+
+  * depressed magnetic field strength;
+  * enhanced plasma density;
+  * compressed magnetosphere;
+  * enhanced magnetic field strength observed by "static" satellites.
+
+[Southwood and Kivelson][SouthwoodKivelson1990] has described the basic picture of pressure viriations pretty well:
+< The magnetosphere is not rigid; the plasma motions due to compression are not necessarily in phase. If a change in external pressure takes place on a time scale shorter than the time taken by a MHD wave to travel through the magnetospheric cavity (~ 10 min), the magnetopause acts as a source of a compressional MHD signal that propagates through the system. As well as communicating the new equilibrium conditions, the signal can excite transient responses, for example normal modes.
+The magnetosphere as a whole can ring (a global compressional mode response) or ringing may be confined to certain selected shells (field resonance). Even where the global mode is not excited there is still a response away from the resonant shell. In this case the response will more directly reflect the form of the applied pressure changes as the signal will not be contaminated by the presence of an oscillatory transient associated with a normal mode response.
+
+There is also an ionospheric response, but I don't know the details.
+
+The typical pressure perturbation, be it periodic or an impulsive or stepwise change, will exhibit some structure, e.g., a front or a series of phase fronts that moves systematically away from the Sun. The schematic figure shows a series of pictures illustrating the motion of an isolated pressure pulse over the magnetopause. A ridge moves over the magnetopause away from the 
+subsolar point. In the sketch there is a single front within which the magnetopause moves in and out producing a compressional change of limited extent. As the compression sweeps around the magnetopause the pressure perturbation imposed on the magnetosphere has both a characteristic spatial scale size, L, and time, T, linked by the relation
+
+\[
+T \approx L / U
+\]
+
+where U is the speed along the boundary. We must allow for a spatial structure that is imposed by the perturbation and it is also clear that the motion of the perturbation is both along and across the magnetic field. As mentioned later in the paper, the scale length perpendicular to the field is of some significance in determining the type of magnetospheric response. We shall parametrize the variation imposed at the boundary by assuming that a given perturbation may be made up of a collection (potentially infinite) of spatial Fourier components and we shall describe the response to a specific Fourier component. In a similar spirit we shall use Laplace transforms to describe the temporal structure of the perturbation. However, we shall need to switch from frequency domain to time domain as we outline the types of system response and so we shall have to treat the variation more rigorously in time than in space.
+
+\fig{/assets/magnetopause_pressure_pulse.png}
+
+One possible physical process is that the pressure pulses first strike the magnetopause and then launched sunward moving boundary waves on the magnetopause.
+
+2. Pressure pulses can also be generated in the foreshock region as a result of the instability due to ions backstreaming from the shock.
+
+  * The density perturbations in this case often have a positive correlation with magnetic fields.
+
+The impact of pressure pulses on the magnetopause is known to be related to traveling convection vortices, flux transfer events,and auroral activities.
+
+
+
 ### Internal Drivers
 
 Within the magnetosphere, there are two possible mechanics:
@@ -350,7 +386,14 @@ In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavi
 
 #### 1D FLR Theory
 
-[Southwood, 1974][Southwood1974] proposed an elegant 1D box model for field line resonance. Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point. Now assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén frequency as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$. From the linearized MHD equations, what we end up with is a 2nd order differential equation
+[Southwood, 1974][Southwood1974] proposed an elegant 1D box model for field line resonance and later extended the model for various cases (e.g. [Southwood & Kivelson, 1990][SouthwoodKivelson1990]). Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point.
+This is shown in the schematic figures below.
+
+\fig{/assets/box_model_mapping.png}
+
+\fig{/assets/box_model_config.png}
+
+First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén frequency as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$. From the linearized MHD equations, what we end up with is a 2nd order differential equation
 
 \[
 \frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
@@ -362,6 +405,36 @@ Several observations from this equation:
 2. Turning point at $\frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 = 0$: effectively $k_x = 0$ (???)
 
 Later simulations confirm the coupling between fast and Alfvén mode based on this model. The initial energy injection through fast mode can be converted to Alfvén mode energy and lead to energy density increase at certain locations with certain frequencies.
+
+Secondly, Consider, therefore, a cold plasma contained in a volume of sides a, b, c, in which the density $\rho$ and the field $B \mathbf{e}_z$ are uniform. We are interested in the response of this system to a pressure variation of the form
+
+\[
+\exp (ik_y y + ik_z z) p(t)
+\]
+
+imposed at the boundary, x = a. As pressure balance is maintained across the boundary, there will be a magnetic compression in the cold plasma inside the boundary with a corresponding field perturbation $b_z(t)$ at x = a.
+
+Inside the plasma cavity the compressional field perturbation can be written
+
+\[
+b_z(x, t) \exp(ik_y y + ik_z z)
+\]
+
+where $k_y$ and $k_z$ are arbitrary. The perturbation, bz(x,t), obeys the MHD equations
+
+...
+
+Possible solutions (essentially analytical form of $b_z$ perturbation):
+
+1. compression and motion directly in phase with the boundary perturbation
+2. compression and motion in antiphase with the boundary perturbation
+3. transverse oscillations (Alfvén mode)
+4. cavity modes of the fast MHD mode
+5. some combination of the above.
+
+What occurs in any given situation depends on the frequency spectrum of the source.
+
+More details shall be found in [Southwood & Kivelson, 1990][SouthwoodKivelson1990].
 
 #### Limitations of Current FLR theory
 
@@ -384,23 +457,6 @@ Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuati
 #### Alfvénic
 
 #### Rotational Discontinuity
-
-#### Pressure Variation
-
-1. Solar wind dynamic pressure pulses identified by
-
-  * depressed magnetic field strength;
-  * enhanced plasma density;
-  * compressed magnetosphere;
-  * enhanced magnetic field strength observed by "static" satellites.
-
-One possible physical process is that the pressure pulses first strike the magnetopause and then launched sunward moving boundary waves on the magnetopause.
-
-2. Pressure pulses can also be generated in the foreshock region as a result of the instability due to ions backstreaming from the shock.
-
-  * The density perturbations in this case often have a positive correlation with magnetic fields.
-
-The impact of pressure pulses on the magnetopause is known to be related to traveling convection vortices, flux transfer events,and auroral activities.
 
 ## Simulations
 
