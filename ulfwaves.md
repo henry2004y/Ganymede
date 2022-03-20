@@ -36,6 +36,36 @@ ULF waves have a large overlap with MHD waves for large spatial and temporal sca
 1. discrete magic frequencies
 Field line resonance (FLR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines (i.e closed field lines whose foot points lie in the ionosphere), are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz.
 
+### Mode Identification
+
+Given a background plasma state, a wave mode is a normal mode or eigenstate of the system.
+The eigen-value is usually taken to be the (complex) wave frequency $\omega$, with the real wave-vector $\mathbf{k}$ prescribed.
+The associated eigenvector is the set of fluctuating fields ($\delta\mathbf{E},\delta\mathbf{B}$) and plasma parameters ($\delta \rho, \delta\mathbf{u}, \delta P$ in the case of MHD or $\delta f_j(\mathb f{v})$ for kinetic waves where j stands for each species).
+Mode identification is the process of comparing the observed eigenvalue/eigenvector with the possible theoretical ones and finding the one which matches.
+
+The practical implementation of mode identification is strewn with pitfalls and complications, including:
+
+* There is usually a mixture, possibly phase-coherent, of modes and/or frequencies, rather than an isolated mode.
+* Frequencies are often Doppler shifted by an unknown, or poorly known, amount.
+* Wave vectors are difficult to determine from the one-(or few-) point measurements available from spacecraft.
+* The mode eigenstate can depend sensitively on the wave vector, plasma $\beta$, and temperature anisotropy, as well as on the contributions of multi-species or non-Maxwellian kinetic features.
+* The temporal resolution and accuracy of some measurements, notably those related to particle populations and plasma moments, are often insufficient or marginal. Some important species or sub-population may not be measured at all. The result is that either or both the background state or fluctuations are not accurately known.
+* Wave amplitudes are often large (of order unity), implying nonlinear processes may be present and distort the eigenstate from its linear form, or give rise to intrinsically nonlinear eigenstates.
+* Similarly, inhomogeneities can distort the wave propagation or eigenstate in ways which have largely been unexplored.
+* As we have seen, the theoretical wave properties depend on the framework in which the theory is performed. There is a trade-off between the simplicity/dubious applicability of MHD or fluid treatments and the complexity associated with the infinite degrees of freedom of kinetic theory.
+
+Our ultimate goal, is to build a tool for identifying wave modes automatically. Steven has already envisioned two types of models (decision tree, N-dimensional distance sampling) in 1996. 20 years later, people would find it more appealing to use machine learning.
+
+[Medeiros+ 2020][Medeiros2020] introduces a machine learning model for recognizing EMICWs from spectrograms. First she introduces the traditional approach of EMICW identification in near-Earth space via Fourier analyses of locally measured magnetic field data:
+
+1. The Fourier power spectral density (PSD) in units of ${nT}^2 Hz^{−1}$ (B field) is plotted in a frequency-versus-time graph, yielding the so-called spectrogram.[^field_comp]
+2. Eye inspection of the wave packets' magnetic field amplitude, which in turn translates to (usually) localized, in both time and frequency, enhancements of PSDs relative to background values.
+3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
+
+[^field_comp]: I think E field is also viable, as seen from THEMIS output.
+
+When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
+
 ## Drivers
 
 ### External Drivers
@@ -82,24 +112,6 @@ David Southwood, Margy Kivelson, and Steven Schwartz have done a lot in this fie
 
 Quote from Steven Schwartz's paper:
 > For most aspects of space plasmas, and certainly for the waves observed in the magnetosheath, fluid-based descriptions of any kind are inadequate, particularly under the $\beta > 1$ conditions found there. And we have not yet considered complications due to inhomogeneity and nonlinearity!
-
-Given a background plasma state, a wave mode is a normal mode or eigenstate of the system.
-The eigen-value is usually taken to be the (complex) wave frequency $\omega$, with the real wave-vector $\mathbf{k}$ prescribed.
-The associated eigenvector is the set of fluctuating fields ($\delta\mathbf{E},\delta\mathbf{B}$) and plasma parameters ($\delta \rho, \delta\mathbf{u}, \delta P$ in the case of MHD or $\delta f_j(\mathb f{v})$ for kinetic waves where j stands for each species).
-Mode identification is the process of comparing the observed eigenvalue/eigenvector with the possible theoretical ones and finding the one which matches.
-
-The practical implementation of mode identification is strewn with pitfalls and complications, including:
-
-* There is usually a mixture, possibly phase-coherent, of modes and/or frequencies, rather than an isolated mode.
-* Frequencies are often Doppler shifted by an unknown, or poorly known, amount.
-* Wave vectors are difficult to determine from the one-(or few-) point measurements available from spacecraft.
-* The mode eigenstate can depend sensitively on the wave vector, plasma $\beta$, and temperature anisotropy, as well as on the contributions of multi-species or non-Maxwellian kinetic features.
-* The temporal resolution and accuracy of some measurements, notably those related to particle populations and plasma moments, are often insufficient or marginal. Some important species or sub-population may not be measured at all. The result is that either or both the background state or fluctuations are not accurately known.
-* Wave amplitudes are often large (of order unity), implying nonlinear processes may be present and distort the eigenstate from its linear form, or give rise to intrinsically nonlinear eigenstates.
-* Similarly, inhomogeneities can distort the wave propagation or eigenstate in ways which have largely been unexplored.
-* As we have seen, the theoretical wave properties depend on the framework in which the theory is performed. There is a trade-off between the simplicity/dubious applicability of MHD or fluid treatments and the complexity associated with the infinite degrees of freedom of kinetic theory.
-
-Our ultimate goal, is to build a tool for identifying wave modes automatically. Steven has already envisioned two types of models (decision tree, N-dimensional distance sampling) in 1996. 20 years later, people would find it more appealing to use machine learning.
 
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
 
@@ -191,25 +203,40 @@ The slow magnetosonic mode "becomes" the mirror instability for anisotropies sat
 The lowest threshold corresponds to wave-vectors **perpendicular** to the background magnetic field.
 
 There is an important difference between slow mode and mirror mode. [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] derived under the CGL framework that even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
-[Schwartz's 1997 review paper][Schwartz1997] did not make this point clear. And again keep in mind that even setting $P_\perp = P_\parallel$ we cannot recover isotropic MHD equations from CGL equations (See [Hunana+, 2019][Hunana2019])! 
+[Schwartz's 1997 review paper][Schwartz1997] did not make this point clear. And again keep in mind that even setting $P_\perp = P_\parallel$ we cannot recover isotropic MHD equations from CGL equations (See [Hunana+, 2019][Hunana2019])!
 
 ### Mirror Mode
 
-Back to the 1960s, people found a new type of instability when conducting experiments on ohmic heating of a plasma by means of a current directed along an intense magnetic field. This instability cannot be explained by ideal MHD, and [Rudakov & Sagdeyev][Rudakov1961] explained its physics in a paper written in Russian.
+#### History
 
-In 1967, Masayoshi Tajiri derived a kinetic description of the mirror mode when considering the propagation of linear hydromagnetic waves in a collisionless plasma under homogeneous background. The key difference when compared against the CGL fluid approach is that is mirror mode is shown to be an **non-oscillating** mode with vanishing real part of the frequency. Under proper conditions, the non-oscillating wave causes the mirror instability in the direction nearly **perpendicular** to a magnetic field.
+Back to the 1960s, people found a new type of instability when conducting experiments on ohmic heating of a plasma by means of a current directed along an intense magnetic field. It was early recognized that this mode for being excited require a transverse pressure (or temperature) anisotropy.[^anisotropy_source] Realizing that this cannot be explained by MHD theory, [Rudakov & Sagdeyev][Rudakov1961] explained its physics using kinetic approach in a paper written in Russian.
 
-In 1969, Akira Hasegawa extend the kinetic theory to a nonuniform medium which takes magnetic field gradient and finite-Larmor-radius effect into account.
+[^anisotropy_source]:  In 1993, David Southwood and Margeret Kivelson accounted the source of the anisotropy to the planetary bow shock, but there were no further information.
 
-The mirror mode is unusual in that it has zero frequency in the plasma rest frame.[^mirror_prop]
-Since it originates from slow mode, the density and magnetic field fluctuations are in strict anti-phase.
+This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
 
-[^mirror_prop]: This is true assuming a homogenous plasma neglecting finite Larmor radius (FLR) effect. If we consider FLR, there is a *drift* mirror instability, which leads to the $r^2_L \nabla^2$ term in the drift velocity. The Larmor radius is much larger for ions than for electrons, so the drift will create charge separation and electric fields. If we consider inhomogeneity, this is also no longer true.
+In 1967, Masayoshi Tajiri derived a kinetic description of the mirror mode when considering the propagation of linear (i.e.  small amplitude) MHD waves in a collisionless plasma under homogeneous background. The key difference when compared against the CGL fluid approach is that is mirror mode is shown to be an **non-oscillating** mode with vanishing real part of the frequency, which means that it has zero frequency in the plasma rest frame. Under proper conditions, the non-oscillating wave causes the mirror instability in the direction nearly **perpendicular** to a magnetic field.
+
+In 1969, Akira Hasegawa extend the kinetic theory to a nonuniform medium which takes magnetic field gradient and finite-Larmor-radius effect into account. If we consider finite Larmor radius (FLR) effect, then the mirror mode becomes a *drift* mirror instability, which leads to the $r^2_L \nabla^2$ term in the drift velocity. The Larmor radius is much larger for ions than for electrons, so the drift will create charge separation and electric fields. If we consider inhomogeneity, the non-propagation is also no longer true.
+
+Since the magnetic field in mirror modes forms extended though slightly oblique magnetic bottles, low parallel energy particles can be trapped in mirror modes and redistribute energy. Such trapped electrons excite banded whistler wave emission known under the name of lion roars and indicating that the mirror modes contain a trapped particle component while leading to the splitting of particle distributions into trapped and passing particles. The most amazing fact about mirror modes is, however, that they evolve in the practically fully collisionless regime of high temperature plasma where it is on thermodynamic reasons entirely impossible to expel any magnetic field from the plasma.[^question] The fact that magnetic fields are indeed locally extracted makes mirror modes similar to “superconducting” structures in matter as known only at extremely low temperatures. Of course, microscopic quantum effects do not play a role in mirror modes. However, it seems that all mirror structures have typical scales of the order of the ion inertial length which implies that mirrors evolve in a regime where the transverse ion and electron motions decouple. In this case the Hall kinetics comes into play.
+
+[^question]: how should I interpret this sentence? Mirror modes cause some structuring of the plasma thus generating a state of lower entropy than the initial state. Moreover, the plasma is ideally conducting which implies that plasma and magnetic field are frozen and cannot be separated from each other. One therefore has to find a mechanism which distorts both the frozen-in state and leads to lower entropy without violating the second theromodynamics law, in other words, the lower entropy state has to be a state of reduced free energy.
+
+#### Ambiguity about mirror modes
+
+Mirror mode oscillation is the lowest frequency **perpendicular** magnetic excitation in magnetized plasma.
+In principle mirror modes are some version of slow mode waves, i.e. the density and magnetic field fluctuations are in strict anti-phase. Fluid theory, however, does not give a correct physical picture of the mirror mode. As the lowest frequency mode it can be expected that mirror modes serve as one of the dominant energy inputs into plasma. This is however true only when the mode grows to large amplitude leaving the linear stage.[Treumann+, 2004][Treumann2004]
+
+At such low frequencies, on the other hand, quasilinear theory does not apply as a valid saturation mechanism. Probably the dominant processes are related to the generation of gradients in the plasma which serve as the cause of drift modes thus transferring energy to shorter wavelength propagating waves of higher nonzero frequency.
+This kind of theory has not yet been developed as it has not yet been understood why mirror modes in spite of their slow growth rate usually are of very large amplitudes indeed of the order of $|B/B_0|^2\sim O(1)$.
+
+#### Properties
 
 Mirror mode instabilities described by the kinetic theory produce anticorrelated density and magnetic field fluctuations following
 
 \[
-\frac{\delta n}{n} = -\big( \frac{T_\perp}{T_\parallel} - 1 \big)\frac{\delta B}{B} 
+\frac{\delta n}{n} = -\big( \frac{T_\perp}{T_\parallel} - 1 \big)\frac{\delta B}{B}
 \]
 
 for a bi-Maxwellian plasma, where δn and δB are perturbations in the background plasma density n and magnetic field strength B.
@@ -224,11 +251,7 @@ which is similar to that found in mixed kinetic-fluid treatments, and disagrees 
 
 As this threshold is reached, the first unstable mode has a wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}$'s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
 
-In 1993, David Southwood and Margeret Kivelson accounted the source of the anisotropy to the planetary bow shock, but there were no further information.
-
-This instability has generally been called mirror instability because a loss cone distribution inherently creates such an anisotropic pressure. It is actually not quite relevant in the mirror fusion machine because it has never become a high-β machine. For a complete theoretical derivation, I must read the [classical Hasegawa paper][HASEGAWA1969].
-
-Important question: to what extent of model do I need to describe mirror mode?
+From one AMPTE IRM observation in the magnetosheath ([Treumann+, 2004][Treumann2004]) , I see a periodic oscillation of ~20 s in the magnetic field.
 
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
@@ -245,8 +268,7 @@ The waves are generally believed to be generated in the equatorial magnetosphere
 * ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms
 * during compressions of the day-side magnetopause (??? Thorne 2013)
 
-At Earth, EMICWs are typically observed in Pc1 and Pc2 range.
-The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
+At Earth, EMICWs are typically observed in Pc1 and Pc2 range. In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz. The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about 11◦, with minimal reflection at the ionosphere.
 
 The preferential region of occurrence of EMIC waves is known to be the afternoon magnetic local time (MLT) sector from ∼12:00 to ∼18:00 MLT in the region near the plasmapause and the plasmaspheric plume.
@@ -276,16 +298,6 @@ direction larger.
 简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后
 
 particle scattering and trapping by waves. Hmm, I'm not familiar with these at all.
-
-In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
-
-[Medeiros+ 2020][Medeiros2020] introduces a machine learning model for recognizing EMICWs from spectrograms. First she introduces the traditional approach of EMICW identification in near-Earth space via Fourier analyses of locally measured magnetic field data:
-
-1. The Fourier power spectral density (PSD) in units of ${nT}^2 Hz^{−1}$ is plotted in a frequency-versus-time graph, yielding the so-called spectrogram.
-2. Eye inspection of the wave packets' magnetic field amplitude, which in turn translates to (usually) localized, in both time and frequency, enhancements of PSDs relative to background values.
-3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
-
-When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
 
 我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。EMIC波主要平行于背景磁场方向传播，所以最常见的确认方法是看波的横截面中的磁场扰动周期。在老仪器中我猜测量磁场的磁强计比较靠谱，而测量电场的设备误差很大，所以以前的观测主要通过磁场扰动来确认。但像THEMIS以后电场的测量精度也上来了，所以也可以通过看电场扰动来确认。毕竟是电磁波，理论上无论是啥偏振，扰动的频谱都应该是一致的。
 
@@ -350,10 +362,7 @@ Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuati
 
 #### Alfvénic
 
-
-
 #### Rotational Discontinuity
-
 
 #### Pressure Variation
 
@@ -690,6 +699,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
+[Treumann2004]: https://npg.copernicus.org/articles/11/647/2004/npg-11-647-2004.pdf
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
 [Claudepierre2009]: https://doi.org/10.1029/2009GL039045
 [Claudepierre2010]: https://doi.org/10.1029/2010JA015399
