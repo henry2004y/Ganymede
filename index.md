@@ -13,7 +13,6 @@
 * [ULF Waves](/ulfwaves)
 * [Shocks](/shocks)
 
-
 ## Introduction
 
 This is my note on research about our progress of simulating Ganymede and beyond with physical models.
