@@ -8,7 +8,9 @@
 
 \toc
 
-Ultra-low frequency (ULF) wave, $f \in [0.001, 10]$ Hz, inside MHD regime, easily detected.
+Ultra-low frequency (ULF) waves refer to waves within frequency range [0.001, 10] Hz. The name does not tell us anything about their physical origin, but simply observational fact. At Earth's magnetosphere, this frequency range overlaps largely with the MHD waves. This is the reason why early pioneers in space physics relied on MHD theory to explain the physics behind these waves, albeit some deviations and deficiencies which require more refined models such as the Vlasov description.
+
+## Observation
 
 ULF waves were originally called micropulsations or magnetic pulsations since they were first observed by ground magnetometers. ULF pulsations are classified into two types: *pulsations continuous (Pc)* and *pulsations irregular (Pi)* with several subclasses (Pc1–5 and Pi1–2) according to their frequencies and durations.[^1]
 
@@ -31,32 +33,20 @@ With respect to polarization, field line resonant ULF waves can be categorized i
 
 ULF waves have a large overlap with MHD waves for large spatial and temporal scales. However if scales get smaller, we need kinetic descriptions, e.g. for the proper description of mirror modes.
 
-2 types of origins:
-
-* from the solar wind
-* within the magnetosphere
-
-Hypothesis:
-Near radial (?) IMF conditions -->
-Alfvén/ion cyclotron and mirror modes in the magnetosheath --> 
-Magnetospheric ULF waves: propagate without significant change to their spectrum
-
-Electron and ion foreshocks are where ULF waves are generated.
-
-Changing parameters:
-
-* wind speed
-* cone angle(?)
+1. discrete magic frequencies
+Field line resonance (FLR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines (i.e closed field lines whose foot points lie in the ionosphere), are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz.
 
 ## Drivers
 
-Driver in the solar wind: 
+### External Drivers
 
 * periodic compressional fluctuations --> magnetopause surface waves
 * Alfvénic fluctuations $\delta \mathbf{V}/ \mathbf{V}_A = \pm \delta \mathbf{B}/ \mathbf{B}_0$ direct excitation
 * fast stream --> KHI on the magnetopause --> surface mode/waveguide[^guide]
 
 [^guide]: "guide" here refers to the fact that these modes are field-aligned, i.e. guided by the magnetic field. These are MHD Alfvén waves.
+
+Electron and ion foreshocks are one typical ULF wave generation mechanism.
 
 When the magnetopause can be described as a tangential discontinuity ($B_n = 0$), the MHD wave transmission is not efficient;
 when the magnetopause is a rotational discontinuity ($B_n\neq 0$), MHD wave transmission can occur over a wide range of incident angle and that the transmitted waves are usually amplified. The favored ULF wave range may lie within Pc5.
@@ -70,6 +60,8 @@ This may explain the production of discrete frequency ULF waves in the magnetosp
 Opinion:
 Alfvénic waves propagating along the magnetopause surface may develop into standing Alfvén waves on the boundary due to reflection from the conjugate ionospheres (i.e. Kruskal-Schwarzschild modes). The surface waves are likely due to magnetopause displacements as a result of local pressure perturbations in the magnetosheath, while the eigenfrequencies of the standing modes are determined by the magnetopause geometry and are strikingly similar to the Samson "magic" frequencies.
 This combination of conditions suggests that the oscillations are more likely due to Kruskal-Schwarzshild modes than solar wind pressure perturbations or the KHI at the flanks.
+
+### Internal Drivers
 
 Within the magnetosphere, there are two possible mechanics:
 
@@ -111,45 +103,12 @@ Our ultimate goal, is to build a tool for identifying wave modes automatically. 
 
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
 
-global eigenoscillations of the magnetosphere or the plasmasphere
-
 Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.[^heating] This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
 Slow modes may also be present within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
 These instabilities, if exist, allow energy transfer from the plasma to the electromagnetic field and creates the waves via reducing the temperature anisotropy and creating magnetic field oscillations for the mirror instability. So in a sense the instability initiates the waves, and the waves are these oscillations once they are "established" in the plasma.
 
 [^heating]: Yuxi provides me with a nice starting point to think about this. The 1st adiabatic invariant, i.e. magnetic moment $\mu_m = \frac{1}{2}m v_\perp^2 / B$ is almost conserved if the gyromotion is not violated. Across the quasi-perpendicular shock, the strength of the magnetic field increases, so the perpendicular thermal velocities must increase to maintain the magnetic moment. Therefore the perpendicular direction is preferentially heated downstream of the shock. For example, if the B field is increased by a factor of 2, then the ion perpendicular thermal velocity should increase by a factor of $\sqrt{2}$, and the ion perpendicular pressure should also increase by a factor of 2? Never or less, keep in mind that in CGL theory we need at least 1 quantity from downstream besides the full upstream information to determine the downstream anisotropy (see more in the shock note).
-
-### 1D FLR Theory
-
-[Southwood, 1974][Southwood1974] proposed an elegant 1D box model for field line resonance. Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point. Now assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén frequency as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$. From the linearized MHD equations, what we end up with is a 2nd order differential equation
-
-\[
-\frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
-\]
-
-Several observations from this equation:
-
-1. Singular point at $\omega = \omega_A$: Alfvén resonance.
-2. Turning point at $\frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 = 0$: effectively $k_x = 0$ (???)
-
-Later simulations confirm the coupling between fast and Alfvén mode based on this model. The initial energy injection through fast mode can be converted to Alfvén mode energy and lead to energy density increase at certain locations with certain frequencies.
-
-### Limitations of Current FLR theory
-
-The mathematical description of field line resonance (FLR) often assume a simple dipole magnetic field which is not appropriate to high latitudes where field lines experience significant temporal distortion.
-This affects the _frequency_ and _polarization_ properties of the FLRs.
-The latter is important because wave-particle energy transfer involves the wave electric field component parallel to the drift velocity of particle, i.e. the azimuthal field (poloidal mode) in a dipolar magnetic field.
-
-The Poynting flux is field aligned and away from the equatorial plane. These waves likely arise from incoming compressional mode
-
-Simply speaking, the nice math derivations does not work for nonideal magnetic field setup. Observers are clueless in knowing what is really going on.
-
-The MHD wave equations that describe the coupling between the fast compressional mode and the shear Alfvén mode are complicated and have not been completely solved analytically, even in a simple dipole geometry.
-
-All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes. For example, in the nonuniform case the ULF waves can couple.
-
-Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuations in density, bulk velocity, and magnetic field over a broad range of frequencies. Classical theories generally do not consider turbulence.
 
 ### Isotropic MHD waves
 
@@ -232,7 +191,7 @@ The slow magnetosonic mode "becomes" the mirror instability for anisotropies sat
 The lowest threshold corresponds to wave-vectors **perpendicular** to the background magnetic field.
 
 There is an important difference between slow mode and mirror mode. [Southwood & Kivelson, 1993][SouthwoodKivelson1993] and [Hasegawa 1969][HASEGAWA1969] derived under the CGL framework that even though the slow mode and mirror mode shares the antiphase relation between thermal pressure (or more exactly, perpendicular thermal pressure) and magnetic pressure, they are not the same: the CGL fluid theory predicts *oscillations* in the perpendicular direction for mirror mode when the fluid instability conditions is not met, while the slow mode cannot propagate in the perpendiclar direction at all!
-[Schwartz's 1997 review paper](Schwartz1997) did not make this point clear. And again keep in mind that even setting $P_\perp = P_\parallel$ we cannot recover isotropic MHD equations from CGL equations (See [Hunana+, 2019][Hunana2019])! 
+[Schwartz's 1997 review paper][Schwartz1997] did not make this point clear. And again keep in mind that even setting $P_\perp = P_\parallel$ we cannot recover isotropic MHD equations from CGL equations (See [Hunana+, 2019][Hunana2019])! 
 
 ### Mirror Mode
 
@@ -273,20 +232,20 @@ Important question: to what extent of model do I need to describe mirror mode?
 
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
-Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. The mode is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with  the ions. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
+Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. If being called as Alfvén ion-cyclotron mode, as in [Schwartz's 1997 review paper][Schwartz1997], then is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with the ions. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
+However, ion-cyclotron waves may have different polarizations! There have been observations about left-hand polarized, right-hand polarized, and linear polarized EMIC waves, probably distributed among different MLT regions as well as latitudes.
+
+[A dissertation on the THEMIS observation of EMIC waves in the Earth’s Magnetosphere][Lee2014]
 
 Ion-cyclotron wave can be derived in a Hall MHD framework: it comes as one of the two solutions from the dispersion relation, the other being electron-cyclotron wave, more commonly known as whistler wave.
-In Schwartz's review paper, he always wrote Alfvén/ion-cyclotron modes together, most likely to stress the fact that ion-cyclotron wave is left-hand polarized.
 The development of the ion cyclotron wave is usually described by the standard quasi-linear theory in which the unstable distribution equilibrates through a spatially smooth process of velocity space diffusion.
-
-
-[A dissertation on EMIC waves in the Earth’s Magnetosphere][Lee2014]
 
 The waves are generally believed to be generated in the equatorial magnetosphere by
 
 * ion-cyclotron resonance with unstable distributions of energetic ring current ions during the recovery phase of magnetic storms
 * during compressions of the day-side magnetopause (??? Thorne 2013)
 
+At Earth, EMICWs are typically observed in Pc1 and Pc2 range.
 The characteristic fine structure appearance of ‘pearl’ Pc1 waves was attributed to dispersive field-aligned wave packet propagation in the LH ion mode on successive bounces between hemispheres. However, this still lacks observation support.
 Spacecraft measurements have shown that EMICW propagation is almost exclusively away from the equator at latitudes greater than about 11◦, with minimal reflection at the ionosphere.
 
@@ -295,7 +254,7 @@ The preferential region of occurrence of EMIC waves is known to be the afternoon
 Recent modeling efforts have focused on clarifying the locations and conditions for EMICW generation, including the effect of heavy ion populations, and explaining the modulated appearance of wave packets. However, there is no clear consensus on a dominant mechanism.
 These are important questions since EMIC waves may control the precipitation of energetic ions and relativistic electrons.
 
-Plasma density is one of the most important parameters controlling EMIC wave generation. Growth models which assume the total plasma is dominated by thermal plasma may not relate to regions where both cold plasmaspheric plasma and ring current ions are important.
+Plasma density is one of the most important parameters controlling EMIC wave generation. Complexity arises when we need to consider both thermal and cold plasma.
 
 [Gamayunov and Khazanov, 2008][GamayunovKhazanov2008] using a global RCEMIC simulation model suggests that suprathermal plasma plays a role in destabilizing the more energetic ring current and/or plasma sheet distributions to a high energy anisotropy.
 It also suggests that for best data comparison the EMICW source is located at the equator and that waves reflect at off-equatorial latitudes at the bi-ion hybrid frequencies in conjugate hemispheres.
@@ -328,7 +287,7 @@ In the outer radiation belt, the frequency typically ranges between 0.1 to 5 Hz.
 
 When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
 
-我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。根据我现在的理解，EMIC波在平行于背景磁场方向最为显著。有点怀疑在垂直磁场平面内我们能不能看到EMIC波......而且根据产生条件垂直方向温度大于平行方向温度，在一个2D垂直平面上，第三个方向也就是平行方向永远是周期性边界，我该怎么理解这件事情？在我们的模拟中，我的确看到了很强的垂直温度，所以理论上EMIC
+我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。EMIC波主要平行于背景磁场方向传播，所以最常见的确认方法是看波的横截面中的磁场扰动周期。在老仪器中我猜测量磁场的磁强计比较靠谱，而测量电场的设备误差很大，所以以前的观测主要通过磁场扰动来确认。但像THEMIS以后电场的测量精度也上来了，所以也可以通过看电场扰动来确认。毕竟是电磁波，理论上无论是啥偏振，扰动的频谱都应该是一致的。
 
 ### Mirror Instability & Ion Cyclotron Instability
 
@@ -337,23 +296,55 @@ In the 1990s, there is a debate regarding the occurence of the mirror instabilit
 * which instability possesses higher growth rate under the same $\beta$ condition?
 * which is affected by the ion mass?
 
-## Observation
+### Field Line Resonance
 
-1. discrete magic frequencies
-Field line resonance (FLR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines (i.e closed field lines whose foot points lie in the ionosphere), are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz. Possible mechanisim:
+We learned from satellite and ground observations that global eigenoscillations in Pc5 range occurs in the magnetosphere.
+
+Possible mechanisim:
+
 * MHD waveguide
 * MHD cavity modes
 
 In fact, the coupling of cavity or waveguide eigenmodes to FLRs may explain how discrete spectra are produced across a range of latitudes, including at the "magic" frequencies.
-The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic"
-frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting, the Archer+ 2019, 2022 papers handle this.)
+The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic" frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting, the Archer+ 2019, 2022 papers handle this.)
 
 Thinking about fast modes propagating in dayside magnetosphere trapped or guided by the field lines and boundaries within. Cavity modes assume that you have a closed system. It can produce discrete azimuthal wave numbers. Waveguide modes assumes open-ended boundary conditions. It allows continuous azimuthal wave number spectrum.
 
-In the 1970s, KHI is cited as the source of compressional energy required for the excitation of FLRs. However, later people have found that the same can be triggered by solar wind dynamic pressure fluctuation. 
-Simultaneous measurements are applied to show that periodic fluctuations in the solar wind dynamic pressure drives ULF pulsations in the magnetosphere. A one‐to‐one correspondence was observed between the solar wind number density oscillation frequencies and oscillation frequencies in dayside magnetic field measurements from the GOES satellite. Even magnetotail lobe oscillations have been associated with upstream dynamic pressure fluctuation. One statistical study in 2009 by Viall+ is trying to argue that 50% of the ULF waves in the magnetosphere is driven by upstream solar wind dynamic pressure fluctuations. 
+In the 1970s, KHI is cited as the source of compressional energy required for the excitation of FLRs. However, later people have found that the same can be triggered by solar wind dynamic pressure fluctuation.
+Simultaneous measurements are applied to show that periodic fluctuations in the solar wind dynamic pressure drives ULF pulsations in the magnetosphere. A one‐to‐one correspondence was observed between the solar wind number density oscillation frequencies and oscillation frequencies in dayside magnetic field measurements from the GOES satellite. Even magnetotail lobe oscillations have been associated with upstream dynamic pressure fluctuation. One statistical study in 2009 by Viall+ is trying to argue that 50% of the ULF waves in the magnetosphere is driven by upstream solar wind dynamic pressure fluctuations.
 
 In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
+
+#### 1D FLR Theory
+
+[Southwood, 1974][Southwood1974] proposed an elegant 1D box model for field line resonance. Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point. Now assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén frequency as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$. From the linearized MHD equations, what we end up with is a 2nd order differential equation
+
+\[
+\frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
+\]
+
+Several observations from this equation:
+
+1. Singular point at $\omega = \omega_A$: Alfvén resonance.
+2. Turning point at $\frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 = 0$: effectively $k_x = 0$ (???)
+
+Later simulations confirm the coupling between fast and Alfvén mode based on this model. The initial energy injection through fast mode can be converted to Alfvén mode energy and lead to energy density increase at certain locations with certain frequencies.
+
+#### Limitations of Current FLR theory
+
+The mathematical description of field line resonance (FLR) often assume a simple dipole magnetic field which is not appropriate to high latitudes where field lines experience significant temporal distortion.
+This affects the _frequency_ and _polarization_ properties of the FLRs.
+The latter is important because wave-particle energy transfer involves the wave electric field component parallel to the drift velocity of particle, i.e. the azimuthal field (poloidal mode) in a dipolar magnetic field.
+
+The Poynting flux is field aligned and away from the equatorial plane. These waves likely arise from incoming compressional mode
+
+Simply speaking, the nice math derivations does not work for nonideal magnetic field setup. Observers are clueless in knowing what is really going on.
+
+The MHD wave equations that describe the coupling between the fast compressional mode and the shear Alfvén mode are complicated and have not been completely solved analytically, even in a simple dipole geometry.
+
+All mode identifications are based on _linearized_ theory in a _homogeneous_ plasma and there are clear indications, in both the data and in numerical simulations, that nonlinearity and/or inhomogeneity modify even the most basic aspects of some modes. For example, in the nonuniform case the ULF waves can couple.
+
+Turbulence is also frequently observed in the magnetosheath, i.e. O(1) fluctuations in density, bulk velocity, and magnetic field over a broad range of frequencies. Classical theories generally do not consider turbulence.
 
 ### Types of Variations
 
