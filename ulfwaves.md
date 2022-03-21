@@ -8,7 +8,7 @@
 
 \toc
 
-Ultra-low frequency (ULF) waves refer to waves within frequency range [0.001, 10] Hz. The name does not tell us anything about their physical origin, but simply observational fact. At Earth's magnetosphere, this frequency range overlaps largely with the MHD waves. This is the reason why early pioneers in space physics relied on MHD theory to explain the physics behind these waves, albeit some deviations and deficiencies which require more refined models such as the Vlasov description.
+Ultra-low frequency (ULF) waves refer to waves within frequency range [0.001, 10] Hz. The name does not tell us anything about their physical origin, but simply observational fact. At Earth's magnetosphere, this frequency range overlaps largely with the MHD waves. This is the reason why early pioneers in space physics relied on MHD theory for large spatial and temporal scales to explain the physics behind these waves, albeit some deviations and deficiencies which require more refined models such as the Vlasov description.
 
 ## Observation
 
@@ -31,10 +31,19 @@ With respect to polarization, field line resonant ULF waves can be categorized i
 
 \fig{/assets/Menk2013_Fig17_poloidal_toroidal.png}
 
-ULF waves have a large overlap with MHD waves for large spatial and temporal scales. However if scales get smaller, we need kinetic descriptions, e.g. for the proper description of mirror modes.
-
 1. discrete magic frequencies
 Field line resonance (FLR), which is phenonmenon about standing Alfvén waves excited on geomagnetic field lines (i.e closed field lines whose foot points lie in the ionosphere), are observed in the Pc5 range, with discrete frequencies at approximately 1.3, 1.9, 2.6, and 3.4 mHz.
+
+2. Pc1 sudden impulses
+  * local noon-afternoon, easily detectable when following sudden impulses (SI) produced by sudden changes in the pressure of the solar wind plasma.
+  * A sudden compression of the magnetosphere by increased solar wind pressure causes maximum distortion of the quiet magnetospheric plasma near noon at high latitudes. It is on the fieldlines which thread this disturbed plasma that one is most likely to witness ULF emissions.
+  * Conversely, as suggested by Hirasawa (1981) sudden rarefactions of the magnetosphere would be expected to quench ULF wave growth by reducing the anisotropy and $\beta$ of the plasma.[^rarefaction_ULF]
+  * delay of 1-3 mins between the occurance of SI and the onset of the ULF emission (ground-based magnetometers)[^growth_rate]
+  * drive the trapped proton radiation, greatly enhanced eV energy range protons along the B field, and energization of keV range protons caused by betatron. (?) See [Arnoldy+, 2005][Arnoldy2005]
+
+[^growth_rate]: This is when the growth rate becomes important. Let $\Omega$ be the proton gyrofrequency. The growth rate is mostly commonly normalized by the gyrofrequency, i.e. $\gamma/\Omega$. When $\exp(\gamma t) \sim 1$, we say this wave is detectable. Let $t \sim 100\, s$, $\Omega \sim 3^{s^{-1}}$ --> $\gamma/\Omega \sim 0.001$. This is like the minimal growth rate requirement. The predicted EMICW growth rate is more often on the order of $10^{-1}$.
+
+[^rarefaction_ULF]: I have NOT seen this from simulation. But everything inside Vlasiator's current magnetosphere is boring, so I cannot tell if this is the reality or a limitation caused by the model.
 
 ### Mode Identification
 
@@ -340,6 +349,17 @@ It also suggests that for best data comparison the EMICW source is located at th
 
 self-written model, no name, ray-tracing equations in plasma
 
+particle scattering and trapping by waves. Hmm, I'm not familiar with these at all.
+
+我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。EMIC波主要平行于背景磁场方向传播，所以最常见的确认方法是看波的横截面中的磁场扰动周期。在老仪器中我猜测量磁场的磁强计比较靠谱，而测量电场的设备误差很大，所以以前的观测主要通过磁场扰动来确认。但像THEMIS以后电场的测量精度也上来了，所以也可以通过看电场扰动来确认。毕竟是电磁波，理论上无论是啥偏振，扰动的频谱都应该是一致的。
+
+### Mirror Instability & Ion Cyclotron Instability
+
+In the 1990s, there is a debate regarding the occurence of the mirror instability, initiated by Gary. The ion cyclotron instability also occurs at frequencies below the ion gyrofrequency in the presence of ion pitch angle anisotropy, which mostly overlaps with the mirror instability. The basic ideas in comparing these two are:
+
+* which instability possesses higher growth rate under the same $\beta$ condition?
+* which is affected by the ion mass?
+
 Yoshiharu Omura and his students once had a proceeding about _Competition Between the Mirror Mode Instability and the L-Mode Electromagnetic Ion Cyclotron Instability_. They performend hybrid 1D-3D simulations and tried to explain the observation that mirror instability dominates the L-mode EMIC instability in the Earth's magnetosheath. This is puzzling since the EMIC instability generally has higher linear growth rate than that of the mirror instability.
 
 [Shoji+2009][Shoji2009]
@@ -352,18 +372,7 @@ structures in the 3D model collapse. On the other hand, in the 2D model, the lar
 nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel 
 direction larger.
 
-简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后
-
-particle scattering and trapping by waves. Hmm, I'm not familiar with these at all.
-
-我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。EMIC波主要平行于背景磁场方向传播，所以最常见的确认方法是看波的横截面中的磁场扰动周期。在老仪器中我猜测量磁场的磁强计比较靠谱，而测量电场的设备误差很大，所以以前的观测主要通过磁场扰动来确认。但像THEMIS以后电场的测量精度也上来了，所以也可以通过看电场扰动来确认。毕竟是电磁波，理论上无论是啥偏振，扰动的频谱都应该是一致的。
-
-### Mirror Instability & Ion Cyclotron Instability
-
-In the 1990s, there is a debate regarding the occurence of the mirror instability, initiated by Gary. The ion cyclotron instability also occurs at frequencies below the ion gyrofrequency in the presence of ion pitch angle anisotropy, which mostly overlaps with the mirror instability. The basic ideas in comparing these two are:
-
-* which instability possesses higher growth rate under the same $\beta$ condition?
-* which is affected by the ion mass?
+简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后就不增长了，进入非线性阶段。而磁镜波虽然增长率小，但是需要很长时间才能达到饱和。
 
 ### Field Line Resonance
 
@@ -777,6 +786,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Treumann2004]: https://npg.copernicus.org/articles/11/647/2004/npg-11-647-2004.pdf
+[Arnoldy2005]:  https://doi.org/10.1029/2005JA011041
 [Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
 [Claudepierre2009]: https://doi.org/10.1029/2009GL039045
 [Claudepierre2010]: https://doi.org/10.1029/2010JA015399
