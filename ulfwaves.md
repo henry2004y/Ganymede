@@ -71,7 +71,7 @@ Our ultimate goal, is to build a tool for identifying wave modes automatically. 
 2. Eye inspection of the wave packets' magnetic field amplitude, which in turn translates to (usually) localized, in both time and frequency, enhancements of PSDs relative to background values.
 3. Computational techniques that interactively analyze the pixel intensities of the spectrogram's images against the background.
 
-[^field_comp]: I think E field is also viable, as seen from THEMIS output.
+[^field_comp]: E field is also viable, as seen from THEMIS and MMS data for EMICW survey.
 
 When wave packets are clearly distinct from the background, the interval can be considered as having a candidate EMIC wave event. Since the waves are in the 0.1–5 Hz frequency range, the data acquisition rate must be at least twice as high to resolve the wave packets.
 
@@ -133,8 +133,6 @@ One possible physical process is that the pressure pulses first strike the magne
   * The density perturbations in this case often have a positive correlation with magnetic fields.
 
 The impact of pressure pulses on the magnetopause is known to be related to traveling convection vortices, flux transfer events,and auroral activities.
-
-
 
 ### Internal Drivers
 
@@ -323,6 +321,30 @@ The spatial scale of mirror modes is the order of $\lambda_\perp \sim \lambda_i$
 
 Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. If being called as Alfvén ion-cyclotron mode, as in [Schwartz's 1997 review paper][Schwartz1997], then is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with the ions. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
 However, ion-cyclotron waves may have different polarizations! There have been observations about left-hand polarized, right-hand polarized, and linear polarized EMIC waves, probably distributed among different MLT regions as well as latitudes.
+
+[Zhang+ 2017][Zhang2017] provides a nice overview of EMICW, even though the paper itself is about MMS observation. Under a dipole-like magnetic field configuration in the Earth’s inner magnetosphere, the excitation region of EMIC waves is usually on or near the magnetic equatorial plane, where
+
+* the magnetic energy per particle is lower and thus
+* the growth rate of waves is larger due to the greater plasma density and weaker magnetic field strength (minimum B regions).[^EMIC_region]
+
+EMIC waves are preferentially generated in regions where hot anisotropic ions and cold dense plasma populations spatially
+overlap, e.g.
+* where the ring current overlaps the outer plasmasphere and plasmapause
+* the "edges" of plasmaspheric drainage plumes.
+
+\fig{/assets/EMICW_distribution.png}
+
+[^EMIC_region]: I don't understand this point.
+
+Creation of hot anisotropic $H^+$:
+
+1. drift-shell splitting;
+2. the Shabansky orbits (a non-energization mechanism);
+3. during a magnetospheric compression, which is often driven by a sudden, large increase in the solar wind dynamic pressure.
+
+Newly excited EMIC waves are often transverse and left-hand polarized, consistent with the direction of ion gyration in the magnetic field. After being generated, EMIC waves can be guided along the magnetic field lines and propagate from the source region to other magnetic latitudes. In the case of the equatorial source region, they propagate from the equatorial plane to higher latitudes. Combined Release and Radiation Effects Satellite (CRRES) EM field data (covering only MLT = 14:00 – 18:00) shows that the directions of the energy propagation (i.e., Poynting vector) of EMIC waves are unidirectional when |MLAT| > 11° but they are bidirectional in the MLAT range of [-11°, 11°] in the inner magnetosphere.
+Depending on their frequency w.r.t. the local ion gyrofrequencies such as $f_{He^+}$, some waves are well guided along the field lines and can generally propagate to the ground. Some waves may even experience a polarization reversal where the wave frequency f is equal to the crossover frequency $f_{co}$ (???) during their higher-latitude propagation and then be reflected where f equals the bi-ion hybrid frequency $f_{bi}$ (???) at an even higher latitude. As a result, their polarization is crossed over from a left-hand to a right-hand or linear mode. These waves could undergo multiple equatorial crossings along magnetic flux tubes without a large radial or azimuthal drift. Because of their successive passes through the equatorial wave growth region, the waves are expected to be drastically amplified by continuing to obtain energy from the energetic protons.
+Nevertheless, Horne and Thorne found that, in the absence of density gradients, significant wave amplifications can only occur on the first equatorial pass because wave normal angles become large after the initial pass. Horne and Thorne concluded that wave damping by thermal heavy ions also makes it impossible for the same EMIC wave packet to bounce through its source region multiple times. But, a consensus about the wave propagation and reflection has not been reached.
 
 [A dissertation on the THEMIS observation of EMIC waves in the Earth’s Magnetosphere][Lee2014]
 
@@ -798,5 +820,6 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Regi2016]: https://doi.org/10.4401/ag-7067
 [Lee2014]: https://escholarship.org/uc/item/3dh4j07v
 [Lee2014b]: https://doi.org/10.1002/2014JA020469
+[Zhang2017]: https://ntrs.nasa.gov/api/citations/20170009019/downloads/20170009019.pdf
 [Hunana2019]: https://arxiv.org/abs/1901.09354
 [Medeiros2020]: https://iopscience.iop.org/article/10.3847/1538-4365/ab9697
