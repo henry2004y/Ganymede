@@ -336,11 +336,11 @@ overlap, e.g.
 
 [^EMIC_region]: I don't understand this point.
 
-Creation of hot anisotropic $H^+$:
+Physical processes that can lead to warm plasma temperature anisotropies can be broadly categorized as two types: those that change the overall temperature (energizing processes) preferentially in the perpendicular direction, and those that keep the overall temperature constant (nonenergizing processes) while redistributing particle energies between the perpendicular and parallel directions.[McCollough+, 2010][McCollough2010]
 
-1. drift-shell splitting;
-2. the Shabansky orbits (a non-energization mechanism);
-3. during a magnetospheric compression, which is often driven by a sudden, large increase in the solar wind dynamic pressure.
+1. Drift-shell splitting. In any dipole-like field that has been distorted by the solar wind, conservation of the first and second adiabatic invariants as particles drift from the nightside to the dayside leads to drift shell splitting: the particle population spreads in L shell as a function equatorial pitch angle $\alpha_{eq}$, with higher $\alpha_{eq}$ particles found at higher L shells on the dayside. If the particle flux is decreasing as a function of L, temperature anisotropies emerge with no energy input into the system.
+2. Shabansky orbits (a non-energization mechanism). If the dipole-like field is significantly distorted, near-equatorial particles at higher L shells will execute their bounce motion entirely in one hemisphere. 
+3. Compression, which is often driven by a sudden, large increase in the solar wind dynamic pressure. When the magnetosphere compresses at a slow enough rate to keep all adiabatic invariants conserved, adiabatic energization [Olson & Lee, 1983][Olson1983] occurs. This is an energizing process, since the locally increasing field increases both the perpendicular and parallel energy of the particles. However, the perpendicular energy increases to a greater degree than the parallel energy, which makes the resulting distribution anisotropic. Similarly, by preserving the first adiabatic invariant, convection electric fields provide perpendicular energy as warm ions are transported radially inward [Summers+, 1998][Summers1998]. Other processes can lead to radial transport as well, including coherent response to shocks in the solar wind, interactions with solar wind–driven ULF waves, and drift scattering by storm time Pc5 waves.
 
 Newly excited EMIC waves are often transverse and left-hand polarized, consistent with the direction of ion gyration in the magnetic field. After being generated, EMIC waves can be guided along the magnetic field lines and propagate from the source region to other magnetic latitudes. In the case of the equatorial source region, they propagate from the equatorial plane to higher latitudes. Combined Release and Radiation Effects Satellite (CRRES) EM field data (covering only MLT = 14:00 – 18:00) shows that the directions of the energy propagation (i.e., Poynting vector) of EMIC waves are unidirectional when |MLAT| > 11° but they are bidirectional in the MLAT range of [-11°, 11°] in the inner magnetosphere.
 Depending on their frequency w.r.t. the local ion gyrofrequencies such as $f_{He^+}$, some waves are well guided along the field lines and can generally propagate to the ground. Some waves may even experience a polarization reversal where the wave frequency f is equal to the crossover frequency $f_{co}$ (???) during their higher-latitude propagation and then be reflected where f equals the bi-ion hybrid frequency $f_{bi}$ (???) at an even higher latitude. As a result, their polarization is crossed over from a left-hand to a right-hand or linear mode. These waves could undergo multiple equatorial crossings along magnetic flux tubes without a large radial or azimuthal drift. Because of their successive passes through the equatorial wave growth region, the waves are expected to be drastically amplified by continuing to obtain energy from the energetic protons.
@@ -803,9 +803,11 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Rudakov1961]: https://archive.org/details/nasa_techdoc_19660020059/
 [HASEGAWA1969]: https://doi.org/10.1063/1.1692407
 [Southwood1974]: https://doi.org/10.1016/0032-0633(74)90078-6
+[Olson1983]: https://doi.org/10.1016/0032-0633(83)90079-X
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
+[Summers1998]: https://doi.org/10.1029/98JA01740
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Treumann2004]: https://npg.copernicus.org/articles/11/647/2004/npg-11-647-2004.pdf
 [Arnoldy2005]:  https://doi.org/10.1029/2005JA011041
@@ -816,7 +818,8 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [GamayunovKhazanov2008]:  https://doi.org/10.1029/2008JA013494
 [Lee2008]: https://doi.org/10.1029/2008JA013088
 [Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
-[Shoji2009]: (https://doi.org/10.1029/2008JA014038)
+[Shoji2009]: https://doi.org/10.1029/2008JA014038
+[McCollough2010]: https://doi.org/10.1029/2010JA015393
 [Regi2016]: https://doi.org/10.4401/ag-7067
 [Lee2014]: https://escholarship.org/uc/item/3dh4j07v
 [Lee2014b]: https://doi.org/10.1002/2014JA020469
