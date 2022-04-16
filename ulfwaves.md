@@ -424,7 +424,15 @@ This is shown in the schematic figures below.
 
 \fig{/assets/box_model_config.png}
 
-First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén frequency as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$. From the linearized MHD equations, what we end up with is a 2nd order differential equation
+Let $\xi = (\xi_x, \xi_y, \xi_z)$ be the wave displacement vector and $B_{1z}$ be the compressional magnetic perturbation. Linearized MHD equations take the form
+
+\begin{align}
+\Big( \frac{\mu_0 \rho(x)}{B^2}\frac{\partial^2}{\partial t^2} + k_z^2 \Big) \xi_x &= -\frac{1}{B}\frac{\partial B_{1z}}{\partial x} \\
+\Big( \frac{\mu_0 \rho(x)}{B^2}\frac{\partial^2}{\partial t^2} + k_z^2 \Big) \xi_y &= -ik_y\frac{B_{1z}}{B} \\
+b_z = -ik_y B \xi_y - B\frac{\partial \xi_x}{\partial x}
+\end{align}
+
+First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén speed as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$ (i.e. purely standing wave along the magnetic field lines or in the poloidal direction, wave+damp/growth along y or in the toroidal direction). From the linearized MHD equations, what we end up with is a 2nd order differential equation
 
 \[
 \frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
