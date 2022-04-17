@@ -187,15 +187,20 @@ ion/ion left-hand resonant
 
 #### Entropy wave
 
-There is a 4th zero-frequency mode from MHD theory, referred to as entropy mode, which is often ignored.
-It is a compressional wave (i.e., fluctuations in pressure and density) that can be either hydrodynamic or magnetohydrodynamic in which the internal energy and velocity remains constant.
-It represents a spatially structured medium in static equilibrium, being characterized by the sole density variation with the other variables like $\mathbf{B}$ and $p$ being kept constant.
+There is a 4th zero-frequency mode from HD/MHD theory, referred to as entropy mode, which is often ignored.
+It is a compressional wave (i.e. fluctuations in density) traveling at bulk velocity in which the internal energy and velocity remains constant.
+It represents a spatially structured medium in static equilibrium, being characterized by the sole density variation with the other variables being kept constant.
 
 \[
 \frac{Ds}{Dt} = \frac{\partial s}{\partial t} + \mathbf{u}\cdot\nabla{s} = 0
 \]
 
-and it travels at the bulk velocity.
+where entropy density $s$ is defined as
+
+\[
+s = n \log\Big( \frac{T^{3/2}}{n} \Big)
+\]
+
 
 ### Anisotropic MHD waves
 
