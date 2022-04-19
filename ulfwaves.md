@@ -382,21 +382,15 @@ particle scattering and trapping by waves. Hmm, I'm not familiar with these at a
 
 ### Mirror Instability & Ion Cyclotron Instability
 
-In the 1990s, there is a debate regarding the occurence of the mirror instability, initiated by Gary. The ion cyclotron instability also occurs at frequencies below the ion gyrofrequency in the presence of ion pitch angle anisotropy, which mostly overlaps with the mirror instability. The basic ideas in comparing these two are:
+Already, early observations in the 1970s have shown that the magnetosheath is populated by intense magnetic field fluctuations at time sclaes from 1 s to 10 s of seconds. Later research based primarily on data from ISEE and AMPTE satellites has shown that the mirror mode waves and kinetic Alfvén-ion cyclotron (AIC) waves, or EMIC waves constitute a large majority of magnetosheath ULF waves. The ion cyclotron instability responsible for the generation of AIC waves often grows under the same conditions as the mirror instability and in the linear approximation should dominate in lower β plasmas. The mirror instability, on the other hand, should dominate in high ion β plasmas ([Lacombe & Belmont, 1995][LacombeBelmont1995]). Since the initial confirmation of the existence of mirror modes in the Earth's magnetosheath, they have been observed throughout the heliosphere. A long-standing puzzle in space plasmas is the fact that **mirror modes are often the dominant coherent magnetic structures even for low β plasmas**.
 
-* which instability possesses higher growth rate under the same $\beta$ condition?
-* which is affected by the ion mass?
+\fig{/assets/mirror_vs_emic_wave.png}
 
-Yoshiharu Omura and his students once had a proceeding about _Competition Between the Mirror Mode Instability and the L-Mode Electromagnetic Ion Cyclotron Instability_. They performend hybrid 1D-3D simulations and tried to explain the observation that mirror instability dominates the L-mode EMIC instability in the Earth's magnetosheath. This is puzzling since the EMIC instability generally has higher linear growth rate than that of the mirror instability.
-
-[Shoji+2009][Shoji2009]
-
-During the linear stage, they found that EMIC waves saturates at an earlier stage in higher dimensions, and mirror mode wave can gain more free energy from the temperature anisotropy.
+People tried to find an answer to this puzzle.
+A bunch of studies in late 1980s and early 1990s (e.g. [Gary+]) argued that the presence of $He^{++}$ tends to increase the EMIC threshold while the mirror mode growth is less affected by the presence of $He^{++}$ ions. [Shoji+2009][Shoji2009] (Yoshiharu Omura's student) presented another possibility with hybrid PIC simulations that even though EMIC modes have higher linear growth rate, they saturates an an earlier stage than the mirror modes, especially in higher dimensions (by comparing 2D and 3D results), so that mirror mode waves can gain more free energy from temperature anisotropy.
 
 During the nonlinear stage:
-> In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the 
-structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the 
-nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel 
+> In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel 
 direction larger.
 
 简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后就不增长了，进入非线性阶段。而磁镜波虽然增长率小，但是需要很长时间才能达到饱和。
@@ -771,6 +765,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Olson1983]: https://doi.org/10.1016/0032-0633(83)90079-X
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
+[LacombeBelmont1995]: https://doi.org/10.1016/0273-1177(94)00113-F
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Summers1998]: https://doi.org/10.1029/98JA01740
 [Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
