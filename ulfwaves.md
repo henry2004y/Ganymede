@@ -437,7 +437,7 @@ Let $\xi = (\xi_x, \xi_y, \xi_z)$ be the wave displacement vector and $B_{1z}$ b
 b_z = -ik_y B \xi_y - B\frac{\partial \xi_x}{\partial x}
 \end{align}
 
-First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén speed as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)\cos(k_z z)}$ (i.e. purely standing wave along the magnetic field lines or in the poloidal direction, wave+damp/growth along y or in the toroidal direction). From the linearized MHD equations, what we end up with is a 2nd order differential equation
+First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén speed as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)}\cos(k_z z)$ (i.e. purely standing wave along the magnetic field lines or in the poloidal direction, wave+damp/growth along y or in the toroidal direction). From the linearized MHD equations, what we end up with is a 2nd order differential equation
 
 \[
 \frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
