@@ -387,11 +387,10 @@ Already, early observations in the 1970s have shown that the magnetosheath is po
 \fig{/assets/mirror_vs_emic_wave.png}
 
 People tried to find an answer to this puzzle.
-A bunch of studies in late 1980s and early 1990s (e.g. [Gary+]) argued that the presence of $He^{++}$ tends to increase the EMIC threshold while the mirror mode growth is less affected by the presence of $He^{++}$ ions. [Shoji+2009][Shoji2009] (Yoshiharu Omura's student) presented another possibility with hybrid PIC simulations that even though EMIC modes have higher linear growth rate, they saturates an an earlier stage than the mirror modes, especially in higher dimensions (by comparing 2D and 3D results), so that mirror mode waves can gain more free energy from temperature anisotropy.
+A bunch of studies in late 1980s and early 1990s (e.g. [Gary+]) argued that the presence of $He^{++}$ tends to increase the EMIC threshold while the mirror mode growth is less affected by the presence of $He^{++}$ ions. [Shoji+2009][Shoji2009] (   Yoshiharu Omura's student) presented another possibility with hybrid PIC simulations that even though EMIC modes have higher linear growth rate, they saturates an an earlier stage than the mirror modes, especially in higher dimensions (by comparing 2D and 3D results), so that mirror mode waves can gain more free energy from temperature anisotropy.
 
 During the nonlinear stage:
-> In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel 
-direction larger.
+> In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel direction larger.
 
 简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后就不增长了，进入非线性阶段。而磁镜波虽然增长率小，但是需要很长时间才能达到饱和。
 
