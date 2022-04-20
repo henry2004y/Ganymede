@@ -160,10 +160,13 @@ The propagation of magnetospheric ULF plasma waves has been described usually us
 
 Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.[^heating] This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
-Slow modes may also be present within a transition layer close to the subsolar magnetopause, although they are expected to suffer strong damping.
+Slow modes may also be present within the plasma depletion layer[^PDL], although they are expected to suffer strong damping.
 These instabilities, if exist, allow energy transfer from the plasma to the electromagnetic field and creates the waves via reducing the temperature anisotropy and creating magnetic field oscillations for the mirror instability. So in a sense the instability initiates the waves, and the waves are these oscillations once they are "established" in the plasma.
 
 [^heating]: Yuxi provides me with a nice starting point to think about this. The 1st adiabatic invariant, i.e. magnetic moment $\mu_m = \frac{1}{2}m v_\perp^2 / B$ is almost conserved if the gyromotion is not violated. Across the quasi-perpendicular shock, the strength of the magnetic field increases, so the perpendicular thermal velocities must increase to maintain the magnetic moment. Therefore the perpendicular direction is preferentially heated downstream of the shock. For example, if the B field is increased by a factor of 2, then the ion perpendicular thermal velocity should increase by a factor of $\sqrt{2}$, and the ion perpendicular pressure should also increase by a factor of 2? Never or less, keep in mind that in CGL theory we need at least 1 quantity from downstream besides the full upstream information to determine the downstream anisotropy (see more in the shock note).
+
+[^PDL]: The plasma depletion layer (PDL) is a layer on the sunward side of the magnetopause with lower plasma density
+and higher magnetic field compared to the corresponding upstream magnetosheath value.
 
 ### Isotropic MHD waves
 
@@ -322,6 +325,16 @@ The spatial scale of mirror modes is the order of $\lambda_\perp \sim \lambda_i$
 
 [^mirror_scale]: From Vlasiator 2D simulations I typically see larger mirror mode wavelength ($\sim 0.5 R_E$) but similar periods (~ 20 s) with underresolved spatial resolution. This is like one order of magnitude larger than theory? But in Vlasiator our solar wind speed is faster than typical, so it might depend on that as well?
 
+[Song+, 1994][Song1994] proposed a quantity called *Doppler ratio* for distinguishing the mirror and slow modes:
+
+\[
+D = \frac{|\delta \mathbf{v}|^2/v_0^2}{|\delta \mathbf{B}|^2/B_0^2}
+\]
+
+where $\delta\mathbf{v}$ and $v_0$ are the perturbed velocity and magnetitude of the background flow velocity. This represents the perturbation power in the velocity versus that in the magnetic field. In general, slow waves have perturbations in both the velocity and magnetic field, but mirror mode fluctuations do not produce significant velocity perturbations. Therefore if the flow is sub-Alfvénic, the Doppler ratio is greater than 1 for quasi-perpendicular slow modes and should be much smaller than 1 for mirror modes. See Appendix A in that paper for some more derivations.
+
+$\delta\mathbf{B} / \bar\mathbf{B} \sim 0.1$ or more, and is almost linearly polarized along the ambient field.
+
 ### Electromagnetic Ion-Cyclotron Waves (EMICWs)
 
 Ion-cyclotron waves are driven by an ion temperature anisotropy $T_\perp / T_\parallel > 1$, as is commonly found in the magnetosheath. The instability is strongest for parallely propagating modes ($\theta_{kB_0} \sim 0^o$) and is weakly dependent on the ion $\beta$. If being called as Alfvén ion-cyclotron mode, as in [Schwartz's 1997 review paper][Schwartz1997], then is left-hand polarized at parallel propagation in the plasma rest frame, being cyclotron resonant with the ions. Maximum growth corresponds to wave numbers $k \simeq 0.5 - \omega_{pp}/c$, where $\omega_{pp}$ is the proton plasma frequency.
@@ -380,6 +393,8 @@ particle scattering and trapping by waves. Hmm, I'm not familiar with these at a
 
 我看到几个2Dshock模拟，都是选一个平行磁场一个垂直磁场（即GSM中的XZ平面）做的。EMIC波主要平行于背景磁场方向传播，所以最常见的确认方法是看波的横截面中的磁场扰动周期。在老仪器中我猜测量磁场的磁强计比较靠谱，而测量电场的设备误差很大，所以以前的观测主要通过磁场扰动来确认。但像THEMIS以后电场的测量精度也上来了，所以也可以通过看电场扰动来确认。毕竟是电磁波，理论上无论是啥偏振，扰动的频谱都应该是一致的。
 
+$\delta\mathbf{B} / \bar\mathbf{B} \sim 0.03$ from my 2D Vlasiator simulation. Waiting for Dr. Soucek's response for the threshold he used for Cluster data!
+
 ### Mirror Instability & Ion Cyclotron Instability
 
 Already, early observations in the 1970s have shown that the magnetosheath is populated by intense magnetic field fluctuations at time sclaes from 1 s to 10 s of seconds. Later research based primarily on data from ISEE and AMPTE satellites has shown that the mirror mode waves and kinetic Alfvén-ion cyclotron (AIC) waves, or EMIC waves constitute a large majority of magnetosheath ULF waves. The ion cyclotron instability responsible for the generation of AIC waves often grows under the same conditions as the mirror instability and in the linear approximation should dominate in lower β plasmas. The mirror instability, on the other hand, should dominate in high ion β plasmas ([Lacombe & Belmont, 1995][LacombeBelmont1995]). Since the initial confirmation of the existence of mirror modes in the Earth's magnetosheath, they have been observed throughout the heliosphere. A long-standing puzzle in space plasmas is the fact that **mirror modes are often the dominant coherent magnetic structures even for low β plasmas**.
@@ -387,12 +402,23 @@ Already, early observations in the 1970s have shown that the magnetosheath is po
 \fig{/assets/mirror_vs_emic_wave.png}
 
 People tried to find an answer to this puzzle.
-A bunch of studies in late 1980s and early 1990s (e.g. [Gary+]) argued that the presence of $He^{++}$ tends to increase the EMIC threshold while the mirror mode growth is less affected by the presence of $He^{++}$ ions. [Shoji+2009][Shoji2009] (   Yoshiharu Omura's student) presented another possibility with hybrid PIC simulations that even though EMIC modes have higher linear growth rate, they saturates an an earlier stage than the mirror modes, especially in higher dimensions (by comparing 2D and 3D results), so that mirror mode waves can gain more free energy from temperature anisotropy.
+A bunch of studies in late 1980s and early 1990s (e.g. [Gary+]) argued that the presence of $He^{++}$ tends to increase the EMIC threshold while the mirror mode growth is less affected by the presence of $He^{++}$ ions.
+Yoshiharu Omura's student [Shoji+2009][Shoji2009] presented another possibility with hybrid PIC simulations that even though EMIC modes have higher linear growth rate, they saturates an an earlier stage than the mirror modes, especially in higher dimensions (by comparing 2D and 3D results), so that mirror mode waves can gain more free energy from temperature anisotropy.
 
 During the nonlinear stage:
 > In the 3D case mirror mode coalescence is much more rapid. Because of this rapid change, electric fields are induced, and the energy of the electromagnetic fields is converted to the thermal energy of particles. At the end of the nonlinear evolution, the structures in the 3D model collapse. On the other hand, in the 2D model, the large structure remains. Through the nonlinear evolution resulting plasma turbulence in the 3D model, the particles are heated by the induced electric field in the perpendicular direction. They are diffused in pitch angles to parallel direction and to make beta in the parallel direction larger.
 
-简单点说就是虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后就不增长了，进入非线性阶段。而磁镜波虽然增长率小，但是需要很长时间才能达到饱和。
+简单点说就是：
+
+1. 虽然离子回旋波在线性阶段长得快，但它很容易饱和并且空间自由度越高饱和得越快。在饱和以后就不增长了，进入非线性阶段。而磁镜波虽然增长率小，但是需要很长时间才能达到饱和。
+2. 三维情况下模式合并的情况与二维情况下不同。
+
+#### Spatial Distribution
+
+1. AIC/EMIC are found predominantly near the bow shock and in the plasma depletion layer[^PDL] ([Song+, 1994][Song1994], [Hubert+, 1998][Hubert1998]).
+2. Mirror mode waves dominate in the central and downstream magnetosheath but can occur immediately downstream of quasi-perpendicular shocks too. [Hubert+, 1989][Hubert1989]
+3. ULF waves are generally stronger in the dayside magnetosheath.
+4. More frequency EMIC wave occurrence during quasi-parallel shocks.
 
 ### Field Line Resonance
 
@@ -762,24 +788,26 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [HASEGAWA1969]: https://doi.org/10.1063/1.1692407
 [Southwood1974]: https://doi.org/10.1016/0032-0633(74)90078-6
 [Olson1983]: https://doi.org/10.1016/0032-0633(83)90079-X
+[Hubert1989]: https://doi.org/10.1029/GL016i002p00159
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
+[Song1994]: https://doi.org/10.1029/93JA03300
 [SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
 [LacombeBelmont1995]: https://doi.org/10.1016/0273-1177(94)00113-F
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Summers1998]: https://doi.org/10.1029/98JA01740
-[Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
+[Hubert1998]: https://doi.org/10.1029/98JA01011
 [Treumann2004]: https://npg.copernicus.org/articles/11/647/2004/npg-11-647-2004.pdf
 [Arnoldy2005]:  https://doi.org/10.1029/2005JA011041
-[Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
-[Claudepierre2009]: https://doi.org/10.1029/2009GL039045
-[Claudepierre2010]: https://doi.org/10.1029/2010JA015399
+[Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
 [WrightAllan2008]: https://doi.org/10.1029/2007JA012464
 [GamayunovKhazanov2008]:  https://doi.org/10.1029/2008JA013494
 [Lee2008]: https://doi.org/10.1029/2008JA013088
-[Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
+[Claudepierre2008]: https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2007JA012890
 [Shoji2009]: https://doi.org/10.1029/2008JA014038
+[Claudepierre2009]: https://doi.org/10.1029/2009GL039045
+[Claudepierre2010]: https://doi.org/10.1029/2010JA015399
 [McCollough2010]: https://doi.org/10.1029/2010JA015393
-[Regi2016]: https://doi.org/10.4401/ag-7067
+[Menk2011]: https://link.springer.com/chapter/10.1007/978-94-007-0501-2_13
 [Lee2014]: https://escholarship.org/uc/item/3dh4j07v
 [Lee2014b]: https://doi.org/10.1002/2014JA020469
 [Zhang2017]: https://ntrs.nasa.gov/api/citations/20170009019/downloads/20170009019.pdf
