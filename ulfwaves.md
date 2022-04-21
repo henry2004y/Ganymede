@@ -316,7 +316,11 @@ Interestingly, the mirror mode is unstable in kinetic theory for temperature ani
 \frac{T_\perp}{T_\parallel} > 1 + \frac{1}{\beta_\perp},
 \]
 
-which is similar to that found in mixed kinetic-fluid treatments, and disagrees by a factor of 6 with the result in CGS approximations given above. This relation confirms that the mirror mode is favored by large $\beta$.
+which is similar to that found in mixed kinetic-fluid treatments, and disagrees by a factor of 6 with the result in CGS approximations given above. This relation confirms that the mirror mode is favored by large $\beta$. There is another commonly used form
+
+\[
+\beta_\perp \Big(\frac{T_\perp}{T_\parallel} - 1 \Big) > 1.
+\]
 
 As this threshold is reached, the first unstable mode has a wave vector $\mathbf{k}$ which is nearly perpendicular to $\mathbf{B}_0$. As the anisotropy is increased, however, the most unstable mode shifts to more oblique $\mathbf{k}$'s, reaching $\theta_{kB_0} \simeq 60^o$ for $T_\perp / T_\parallel \ge 2$. Warm/hot electrons modify the instability threshold to some extent, and decrease the growth rate.
 
