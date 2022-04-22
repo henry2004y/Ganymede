@@ -443,14 +443,149 @@ Simultaneous measurements are applied to show that periodic fluctuations in the 
 
 In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
 
+#### Earliest Discovery
+
+Tsutomu Tamao, a physicist at Tohoku university, published a canonical paper in a local journal. *It does not matter where to publish your work; it matters if you really do your work*.
+
+In his seminal approach to the problem of the propagation and coupling of hydromagnetic waves in non-uniform media, [Tamao 1965](https://earth-planets-space.springeropen.com/articles/10.5047/eps.2013.05.013) discussed the time harmonic wave propagation in a dipole magnetosphere in a linear approximation. Dissipation due to collisions, that are Ohmic and viscous effects, is neglected as well as electron inertia. In the following we will outline Tamao’s treatment for historical reasons
+and to demonstrate how detailed his early study really was.
+
+The equation for the velocity perturbation component transverse to the ambinet dipole field is given by
+
+\[
+\nabla^2 \big( \mathbf{C}\times\hat{\eta} - i\frac{\omega}{\Omega_i} \big) \times \hat{\eta} + \big(\frac{\omega}{V_A}\big)^2 C_\perp = 0
+\]
+
+where $\omega$ is the wave frequency, $\mathbf{C} = B\mathbf{v}_1$ where $\mathbf{v}_1$ is the perturbation velocity, B is the intensity of the background dipole magnetic field, $\Omega_i = eB/m_i$ is the ion gyrofrequency, $V_A = B/\sqrt{\mu_0 \rho_0}$ is the Alfvén speed. Dipole coordinates $(\xi,\eta,\phi)$ are used with unit vectors $(\hat{\xi}, \hat{\eta}, \hat{\phi})$ pointing in the direction of common sense.
+
+Restricting the discussion of the above equation to the near-equatorial region, assuming a variation of $V_A$ and $\Omega_i$ with $\eta$ only, and with an azimuthal dependence $e^{im\phi}$ allows one to separate the poloidal $S(\eta)$ and toroidal $T(\eta)$ field variations. By introducing a new meridional variable $\zeta = \eta^{-1/3}$ these two equations read as
+
+\begin{align}
+\frac{d^2 S}{d\zeta^2} + 9 \zeta^6 f_0(\zeta)S = 3 im\frac{d}{d\zeta}(\zeta^{-4}T), \\
+3\zeta^4 f_m(\zeta)T = im\frac{dS}{d\zeta},
+\end{align}
+
+with
+
+\[
+f_m(\zeta) = \Big( \frac{2\pi^{1/2}r_o \omega}{B_0}\Big)^2 \zeta^{-32}\rho(\zeta) - m^2 \zeta^{-8} - k^2,
+\]
+
+and
+
+\[
+f_0(\zeta) = f_m(\zeta) + m^2 \zeta^{-8}.
+\]
+
+Here $B_0$ and $r_0$ are the equatorial strength of the dipole magnetic field and the equatorial distance of the field line, respectively, and k is the constant of separation ($B_1(\eta) = k*S(\eta)*T(\eta)$ ?).
+For an azimuthal wave number $m = 0$, the coupling terms vanish on the right hand sides of equations of S and T. The results are two decoupled equations for the poloidal and toroidal field variations, as described earlier in Dungey's 1954 paper on ULF pulsations. For arbitrary azimuthal wave number, $T(\zeta)$ can be eliminated from the equations with a second order differential equation resulting for $S(\zeta)$:
+
+\[
+\frac{d^2 S}{d\zeta^2} + \frac{f_m}{f_0}\frac{d}{d\zeta}\Big( \frac{f_0}{f_m} \Big) \frac{dS}{d\zeta} + 9 \zeta^6 f_m S = 0.
+\]
+
+This 1D wave equation exhibits singular points at $f_m = 0$ and at $f_0 = 0$. Solutions near $f_0(\zeta_0) = 0$ may be expanded around $\zeta_0$, and with the transformation $x = \zeta - \zeta_0$ we obtain
+
+\[
+\frac{d^2 S}{dx^2} + \frac{1}{x}\frac{dS}{dx} - b^2 S = 0,
+\]
+
+with $b^2 = (3m/\zeta_0)^2$. The solution of the above equation exhibits a logarithmic singularity at $x=0$. Near $x=0$ we have $S\approx \ln{x}$, $dS/d\zeta\approx x^{-1}$, and $\approx x^{-1}$. Furthermore, Tamao found that the $(\xi,\eta,\phi)$ components of the Poynting flux near the singular point approach inifinity in the order of $\ln{x},x^{-2}$, and $x^{-1}$, respectively.
+
+The importance of the above treatment of the problem of wave propagation and mode coupling in a nonuniform magnetized plasma had not been realized before [Southwood, 1974][Southwood1974] and [Chen and Hasegawa, 1974][Chen1974] rediscovered the field line resonance phenomenon.[^Chen]
+
+[^Chen]: 陈瑠这个名字我在哪本等离子体的教材或者文章中看见过。
+
 #### 1D FLR Theory
 
-[Southwood, 1974][Southwood1974] proposed an elegant 1D box model for field line resonance and later extended the model for various cases (e.g. [Southwood & Kivelson, 1990][SouthwoodKivelson1990]). Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point.
+[Southwood, 1974][Southwood1974] proposed an elucidating 1D box model for field line resonance and later extended the model for various cases (e.g. [Southwood & Kivelson, 1990][SouthwoodKivelson1990]). Instead of the actual dayside magnetosphere like a compressed dipole, we can simplify the geometry to something we can solve analytically. Imagine a field line with both footpoints connecting to the conducting ionosphere, we can map this curved field line into a straight line extending along z. In x direction, the outer boundary is the magnetopause, and the inner boundary is the reflection point.
 This is shown in the schematic figures below.
 
 \fig{/assets/box_model_mapping.png}
 
 \fig{/assets/box_model_config.png}
+
+Plasma density $\rho_0$ varies only along the x-axis, while the background magnetic field is uniform and along the z-axis, i.e. $\mathbf{B}_0 = (0,0,B_0)$. Eliminating $\mathbf{B}_1$, $\mathbf{v}_1$ and $\mathbf{j}$ from Maxwell's equations lead to a wave equation for the linearized electric field perturbations of the form
+
+\[
+\frac{\partial^2\mathbf{E}}{\partial t^2} = \mathbf{V}_A\times\mathbf{V}_A\times\nabla\times(\nabla\times\mathbf{E}).
+\]
+
+With the ansatz
+
+\[
+\mathbf{E}_\perp = (E_x(x), E_y(x), 0)\exp(ik_y y + ik_z z - i\omega t),
+\]
+
+and defining
+
+\[
+R^2(x) = \frac{\mu_0\rho_0(x)\omega^2}{B_0^2},
+\]
+
+the poloidal component (?) $E_y$ of the general wave equation is transformed into
+
+\[
+\frac{\partial^2}{\partial x^2}E_y - k_y^2 \frac{\partial}{\partial x}R^2(x)\frac{1}{(R^2 - k_z^2)(R^2 - k_z^2 - k_y^2)}\frac{\partial E_y}{\partial x} + (R^2 - k_z^2 - k_y^2)E_y = 0.
+\]
+
+This equation exhibits strong singularities found in the denominator of its $2^{nd}$ term, much as first described by Tamao (1965). The following solutions are possible. Let us first assume the case $R^2 - k_z^2 - k_y^2 > 0$, from which $R^2 - k_z^2 > 0$ follows. Thus, no singularities appear. Assuming further $k_y \approx 0$, the above equation reduces to
+
+\[
+\frac{\partial^2}{\partial x^2}E_y + (R^2 - k_z^2)E_y = 0.
+\]
+
+For a linear density profile, i.e. $R^2(x) = \alpha_0^2 + \alpha^2 x$, with the definition of the turning point $x_T$ via $R_T^2 = \alpha_0^2 + \alpha^2 x_T = k_z^2$, and the transformation $s = \alpha^{2/3}(x-x_T)$
+
+\[
+\frac{\partial^2}{\partial s^2}E_y + sE_y = 0.
+\]
+
+This is an Airy or Stokes differential equation[^airy] with the two principal solutions displayed below. The solution $Bi(s)$ is unphysical as it implies unlimited growth of $E_y$ behind the turning point at $s=0$. Thus $E_y(s) = Ai(s)$ is the required solution. The turning point actually is the point of total reflection of the wave field. Its apperaance can be understood on the following grounds. The fast mode dispersion relation is given by
+
+\[
+\frac{\omega^2}{k_x^2 + k_y^2 + k_z^2} = V_A^2,
+\]
+
+where $k_x$ is the wave number in the x-direction. If $V_A^2$ increases with x, that is with $s$ in the Airy function plot, $k_x^2$ has to decrease as $\omega, k_y$ and $k_z$ stay constant. Eventually $k_x^2$ may become negative, which implies an imaginary wave number $k_x$. At this turning point the wave will be reflected.
+
+[airy]: a good time to go back to Y.Y's note!
+
+\fig{/assets/Airy_FLR.png}
+
+Considering the case $R^2 - k_z^2 - k_y^2 < 0$, $R^2 - k_z^2 = 0$ may occur. Assuming again a linear density profile, defining a resonance point $x_\omega$ via $R_\omega^2 = \alpha_0^2 + \alpha^2 x_\omega = k_z^2$, and $s = l(x-x_\omega)$, the electric field perturbation transforms close to the resonance point $x - x_\onmega = 0$ into
+
+\[
+\frac{\partial^2}{\partial s^2}E_y + \frac{1}{s}\frac{\partial E_y}{\partial s} - E_y = 0,
+\]
+
+which is a modified Bessel equation. This is equivalent to Tamao's approach. At the resonance point its solution exhibits a clear singularity, that is unlimited growth of $E_y$. A discussion of the general solution of the electric field perturbation equation for the case $R^2 - k_z^2 - k_y^2 < 0$ is lengthy. Schematically the solution is given in the bottom panel of the above figure. It can be seen that in front of the turning point the solution is similar to an Airy function, while behind it singular behaviour is observed at the resonance point.
+
+The following physical interpretation is tempting. The MHD wave
+propagating into the magnetosphere is a fast mode wave generated by, e.g., plasma instabilities at the magnetopause. Eventually the wave reaches the turning point where reflection occurs. If conditions are favourable, that is if a resonance point occurs, part of the fast mode wave energy can tunnel into the resonance, where coupling from the fast mode disturbance into an Alfvén mode perturbation takes place. This scenario is schematically shown in Figure 7, where the reflection or turning point is assumed to coincide with the magnetopause. The point of maximum coupling or “resonant mode coupling” is given by $\omega - k_\parallel V_A(x)$, where $\omega$ is the fast mode wave frequency, $k_\parallel$ is the field-aligned component of the fast mode wave vector and $V_A(x)$ is the local Alfvén velocity.
+
+\fig{/assets/schematic_FLR.png}
+
+The energy that is carried into the magnetosphere across the background field by the non-guided fast mode is accumulated in the plane of resonant mode coupling (i.e., the y–z plane through $x_ω$ in the box model Figure) in the form of the guided Alfvén wave. It is this localized accumulation of energy due to resonant mode coupling between a non-guided mode and a guided mode that constitutes a field line resonance. This wave energy accumulation can be described by
+
+\[
+\frac{\partial w}{\partial t} + \nabla\cdot\mathbf{S} = -h,
+\]
+
+where $w$ is the wave energy density, $\mathbf{S}$ is the Poynting flux, and h a dissipation term, describing energy loss due to e.g. ionospheric Joule heating. As the background parameters only vary in the radial direction, this equation reduces to
+
+\[
+\frac{\partial w}{\partial t} = -\frac{d}{dr}S_x - h.
+\]
+
+ntegration across the width of the coupling region in a radial direction leads to the following rate equation:
+
+\[
+\frac{\partial W}{\partial t} = c_e S_{ng} - S_h^{off} - H,
+\]
+
+where $W$ is the energy per area that is being accumulated in the coupling, $c_e$ is a coupling efficiency, $S_{ng}$ the incoming Poynting flux of the non-guided mode, and $S_g^{off}$ the “off-angle” component of the Poynting flux of that mode to which the non-guided mode couples. Including this term $S_g^{off}$ allows us to consider energy losses due to coupling to not strictly guided modes. A finite off-angle component of the
+coupled wave mode would render the energy accumulation less efficient or may even inhibit the build-up of a resonance. Off-angle components may arise if the transverse scale of the coupled wave become small enough for finite ion gyroradius or finite electron inertia becoming important. In this case the coupled mode is a **kinetic Alfvén mode**. The parameter $c_e$ denotes the coupling efficiency, that is the fraction of energy of the non-guided mode that is converted into the guided mode. Finally, H gives the dissipative losses, integrated in the x direction.
 
 Let $\xi = (\xi_x, \xi_y, \xi_z)$ be the wave displacement vector and $B_{1z}$ be the compressional magnetic perturbation. Linearized MHD equations take the form
 
@@ -463,7 +598,7 @@ b_z = -ik_y B \xi_y - B\frac{\partial \xi_x}{\partial x}
 First assume we have uniform B field $\mathbf{B} = B_0 \hat{z}$ but a 1D density variation $\rho = \rho(x)$. This will give us a changing Alfvén speed as a function of x. We are looking for solutions $\sim B_{1z}(x)e^{i(\omega t - k_y y)}\cos(k_z z)$ (i.e. purely standing wave along the magnetic field lines or in the poloidal direction, wave+damp/growth along y or in the toroidal direction). From the linearized MHD equations, what we end up with is a 2nd order differential equation
 
 \[
-\frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 v_A^2 \frac{d v_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
+\frac{d^2 B_{1z}}{dx^2} - \frac{\omega^2 V_A^2 \frac{d V_A^2}{dx}}{\omega^2 - \omega_A(x)^2}\frac{d B_{1z}}{dx} + \Big( \frac{\omega^2}{V_A^2} - k_y^2 - k_z^2 \Big) B_{1z} = 0
 \]
 
 Several observations from this equation:
@@ -790,6 +925,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [CGL1956]: https://doi.org/10.1098/rspa.1956.0116
 [Rudakov1961]: https://archive.org/details/nasa_techdoc_19660020059/
 [HASEGAWA1969]: https://doi.org/10.1063/1.1692407
+[Chen1974]: https://doi.org/10.1029/JA079i007p01024
 [Southwood1974]: https://doi.org/10.1016/0032-0633(74)90078-6
 [Olson1983]: https://doi.org/10.1016/0032-0633(83)90079-X
 [Hubert1989]: https://doi.org/10.1029/GL016i002p00159
