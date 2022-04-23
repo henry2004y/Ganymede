@@ -426,12 +426,15 @@ During the nonlinear stage:
 
 ### Field Line Resonance
 
-We learned from satellite and ground observations that global eigenoscillations in Pc5 range occurs in the magnetosphere.
+We learned from ground, ionospheric, and space observations about the existence of *only one or at least a few* resonant field line vibrations (i.e. eigenoscillations) in the Pc5 range in the magnetosphere. As the Alfvén velocity is varying in the radial direction and as most sources of magnetospheric hydromagnetic waves are broadband sources, the resonance condition can be matched at an infinite number of geomagnetic field lines. Thus, every field line should be in resonance for a broad enough energy source. Thus the observational fact of "magic" frequencies requires a magnetospheric frequency selection rule.
+[Kivelson and Southwood, 1985] suggested that perturbations due to a broadband source at, e.g., the magnetopause first couple to the discrete eigenoscillations of global compressional eigenmodes. These narrow band compressional modes then couple to Alfvénic perturbations due to the field line resonance mechanism. The global modes thus select the frequency components participating in the resonant coupling. An alternative way of selection has been proposed by [Fujita+, 1996], who demonstrated that the K–H instability at the surface of a non-uniform magnetospheric plasma introduces dispersive properties of the unstable waves, which then gives rise to a narrower source spectrum. Thus, the field line resonance concept as outlined above is able to explain the major features of observed resonant ULF pulsations in the terrestrial magnetosphere.
 
-Possible mechanisim:
+Possible mechanism[^relations]:
 
 * MHD waveguide
 * MHD cavity modes
+
+[^relations]: What are the differences between FLR, waveguide, and cavity modes?
 
 In fact, the coupling of cavity or waveguide eigenmodes to FLRs may explain how discrete spectra are produced across a range of latitudes, including at the "magic" frequencies.
 The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic" frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting, the Archer+ 2019, 2022 papers handle this.)
@@ -441,7 +444,9 @@ Thinking about fast modes propagating in dayside magnetosphere trapped or guided
 In the 1970s, KHI is cited as the source of compressional energy required for the excitation of FLRs. However, later people have found that the same can be triggered by solar wind dynamic pressure fluctuation.
 Simultaneous measurements are applied to show that periodic fluctuations in the solar wind dynamic pressure drives ULF pulsations in the magnetosphere. A one‐to‐one correspondence was observed between the solar wind number density oscillation frequencies and oscillation frequencies in dayside magnetic field measurements from the GOES satellite. Even magnetotail lobe oscillations have been associated with upstream dynamic pressure fluctuation. One statistical study in 2009 by Viall+ is trying to argue that 50% of the ULF waves in the magnetosphere is driven by upstream solar wind dynamic pressure fluctuations.
 
-In [SouthwoodKivelson1990], they provide a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
+In [SouthwoodKivelson1990], they provided a theoretical work on the FLRs and cavity mode as magnetospheric response to solar wind dynamic pressure changes.
+
+[Glassmeier+, 1999][Glassmeier1999] presented a nice review on the FLR theory. To fully understand the basis of the theory, I also need to read [Theory of Hydromagnetic Waves in the Magnetosphere][Southwood1983].
 
 #### Earliest Discovery
 
@@ -450,10 +455,10 @@ Tsutomu Tamao, a physicist at Tohoku university, published a canonical paper in 
 In his seminal approach to the problem of the propagation and coupling of hydromagnetic waves in non-uniform media, [Tamao 1965](https://earth-planets-space.springeropen.com/articles/10.5047/eps.2013.05.013) discussed the time harmonic wave propagation in a dipole magnetosphere in a linear approximation. Dissipation due to collisions, that are Ohmic and viscous effects, is neglected as well as electron inertia. In the following we will outline Tamao’s treatment for historical reasons
 and to demonstrate how detailed his early study really was.
 
-The equation for the velocity perturbation component transverse to the ambinet dipole field is given by
+The equation for the velocity perturbation component transverse to the ambient dipole field is given by
 
 \[
-\nabla^2 \big( \mathbf{C}\times\hat{\eta} - i\frac{\omega}{\Omega_i} \big) \times \hat{\eta} + \big(\frac{\omega}{V_A}\big)^2 C_\perp = 0
+\nabla^2 \Big( \mathbf{C}\times\hat{\eta} - i\frac{\omega}{\Omega_i} \Big) \times \hat{\eta} + \Big(\frac{\omega}{V_A}\Big)^2 C_\perp = 0
 \]
 
 where $\omega$ is the wave frequency, $\mathbf{C} = B\mathbf{v}_1$ where $\mathbf{v}_1$ is the perturbation velocity, B is the intensity of the background dipole magnetic field, $\Omega_i = eB/m_i$ is the ion gyrofrequency, $V_A = B/\sqrt{\mu_0 \rho_0}$ is the Alfvén speed. Dipole coordinates $(\xi,\eta,\phi)$ are used with unit vectors $(\hat{\xi}, \hat{\eta}, \hat{\phi})$ pointing in the direction of common sense.
@@ -505,11 +510,15 @@ This is shown in the schematic figures below.
 
 \fig{/assets/box_model_config.png}
 
-Plasma density $\rho_0$ varies only along the x-axis, while the background magnetic field is uniform and along the z-axis, i.e. $\mathbf{B}_0 = (0,0,B_0)$. Eliminating $\mathbf{B}_1$, $\mathbf{v}_1$ and $\mathbf{j}$ from Maxwell's equations lead to a wave equation for the linearized electric field perturbations of the form
+Plasma density $\rho_0$ varies only along the x-axis, while the background magnetic field is uniform and along the z-axis, i.e. $\mathbf{B}_0 = (0,0,B_0)$. Eliminating $\mathbf{B}_1$, $\mathbf{v}_1$ and $\mathbf{j}$ from Maxwell's equations lead to a wave equation for the linearized electric field perturbations of the form[^e_perturb]
 
 \[
-\frac{\partial^2\mathbf{E}}{\partial t^2} = \mathbf{V}_A\times\mathbf{V}_A\times\nabla\times(\nabla\times\mathbf{E}).
+\frac{\partial^2\mathbf{E}}{\partial t^2} = \mathbf{V}_A\times\mathbf{V}_A\times\nabla\times(\nabla\times\mathbf{E})
 \]
+
+where the cross products are to be read from right to left, and $\mathbf{V}_A = \mathbf{B}_0 / \sqrt{\mu_0 \rho_0}$.
+
+[^e_perturb]: how to derive this?
 
 With the ansatz
 
@@ -517,10 +526,12 @@ With the ansatz
 \mathbf{E}_\perp = (E_x(x), E_y(x), 0)\exp(ik_y y + ik_z z - i\omega t),
 \]
 
-and defining
+and defining[^R]
+
+[^R]: I need to think about the unit of R: $1/m^2$?
 
 \[
-R^2(x) = \frac{\mu_0\rho_0(x)\omega^2}{B_0^2},
+R^2(x) = \frac{\mu_0\rho_0(x)\omega^2}{B_0^2} = \frac{\omega^2}{V_A^2},
 \]
 
 the poloidal component (?) $E_y$ of the general wave equation is transformed into
@@ -541,7 +552,7 @@ For a linear density profile, i.e. $R^2(x) = \alpha_0^2 + \alpha^2 x$, with the 
 \frac{\partial^2}{\partial s^2}E_y + sE_y = 0.
 \]
 
-This is an Airy or Stokes differential equation[^airy] with the two principal solutions displayed below. The solution $Bi(s)$ is unphysical as it implies unlimited growth of $E_y$ behind the turning point at $s=0$. Thus $E_y(s) = Ai(s)$ is the required solution. The turning point actually is the point of total reflection of the wave field. Its apperaance can be understood on the following grounds. The fast mode dispersion relation is given by
+This is an Airy or Stokes differential equation[^airy] with the two principal solutions displayed below. The solution $Bi(s)$ is unphysical as it implies unlimited growth of $E_y$ behind the turning point at $s=0$. Thus $E_y(s) = Ai(s)$ is the required solution. The turning point actually is the point of total reflection of the wave field. Its appearance can be understood on the following grounds. The fast mode dispersion relation is given by
 
 \[
 \frac{\omega^2}{k_x^2 + k_y^2 + k_z^2} = V_A^2,
@@ -578,7 +589,7 @@ where $w$ is the wave energy density, $\mathbf{S}$ is the Poynting flux, and h a
 \frac{\partial w}{\partial t} = -\frac{d}{dr}S_x - h.
 \]
 
-ntegration across the width of the coupling region in a radial direction leads to the following rate equation:
+Integration across the width of the coupling region in a radial direction leads to the following rate equation:
 
 \[
 \frac{\partial W}{\partial t} = c_e S_{ng} - S_h^{off} - H,
@@ -586,6 +597,33 @@ ntegration across the width of the coupling region in a radial direction leads t
 
 where $W$ is the energy per area that is being accumulated in the coupling, $c_e$ is a coupling efficiency, $S_{ng}$ the incoming Poynting flux of the non-guided mode, and $S_g^{off}$ the “off-angle” component of the Poynting flux of that mode to which the non-guided mode couples. Including this term $S_g^{off}$ allows us to consider energy losses due to coupling to not strictly guided modes. A finite off-angle component of the
 coupled wave mode would render the energy accumulation less efficient or may even inhibit the build-up of a resonance. Off-angle components may arise if the transverse scale of the coupled wave become small enough for finite ion gyroradius or finite electron inertia becoming important. In this case the coupled mode is a **kinetic Alfvén mode**. The parameter $c_e$ denotes the coupling efficiency, that is the fraction of energy of the non-guided mode that is converted into the guided mode. Finally, H gives the dissipative losses, integrated in the x direction.
+
+It is now instructive to evaluate the rate Equation for the ideal MHD regime. As the Alfvén mode is a strictly guided mode its Poynting flux is directed exactly parallel to the background magnetic field. In other words, $S_h^{off}=0$, and Equation reads
+
+\[
+\frac{\partial W}{\partial t} = c_e S_{fast},
+\]
+
+where $S_{fast} = S_{ng}$ is the Poynting flux of the non-guided MHD mode. Thus, the energy density in the coupling region is continuously increasing as there is no outward transport of energy to balance the incoming Poynting flux of the fast mode. However, ionospheric Joule heating provides a significant dissipation mechanism with H limiting the energy density.
+
+Note that resonant mode coupling is only a **necessary** condition for
+field line resonances to occur. A **sufficient** condition is critical coupling to a strictly guided mode and absence of any dissipation.
+
+At the resonance a phase shift of $180^o$ between the toroidal field components ($E_x$ in the box model, $b_\phi$ in the dipole coordinate) on both sides of the resonance is apparent. This phase shift can be understood using Maxwell's equations with the polarization current $\mathbf{j}_\perp = \rho_0/B_0^2\cdot d\mathbf{E}/dt$, and deriving
+
+\[
+(R^2 - k_z^2)E_x = ik_y \Big( \frac{\partial E_y}{\partial x} - ik_y E_x \Big) = k_y \omega b_z.
+\]
+
+At the resonance $R_^2 = k_z^2$, thus $b_z=0$, and for the electric field polarization we have
+
+\[
+\frac{E_x}{E_y} = -\frac{i}{k_y E_y}\frac{\partial E_y}{\partial x}.
+\]
+
+The polarization therefore depends on $k_y$ as well as $\partial E_y/\partial x$. As $k_y$ changes sign across local noon for, e.g., K-H instability generated fast mode waves at the magnetopause and $\partial E_y/\partial x$ changes sign across the resonance point.
+
+
 
 Let $\xi = (\xi_x, \xi_y, \xi_z)$ be the wave displacement vector and $B_{1z}$ be the compressional magnetic perturbation. Linearized MHD equations take the form
 
@@ -636,7 +674,7 @@ Possible solutions (essentially analytical form of $b_z$ perturbation):
 
 What occurs in any given situation depends on the frequency spectrum of the source.
 
-More details shall be found in [Southwood & Kivelson, 1990][SouthwoodKivelson1990].
+More details shall be found in [Theory of hydromagnetic waves in the magnetosphere][Southwood1983] and [Southwood & Kivelson, 1990][SouthwoodKivelson1990].
 
 #### Limitations of Current FLR theory
 
@@ -710,7 +748,7 @@ Inner boundary: 2D electrostatic model of the ionosphere, with electric potentia
 When starting the runs, they choose to flip the IMF direction multiple times which they call "precondition". Reason? Faster? Higher accuracy? Stability?
 
 LFM model by [Claudepierre+, 2008][Claudepierre2008]:
-The phase velocities of the modes were different but the frequencies were the same and depended on the solar wind driving velocity. For both modes the preferred wavenumber was related to the boundary thickness, so that the KH waves are monochromatic.
+The phase velocities of the modes were different but the frequencies were the same and depended on the solar wind driving velocity. For both modes the preferred wavenumber was related to the boundary thickness, so that the K-H waves are monochromatic.
 
 In [Claudepierre+, 2009][Claudepierre2009], LFM is used to study the magnetospheric response to only a fluctuating upstream dynamic pressure. The changing of dynamic pressure is done through changing number density while keeping bulk velocity constant.
 The input dynamic pressure has frequency components spreading across Pc3 to Pc5 ranges:
@@ -928,6 +966,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Chen1974]: https://doi.org/10.1029/JA079i007p01024
 [Southwood1974]: https://doi.org/10.1016/0032-0633(74)90078-6
 [Olson1983]: https://doi.org/10.1016/0032-0633(83)90079-X
+[Southwood1983]: https://link.springer.com/article/10.1007/BF00169231
 [Hubert1989]: https://doi.org/10.1029/GL016i002p00159
 [SouthwoodKivelson1990]: http://www.igpp.ucla.edu/people/mkivelson/Publications/116-JA095iA03p02301.pdf
 [Song1994]: https://doi.org/10.1029/93JA03300
@@ -936,6 +975,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Summers1998]: https://doi.org/10.1029/98JA01740
 [Hubert1998]: https://doi.org/10.1029/98JA01011
+[Glassmeier1999]: https://link.springer.com/article/10.1023/A:1006659717963
 [Treumann2004]: https://npg.copernicus.org/articles/11/647/2004/npg-11-647-2004.pdf
 [Arnoldy2005]:  https://doi.org/10.1029/2005JA011041
 [Jordanova2007]: https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2006JA012215
