@@ -510,7 +510,7 @@ This is shown in the schematic figures below.
 
 \fig{/assets/box_model_config.png}
 
-Plasma density $\rho_0$ varies only along the x-axis, while the background magnetic field is uniform and along the z-axis, i.e. $\mathbf{B}_0 = (0,0,B_0)$. Eliminating $\mathbf{B}_1$, $\mathbf{v}_1$ and $\mathbf{j}$ from Maxwell's equations lead to a wave equation for the linearized electric field perturbations of the form[^e_perturb]
+Plasma density $\rho_0$ varies only along the x-axis, while the background magnetic field is uniform and along the z-axis, i.e. $\mathbf{B}_0 = (0,0,B_0)$. Eliminating $\mathbf{B}_1$, $\mathbf{v}_1$ and $\mathbf{j}$ from Maxwell's equations lead to a wave equation for the linearized electric field perturbations of the form[^Eperturb]
 
 \[
 \frac{\partial^2\mathbf{E}}{\partial t^2} = \mathbf{V}_A\times\mathbf{V}_A\times\nabla\times(\nabla\times\mathbf{E})
@@ -518,7 +518,7 @@ Plasma density $\rho_0$ varies only along the x-axis, while the background magne
 
 where the cross products are to be read from right to left, and $\mathbf{V}_A = \mathbf{B}_0 / \sqrt{\mu_0 \rho_0}$.
 
-[^e_perturb]: how to derive this?
+[^Eperturb]: how to derive this?
 
 With the ansatz
 
@@ -560,11 +560,11 @@ This is an Airy or Stokes differential equation[^airy] with the two principal so
 
 where $k_x$ is the wave number in the x-direction. If $V_A^2$ increases with x, that is with $s$ in the Airy function plot, $k_x^2$ has to decrease as $\omega, k_y$ and $k_z$ stay constant. Eventually $k_x^2$ may become negative, which implies an imaginary wave number $k_x$. At this turning point the wave will be reflected.
 
-[airy]: a good time to go back to Y.Y's note!
+[^airy]: a good time to go back to Y.Y's note!
 
 \fig{/assets/Airy_FLR.png}
 
-Considering the case $R^2 - k_z^2 - k_y^2 < 0$, $R^2 - k_z^2 = 0$ may occur. Assuming again a linear density profile, defining a resonance point $x_\omega$ via $R_\omega^2 = \alpha_0^2 + \alpha^2 x_\omega = k_z^2$, and $s = l(x-x_\omega)$, the electric field perturbation transforms close to the resonance point $x - x_\onmega = 0$ into
+Considering the case $R^2 - k_z^2 - k_y^2 < 0$, $R^2 - k_z^2 = 0$ may occur. Assuming again a linear density profile, defining a resonance point $x_\omega$ via $R_\omega^2 = \alpha_0^2 + \alpha^2 x_\omega = k_z^2$, and $s = l(x-x_\omega)$, the electric field perturbation transforms close to the resonance point $x - x_\omega = 0$ into
 
 \[
 \frac{\partial^2}{\partial s^2}E_y + \frac{1}{s}\frac{\partial E_y}{\partial s} - E_y = 0,
