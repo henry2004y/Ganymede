@@ -27,7 +27,7 @@ ULF waves were originally called micropulsations or magnetic pulsations since th
 
 [^1]: The Pc5 range originates from the Mariner 5 (1967) detection limitation to a Nyquist frequency of 1.67mHz, which corresponds to 600s. It roughly maps to $60^o\sim 70^o$ latitude on Earth's surface.
 
-With respect to polarization, field line resonant ULF waves can be categorized into three modes: compressional ($\Delta B_\parallel,\, \Delta E_\phi$), poloidal ($\Delta B_r,\, \Delta E_\phi$), and toroidal ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B\_parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively. Referring to the basic MHD theory, the compressional modes are fast modes, whereas the poloidal and toriodal modes are Alfvén modes. The perturbed EM fields are related by $\mathbf{B}_1 = \frac{\mathbf{k}}{\omega} \times \mathbf{E}_1$. A phase shift is allowed, and actually in real observations (e.g. THEMIS) it is rare that you can find B and E changing in-phase.
+With respect to polarization, field line resonant ULF waves can be categorized into three modes: *compressional* ($\Delta B_\parallel,\, \Delta E_\phi$), *poloidal* ($\Delta B_r,\, \Delta E_\phi$), and *toroidal* ($\Delta B_\phi,\, \Delta E_r$). Here, $B_r$ ($E_r$), $B_\parallel$, and $B_\phi$ ($E_\phi$) are the radial, parallel (or compressional), and azimuthal components in the local magnetic field system, respectively. Referring to the basic MHD theory, the compressional modes are fast modes, whereas the poloidal and toriodal modes are Alfvén modes. The perturbed EM fields are related by $\mathbf{B}_1 = \frac{\mathbf{k}}{\omega} \times \mathbf{E}_1$. Think of a closed field line near the equatorial plane inside the magnetosphere: if the wave vector $\mathbf{k}$ is along the field line, i.e. $\mathbf{k} = (0,0,k_z)$, then there will be two cases for the EM field: poloidal where $\mathbf{E}_1$ in $\hat{\phi}$, $\mathbf{B}_1$ in $\hat{r}$ and toroidal where $\mathbf{E}_1$ in $\hat{r}$, $\mathbf{B}_1$ in $\hat{\phi}$. If the wave vector $\mathbf{k}$ is perpendicular to the field line, i.e. $\mathbf{k} = (k_x, 0, 0)$, since there is no $E_\parallel$ in MHD, we only have one option $\mathbf{E}_1$ in $\hat{\phi}$ and $\mathbf{B}_1$ in $\hat{z}$. A phase shift is allowed, and actually in real observations (e.g. THEMIS) it is rare that you can find B and E changing in-phase.
 
 \fig{/assets/Menk2013_Fig17_poloidal_toroidal.png}
 
@@ -104,10 +104,10 @@ This combination of conditions suggests that the oscillations are more likely du
 
 1. Solar wind dynamic pressure pulses identified by
 
-  * depressed magnetic field strength;
-  * enhanced plasma density;
-  * compressed magnetosphere;
-  * enhanced magnetic field strength observed by "static" satellites.
+  * depressed magnetic field strength
+  * enhanced plasma density
+  * compressed magnetosphere
+  * enhanced magnetic field strength observed by "static" satellites
 
 [Southwood and Kivelson][SouthwoodKivelson1990] has described the basic picture of pressure viriations pretty well:
 < The magnetosphere is not rigid; the plasma motions due to compression are not necessarily in phase. If a change in external pressure takes place on a time scale shorter than the time taken by a MHD wave to travel through the magnetospheric cavity (~ 10 min), the magnetopause acts as a source of a compressional MHD signal that propagates through the system. As well as communicating the new equilibrium conditions, the signal can excite transient responses, for example normal modes.
@@ -439,9 +439,9 @@ Possible mechanism[^relations]:
 [^relations]: What are the differences between FLR, waveguide, and cavity modes?
 
 In fact, the coupling of cavity or waveguide eigenmodes to FLRs may explain how discrete spectra are produced across a range of latitudes, including at the "magic" frequencies.
-The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic" frequencies and spanning a range of latitudes, but it lacks observation support and is hard to detect with satellites. (This is interesting, the Archer+ 2019, 2022 papers handle this.)
+The global cavity modes _may be_ responsible for the appearance of ULF signals with multiple discrete spectral peaks at the "magic" frequencies and spanning a range of latitudes, but it is hard to detect with satellites. (This is interesting, the Archer+ 2019, 2022 papers handle this.)
 
-Thinking about fast modes propagating in dayside magnetosphere trapped or guided by the field lines and boundaries within. Cavity modes assume that you have a closed system. It can produce discrete azimuthal wave numbers. Waveguide modes assumes open-ended boundary conditions. It allows continuous azimuthal wave number spectrum.
+Thinking about fast modes propagating in dayside magnetosphere trapped or guided by the field lines and boundaries within. Cavity modes assume that you have a closed system. It can produce *discrete* azimuthal wave numbers. Waveguide modes assumes open-ended boundary conditions. It allows *continuous* azimuthal wave number spectrum.
 
 In the 1970s, KHI is cited as the source of compressional energy required for the excitation of FLRs. However, later people have found that the same can be triggered by solar wind dynamic pressure fluctuation.
 Simultaneous measurements are applied to show that periodic fluctuations in the solar wind dynamic pressure drives ULF pulsations in the magnetosphere. A one‐to‐one correspondence was observed between the solar wind number density oscillation frequencies and oscillation frequencies in dayside magnetic field measurements from the GOES satellite. Even magnetotail lobe oscillations have been associated with upstream dynamic pressure fluctuation. One statistical study in 2009 by Viall+ is trying to argue that 50% of the ULF waves in the magnetosphere is driven by upstream solar wind dynamic pressure fluctuations.
@@ -520,7 +520,7 @@ Plasma density $\rho_0$ varies only along the x-axis, while the background magne
 
 where the cross products are to be read from right to left, and $\mathbf{V}_A = \mathbf{B}_0 / \sqrt{\mu_0 \rho_0}$.
 
-[^Eperturb]: how to derive this?
+[^Eperturb]: how to derive this? This is also different from Southwood's original derivation.
 
 With the ansatz
 
