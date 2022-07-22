@@ -159,6 +159,7 @@ Quote from Steven Schwartz's paper:
 The propagation of magnetospheric ULF plasma waves has been described usually usually in the context of standing shear Alfvén mode field line oscillations with low azimuthal wavenumber that are driven by energy coupling from incoming compressional fast mode waves.
 
 Downstream of the quasi-perpendicular portion of the bow shock, solar wind protons and heavier ions (helium ions) are  preferentially heated in the perpendicular direction to the magnetic field.[^heating] This heating creates strong temperature anisotropies which lead to intense wave growth. Several kinds of instabilities can be triggered: mirror mode instability and L-mode electromagnetic ion-cyclotron instability (EMIC).
+The development of pressure anisotropy can have a significant stabilizing effect on the dynamic evolution, while a reduction of the anisotropy as expected from microscopic, anisotropy driven instability reduces this stabilization and brings the evolution closer to the isotropic case [Birn+1995][Birn1995].
 EMIC mode dominates when the plasma β is low while mirror mode dominates when the plasma β is high.
 Slow modes may also be present within the plasma depletion layer[^PDL], although they are expected to suffer strong damping.
 These instabilities, if exist, allow energy transfer from the plasma to the electromagnetic field and creates the waves via reducing the temperature anisotropy and creating magnetic field oscillations for the mirror instability. So in a sense the instability initiates the waves, and the waves are these oscillations once they are "established" in the plasma.
@@ -974,6 +975,7 @@ This sounds easy, or even too easy. I won't even consider it a standard method..
 [Song1994]: https://doi.org/10.1029/93JA03300
 [SouthwoodKivelson1993]: https://www-thphys.physics.ox.ac.uk/people/AlexanderSchekochihin/notes/LESHOUCHES15/SouthwoodKivelson93_Mirror.pdf
 [LacombeBelmont1995]: https://doi.org/10.1016/0273-1177(94)00113-F
+[Birn1995]: https://doi.org/10.1029/95JA01401
 [Schwartz1997]: https://hal.archives-ouvertes.fr/hal-00316226/document
 [Summers1998]: https://doi.org/10.1029/98JA01740
 [Hubert1998]: https://doi.org/10.1029/98JA01011
