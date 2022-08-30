@@ -36,7 +36,7 @@ n(x) = \frac{1}{2}(n_m + n_s) + \frac{1}{2}(n_m - n_s)\tanh(x/D)
 where $D_0$ is the halfwidth of the magnetopause current sheet. The initial ion temperature $T_{i0}$ and the electron temperature $T_{e0}$ are assumed to be uniform everywhere, while the ions are loaded with an isotropic, Maxwellian velocity distribution. For a given magnetosheath ion beta $\beta_{is}$ and $T_{e0}/T_{i0}$, the initial magnetic field $B(x)$ is determined by the total pressure balance
 
 \[
-P(x) + \frac{B(x)^2}{2\u_0} = \text{const.}
+P(x) + \frac{B(x)^2}{2\mu_0} = \text{const.}
 \]
 
 throughout the simulation domain, where the total thermal pressure $P(x) = P_i(x) + P_e(x)$. The Alfvén speed is then obtained from
