@@ -79,7 +79,8 @@ T_{ref} = \frac{p_B \beta}{n k_B} = \frac{B_{ref}^2}{2\mu_0}\frac{\beta}{n k_B}
 
 Inserting the initially chosen values, we have a full set of conversion factors from the normalized units to SI units: $n_{ref} = 10^7\text{m}^{-3}, B_{ref} = 10^{-8}\text{T}, v_{ref} = 68960\text{m/s}, l_{ref} = 452570\text{m}, t_{ref} = 6.56\text{s}$, and $T_{ref} = 288188.74\text{K}$.
 
-We use the thermal speed as a reference to set the velocity space grid. The reference thermal speed is $V_{th,ref} = \sqrt{k_B T_{ref}/m_i} = 48760\text{m/s}$. Based on experience, I set the velocity space extent to be 20 times of $V_{th}$.
+Since $\beta, T_i, T_e$ are all initially uniform, we use the boundary values to determine the temperatures. $T_i = B_0^2/n_0*β / (1.0 + T_e / T_i) = 0.83$, $T_e = 0.2T_i = 0.17$.
+We use the thermal speed to estimate the velocity space grid. The thermal speed scale is $V_{th} = \sqrt{k_B T_{i}*T_{ref}/m_i} = 140757\text{m/s}$. Based on experience, I set the velocity space extent to be 20 times of $V_{th}$.
 
 Therefore, we have all the input parameters in SI units:
 
@@ -93,7 +94,7 @@ T_e &= 4.8\times 10^4 \text{K} \\
 B_0 &= 1.0\times 10^{-8} \text{T}
 \end{align}
 
-With $nx = 128$ and $nz = 128$, the spatial cell size is $L_x / nx=0.2 d_i$ in x and $L_z/nz =0.1 d_i$ in z. With 160 velocity space cells in each dimension, the velocity cell size is $20/160 = 1/8$ of the reference thermal velocity.
+With $nx = 256$ and $nz = 128$, the spatial cell size is $L_x / nx=0.1 d_i$ in x and $L_z/nz =0.1 d_i$ in z. With 160 velocity space cells in each dimension, the velocity cell size is $20/160 = 1/8$ of the background thermal velocity.
 
 ## Comparison
 
