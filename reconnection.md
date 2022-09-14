@@ -43,6 +43,10 @@ B_{1z} &= \psi_0\Big(\frac{2\pi}{L_x}\Big)\sin(2\pi x/L_x)\cos(\pi z/L_z)
 
 In normalized units $\psi_0 = 0.1$, which produces an initial island width which is comparable to the initial width of the current layer. The rationale for such a large initial perturbation is to put the system in the nonlinear regime of magnetic reconnection from the beginning of the simulation.
 
+The initial setup is shown in the figure below.
+
+\fig{/assets/current_sheet_initial.png}
+
 ### Vlasiator
 
 Vlasiator requires SI units as inputs, so we need unit conversions. I select a reference number density scale $n_{ref} = 10\text{amu/cc}$ and magnetic field $B_{ref} = 10\text{nT}$. The dimensionless scale $\beta$ is also used to determine the unit of temperature.
