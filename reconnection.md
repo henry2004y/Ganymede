@@ -51,10 +51,10 @@ The initial setup is shown in the figure below.
 
 Vlasiator requires SI units as inputs, so we need unit conversions. I select a reference number density scale $n_{ref} = 10\text{amu/cc}$ and magnetic field $B_{ref} = 10\text{nT}$. The dimensionless scale $\beta$ is also used to determine the unit of temperature.
 
-The reference ion frequency in Hz is
+The reference ion frequency in rad/s is
 
 \[
-\omega_{i,ref} = \sqrt{\frac{n_{ref}q_i^2}{\epsilon_0 m_i}}\frac{1}{2\pi}   
+\omega_{i,ref} = \sqrt{\frac{n_{ref}q_i^2}{\epsilon_0 m_i}}
 \]
 
 and then the reference ion inertial length in m, which is also used as the length scale, is
@@ -81,7 +81,7 @@ The temperature scale can be derived from the magnetic pressure and $\beta$
 T_{ref} = \frac{p_B \beta}{n k_B} = \frac{B_{ref}^2}{2\mu_0}\frac{\beta}{n k_B}
 \]
 
-Inserting the initially chosen values, we have a full set of conversion factors from the normalized units to SI units: $n_{ref} = 10^7\text{m}^{-3}, B_{ref} = 10^{-8}\text{T}, v_{ref} = 68960\text{m/s}, l_{ref} = 452570\text{m}, t_{ref} = 6.56\text{s}$, and $T_{ref} = 288188.74\text{K}$.
+Inserting the initially chosen values, we have a full set of conversion factors from the normalized units to SI units: $n_{ref} = 10^7\text{m}^{-3}, B_{ref} = 10^{-8}\text{T}, v_{ref} = 68960\text{m/s}, l_{ref} = 72030\text{m}, t_{ref} = 6.56\text{s}$, and $T_{ref} = 288188.74\text{K}$.
 
 Since $\beta, T_i, T_e$ are all initially uniform, we use the boundary values to determine the temperatures. $T_i = B_0^2/n_0*β / (1.0 + T_e / T_i) = 0.83$, $T_e = 0.2T_i = 0.17$.
 We use the thermal speed to estimate the velocity space grid. The thermal speed scale is $V_{th} = \sqrt{k_B T_{i}*T_{ref}/m_i} = 140757\text{m/s}$. Based on experience, I set the velocity space extent to be 20 times of $V_{th}$.
@@ -89,9 +89,9 @@ We use the thermal speed to estimate the velocity space grid. The thermal speed 
 Therefore, we have all the input parameters in SI units:
 
 \begin{align}
-L_x &= 1.16\times 10^7\text{m} \\
-L_z &= 2.79\times 10^6\text{m} \\
-\lambda &= 2.26\times 10^5 \text{m}\\
+L_x &= 1.84\times 10^6\text{m} \\
+L_z &= 9.22\times 10^5\text{m} \\
+\lambda &= 3.6\times 10^4 \text{m}\\
 n_0 &= 1.0\times 10^7 \text{m}^{-3} \\
 T_i &= 2.4\times 10^5 \text{K} \\
 T_e &= 4.8\times 10^4 \text{K} \\
