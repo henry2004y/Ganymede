@@ -47,6 +47,28 @@ The initial setup is shown in the figure below.
 
 \fig{/assets/current_sheet_initial.png}
 
+### Why do we need to resolve ion inertial length
+
+Physically, electrons and ions separate at the scale of ion inertial length. Numerically, Hall term is important only when cell size is small enough to resolve the ion initial length. The reason is as follows. The Ohm's law is
+
+\[
+\mathbf{E} = -(\mathbf{U}+\mathbf{U}_H)\times\mathbf{H}
+\]
+
+Assume the typical flow velocity is Alfvén velocity: $\mathbf{U} = \mathbf{V}_A$. The Hall velocity is estimated as:
+
+\[
+\mathbf{U}_H = -\frac{\mathbf{J}}{ne} = -\frac{\nabla\times\mathbf{B}}{\mu_0ne} \sim -\frac{|B|}{\mu_0ne\Delta x}
+\]
+
+The ratio of Hall velocity and Alfvén velocity is:
+
+\[
+\frac{|\mathbf{U}_H|}{|\mathbf{V}_A|} = \frac{c/\omega_{pi}}{\mu_0 \Delta x}
+\]
+
+Ion inertial length is also important for PIC: if particle's velocity is assumed to be Alfvén velocity, then ion inertial length is the same as ion gyroradius.
+
 ### Vlasiator
 
 Vlasiator requires SI units as inputs, so we need unit conversions. I select a reference number density scale $n_{ref} = 10\text{amu/cc}$ and magnetic field $B_{ref} = 10\text{nT}$. The dimensionless scale $\beta$ is also used to determine the unit of temperature.
@@ -66,8 +88,10 @@ d_i = \frac{c}{\omega_{i,ref}}
 The time scale in s is the inverse of reference gyrofrequency,
 
 \[
-t_{ref} = \frac{1}{\Omega_i} = \frac{m_i 2\pi}{q_i B_{ref}}
+t_{ref} = \frac{1}{\Omega_i} = \frac{m_i}{q_i B_{ref}}
 \]
+
+Actually there is a $2\pi$ factor missing here, since we need to convert from gyrofrequency to frequency and then take the inverse for the period. However, _traditionally no one did that_.
 
 The velocity scale in m/s is the Alfvén speed
 
@@ -81,7 +105,7 @@ The temperature scale can be derived from the magnetic pressure and $\beta$
 T_{ref} = \frac{p_B \beta}{n k_B} = \frac{B_{ref}^2}{2\mu_0}\frac{\beta}{n k_B}
 \]
 
-Inserting the initially chosen values, we have a full set of conversion factors from the normalized units to SI units: $n_{ref} = 10^7\text{m}^{-3}, B_{ref} = 10^{-8}\text{T}, v_{ref} = 68960\text{m/s}, l_{ref} = 72030\text{m}, t_{ref} = 6.56\text{s}$, and $T_{ref} = 288188.74\text{K}$.
+Inserting the initially chosen values, we have a full set of conversion factors from the normalized units to SI units: $n_{ref} = 10^7\text{m}^{-3}, B_{ref} = 10^{-8}\text{T}, v_{ref} = 68960\text{m/s}, l_{ref} = 72030\text{m}, t_{ref} = 1.04\text{s}$, and $T_{ref} = 288188.74\text{K}$.
 
 Since $\beta, T_i, T_e$ are all initially uniform, we use the boundary values to determine the temperatures. $T_i = B_0^2/n_0*β / (1.0 + T_e / T_i) = 0.83$, $T_e = 0.2T_i = 0.17$.
 We use the thermal speed to estimate the velocity space grid. The thermal speed scale is $V_{th} = \sqrt{k_B T_{i}*T_{ref}/m_i} = 140757\text{m/s}$. Based on experience, I set the velocity space extent to be 20 times of $V_{th}$.
