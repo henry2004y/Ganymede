@@ -58,10 +58,10 @@ Physically, electrons and ions separate at the scale of ion inertial length. Num
 Assume the typical flow velocity is Alfvén velocity: $\mathbf{U} = \mathbf{V}_A$. The Hall velocity is estimated as:
 
 \[
-\mathbf{U}_H = -\frac{\mathbf{J}}{ne} = -\frac{\nabla\times\mathbf{B}}{\mu_0ne} \sim -\frac{|B|}{\mu_0ne\Delta x}
+\mathbf{U}_H = -\frac{\mathbf{J}}{ne} = -\frac{\nabla\times\mathbf{B}}{\mu_0ne} \sim -\frac{|dB|}{\mu_0ne\Delta x} \sim -\frac{|B|}{\mu_0ne\Delta x}
 \]
 
-The ratio of Hall velocity and Alfvén velocity is:
+The approximation $dB\approx B$ is valid for relatively coarse grid size; for fine discrete cell sizes, this approximation does not hold, so magnetic field cannot cancel out in the following estimation. Let us now assume we can make this assumption. Then the ratio of Hall velocity and Alfvén velocity is:
 
 \[
 \frac{|\mathbf{U}_H|}{|\mathbf{V}_A|} = \frac{c/\omega_{pi}}{\mu_0 \Delta x}
