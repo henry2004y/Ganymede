@@ -597,8 +597,7 @@ Integration across the width of the coupling region in a radial direction leads 
 \frac{\partial W}{\partial t} = c_e S_{ng} - S_h^{off} - H,
 \]
 
-where $W$ is the energy per area that is being accumulated in the coupling, $c_e$ is a coupling efficiency, $S_{ng}$ the incoming Poynting flux of the non-guided mode, and $S_g^{off}$ the “off-angle” component of the Poynting flux of that mode to which the non-guided mode couples. Including this term $S_g^{off}$ allows us to consider energy losses due to coupling to not strictly guided modes. A finite off-angle component of the
-coupled wave mode would render the energy accumulation less efficient or may even inhibit the build-up of a resonance. Off-angle components may arise if the transverse scale of the coupled wave become small enough for finite ion gyroradius or finite electron inertia becoming important. In this case the coupled mode is a **kinetic Alfvén mode**. The parameter $c_e$ denotes the coupling efficiency, that is the fraction of energy of the non-guided mode that is converted into the guided mode. Finally, H gives the dissipative losses, integrated in the x direction.
+where $W$ is the energy per area that is being accumulated in the coupling, $c_e$ is a coupling efficiency, $S_{ng}$ the incoming Poynting flux of the non-guided mode, and $S_g^{off}$ the “off-angle” component of the Poynting flux of that mode to which the non-guided mode couples. Including this term $S_g^{off}$ allows us to consider energy losses due to coupling to not strictly guided modes. A finite off-angle component of the coupled wave mode would render the energy accumulation less efficient or may even inhibit the build-up of a resonance. Off-angle components may arise if the transverse scale of the coupled wave become small enough for finite ion gyroradius or finite electron inertia becoming important. In this case the coupled mode is a **kinetic Alfvén mode**. The parameter $c_e$ denotes the coupling efficiency, that is the fraction of energy of the non-guided mode that is converted into the guided mode. Finally, H gives the dissipative losses, integrated in the x direction.
 
 It is now instructive to evaluate the rate Equation for the ideal MHD regime. As the Alfvén mode is a strictly guided mode its Poynting flux is directed exactly parallel to the background magnetic field. In other words, $S_h^{off}=0$, and Equation reads
 
@@ -608,8 +607,7 @@ It is now instructive to evaluate the rate Equation for the ideal MHD regime. As
 
 where $S_{fast} = S_{ng}$ is the Poynting flux of the non-guided MHD mode. Thus, the energy density in the coupling region is continuously increasing as there is no outward transport of energy to balance the incoming Poynting flux of the fast mode. However, ionospheric Joule heating provides a significant dissipation mechanism with H limiting the energy density.
 
-Note that resonant mode coupling is only a **necessary** condition for
-field line resonances to occur. A **sufficient** condition is critical coupling to a strictly guided mode and absence of any dissipation.
+Note that resonant mode coupling is only a **necessary** condition for field line resonances to occur. A **sufficient** condition is critical coupling to a strictly guided mode and absence of any dissipation.
 
 At the resonance a phase shift of $180^o$ between the toroidal field components ($E_x$ in the box model, $b_\phi$ in the dipole coordinate) on both sides of the resonance is apparent. This phase shift can be understood using Maxwell's equations with the polarization current $\mathbf{j}_\perp = \rho_0/B_0^2\cdot d\mathbf{E}/dt$, and deriving
 
@@ -617,7 +615,7 @@ At the resonance a phase shift of $180^o$ between the toroidal field components 
 (R^2 - k_z^2)E_x = ik_y \Big( \frac{\partial E_y}{\partial x} - ik_y E_x \Big) = k_y \omega b_z.
 \]
 
-At the resonance $R_^2 = k_z^2$, thus $b_z=0$, and for the electric field polarization we have
+At the resonance $R^2 = k_z^2$, thus $b_z=0$, and for the electric field polarization we have
 
 \[
 \frac{E_x}{E_y} = -\frac{i}{k_y E_y}\frac{\partial E_y}{\partial x}.
