@@ -93,7 +93,7 @@ In other words, it is convenient to transform to a frame which moves at the loca
 [^HT_frame]: for a parallel shock, the HT frame can be just itself; for a perpendicular shock, the HT frame can be chosen by shifting the velocity by $\mathbf{V}_1$ s.t. $\mathbf{V}_1 = 0$.
 
 \[
-V_{xx}B_{y2} - V_{y2}B_{x2} = 0,
+V_{x2}B_{y2} - V_{y2}B_{x2} = 0,
 \]
 
 or $|\mathbf{V}_2\times \mathbf{B}_2|=0$. Thus, in the de Hoffmann-Teller frame, the upstream plasma flow is parallel to the upstream magnetic field, and the downstream plasma flow is also parallel to the downstream magnetic field.
@@ -285,7 +285,7 @@ from the Parker spiral solar wind model and $\Omega_r = 2.94\times 10^{-6}$ rad/
 The adiabatic equation in the perpendicular direction indicates that the perpendicular thermal energy $\langle m v_\perp^2/2\rangle = k_B T_\perp$ declines with B. Assuming in the rest frame the distribution function is a bi-Maxwellian of the form
 
 \[
-f(v) = \Big( \frac{m}{2\pi}  \Big)^{3/2}\frac{1}{k_B T_\perp (k_B T_\parallel)^{1/2}} exp\Big( -\frac{mv_\perp^2}{2k_B T_\perp} -\frac{mv_\parallel^2}{2k_B T_\parallel} \Big),
+f(v) = \Big( \frac{m}{2\pi}  \Big)^{3/2}\frac{1}{k_B T_\perp (k_B T_\parallel)^{1/2}} \exp\Big( -\frac{mv_\perp^2}{2k_B T_\perp} -\frac{mv_\parallel^2}{2k_B T_\parallel} \Big),
 \]
 
 the conservation of the total thermal energy
