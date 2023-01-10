@@ -8,7 +8,7 @@
 
 \toc
 
-Consider a subsonic disturbance moving through a conventional neutral fluid. As is well-known, sound waves propagating ahead of the disturbance give advance warning of its arrival, and, thereby, allow the response of the fluid to be both smooth and adiabatic. Now, consider a supersonic disturbance. In this case, sound waves are unable to propagate ahead of the disturbance, and so there is no advance warning of its arrival, and, consequently, the fluid response is _sharp_ and _non-adiabatic_. This type of response is generally known as a _shock_. 
+Consider a subsonic disturbance moving through a conventional neutral fluid. As is well-known, sound waves propagating ahead of the disturbance give advance warning of its arrival, and, thereby, allow the response of the fluid to be both smooth and adiabatic. Now, consider a supersonic disturbance. In this case, sound waves are unable to propagate ahead of the disturbance, and so there is no advance warning of its arrival, and, consequently, the fluid response is _sharp_ and _non-adiabatic_. This type of response is generally known as a _shock_.
 
 In space, shock is a dissipative structure in which the kinetic and magnetic energy of a directed plasma flow is partly transferred to heating of the plasma. The dissipation does not take place, however, by means of particle collisions for a shock in space. Collisionless shocks can be divided into _super_- and _sub-critical_: the **critical fast Mach number** $M_A^\ast$ is defined by equating the normal component of the downstream flow velocity in the shock frame to the sound speed.[^criticalMA] Above the first critical Mach number, resistivity alone is unable to provide all the dissipation needed for the required _Rankine-Hugoniot_ shock jump. Supercritical shocks are important because they usually produce much greater ion heating than subcritical shocks. In contrast to sub-critical shocks, resistivity in super-critical shocks cannot provide all the necessary dissipation for a shock transition according to the _Rankine–Hugoniot_ relationships. Thus, other processes like wave-particle interactions provide the dissipation required for supercritical shock formation. This is the reason why they are able to accelerate particles to high energies.[^earthBowShock]
 
@@ -39,12 +39,12 @@ The categories are shown in the following table. We refer the changes of the dow
 | Contact    | No | $\pm$  | continuous | continuous  | continuous | $\pm$ |
 | Tangential[^pause] | No | $\pm$  | continuous | $\pm$  | $B_n$ = 0  | $\pm$ |
 | Slow    | Yes | + | - | + | $B_t$ - | + |
-| Intermediate[^special] | Yes | continuous | $\pm$ | $\pm$  | rotation?  | $\pm$ |
+| Intermediate[^special] | No | continuous | $\pm$ | $\pm$  | rotation  | $\pm$ |
 | Fast[^bow]    | Yes | + | - | + | $B_t$ + | + |
 
-[^pause]: The Earth's magnetopause is generally a tangential discontinuity. When there is no flux rope been generated, the magnetopause can be treated as the surface of pressure balance between magnetic pressure, ram pressure and thermal pressure. However, when reconnection triggers flux rope generation, it may become a rotational discontinuity (TO BE CONFIRMED!).
+[^pause]: The Earth's magnetopause is generally a tangential discontinuity. When there is no flux rope been generated, the magnetopause can be treated as the surface of pressure balance between magnetic pressure, ram pressure and thermal pressure. However, when reconnection triggers flux rope generation, it may become a rotational discontinuity.
 
-[^special]: A special case is called *rotational discontinuity*. All are isentropic. Their existence are still a matter of debate.
+[^special]: A special case is called *rotational discontinuity*. All are isentropic. The tangential components of $\mathbf{B}$ and $\mathbf{v}$ must rotate together. Their existence are still a matter of debate.
 
 [^bow]: The Earth's bow shock is a fast mode shock.
 
@@ -54,7 +54,7 @@ The first special case is the so-called parallel shock in which both the upstrea
 
 As you may have probably guessed, a parallel shock is _unaffected_ by the presence of a magnetic field. In fact, this type of shock is identical to that which occurs in neutral fluids, and is, therefore, usually called a _hydrodynamic shock_.
 
-Is there a preferential direction from the upstream to the downstream? Yes, with the additional physics principle of the _second law of thermodynamics_. This law states that the _entropy_ of a closed system can spontaneously increase, but can never spontaneously decrease. Now, in general, the entropy per particle is different on either side of a hydrodynamic shock front. Accordingly, the second law of thermodynamics mandates that the downstream entropy must _exceed_ the upstream entropy, so as to ensure that the shock generates a net increase, rather than a net decrease, in the overall entropy of the system, as the plasma flows through it. 
+Is there a preferential direction from the upstream to the downstream? Yes, with the additional physics principle of the _second law of thermodynamics_. This law states that the _entropy_ of a closed system can spontaneously increase, but can never spontaneously decrease. Now, in general, the entropy per particle is different on either side of a hydrodynamic shock front. Accordingly, the second law of thermodynamics mandates that the downstream entropy must _exceed_ the upstream entropy, so as to ensure that the shock generates a net increase, rather than a net decrease, in the overall entropy of the system, as the plasma flows through it.
 
 The (suitably normalized) entropy per particle of an ideal plasma takes the form
 
@@ -76,9 +76,9 @@ Going through the derivations, we find that the condition for the existence of a
 \mathbf{V}_1^2 > \mathbf{V}_{s1}^2 + \mathbf{V}_{A1}^2
 \]
 
-Incidentally, it is easily demonstrated that if this is the case then the downstream plasma velocity is less than the downstream fast wave velocity. We can also deduce that, in a stationary plasma, a perpendicular shock propagates across the magnetic field with a velocity which exceeds the fast wave velocity. 
+Incidentally, it is easily demonstrated that if this is the case then the downstream plasma velocity is less than the downstream fast wave velocity. We can also deduce that, in a stationary plasma, a perpendicular shock propagates across the magnetic field with a velocity which exceeds the fast wave velocity.
 
-In the strong shock limit, $M_1\gg 1$, a strong perpendicular shock is very similar to a strong hydrodynamic shock (except that the former shock propagates perpendicular, whereas the latter shock propagates parallel, to the magnetic field). In particular, just like a hydrodynamic shock, a perpendicular shock cannot compress the density by more than a factor $(\gamma+1)/(\gamma-1)$. However, according to the RH jump conditions, a perpendicular shock compresses the magnetic field by the same factor that it compresses the plasma density. It follows that there is also an upper limit to the factor by which a perpendicular shock can compress the magnetic field. 
+In the strong shock limit, $M_1\gg 1$, a strong perpendicular shock is very similar to a strong hydrodynamic shock (except that the former shock propagates perpendicular, whereas the latter shock propagates parallel, to the magnetic field). In particular, just like a hydrodynamic shock, a perpendicular shock cannot compress the density by more than a factor $(\gamma+1)/(\gamma-1)$. However, according to the RH jump conditions, a perpendicular shock compresses the magnetic field by the same factor that it compresses the plasma density. It follows that there is also an upper limit to the factor by which a perpendicular shock can compress the magnetic field.
 
 ### Oblique Shock
 
@@ -104,7 +104,7 @@ Let us first consider the weak shock limit $r\rightarrow 1$. In this case, it is
 
 We can conclude that (in the de Hoffmann-Teller frame) fast shocks refract the magnetic field and plasma flow (recall that they are parallel in our adopted frame of the reference) away from the normal to the shock front, whereas slow shocks refract these quantities toward the normal. Moreover, the tangential magnetic field and plasma flow generally reverse across an intermediate shock front.
 
-Let us now consider the strong shock limit, $v_1^{\,2}\gg 1$. There is only one root for the shock adiabatic, which is a fast shock. The fact that there is only one real root suggests that there exists a critical shock strength above which the slow and intermediate shock solutions cease to exist. (In fact, they merge and annihilate one another.) In other words, there is a limit to the strength of a slow or an intermediate shock. On the other hand, there is no limit to the strength of a fast shock. Note, however, that the plasma density and tangential magnetic field cannot be compressed by more than a factor $(\gamma+1)/(\gamma-1)$ by any type of MHD shock. 
+Let us now consider the strong shock limit, $v_1^{\,2}\gg 1$. There is only one root for the shock adiabatic, which is a fast shock. The fact that there is only one real root suggests that there exists a critical shock strength above which the slow and intermediate shock solutions cease to exist. (In fact, they merge and annihilate one another.) In other words, there is a limit to the strength of a slow or an intermediate shock. On the other hand, there is no limit to the strength of a fast shock. Note, however, that the plasma density and tangential magnetic field cannot be compressed by more than a factor $(\gamma+1)/(\gamma-1)$ by any type of MHD shock.
 
 Consider the special case $\theta_1=0$ in which both the plasma flow and the magnetic field are normal to the shock front. There we have "switch-on" and "switch-off" shocks which refer to the generation and elimination of tangential components of the plasma flow and the magnetic field.
 
@@ -119,7 +119,7 @@ The classical approach by Chew, Goldberger, and Low [CGL][CGL1956] utilizes the 
 When we shift to the MHD with anisotropic pressure tensor
 
 \[
-P_{ij} = p_\perp \delta_{ij} + (p_\parallel - p_\perp)B_i B_j / B^2,  
+P_{ij} = p_\perp \delta_{ij} + (p_\parallel - p_\perp)B_i B_j / B^2,
 \]
 
 where $p_\perp$ and $p_\parallel$ are the pressures perpendicular and parallel w.r.t. the magnetic field, respectively.
@@ -193,7 +193,7 @@ The quantities downstream of the discontinuity are
 \begin{align}
 B_{t2} &= x B_{t1}, \\
 v_{t2} &= v_{t1}, \\
-p_{\perp 2} &= p_{\perp 1} + \frac{B_{t1}^2}{8\pi}(1-x^2) + \rho_1 v_{n1}^2\big( 1 - \frac{1}{x} \big). 
+p_{\perp 2} &= p_{\perp 1} + \frac{B_{t1}^2}{8\pi}(1-x^2) + \rho_1 v_{n1}^2\big( 1 - \frac{1}{x} \big).
 \end{align}
 
 Substituting these into the energy equation leads to
@@ -230,7 +230,7 @@ y = 1 / x
 ```
 
 which shows $\lambda_2 \simeq 3.19$.
- 
+
 In Vlasiator 2D southward IMF equatorial run I get 15 in a large area with spatial resolution 300 km downstream near the shock, which is much larger than this. I later realized that this indicates that the run is problematic, because the periodic condition in the out-of-plane z direction, which is also the parallel direction, prohibits any parallel heating. This in turn causes unphysical anisotropy values in the downstream region.
 
 In Vlasiator 2D southward IMF meridional run I get over 10 in a narraw region downstream of the shock, but for most part of the magnetosheath, the value is between 1 to 5, except the region near the magnetopause where again we have values over 10.
@@ -246,7 +246,7 @@ Parallel shocks are more special in that the magnetic field strength remains unc
 
 In the observation comparison paper [Slavin and Holzer, 1981](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/JA086iA13p11401) for quasi-perpendicular shocks, they concluded that the variations in shock stand-off distance and shape are ordered by the sonic Mach number and not other Mach numbers involve magnetic field. In other words, they think the bow shock is a gasdynamic structure.
 
-However, even in neutral fluid theory, the determination of shock location as well as shape is still a research problem. Imagine the simplest scenario where there is a static ball in the air with infinite mass. Assuming purely homogenous air with known density, velocity and pressure in the upstream, can you tell me the exact location of shock stand-off distance with pen and paper? 
+However, even in neutral fluid theory, the determination of shock location as well as shape is still a research problem. Imagine the simplest scenario where there is a static ball in the air with infinite mass. Assuming purely homogenous air with known density, velocity and pressure in the upstream, can you tell me the exact location of shock stand-off distance with pen and paper?
 
 On top of that, the introduction of EM field complicates the story. Especially in the case of a parallel shock, the plasmas get "shocked" both upstream and downstream, and the stand-off distance of the shock may not be a single point theoretically. In some sense, normal magnetic field to the boundary "thickens" the shock front.
 
@@ -297,7 +297,7 @@ W = \int d^3v \frac{mv^2}{2}f(v)
 yields
 
 \[
-W = k_B T_\perp + k_B T_\parallel/2 = const.   
+W = k_B T_\perp + k_B T_\parallel/2 = const.
 \]
 
 These allows us to evaluate the variations in $T_\perp$ and $T_\parallel$ originating from isotropic distribution on the surface of the sun. Starting from $T_\perp(0.3 AU) = T_\parallel(0.3 AU)\simeq 1.3\times 10^{5}\textrm{K}$, the predicted anisotropy at Earth can go beyond 20! Therefore in fact, the reasonable question to ask is why the actual solar wind anisotropy factor is so small.[^upstream]
@@ -311,7 +311,7 @@ On the other hand, the opposite case, $T_\perp > T_\parallel$, is also observed 
 Here I list the mirror instability criterion as an additional relation to determine the pressure anisotropy downstream of the shock from the book Plasma instabilities and nonlinear effects by Hasegawa 1975,
 
 \[
-1 + \sum_{\textrm{species}} \beta_\perp \big( 1 - \frac{\beta_\perp}{\beta_\parallel} \big) < 0.   
+1 + \sum_{\textrm{species}} \beta_\perp \big( 1 - \frac{\beta_\perp}{\beta_\parallel} \big) < 0.
 \]
 
 ## Earth Bow Shock
