@@ -52,8 +52,8 @@ From PWS measurements during the G1 and G2 flyby,
 
 The common slope of the first mentioned triad corresponds to a scale height of 600 km and a surface density of about 400$\text{cm}^{-3}$. This is well below the upper limit of $4\times10^3 \text{cm}^{-3}$ obtained by [Kliore, 1998] in the radio occultation observation.
 
-Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Neutral temperature maps published by [Orton+, 1996](https://science.sciencemag.org/content/274/5286/389/tab-figures-data) show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector. The $O_2$ scale height estimated in [Eviatar+, 2000](https://doi.org/10.1016/S0032-0633(00)00154-9) is only 21.5 km. The estimated polar cap ion density is 
-\begin{align} 
+Consider two separate regions on the surface of Ganymede, the polar cap region, for which the latitude $\lambda>45^o$ and the lower latitude regions equatorward of this limit. Neutral temperature maps published by [Orton+, 1996](https://science.sciencemag.org/content/274/5286/389/tab-figures-data) show a range of temperatures from about 150 K in the subsolar equatorial zone to below 90 K near the poles and in the pre-dawn sector. The $O_2$ scale height estimated in [Eviatar+, 2000](https://doi.org/10.1016/S0032-0633(00)00154-9) is only 21.5 km. The estimated polar cap ion density is
+\begin{align}
 n_{O_2^+} &= 2.2 \times 10^3\,\text{cm}^{-3}, \\
 n_{O_2} &= 3.5 \times 10^6\,\text{cm}^{-3}, \\
 n_{O^+} &= 3.3 \times 10^2\,\text{cm}^{-3}, \\
@@ -119,7 +119,7 @@ Outside the body,
 $$ \frac{\partial\mathbf{B}}{\partial t}=-\nabla\times(\eta\mathbf{j} - \mathbf{u}\times\mathbf{B})=\nabla\times(\mathbf{u}\times\mathbf{B})-\nabla\times(\eta\mathbf{j}) $$
 The right-hand side is treated in `ModFaceFlux`.
 
-The induction effect of a conducting core. The physical model is that you have a very high conductivity core region and a low conductivity mantle region. Because of the high conductivity of the core, we can treat it as a perfect conducing core with a dipole field generated from a dynamo. If you set $\eta=0$ in the mantle region (low resistivity), the B field is then fixed in the mantle so that it acts like a perfect conducting sphere with radius $r=1R_G$. Xianzhe mentioned in his Mercury paper a comparison between a conducting core and a purely resistive body (without a conducting core). My understanding is as follows: if you reach a steady state with a given resistivity profile, you get a curl-free steady B (at least for the mantle region).If then you use another resistivity profile to get a new steady state, it is still unclear what resistivity do in the process. What Xianzhe did in the Mercury simulation is that (at least I believe) he continued the steady state solution that is reached by including a conducting core in two ways: one still with a conducting core (by keeping the resistivity profile as shown in the plot) and a pressure enhancement, and the other without a conducting core (by setting very high resistivity near the surface of the core?) In this way you cannot get strong current near the core surface so no induction effect. You see what I mean? The absolute resistivity value may be unimportant in a steady state solution.  
+The induction effect of a conducting core. The physical model is that you have a very high conductivity core region and a low conductivity mantle region. Because of the high conductivity of the core, we can treat it as a perfect conducing core with a dipole field generated from a dynamo. If you set $\eta=0$ in the mantle region (low resistivity), the B field is then fixed in the mantle so that it acts like a perfect conducting sphere with radius $r=1R_G$. Xianzhe mentioned in his Mercury paper a comparison between a conducting core and a purely resistive body (without a conducting core). My understanding is as follows: if you reach a steady state with a given resistivity profile, you get a curl-free steady B (at least for the mantle region).If then you use another resistivity profile to get a new steady state, it is still unclear what resistivity do in the process. What Xianzhe did in the Mercury simulation is that (at least I believe) he continued the steady state solution that is reached by including a conducting core in two ways: one still with a conducting core (by keeping the resistivity profile as shown in the plot) and a pressure enhancement, and the other without a conducting core (by setting very high resistivity near the surface of the core?) In this way you cannot get strong current near the core surface so no induction effect. You see what I mean? The absolute resistivity value may be unimportant in a steady state solution.
 
 Yuxi said he once asked Xianzhe about why we are not considering induction effect for Earth and Jupiter, for example. Xianzhe responded that the reason is the core of Earth is relatively small comparing to its size of magnetosphere.
 
@@ -378,7 +378,7 @@ Source terms can be used to include physical processes that MHD would otherwise 
 Mass loading is the physical process in which newly created charged particles become part of an ambient plasma flow via electromagnetic forces. The processes of photoionization and electron impact ionization add new mass to the plasma, while charge exchange reactions may or may not add mass. Ionization creates an electronion pair — a source of new charge and mass for the plasma. Recombination acts as a sink of plasma in a similar way. Charge exchange on the other hand, exchanges a thermalized plasma ion with a neutral particle. In the process, mass may be added (asymmetric charge) or it may not (symmetric charge exchange). An example of charge exchange which adds mass is the accidentally resonant charge exchange reaction between hydrogen and oxygen. The forward reaction of the $ H^+ + O \rightleftharpoons H + O^+ $ charge exchange process is a typical example of mass addition without creating new charge. An example of the special case of no new mass being added is the resonant charge exchange between atoms and their corresponding ions (such as $ O^+ + O \rightleftharpoons O + O^+ $. In this case, there is neither new charge nor new mass added to the plasma, however the momentum and energy can change. The reaction results in a "friction" like force on the plasma as the ion moving with the plasma is replaced by a neutral at a different velocity. One can obtain the formulation of the source terms for MHD by starting with the Boltzmann equation [e.g., Gombosi et al., 1996]. Terms are formulated for this
 equation and then appropriate velocity moments are taken, resulting in the mass loading and friction source terms. The source vector (in the conservative form of equation 2.18) can be written as [Gombosi et al., 1996: Combi et al.. 1998]:
 \begin{align}
-\mathbf{S}_n = 
+\mathbf{S}_n =
 \begin{pmatrix}
 \dot{\rho} \\
 \dot{\rho}\mathbf{U}_n + \eta \rho (\mathbf{U}_n - \mathbf{U}) \\
@@ -421,7 +421,7 @@ What I have in mind is similar to what's been described in [Duling+, 2014][Dulin
 From a modeling perspective, we need to specify the $O_2$ number density distribution, calculate the production rate, loss rate and collision frequency according to the formulas, and then add to the mass and momentum equations.
 
 As a starting point, I can use a hydrostatic assumption for the neutral atmosphere, with uniformly distributed $O_2$.
-If I believe that a denser atmosphere is true from [Carnielli+, 2020][Carnielli+2020] and use a column density $N_n = 2.44\times10^{15}\, \text{cm}^{−2}$ and scale height $H = 250$ km, then 
+If I believe that a denser atmosphere is true from [Carnielli+, 2020][Carnielli+2020] and use a column density $N_n = 2.44\times10^{15}\, \text{cm}^{−2}$ and scale height $H = 250$ km, then
 $$ n_{n,0} = N_n / H = 9.8\times10^{13} \text{m}^{−3}. $$
 
 From [Yash's Jupiter paper](https://doi.org/10.1029/2019JA026787),
@@ -541,6 +541,7 @@ E_{ijk}^{\prime}=\alpha E_{ijk}+\frac{1-\alpha}{6}\sum{(\text{six neighbors of }
 and this will be done iteratively nSmooth times.
 * `#POISSON`: determine if the correction of $\nabla\cdot\mathbf{E}=\rho^\ast$ is needed and the timestep interval for doing this.
 * `#PARTICLES`: determine the number of particles per cell
+* `#DISCRETIZATION`: control the parameters in the discretization scheme. The important one is `theta`. Theoretically, a value of 0.5 implies semi-implicit exact energy conservation and 1.0 implies fully-implicit. Yuxi said a value of 0.51 gave better stability in practice.
 * `#SOLVER`: define the tolerances and iterations for implicit solvers. I think these are empirical choices.
 * `#SAVEIDL`: save idl output files
 * `#SAVEPLOT`: save hdf5 output files
@@ -707,7 +708,7 @@ K-H instability driven surface waves --> mode conversion to Alfvén wave inside 
 
 ## KH Instability
 
-There are some interests in analyzing the K-H instability on the flanks of the magnetopause. Nawapat Kaweeyanun, the student of Adam Masters, also has a paper on this subject. From the plasma-moon interaction workshop discussion with him, we are still not so sure about the effect of multiple ion species and different energy levels. 
+There are some interests in analyzing the K-H instability on the flanks of the magnetopause. Nawapat Kaweeyanun, the student of Adam Masters, also has a paper on this subject. From the plasma-moon interaction workshop discussion with him, we are still not so sure about the effect of multiple ion species and different energy levels.
 
 One big factor in the onset condition is the $M/Q$ ratio. Since most of the heavy ions are O+ and S++, both of which have $M/Q=16$, it does not matter if we distinguish them or not.
 The linear K-H instability onset condition only relies on the bulk plasma properties. However, the linear growth rate, $\gamma$, depends on the particle temperature. We know that in Ganymede's case the energetic particles contributes to most of the thermal pressures, despite the fact that the number densities are small compared to their cold bulk brothers. Currently I am not clear about the exact expression of the dependence of $\gamma$ on velocity/energy/pressure/density, but definitely a strict theory requires the relation of these basic factors other than temperature. In my point of view, temperature is such an ambiguous quantity that is almost meaningless in space. When people talk about energetic particles, they use energies in eV.

@@ -15,7 +15,7 @@ The installation is thoroughly described in the official document. The following
 In principle, the GM module can run alone without compiling the PC module until the coupling is required.
 However in practice I recommend run with the coupled executable from start to prevent further work in changing the parameter file at a later stage.
 
-After SWMF is successfully installed, 
+After SWMF is successfully installed,
 ```
 ./Config.pl -v=Empty,PC/FLEKS,GM/BATSRUS -amrex
 ./Config.pl -o=GM:g=8,8,8,ng=2,u=Ganymede,e=MhdHypPe
@@ -363,11 +363,11 @@ There are several things worth noticing here:
   * The first number, `nPlotFiles`, specifies how many output files there will be. It happens many time that I write a number smaller than the actual number of outputs I list afterwards so that some files are missing.
   * The box output is what I used to plot the G8 magnetic field comparisons. Saving it within a box has the advantage of shifting it slightly to get potentially better comparison. However, I think this is no longer necessary, so the `SATELLITEFILE` command may be a better substitution.
 
-
 ## Steady State Hall MHD
 
 It is allowed to have multiple sessions in one PARAM.in file, separated with the `#RUN` command.
-After the local timestepping ideal MHD is finished, what I would do is to create another input file with the following added to the end to the previous PARAM.in: 
+After the local timestepping ideal MHD is finished, what I would do is to create another input file with the following added to the end to the previous PARAM.in:
+
 ```
 #STOP
 1                       MaxIteration
@@ -438,4 +438,536 @@ Just change all the forementioned `Dn`, `Dt` parameters together with `TIMEACCUR
 
 ## time-accurate MHD-EPIC
 
-There are a bunch of new commands for coupling with PIC.
+There are a bunch of new commands for coupling with PIC. Check the latest version and the manual!
+
+Here is the PARAM.in file that I use for running MHD-EPIC with iPIC3D for G28 in the paper:
+
+```
+#ECHO
+T			DoEcho
+
+#DESCRIPTION
+Time accurate run for Ganymede G28 flyby with MhdHypPe.
+Jovian plasma condition based on observations
+face-based innerBC
+
+#PLANET
+Ganymede		NamePlanet
+2634000			RadiusPlanet [m]
+1.4819E+23		MassPlanet   [kg]
+0.0			OmegaPlanet  [radian/s]
+0.0			TiltRotation [degree]
+DIPOLE			TypeBField
+2.0284                  MagAxisThetaGeo [degree]
+319.3449                MagAxisPhiGeo   [degree]
+-717.2494E-9            DipoleStrength  [T]
+
+Alternative description
+DIPOLE
+175.63                  MagAxisThetaGeo [degree]
+109.162                 MagAxisPhiGeo   [degree]
+718.895E-9              DipoleStrength  [T]
+
+TEST
+CON_axes::init_axes
+
+! The "absorb" BC is not compatible with a co-rotating BC
+#ROTATION
+F			UseRotation
+
+#TIMEACCURATE
+T			DoTimeAccurate
+
+#SAVERESTART
+T			DoSaveRestart
+-50000			DnSaveRestart
+10.			DtSaveRestart
+
+
+! Restart header for SWMF
+#INCLUDE
+RESTART.in		NameRestartFile
+
+#CPUTIMEMAX
+38000.0			CpuTimeMax
+
+#CHECKSTOP
+T                       DoCheckStop
+-5000                   DnCheckStop
+2.                    	DtCheckStop
+
+#PROGRESS
+200			DnShowProgressShort
+2000			DnShowProgressLong
+
+#COUPLE2
+GM                      NameCompMaster
+PC                      NameCompSlave
+-1                      DnCouple
+0.02                    DtCouple
+
+#COUPLETIME
+GM                      NameComp
+F                       DoCoupleOnTime
+
+#COUPLETIME
+PC                      NameComp
+F                       DoCoupleOnTime
+
+
+#BEGIN_COMP GM ---------------------------------------------------------------
+
+! Restart header for GM
+#INCLUDE
+GM/restartIN/restart.H
+
+#HYPERBOLICDIVB
+T                       UseHyperbolicDivb
+150.0                  	SpeedHypDim
+0.1                     HypDecay
+
+#COORDSYSTEM
+GSE			TypeCoordinate
+
+#BODY
+T			UseBody
+0.5			rBody      [rPlanet]
+3.5			rCurrents  [rPlanet]
+39			BodyNDim   [/cc]
+2.32e5			BodyTDim   [K]
+
+#BODY
+F
+
+#PLASMA
+14.0			FluidMass [amu]
+1.0                     AverageIonCharge [e]
+1.0/18.0                ElectronTemperatureRatio
+
+TEST
+krylov
+
+#MINIMUMPRESSURE
+0.001			pMinDim
+0.001                   PeMinDim for electron pressure
+
+#MINIMUMDENSITY
+0.1			RhoMinDim
+
+#NONCONSERVATIVE
+F			UseNonConservative
+
+#CONSERVATIVECRITERIA
+0			nConservCrit
+
+#RESTARTOUTFILE
+one                     TypeRestartOutFile
+
+---------------grid structure-----------------
+#GRIDGEOMETRY
+spherical_lnr           TypeGeometry
+
+#GRID
+10                        proc_dims(1)           nRootBlockX
+8                        proc_dims(2)           nRootBlockY
+8                        proc_dims(3),          nRootBlockZ
+-100                     x1            xMin
+ 100                     x2            xMax
+-100                     y1            yMin
+ 100                     y2            yMax
+-100                     z1            zMin
+ 100                     z2            zMax
+
+#LIMITRADIUS
+0.5			rMin
+174.0                   rMax > (sqrt(100^2+100^2+100^2))
+
+#GRIDLEVEL
+2			nLevelArea
+initial			NameArea
+
+#GRIDLEVEL
+2			nLevelArea
+box_gen         	TypeRegion
+1.1             	rmin            xMinBox
+0.0            		LonMin          yMinBox
+-65.0           	LatMin          zMinBox
+4.0 	        	rmax            xMaxBox
+360.0           	LonMax          yMaxBox
+65.0            	LatMax          zMaxBox
+
+#GRIDLEVEL
+1			nLevelArea
+box_gen			TypeRegion
+5.0			rmin
+-70.0			LonMin
+35.0			LatMin
+15.0			rmax
+70.0			LonMax
+65.0			Latmax
+
+#GRIDLEVEL
+1			nLevelArea
+box_gen			TypeRegion
+5.0			rmin
+-70.0			LonMin
+-35.0			LatMin
+15.0			rmax
+70.0			LonMax
+-65.0			LatMax
+----------------end grid structure--------------
+
+----------------PIC-----------------
+#PICUNIT
+1.0                     xUnitPicSi [m]
+4000.0e3                uUnitPicSi [m/s]
+
+#PICREGION
+1                       nPicRegion
+-2.5                    xMinCut
+-1.125                  xMaxCut
+-2.                     yMinCut
+ 2.                     yMaxCut
+-2.2                    zMinCut
+ 2.2                    zMaxCut
+1/32                    DxPic
+1/32                    DyPic
+1/32                    DzPic
+---------------end PIC--------------
+
+
+----------------BC-----------------
+#OUTERBOUNDARY
+fixedb1			TypeCellBc1
+none			TypeCellBc2
+periodic		TypeCellBc3
+periodic		TypeCellBc4
+periodic		TypeCellBc5
+periodic		TypeCellBc6
+
+#BOXBOUNDARY
+fixed			TypeBcXmin
+fixed			TypeBcXmax
+float			TypeBcYmin
+float			TypeBcYmax
+float			TypeBcZmin
+float			TypeBcZmax
+
+#BOUNDARYSTATE
+coord1max xminbox xmaxbox         StringBoundary
+28.0                    BoundaryStateDim_V Rho
+140.0                   BoundaryStateDim_V Ux
+0.0                     BoundaryStateDim_V Uy
+0.0                     BoundaryStateDim_V Uz
+-7.0                   	BoundaryStateDim_V Bx
+78.0                    BoundaryStateDim_V By
+-76.0                   BoundaryStateDim_V Bz
+0.0                     BoundaryStateDim_V Hyp
+0.1                   	BoundaryStateDim_V Pe
+1.7                   	BoundaryStateDim_V p
+
+#BOUNDARYSTATE
+coord1min solid		StringBoundary
+550.0	  		BoundaryStateDim_V Rho
+0.0                     BoundaryStateDim_V Ux
+0.0                     BoundaryStateDim_V Uy
+0.0                     BoundaryStateDim_V Uz
+0.0                     BoundaryStateDim_V Bx
+0.0                     BoundaryStateDim_V By
+0.0                     BoundaryStateDim_V Bz
+0.0                     BoundaryStateDim_V Hyp
+0.01			BoundaryStateDim_V Pe
+0.115			BoundaryStateDim_V p
+
+#SOLIDSTATE
+T                       UseSolidState
+user                    TypeBcSolid
+sphere                  TypeSolidGeometry
+1.0                     rSolid
+5e-3			SolidLimitDt
+-------------end BC--------------
+
+#RESISTIVITY
+T			UseResistivity
+user			TypeResistivity
+0.0			Eta0Si
+
+#USERFLAGS
+T                       UseUserInnerBcs
+F                       UseUserSource
+F                       UseUserPerturbation
+F                       UseUserOuterBcs
+T                       UseUserICs
+F                       UseUserSpecifyRefinement
+F                       UseUserLogFiles
+F                       UseUserWritePlot
+F                       UseUserAMR
+F                       UseUserEchoInput
+F                       UseUserB0
+T                       UseUserInitSession
+F                       UseUserUpdateStates
+
+#USERINPUTBEGIN --------------------
+
+#INITTYPE
+B1U1
+
+#RESISTIVEPLANET
+1.0                     PlanetRadius
+5                       nResistivPoints
+1.05                    Radius
+0.0                     Resistivity
+0.95                    Radius
+6e11			Resistivity
+0.7                     Radius
+6e11			Resistivity
+0.65                    Radius
+6e9			Resistivity
+0.55		        Radius
+0.0		        Resistivity
+#USERINPUTEND ----------------------
+
+#TIMESTEPPING
+2			nStage
+0.8			CflExlp
+
+#SCHEME
+2                       nOrder (1 or 2)
+Sokolov                 TypeFlux (Roe, Rusanov, Linde, Sokolov
+mc3                     TypeLimiter
+1.2                     LimiterBeta
+
+#SEMIIMPLICIT
+T			UseSemiImplicit
+resistivity		TypeSemiImplicit
+
+#SEMIKRYLOV
+GMRES			TypeKrylov (GMRES, BICGSTAB, CG)
+0.001 			ErrorMaxKrylov
+100 			MaxMatvecKrylov
+
+#UPDATECHECK
+F                       UseUpdateCheck
+
+#COARSEAXIS
+F			UsePoleDiffusion
+T			UseCoarseAxis
+1			nCoarseLayer
+
+#RAYTRACE
+T                       UseRaytrace (rest is read if true)
+T                       UseAccurateTrace
+0.1                     DtExchangeRay [sec]
+1                       DnRaytrace
+
+#HALLRESISTIVITY
+T                       UseHallResist (rest of parameters read only if true)
+1.0                     HallFactorMax
+0.1                     HallCmaxFactor
+
+#HALLREGION
++hallbox -hallsphere -polars
+0
+
+#REGION
+hallbox                 NameRegion
+box tapered             NameHallRegion
+-4                      xMinBox
+-4                      yMinBox
+-4                      zMinBox
+4                       xMaxBox
+4                       yMaxBox
+4                       zMaxBox
+0.5                     Taper
+
+#REGION
+hallsphere              NameRegion
+sphere0 tapered         StringShape
+1.05                    Radius
+0.05                    Taper
+
+#REGION
+polars                  NameRegion
+doubleconez0 tapered    StringShape
+12                      Height
+2.0                     Radius
+0.2                     Taper
+
+
+#SAVEINITIAL
+T
+
+#SAVELOGFILE
+T			DoSaveLogfile
+RAW			StringLogfile
+1			DnSaveLogfile
+-1.			DtSaveLogfile
+
+#SAVEPLOT
+7                       nPlotFiles
+x=0 VAR idl             StringPlot
+-1000                   DnSavePlot
+1.                     	DtSavePlot
+-1.                     Dx
+{MHD} status           	NameVars
+{default}               NamePars
+y=0 VAR idl             StringPlot
+-1000                   DnSavePlot
+1.                     	DtSavePlot
+-1.                     Dx
+{MHD} status pic           NameVars
+{default}               NamePars
+z=0 VAR idl             StringPlot
+-1000                   DnSavePlot
+1.                     	DtSavePlot
+-1.                     Dx
+{MHD} status pic          	NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-5000                   DnSavePlot
+1.                     	DtSavePlot
+GSE                     TypeCoord
+-1.0950                 x0
+-0.0330                 y0
+-0.3800                 z0
+1.2660                  xLen
+1/32                    dX
+15.3340                 yLen
+1/32                    dY
+0.1500                  zLen
+1/32                    dZ
+0.                      xAngle
+0.                      yAngle
+0.                      zAngle
+bx by bz                NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-1                      DnSavePlot
+1.                      DtSavePlot
+GSE                     TypeCoord
+-1.1                    x0
+0.0                     y0
+0.0                     z0
+2.2                     xLen
+1/30                    dX
+2.2                     yLen
+1/30                    dY
+2.0                     zLen
+1/30                    dZ
+0.                      xAngle
+0.                      yAngle
+0.                      zAngle
+{MHD} status            NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-1                      DnSavePlot
+1.                      DtSavePlot
+GSE                     TypeCoord
+1.0                     x0
+-1.8                    y0
+2.0                     z0
+7.0                     xLen
+1/32                    dX
+8.4                     yLen
+1/32                    dY
+0.01                    zLen
+1/32                    dZ
+0.                      xAngle
+0.                      yAngle
+0.                      zAngle
+{MHD} status theta1 phi1 theta2 phi2 blk                NameVars
+{default}               NamePars
+cut MHD tcp		StringPlot
+-100			DnSavePlot
+10.			DtSavePlot
+1.
+5.
+0.
+360.
+-90.
+90.
+
+#END_COMP GM --------------------------------------------------------------
+
+#STOP
+-30000			MaxIteration
+1200.			tSimulationMax
+
+#BEGIN_COMP PC ---------------------------------------------------------------
+
+TEST
+write_plot_init
+
+TIMESTEPPING
+F       UseSWMFDt
+F       UseFixedDt
+0.4     CFL
+
+#TIMESTEPPING
+F       useSWMFDt
+T       useFixedDt
+0.025  dt (SI unit)
+
+#PROCESSORS
+6       XLEN
+16      YLEN
+20      ZLEN
+
+#RESTART
+T                       DoRrestart
+
+#ELECTRON
+-7.1428571              Charge/mass ratio (qom, 100/14)
+
+SMOOTHE
+T               DoSmoothAll
+4               nSmooth
+0.5             InnerSmoothFactor
+1.5             BCSmoothFactor
+10              nBoundarySmooth
+
+#POISSON
+T
+100000000
+0.01		PoissonTol
+20		PoissonIter
+
+#ENERGYCONSERVING
+T                       useECSIM
+
+#DISCRETIZATION
+0.51                    theta
+0.0                     gradRhoRatio
+0.0                     cDiff
+0.1                     ratioDivC2C
+
+#DIVE
+position_light		divECleanType
+1                       nPower
+1e-2                    Tol
+20                      nIter
+3                       nIterNonLinear
+
+PARTICLEBC
+3
+
+#PARTICLES
+6                       Particles per cell in X region 1
+6                       Particles per cell in Y
+6                       Particles per cell in Z
+
+SOLVER
+1.0e-6                  GMREStol : GMRES solver stopping criterium tolerance
+100                     nGMRESRestart
+3                       NiterMover : mover predictor corrector iteration
+
+#SAVEIDL
+1                       nPlotFile
+3d var real4 planet	StringPlot
+-1                      DnOutput
+1.0                     DtOutput
+0                       DxOutput
+{fluid} qc divEc
+
+#END_COMP PC -----------------------------------------------------------------
+```
