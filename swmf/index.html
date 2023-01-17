@@ -1,4 +1,4 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/Ganymede/libs/highlight/github.min.css"> <link rel=stylesheet  href="/Ganymede/css/franklin.css"> <link rel=stylesheet  href="/Ganymede/css/poole_hyde.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/Ganymede/assets/favicon.png"> <title>Run in Action</title> <div class=sidebar > <div class="container sidebar-sticky"> <div class=sidebar-about > <h1><a href="/Ganymede/">CSEM</a></h1> <p class=lead >Our attempts to understand nature.</p> </div> <nav class=sidebar-nav > <a class="sidebar-nav-item " href="/Ganymede/">Home</a> <a class="sidebar-nav-item " href="/Ganymede/log_ganymede/">Log</a> <a class="sidebar-nav-item " href="/Ganymede/simulations_ganymede/">OverView</a> <a class="sidebar-nav-item " href="/Ganymede/extra/">Extra</a> <a class="sidebar-nav-item " href="/Ganymede/galileo/">Observation</a> <a class="sidebar-nav-item active" href="/Ganymede/swmf/">Run in Action</a> <a class="sidebar-nav-item " href="/Ganymede/ulfwaves/">ULF Waves</a> <a class="sidebar-nav-item " href="/Ganymede/shocks/">Shocks</a> <a class="sidebar-nav-item " href="/Ganymede/reconnection/">Reconnection</a> <a class="sidebar-nav-item " href="/Ganymede/kaw/">Kinetic Alfvén Waves</a> </nav> <p>&copy; Hongyang Zhou.</p> </div> </div> <div class="content container"> <div class=franklin-content ><h1 id=how_to_run_the_swmf_model ><a href="#how_to_run_the_swmf_model" class=header-anchor >How to run the SWMF model</a></h1> <p>Even though I have been working with SWMF for five years, I will forget how to use it after leaving it for a while or the latest development introduce some breaking changes to the setups. This manual serves as a reference for myself and also other interesting researchers on how to reproduce the simulation.</p> <p>The installation is thoroughly described in the official document. The following assumes you have a basic understanding of running a model in SWMF.</p> <p>In principle, the GM module can run alone without compiling the PC module until the coupling is required. However in practice I recommend run with the coupled executable from start to prevent further work in changing the parameter file at a later stage.</p> <p>After SWMF is successfully installed, </p> <pre><code class="julia hljs">./Config.pl -v=Empty,PC/FLEKS,GM/BATSRUS -amrex
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/Ganymede/libs/highlight/github.min.css"> <link rel=stylesheet  href="/Ganymede/css/franklin.css"> <link rel=stylesheet  href="/Ganymede/css/poole_hyde.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/Ganymede/assets/favicon.png"> <title>Run in Action</title> <div class=sidebar > <div class="container sidebar-sticky"> <div class=sidebar-about > <h1><a href="/Ganymede/">CSEM</a></h1> <p class=lead >Our attempts to understand nature.</p> </div> <nav class=sidebar-nav > <a class="sidebar-nav-item " href="/Ganymede/">Home</a> <a class="sidebar-nav-item " href="/Ganymede/log_ganymede/">Log</a> <a class="sidebar-nav-item " href="/Ganymede/simulations_ganymede/">OverView</a> <a class="sidebar-nav-item " href="/Ganymede/extra/">Extra</a> <a class="sidebar-nav-item " href="/Ganymede/galileo/">Observation</a> <a class="sidebar-nav-item active" href="/Ganymede/swmf/">Run in Action</a> <a class="sidebar-nav-item " href="/Ganymede/ulfwaves/">ULF Waves</a> <a class="sidebar-nav-item " href="/Ganymede/shocks/">Shocks</a> <a class="sidebar-nav-item " href="/Ganymede/reconnection/">Reconnection</a> <a class="sidebar-nav-item " href="/Ganymede/kaw/">Kinetic Alfvén Waves</a> </nav> <p>&copy; Hongyang Zhou.</p> </div> </div> <div class="content container"> <div class=franklin-content ><h1 id=how_to_run_the_swmf_model ><a href="#how_to_run_the_swmf_model" class=header-anchor >How to run the SWMF model</a></h1> <p>Even though I have been working with SWMF for five years, I will forget how to use it after leaving it for a while or the latest development introduce some breaking changes to the setups. This manual serves as a reference for myself and also other interesting researchers on how to reproduce the simulation.</p> <p>The installation is thoroughly described in the official document. The following assumes you have a basic understanding of running a model in SWMF.</p> <p>In principle, the GM module can run alone without compiling the PC module until the coupling is required. However in practice I recommend run with the coupled executable from start to prevent further work in changing the parameter file at a later stage.</p> <p>After SWMF is successfully installed,</p> <pre><code class="julia hljs">./Config.pl -v=Empty,PC/FLEKS,GM/BATSRUS -amrex
 ./Config.pl -o=GM:g=<span class=hljs-number >8</span>,<span class=hljs-number >8</span>,<span class=hljs-number >8</span>,ng=<span class=hljs-number >2</span>,u=Ganymede,e=MhdHypPe</code></pre> <p>If the syntaxes change in the future, you can check how it is configured in <code>Makefile.test</code>.</p> <p>The run can be split into multiple stages:</p> <ul> <li><p>steady state ideal MHD</p> <li><p>quasi-steady state Hall MHD</p> <li><p>time-accurate &#40;time-dependent&#41; Hall MHD</p> <li><p>time-accurate &#40;time-dependent&#41; MHD-EPIC</p> </ul> <p>It is not necessary to strictly follow this order: we do this only to speed things up assuming that the same solution will be reached given the same initial and boundary condition, no matter which timestepping mode or which numerical model is chosen in the intermediate stages. The validity of this statement is hard to prove mathematically, but based on practical experience it generally works pretty well. An analogy to this would be the steady state in a Markov chain: you are guaranteed to stay in the steady state once you reach it, but it is not guaranteed that you will reach the steady state from an arbirary state, even though for many cases it does.</p> <h2 id=steady_state_ideal_mhd ><a href="#steady_state_ideal_mhd" class=header-anchor >Steady State Ideal MHD</a></h2> <pre><code class="julia hljs">Name     Root Last Stride
 <span class=hljs-comment >#LAYOUT</span>
 GM       <span class=hljs-number >0</span>    <span class=hljs-number >99999</span>   <span class=hljs-number >1</span>
@@ -294,7 +294,7 @@ bx by bz                NameVars
 
 <span class=hljs-comment >#STOP</span>
 <span class=hljs-number >30000</span>                   MaxIteration
--<span class=hljs-number >1.0</span></code></pre> <p>There are several things worth noticing here:</p> <ul> <li><p>Since <code>DoTimeAccurate &#61; F</code>, all the corresponding time check parameters must switch to <code>Dn</code> but not <code>Dt</code>, i.e. parameters with <code>Dt</code> prefix must be negative and parameters with <code>Dn</code> prefix must be positive integers. This affects the restart control commands <code>SAVERESTART</code>,<code>CHECKSTOP</code> as well as output command <code>SAVEPLOT</code>.</p> <li><p><code>CPUTIMEMAX</code> and <code>CHECKSTOP</code> together controls the running time, and may cause the simulation to stop gracefully before the time you request in a job.</p> <li><p>The <code>BODY</code> command is first turned on and then off to set the <code>rBody</code>. It will be recorded as a parameter in the output file that may be useful for plotting, but it won&#39;t affect anything in the simulation.</p> <li><p>The <code>PLASMA</code> command sets the average mass for the single fluid model, and the initial electron-ion temerature ratio that may change later as a function of time.</p> <li><p>The <code>SEMIKRYLOV</code> command sets the parameters for the semi-implicit solver. There is a similar command <code>KRYLOV</code> with identical input arguments for setting parameters for the full implicit solver.</p> <li><p><code>MINIMUMPRESSURE</code> and <code>MINIMUMDENSITY</code> are used to avoid small discrete timesteps, which is a common trick in MHD and hybrid models. Physically, if the plasma density goes really low, the fluid description may fail to accurately represent the charged particles, which is my explanation of justifying these seemingly arbitrary thresholds. Having one uniform model to describe phenonemon across a wide range of scales is an impossible mission.</p> <li><p>Conservative vs. non-Conservative scheme: the former may be better at resolving shocks and discontinuities, as it follows the same path as the classical RH relation. This is not a critical factor.</p> <li><p>The <code>GRIDBLOCKALL</code> is a useful command for specifying the total number of blocks in the simulation for preallocating memory on each MPI process. There is a default value but it may just waste memory for your grid setup. Unfortunately it is not practical to know the total number of blocks before you run the model. What I usually do is first run the model once to get the total number of block counts, and then set this number slightly larger than that accordingly.</p> <li><p>The <code>GRIDLEVEL</code> command is used for setting AMR. One important control factor lies in the <code>initial</code> NameArea: the number listed here is the maximum level of AMR you can get, no matter what you specify later in each TypeRegion.</p> <li><p>It takes time for one to get used to the boundary settings. The official document of BATSRUS or <code>PARAM.XML</code> provides a detailed description of how these commands work together.</p> <li><p>The <code>SOLIDSTATE</code> command is a trick to solve only the magnetic diffusion-like equation in the mantle region. It looks pretty ugly in the code, so it is likely that this fragile part will potentially break in the future. Here in the steady state run, the useful parameter is <code>SolidLimitDt</code>, which provides a fixed timestep for the mantle cells for updating the magnetic field. The value listed here is only from experience, which tries to be close to the timestep in the MHD domain cell with 2 levels of refinement as prescribed with the above AMR settings right next to the surface. In the time dependent run, this parameter doesn&#39;t have an effect.</p> <li><p>In the <code>RESISTIVITY</code> command, we specify the <code>user</code> type resistivity, which is implemented in <code>user_set_resistivity</code>.</p> <li><p>There are several customized input arguments specified in <code>ModUserGanymede</code>.</p> <ul> <li><p><code>INITTYPE</code> gives the initial settings for B and U;</p> <li><p><code>RESISTIVEPLANET</code> sets a fixed resistivity profile as a function of planet radius;</p> <li><p><code>MASSLOADING</code> sets the parameters related to the ionospheric inner boundary I was testing before AGU2020. Details can be found in other pages;</p> <li><p><code>SOLIDBOUNDARY</code> sets the B, U, P values at the moon&#39;s surface. Definitely I cannot tell what 3 means even I wrote it myself...</p> </ul> <li><p><code>COARSEAXIS</code> may help to overcome the tiny timestep issue at the polar cells. 1 means merge 2 cells into 1 in terms of updating.</p> <li><p><code>SAVEINITIAL</code> determines whether or not to output at the beginning of the run. I set to false often because during restarts we don&#39;t need to save the same snapshot once again.</p> <li><p>In the <code>SAVEPLOT</code> command, several things may go wrong:</p> <ul> <li><p>The first number, <code>nPlotFiles</code>, specifies how many output files there will be. It happens many time that I write a number smaller than the actual number of outputs I list afterwards so that some files are missing.</p> <li><p>The box output is what I used to plot the G8 magnetic field comparisons. Saving it within a box has the advantage of shifting it slightly to get potentially better comparison. However, I think this is no longer necessary, so the <code>SATELLITEFILE</code> command may be a better substitution.</p> </ul> </ul> <h2 id=steady_state_hall_mhd ><a href="#steady_state_hall_mhd" class=header-anchor >Steady State Hall MHD</a></h2> <p>It is allowed to have multiple sessions in one PARAM.in file, separated with the <code>#RUN</code> command. After the local timestepping ideal MHD is finished, what I would do is to create another input file with the following added to the end to the previous PARAM.in: </p> <pre><code class="julia hljs"><span class=hljs-comment >#STOP</span>
+-<span class=hljs-number >1.0</span></code></pre> <p>There are several things worth noticing here:</p> <ul> <li><p>Since <code>DoTimeAccurate &#61; F</code>, all the corresponding time check parameters must switch to <code>Dn</code> but not <code>Dt</code>, i.e. parameters with <code>Dt</code> prefix must be negative and parameters with <code>Dn</code> prefix must be positive integers. This affects the restart control commands <code>SAVERESTART</code>,<code>CHECKSTOP</code> as well as output command <code>SAVEPLOT</code>.</p> <li><p><code>CPUTIMEMAX</code> and <code>CHECKSTOP</code> together controls the running time, and may cause the simulation to stop gracefully before the time you request in a job.</p> <li><p>The <code>BODY</code> command is first turned on and then off to set the <code>rBody</code>. It will be recorded as a parameter in the output file that may be useful for plotting, but it won&#39;t affect anything in the simulation.</p> <li><p>The <code>PLASMA</code> command sets the average mass for the single fluid model, and the initial electron-ion temerature ratio that may change later as a function of time.</p> <li><p>The <code>SEMIKRYLOV</code> command sets the parameters for the semi-implicit solver. There is a similar command <code>KRYLOV</code> with identical input arguments for setting parameters for the full implicit solver.</p> <li><p><code>MINIMUMPRESSURE</code> and <code>MINIMUMDENSITY</code> are used to avoid small discrete timesteps, which is a common trick in MHD and hybrid models. Physically, if the plasma density goes really low, the fluid description may fail to accurately represent the charged particles, which is my explanation of justifying these seemingly arbitrary thresholds. Having one uniform model to describe phenonemon across a wide range of scales is an impossible mission.</p> <li><p>Conservative vs. non-Conservative scheme: the former may be better at resolving shocks and discontinuities, as it follows the same path as the classical RH relation. This is not a critical factor.</p> <li><p>The <code>GRIDBLOCKALL</code> is a useful command for specifying the total number of blocks in the simulation for preallocating memory on each MPI process. There is a default value but it may just waste memory for your grid setup. Unfortunately it is not practical to know the total number of blocks before you run the model. What I usually do is first run the model once to get the total number of block counts, and then set this number slightly larger than that accordingly.</p> <li><p>The <code>GRIDLEVEL</code> command is used for setting AMR. One important control factor lies in the <code>initial</code> NameArea: the number listed here is the maximum level of AMR you can get, no matter what you specify later in each TypeRegion.</p> <li><p>It takes time for one to get used to the boundary settings. The official document of BATSRUS or <code>PARAM.XML</code> provides a detailed description of how these commands work together.</p> <li><p>The <code>SOLIDSTATE</code> command is a trick to solve only the magnetic diffusion-like equation in the mantle region. It looks pretty ugly in the code, so it is likely that this fragile part will potentially break in the future. Here in the steady state run, the useful parameter is <code>SolidLimitDt</code>, which provides a fixed timestep for the mantle cells for updating the magnetic field. The value listed here is only from experience, which tries to be close to the timestep in the MHD domain cell with 2 levels of refinement as prescribed with the above AMR settings right next to the surface. In the time dependent run, this parameter doesn&#39;t have an effect.</p> <li><p>In the <code>RESISTIVITY</code> command, we specify the <code>user</code> type resistivity, which is implemented in <code>user_set_resistivity</code>.</p> <li><p>There are several customized input arguments specified in <code>ModUserGanymede</code>.</p> <ul> <li><p><code>INITTYPE</code> gives the initial settings for B and U;</p> <li><p><code>RESISTIVEPLANET</code> sets a fixed resistivity profile as a function of planet radius;</p> <li><p><code>MASSLOADING</code> sets the parameters related to the ionospheric inner boundary I was testing before AGU2020. Details can be found in other pages;</p> <li><p><code>SOLIDBOUNDARY</code> sets the B, U, P values at the moon&#39;s surface. Definitely I cannot tell what 3 means even I wrote it myself...</p> </ul> <li><p><code>COARSEAXIS</code> may help to overcome the tiny timestep issue at the polar cells. 1 means merge 2 cells into 1 in terms of updating.</p> <li><p><code>SAVEINITIAL</code> determines whether or not to output at the beginning of the run. I set to false often because during restarts we don&#39;t need to save the same snapshot once again.</p> <li><p>In the <code>SAVEPLOT</code> command, several things may go wrong:</p> <ul> <li><p>The first number, <code>nPlotFiles</code>, specifies how many output files there will be. It happens many time that I write a number smaller than the actual number of outputs I list afterwards so that some files are missing.</p> <li><p>The box output is what I used to plot the G8 magnetic field comparisons. Saving it within a box has the advantage of shifting it slightly to get potentially better comparison. However, I think this is no longer necessary, so the <code>SATELLITEFILE</code> command may be a better substitution.</p> </ul> </ul> <h2 id=steady_state_hall_mhd ><a href="#steady_state_hall_mhd" class=header-anchor >Steady State Hall MHD</a></h2> <p>It is allowed to have multiple sessions in one PARAM.in file, separated with the <code>#RUN</code> command. After the local timestepping ideal MHD is finished, what I would do is to create another input file with the following added to the end to the previous PARAM.in:</p> <pre><code class="julia hljs"><span class=hljs-comment >#STOP</span>
 <span class=hljs-number >1</span>                       MaxIteration
 -<span class=hljs-number >1.0</span>                    tSimulationMax
 
@@ -345,10 +345,538 @@ doubleconez0 tapered    StringShape
 <h2 id=time-accurate_hall_mhd ><a href="#time-accurate_hall_mhd" class=header-anchor >Time-accurate Hall MHD</a></h2>
 <p>Just change all the forementioned <code>Dn</code>, <code>Dt</code> parameters together with <code>TIMEACCURATE</code>.</p>
 <h2 id=time-accurate_mhd-epic ><a href="#time-accurate_mhd-epic" class=header-anchor >time-accurate MHD-EPIC</a></h2>
-<p>There are a bunch of new commands for coupling with PIC.</p>
+<p>There are a bunch of new commands for coupling with PIC. Check the latest version and the manual&#33;</p>
+<p>Here is the PARAM.in file that I use for running MHD-EPIC with iPIC3D for G28 in the paper:</p>
+<pre><code class="julia hljs"><span class=hljs-comment >#ECHO</span>
+T			DoEcho
+
+<span class=hljs-comment >#DESCRIPTION</span>
+Time accurate run <span class=hljs-keyword >for</span> Ganymede G28 flyby with MhdHypPe.
+Jovian plasma condition based on observations
+face-based innerBC
+
+<span class=hljs-comment >#PLANET</span>
+Ganymede		NamePlanet
+<span class=hljs-number >2634000</span>			RadiusPlanet [m]
+<span class=hljs-number >1.4819E+23</span>		MassPlanet   [kg]
+<span class=hljs-number >0.0</span>			OmegaPlanet  [radian/s]
+<span class=hljs-number >0.0</span>			TiltRotation [degree]
+DIPOLE			TypeBField
+<span class=hljs-number >2.0284</span>                  MagAxisThetaGeo [degree]
+<span class=hljs-number >319.3449</span>                MagAxisPhiGeo   [degree]
+-<span class=hljs-number >717.2494E-9</span>            DipoleStrength  [T]
+
+Alternative description
+DIPOLE
+<span class=hljs-number >175.63</span>                  MagAxisThetaGeo [degree]
+<span class=hljs-number >109.162</span>                 MagAxisPhiGeo   [degree]
+<span class=hljs-number >718.895E-9</span>              DipoleStrength  [T]
+
+TEST
+CON_axes::init_axes
+
+! The <span class=hljs-string >&quot;absorb&quot;</span> BC is not compatible with a co-rotating BC
+<span class=hljs-comment >#ROTATION</span>
+F			UseRotation
+
+<span class=hljs-comment >#TIMEACCURATE</span>
+T			DoTimeAccurate
+
+<span class=hljs-comment >#SAVERESTART</span>
+T			DoSaveRestart
+-<span class=hljs-number >50000</span>			DnSaveRestart
+<span class=hljs-number >10.</span>			DtSaveRestart
+
+
+! Restart header <span class=hljs-keyword >for</span> SWMF
+<span class=hljs-comment >#INCLUDE</span>
+RESTART.<span class=hljs-keyword >in</span>		NameRestartFile
+
+<span class=hljs-comment >#CPUTIMEMAX</span>
+<span class=hljs-number >38000.0</span>			CpuTimeMax
+
+<span class=hljs-comment >#CHECKSTOP</span>
+T                       DoCheckStop
+-<span class=hljs-number >5000</span>                   DnCheckStop
+<span class=hljs-number >2.</span>                    	DtCheckStop
+
+<span class=hljs-comment >#PROGRESS</span>
+<span class=hljs-number >200</span>			DnShowProgressShort
+<span class=hljs-number >2000</span>			DnShowProgressLong
+
+<span class=hljs-comment >#COUPLE2</span>
+GM                      NameCompMaster
+PC                      NameCompSlave
+-<span class=hljs-number >1</span>                      DnCouple
+<span class=hljs-number >0.02</span>                    DtCouple
+
+<span class=hljs-comment >#COUPLETIME</span>
+GM                      NameComp
+F                       DoCoupleOnTime
+
+<span class=hljs-comment >#COUPLETIME</span>
+PC                      NameComp
+F                       DoCoupleOnTime
+
+
+<span class=hljs-comment >#BEGIN_COMP GM ---------------------------------------------------------------</span>
+
+! Restart header <span class=hljs-keyword >for</span> GM
+<span class=hljs-comment >#INCLUDE</span>
+GM/restartIN/restart.H
+
+<span class=hljs-comment >#HYPERBOLICDIVB</span>
+T                       UseHyperbolicDivb
+<span class=hljs-number >150.0</span>                  	SpeedHypDim
+<span class=hljs-number >0.1</span>                     HypDecay
+
+<span class=hljs-comment >#COORDSYSTEM</span>
+GSE			TypeCoordinate
+
+<span class=hljs-comment >#BODY</span>
+T			UseBody
+<span class=hljs-number >0.5</span>			rBody      [rPlanet]
+<span class=hljs-number >3.5</span>			rCurrents  [rPlanet]
+<span class=hljs-number >39</span>			BodyNDim   [/cc]
+<span class=hljs-number >2.32e5</span>			BodyTDim   [K]
+
+<span class=hljs-comment >#BODY</span>
+F
+
+<span class=hljs-comment >#PLASMA</span>
+<span class=hljs-number >14.0</span>			FluidMass [amu]
+<span class=hljs-number >1.0</span>                     AverageIonCharge [e]
+<span class=hljs-number >1.0</span>/<span class=hljs-number >18.0</span>                ElectronTemperatureRatio
+
+TEST
+krylov
+
+<span class=hljs-comment >#MINIMUMPRESSURE</span>
+<span class=hljs-number >0.001</span>			pMinDim
+<span class=hljs-number >0.001</span>                   PeMinDim <span class=hljs-keyword >for</span> electron pressure
+
+<span class=hljs-comment >#MINIMUMDENSITY</span>
+<span class=hljs-number >0.1</span>			RhoMinDim
+
+<span class=hljs-comment >#NONCONSERVATIVE</span>
+F			UseNonConservative
+
+<span class=hljs-comment >#CONSERVATIVECRITERIA</span>
+<span class=hljs-number >0</span>			nConservCrit
+
+<span class=hljs-comment >#RESTARTOUTFILE</span>
+one                     TypeRestartOutFile
+
+---------------grid structure-----------------
+<span class=hljs-comment >#GRIDGEOMETRY</span>
+spherical_lnr           TypeGeometry
+
+<span class=hljs-comment >#GRID</span>
+<span class=hljs-number >10</span>                        proc_dims(<span class=hljs-number >1</span>)           nRootBlockX
+<span class=hljs-number >8</span>                        proc_dims(<span class=hljs-number >2</span>)           nRootBlockY
+<span class=hljs-number >8</span>                        proc_dims(<span class=hljs-number >3</span>),          nRootBlockZ
+-<span class=hljs-number >100</span>                     x1            xMin
+ <span class=hljs-number >100</span>                     x2            xMax
+-<span class=hljs-number >100</span>                     y1            yMin
+ <span class=hljs-number >100</span>                     y2            yMax
+-<span class=hljs-number >100</span>                     z1            zMin
+ <span class=hljs-number >100</span>                     z2            zMax
+
+<span class=hljs-comment >#LIMITRADIUS</span>
+<span class=hljs-number >0.5</span>			rMin
+<span class=hljs-number >174.0</span>                   rMax &gt; (sqrt(<span class=hljs-number >100</span>^<span class=hljs-number >2</span>+<span class=hljs-number >100</span>^<span class=hljs-number >2</span>+<span class=hljs-number >100</span>^<span class=hljs-number >2</span>))
+
+<span class=hljs-comment >#GRIDLEVEL</span>
+<span class=hljs-number >2</span>			nLevelArea
+initial			NameArea
+
+<span class=hljs-comment >#GRIDLEVEL</span>
+<span class=hljs-number >2</span>			nLevelArea
+box_gen         	TypeRegion
+<span class=hljs-number >1.1</span>             	rmin            xMinBox
+<span class=hljs-number >0.0</span>            		LonMin          yMinBox
+-<span class=hljs-number >65.0</span>           	LatMin          zMinBox
+<span class=hljs-number >4.0</span> 	        	rmax            xMaxBox
+<span class=hljs-number >360.0</span>           	LonMax          yMaxBox
+<span class=hljs-number >65.0</span>            	LatMax          zMaxBox
+
+<span class=hljs-comment >#GRIDLEVEL</span>
+<span class=hljs-number >1</span>			nLevelArea
+box_gen			TypeRegion
+<span class=hljs-number >5.0</span>			rmin
+-<span class=hljs-number >70.0</span>			LonMin
+<span class=hljs-number >35.0</span>			LatMin
+<span class=hljs-number >15.0</span>			rmax
+<span class=hljs-number >70.0</span>			LonMax
+<span class=hljs-number >65.0</span>			Latmax
+
+<span class=hljs-comment >#GRIDLEVEL</span>
+<span class=hljs-number >1</span>			nLevelArea
+box_gen			TypeRegion
+<span class=hljs-number >5.0</span>			rmin
+-<span class=hljs-number >70.0</span>			LonMin
+-<span class=hljs-number >35.0</span>			LatMin
+<span class=hljs-number >15.0</span>			rmax
+<span class=hljs-number >70.0</span>			LonMax
+-<span class=hljs-number >65.0</span>			LatMax
+----------------<span class=hljs-keyword >end</span> grid structure--------------
+
+----------------PIC-----------------
+<span class=hljs-comment >#PICUNIT</span>
+<span class=hljs-number >1.0</span>                     xUnitPicSi [m]
+<span class=hljs-number >4000.0e3</span>                uUnitPicSi [m/s]
+
+<span class=hljs-comment >#PICREGION</span>
+<span class=hljs-number >1</span>                       nPicRegion
+-<span class=hljs-number >2.5</span>                    xMinCut
+-<span class=hljs-number >1.125</span>                  xMaxCut
+-<span class=hljs-number >2.</span>                     yMinCut
+ <span class=hljs-number >2.</span>                     yMaxCut
+-<span class=hljs-number >2.2</span>                    zMinCut
+ <span class=hljs-number >2.2</span>                    zMaxCut
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    DxPic
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    DyPic
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    DzPic
+---------------<span class=hljs-keyword >end</span> PIC--------------
+
+
+----------------BC-----------------
+<span class=hljs-comment >#OUTERBOUNDARY</span>
+fixedb1			TypeCellBc1
+none			TypeCellBc2
+periodic		TypeCellBc3
+periodic		TypeCellBc4
+periodic		TypeCellBc5
+periodic		TypeCellBc6
+
+<span class=hljs-comment >#BOXBOUNDARY</span>
+fixed			TypeBcXmin
+fixed			TypeBcXmax
+float			TypeBcYmin
+float			TypeBcYmax
+float			TypeBcZmin
+float			TypeBcZmax
+
+<span class=hljs-comment >#BOUNDARYSTATE</span>
+coord1max xminbox xmaxbox         StringBoundary
+<span class=hljs-number >28.0</span>                    BoundaryStateDim_V Rho
+<span class=hljs-number >140.0</span>                   BoundaryStateDim_V Ux
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Uy
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Uz
+-<span class=hljs-number >7.0</span>                   	BoundaryStateDim_V Bx
+<span class=hljs-number >78.0</span>                    BoundaryStateDim_V By
+-<span class=hljs-number >76.0</span>                   BoundaryStateDim_V Bz
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Hyp
+<span class=hljs-number >0.1</span>                   	BoundaryStateDim_V Pe
+<span class=hljs-number >1.7</span>                   	BoundaryStateDim_V p
+
+<span class=hljs-comment >#BOUNDARYSTATE</span>
+coord1min solid		StringBoundary
+<span class=hljs-number >550.0</span>	  		BoundaryStateDim_V Rho
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Ux
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Uy
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Uz
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Bx
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V By
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Bz
+<span class=hljs-number >0.0</span>                     BoundaryStateDim_V Hyp
+<span class=hljs-number >0.01</span>			BoundaryStateDim_V Pe
+<span class=hljs-number >0.115</span>			BoundaryStateDim_V p
+
+<span class=hljs-comment >#SOLIDSTATE</span>
+T                       UseSolidState
+user                    TypeBcSolid
+sphere                  TypeSolidGeometry
+<span class=hljs-number >1.0</span>                     rSolid
+<span class=hljs-number >5e-3</span>			SolidLimitDt
+-------------<span class=hljs-keyword >end</span> BC--------------
+
+<span class=hljs-comment >#RESISTIVITY</span>
+T			UseResistivity
+user			TypeResistivity
+<span class=hljs-number >0.0</span>			Eta0Si
+
+<span class=hljs-comment >#USERFLAGS</span>
+T                       UseUserInnerBcs
+F                       UseUserSource
+F                       UseUserPerturbation
+F                       UseUserOuterBcs
+T                       UseUserICs
+F                       UseUserSpecifyRefinement
+F                       UseUserLogFiles
+F                       UseUserWritePlot
+F                       UseUserAMR
+F                       UseUserEchoInput
+F                       UseUserB0
+T                       UseUserInitSession
+F                       UseUserUpdateStates
+
+<span class=hljs-comment >#USERINPUTBEGIN --------------------</span>
+
+<span class=hljs-comment >#INITTYPE</span>
+B1U1
+
+<span class=hljs-comment >#RESISTIVEPLANET</span>
+<span class=hljs-number >1.0</span>                     PlanetRadius
+<span class=hljs-number >5</span>                       nResistivPoints
+<span class=hljs-number >1.05</span>                    Radius
+<span class=hljs-number >0.0</span>                     Resistivity
+<span class=hljs-number >0.95</span>                    Radius
+<span class=hljs-number >6e11</span>			Resistivity
+<span class=hljs-number >0.7</span>                     Radius
+<span class=hljs-number >6e11</span>			Resistivity
+<span class=hljs-number >0.65</span>                    Radius
+<span class=hljs-number >6e9</span>			Resistivity
+<span class=hljs-number >0.55</span>		        Radius
+<span class=hljs-number >0.0</span>		        Resistivity
+<span class=hljs-comment >#USERINPUTEND ----------------------</span>
+
+<span class=hljs-comment >#TIMESTEPPING</span>
+<span class=hljs-number >2</span>			nStage
+<span class=hljs-number >0.8</span>			CflExlp
+
+<span class=hljs-comment >#SCHEME</span>
+<span class=hljs-number >2</span>                       nOrder (<span class=hljs-number >1</span> or <span class=hljs-number >2</span>)
+Sokolov                 TypeFlux (Roe, Rusanov, Linde, Sokolov
+mc3                     TypeLimiter
+<span class=hljs-number >1.2</span>                     LimiterBeta
+
+<span class=hljs-comment >#SEMIIMPLICIT</span>
+T			UseSemiImplicit
+resistivity		TypeSemiImplicit
+
+<span class=hljs-comment >#SEMIKRYLOV</span>
+GMRES			TypeKrylov (GMRES, BICGSTAB, CG)
+<span class=hljs-number >0.001</span> 			ErrorMaxKrylov
+<span class=hljs-number >100</span> 			MaxMatvecKrylov
+
+<span class=hljs-comment >#UPDATECHECK</span>
+F                       UseUpdateCheck
+
+<span class=hljs-comment >#COARSEAXIS</span>
+F			UsePoleDiffusion
+T			UseCoarseAxis
+<span class=hljs-number >1</span>			nCoarseLayer
+
+<span class=hljs-comment >#RAYTRACE</span>
+T                       UseRaytrace (rest is read <span class=hljs-keyword >if</span> <span class=hljs-literal >true</span>)
+T                       UseAccurateTrace
+<span class=hljs-number >0.1</span>                     DtExchangeRay [sec]
+<span class=hljs-number >1</span>                       DnRaytrace
+
+<span class=hljs-comment >#HALLRESISTIVITY</span>
+T                       UseHallResist (rest of parameters read only <span class=hljs-keyword >if</span> <span class=hljs-literal >true</span>)
+<span class=hljs-number >1.0</span>                     HallFactorMax
+<span class=hljs-number >0.1</span>                     HallCmaxFactor
+
+<span class=hljs-comment >#HALLREGION</span>
++hallbox -hallsphere -polars
+<span class=hljs-number >0</span>
+
+<span class=hljs-comment >#REGION</span>
+hallbox                 NameRegion
+box tapered             NameHallRegion
+-<span class=hljs-number >4</span>                      xMinBox
+-<span class=hljs-number >4</span>                      yMinBox
+-<span class=hljs-number >4</span>                      zMinBox
+<span class=hljs-number >4</span>                       xMaxBox
+<span class=hljs-number >4</span>                       yMaxBox
+<span class=hljs-number >4</span>                       zMaxBox
+<span class=hljs-number >0.5</span>                     Taper
+
+<span class=hljs-comment >#REGION</span>
+hallsphere              NameRegion
+sphere0 tapered         StringShape
+<span class=hljs-number >1.05</span>                    Radius
+<span class=hljs-number >0.05</span>                    Taper
+
+<span class=hljs-comment >#REGION</span>
+polars                  NameRegion
+doubleconez0 tapered    StringShape
+<span class=hljs-number >12</span>                      Height
+<span class=hljs-number >2.0</span>                     Radius
+<span class=hljs-number >0.2</span>                     Taper
+
+
+<span class=hljs-comment >#SAVEINITIAL</span>
+T
+
+<span class=hljs-comment >#SAVELOGFILE</span>
+T			DoSaveLogfile
+RAW			StringLogfile
+<span class=hljs-number >1</span>			DnSaveLogfile
+-<span class=hljs-number >1.</span>			DtSaveLogfile
+
+<span class=hljs-comment >#SAVEPLOT</span>
+<span class=hljs-number >7</span>                       nPlotFiles
+x=<span class=hljs-number >0</span> VAR idl             StringPlot
+-<span class=hljs-number >1000</span>                   DnSavePlot
+<span class=hljs-number >1.</span>                     	DtSavePlot
+-<span class=hljs-number >1.</span>                     Dx
+{MHD} status           	NameVars
+{default}               NamePars
+y=<span class=hljs-number >0</span> VAR idl             StringPlot
+-<span class=hljs-number >1000</span>                   DnSavePlot
+<span class=hljs-number >1.</span>                     	DtSavePlot
+-<span class=hljs-number >1.</span>                     Dx
+{MHD} status pic           NameVars
+{default}               NamePars
+z=<span class=hljs-number >0</span> VAR idl             StringPlot
+-<span class=hljs-number >1000</span>                   DnSavePlot
+<span class=hljs-number >1.</span>                     	DtSavePlot
+-<span class=hljs-number >1.</span>                     Dx
+{MHD} status pic          	NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-<span class=hljs-number >5000</span>                   DnSavePlot
+<span class=hljs-number >1.</span>                     	DtSavePlot
+GSE                     TypeCoord
+-<span class=hljs-number >1.0950</span>                 x0
+-<span class=hljs-number >0.0330</span>                 y0
+-<span class=hljs-number >0.3800</span>                 z0
+<span class=hljs-number >1.2660</span>                  xLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dX
+<span class=hljs-number >15.3340</span>                 yLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dY
+<span class=hljs-number >0.1500</span>                  zLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dZ
+<span class=hljs-number >0.</span>                      xAngle
+<span class=hljs-number >0.</span>                      yAngle
+<span class=hljs-number >0.</span>                      zAngle
+bx by bz                NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-<span class=hljs-number >1</span>                      DnSavePlot
+<span class=hljs-number >1.</span>                      DtSavePlot
+GSE                     TypeCoord
+-<span class=hljs-number >1.1</span>                    x0
+<span class=hljs-number >0.0</span>                     y0
+<span class=hljs-number >0.0</span>                     z0
+<span class=hljs-number >2.2</span>                     xLen
+<span class=hljs-number >1</span>/<span class=hljs-number >30</span>                    dX
+<span class=hljs-number >2.2</span>                     yLen
+<span class=hljs-number >1</span>/<span class=hljs-number >30</span>                    dY
+<span class=hljs-number >2.0</span>                     zLen
+<span class=hljs-number >1</span>/<span class=hljs-number >30</span>                    dZ
+<span class=hljs-number >0.</span>                      xAngle
+<span class=hljs-number >0.</span>                      yAngle
+<span class=hljs-number >0.</span>                      zAngle
+{MHD} status            NameVars
+{default}               NamePars
+box VAR idl             StringPlot
+-<span class=hljs-number >1</span>                      DnSavePlot
+<span class=hljs-number >1.</span>                      DtSavePlot
+GSE                     TypeCoord
+<span class=hljs-number >1.0</span>                     x0
+-<span class=hljs-number >1.8</span>                    y0
+<span class=hljs-number >2.0</span>                     z0
+<span class=hljs-number >7.0</span>                     xLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dX
+<span class=hljs-number >8.4</span>                     yLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dY
+<span class=hljs-number >0.01</span>                    zLen
+<span class=hljs-number >1</span>/<span class=hljs-number >32</span>                    dZ
+<span class=hljs-number >0.</span>                      xAngle
+<span class=hljs-number >0.</span>                      yAngle
+<span class=hljs-number >0.</span>                      zAngle
+{MHD} status theta1 phi1 theta2 phi2 blk                NameVars
+{default}               NamePars
+cut MHD tcp		StringPlot
+-<span class=hljs-number >100</span>			DnSavePlot
+<span class=hljs-number >10.</span>			DtSavePlot
+<span class=hljs-number >1.</span>
+<span class=hljs-number >5.</span>
+<span class=hljs-number >0.</span>
+<span class=hljs-number >360.</span>
+-<span class=hljs-number >90.</span>
+<span class=hljs-number >90.</span>
+
+<span class=hljs-comment >#END_COMP GM --------------------------------------------------------------</span>
+
+<span class=hljs-comment >#STOP</span>
+-<span class=hljs-number >30000</span>			MaxIteration
+<span class=hljs-number >1200.</span>			tSimulationMax
+
+<span class=hljs-comment >#BEGIN_COMP PC ---------------------------------------------------------------</span>
+
+TEST
+write_plot_init
+
+TIMESTEPPING
+F       UseSWMFDt
+F       UseFixedDt
+<span class=hljs-number >0.4</span>     CFL
+
+<span class=hljs-comment >#TIMESTEPPING</span>
+F       useSWMFDt
+T       useFixedDt
+<span class=hljs-number >0.025</span>  dt (SI unit)
+
+<span class=hljs-comment >#PROCESSORS</span>
+<span class=hljs-number >6</span>       XLEN
+<span class=hljs-number >16</span>      YLEN
+<span class=hljs-number >20</span>      ZLEN
+
+<span class=hljs-comment >#RESTART</span>
+T                       DoRrestart
+
+<span class=hljs-comment >#ELECTRON</span>
+-<span class=hljs-number >7.1428571</span>              Charge/mass ratio (qom, <span class=hljs-number >100</span>/<span class=hljs-number >14</span>)
+
+SMOOTHE
+T               DoSmoothAll
+<span class=hljs-number >4</span>               nSmooth
+<span class=hljs-number >0.5</span>             InnerSmoothFactor
+<span class=hljs-number >1.5</span>             BCSmoothFactor
+<span class=hljs-number >10</span>              nBoundarySmooth
+
+<span class=hljs-comment >#POISSON</span>
+T
+<span class=hljs-number >100000000</span>
+<span class=hljs-number >0.01</span>		PoissonTol
+<span class=hljs-number >20</span>		PoissonIter
+
+<span class=hljs-comment >#ENERGYCONSERVING</span>
+T                       useECSIM
+
+<span class=hljs-comment >#DISCRETIZATION</span>
+<span class=hljs-number >0.51</span>                    theta
+<span class=hljs-number >0.0</span>                     gradRhoRatio
+<span class=hljs-number >0.0</span>                     cDiff
+<span class=hljs-number >0.1</span>                     ratioDivC2C
+
+<span class=hljs-comment >#DIVE</span>
+position_light		divECleanType
+<span class=hljs-number >1</span>                       nPower
+<span class=hljs-number >1e-2</span>                    Tol
+<span class=hljs-number >20</span>                      nIter
+<span class=hljs-number >3</span>                       nIterNonLinear
+
+PARTICLEBC
+<span class=hljs-number >3</span>
+
+<span class=hljs-comment >#PARTICLES</span>
+<span class=hljs-number >6</span>                       Particles per cell <span class=hljs-keyword >in</span> X region <span class=hljs-number >1</span>
+<span class=hljs-number >6</span>                       Particles per cell <span class=hljs-keyword >in</span> Y
+<span class=hljs-number >6</span>                       Particles per cell <span class=hljs-keyword >in</span> Z
+
+SOLVER
+<span class=hljs-number >1.0e-6</span>                  GMREStol : GMRES solver stopping criterium tolerance
+<span class=hljs-number >100</span>                     nGMRESRestart
+<span class=hljs-number >3</span>                       NiterMover : mover predictor corrector iteration
+
+<span class=hljs-comment >#SAVEIDL</span>
+<span class=hljs-number >1</span>                       nPlotFile
+<span class=hljs-number >3</span>d var real4 planet	StringPlot
+-<span class=hljs-number >1</span>                      DnOutput
+<span class=hljs-number >1.0</span>                     DtOutput
+<span class=hljs-number >0</span>                       DxOutput
+{fluid} qc divEc
+
+<span class=hljs-comment >#END_COMP PC -----------------------------------------------------------------</span></code></pre>
 <div class=page-foot >
   <div class=copyright >
-    &copy; Hongyang Zhou. Last modified: January 10, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    &copy; Hongyang Zhou. Last modified: January 17, 2023. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
   </div>
 </div>
 </div>
