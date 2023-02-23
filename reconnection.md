@@ -126,7 +126,7 @@ With $nx = 256$ and $nz = 128$, the spatial cell size is $L_x / nx=0.1 d_i$ in x
 
 ## Comparison
 
-I extracted the points from Figure 1 in [Birn+ 2001][GEM2001] and appended Vlasiator results as the 5th line.
+I extracted the points from Figure 1 in [Birn+ 2001][GEM2001] and appended Vlasiator results. The normalized reconnection rates are shown below. Without the Hall term, the reconnection rate is significantly lower than others and is comparable with ideal MHD. Resolving the ion inertial length is also important to get fast reconnection rates.
 
 \fig{/assets/gem_reconnected_flux.png}
 
