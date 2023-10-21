@@ -305,6 +305,7 @@ y=0 VAR idl             StringPlot
 -1.                     DtSavePlot
 -1.                     Dx
 {MHD} b1x b1y b1z divb eta              NameVars
+{default}               NamePars
 box VAR idl             StringPlot
 10000                   DnSavePlot
 -1.                     DtSavePlot
@@ -325,7 +326,7 @@ bx by bz                NameVars
 {default}               NamePars
 3d MHD tcp              StringPlot
 50000                   DnSavePlot
--1.0                    DxSavePlot
+-1.0                    DtSavePlot
 
 #END_COMP GM --------------------------------------------------------------
 
