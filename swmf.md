@@ -972,3 +972,7 @@ SOLVER
 
 #END_COMP PC -----------------------------------------------------------------
 ```
+
+## Caveats & Potential Improvements
+
+* If a run crashes and the restart time is earlier, when you restart from the earlier time, there will be duplicate output files generated. These files typically have identical time tag (`txxxxxx`) but different iteration step tag (`nxxxxxx`). One automated way to clean this up is to check which one comes later and delete the eariler one. However, this is not available as of 2024/06/21.
