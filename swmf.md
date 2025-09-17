@@ -515,7 +515,9 @@ F                       DoCoupleOnTime
 PC                      NameComp
 F                       DoCoupleOnTime
 
+```
 
+```
 #BEGIN_COMP GM ---------------------------------------------------------------
 
 ! Restart header for GM
@@ -893,7 +895,9 @@ cut MHD tcp		StringPlot
 #STOP
 -30000			MaxIteration
 1200.			tSimulationMax
+```
 
+```
 #BEGIN_COMP PC ---------------------------------------------------------------
 
 TEST
