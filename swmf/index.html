@@ -417,10 +417,8 @@ F                       DoCoupleOnTime
 
 #COUPLETIME
 PC                      NameComp
-F                       DoCoupleOnTime
-
-
-#BEGIN_COMP GM ---------------------------------------------------------------
+F                       DoCoupleOnTime</code></pre>
+<pre><code class=language-julia >#BEGIN_COMP GM ---------------------------------------------------------------
 
 &#33; Restart header for GM
 #INCLUDE
@@ -796,85 +794,7 @@ cut MHD tcp		StringPlot
 
 #STOP
 -30000			MaxIteration
-1200.			tSimulationMax
-
-#BEGIN_COMP PC ---------------------------------------------------------------
-
-TEST
-write_plot_init
-
-TIMESTEPPING
-F       UseSWMFDt
-F       UseFixedDt
-0.4     CFL
-
-#TIMESTEPPING
-F       useSWMFDt
-T       useFixedDt
-0.025  dt &#40;SI unit&#41;
-
-#PROCESSORS
-6       XLEN
-16      YLEN
-20      ZLEN
-
-#RESTART
-T                       DoRrestart
-
-#ELECTRON
--7.1428571              Charge/mass ratio &#40;qom, 100/14&#41;
-
-SMOOTHE
-T               DoSmoothAll
-4               nSmooth
-0.5             InnerSmoothFactor
-1.5             BCSmoothFactor
-10              nBoundarySmooth
-
-#POISSON
-T
-100000000
-0.01		PoissonTol
-20		PoissonIter
-
-#ENERGYCONSERVING
-T                       useECSIM
-
-#DISCRETIZATION
-0.51                    theta
-0.0                     gradRhoRatio
-0.0                     cDiff
-0.1                     ratioDivC2C
-
-#DIVE
-position_light		divECleanType
-1                       nPower
-1e-2                    Tol
-20                      nIter
-3                       nIterNonLinear
-
-PARTICLEBC
-3
-
-#PARTICLES
-6                       Particles per cell in X region 1
-6                       Particles per cell in Y
-6                       Particles per cell in Z
-
-SOLVER
-1.0e-6                  GMREStol : GMRES solver stopping criterium tolerance
-100                     nGMRESRestart
-3                       NiterMover : mover predictor corrector iteration
-
-#SAVEIDL
-1                       nPlotFile
-3d var real4 planet	StringPlot
--1                      DnOutput
-1.0                     DtOutput
-0                       DxOutput
-&#123;fluid&#125; qc divEc
-
-#END_COMP PC -----------------------------------------------------------------</code></pre>
+1200.			tSimulationMax</code></pre>
 <p><hr />grid structure––––––––- #GRIDGEOMETRY spherical_lnr           TypeGeometry</p>
 <p>#GRID 10                        proc<em>dims&#40;1&#41;           nRootBlockX 8                        proc</em>dims&#40;2&#41;           nRootBlockY 8                        proc_dims&#40;3&#41;,          nRootBlockZ -100                     x1            xMin  100                     x2            xMax -100                     y1            yMin  100                     y2            yMax -100                     z1            zMin  100                     z2            zMax</p>
 <p>#LIMITRADIUS 0.5			rMin 174.0                   rMax &gt; &#40;sqrt&#40;100^2&#43;100^2&#43;100^2&#41;&#41;</p>
@@ -982,24 +902,84 @@ SOLVER
 <li>
 </ol>
 <p>#END_COMP GM –––––––––––––––––––––––––––––––</p>
-<p>#STOP -30000			MaxIteration 1200.			tSimulationMax</p>
-<p>#BEGIN_COMP PC –––––––––––––––––––––––––––––––-</p>
-<p>TEST write<em>plot</em>init</p>
-<p>TIMESTEPPING F       UseSWMFDt F       UseFixedDt 0.4     CFL</p>
-<p>#TIMESTEPPING F       useSWMFDt T       useFixedDt 0.025  dt &#40;SI unit&#41;</p>
-<p>#PROCESSORS 6       XLEN 16      YLEN 20      ZLEN</p>
-<p>#RESTART T                       DoRrestart</p>
-<p>#ELECTRON -7.1428571              Charge/mass ratio &#40;qom, 100/14&#41;</p>
-<p>SMOOTHE T               DoSmoothAll 4               nSmooth 0.5             InnerSmoothFactor 1.5             BCSmoothFactor 10              nBoundarySmooth</p>
-<p>#POISSON T 100000000 0.01		PoissonTol 20		PoissonIter</p>
-<p>#ENERGYCONSERVING T                       useECSIM</p>
-<p>#DISCRETIZATION 0.51                    theta 0.0                     gradRhoRatio 0.0                     cDiff 0.1                     ratioDivC2C</p>
-<p>#DIVE position_light		divECleanType 1                       nPower 1e-2                    Tol 20                      nIter 3                       nIterNonLinear</p>
-<p>PARTICLEBC 3</p>
-<p>#PARTICLES 6                       Particles per cell in X region 1 6                       Particles per cell in Y 6                       Particles per cell in Z</p>
-<p>SOLVER 1.0e-6                  GMREStol : GMRES solver stopping criterium tolerance 100                     nGMRESRestart 3                       NiterMover : mover predictor corrector iteration</p>
-<p>#SAVEIDL 1                       nPlotFile 3d var real4 planet	StringPlot -1                      DnOutput 1.0                     DtOutput 0                       DxOutput &#123;fluid&#125; qc divEc</p>
-<p>#END_COMP PC ––––––––––––––––––––––––––––––––- &#96;&#96;&#96;</p>
+<p>#STOP -30000			MaxIteration 1200.			tSimulationMax &#96;&#96;&#96;</p>
+<pre><code class=language-julia >#BEGIN_COMP PC ---------------------------------------------------------------
+
+TEST
+write_plot_init
+
+TIMESTEPPING
+F       UseSWMFDt
+F       UseFixedDt
+0.4     CFL
+
+#TIMESTEPPING
+F       useSWMFDt
+T       useFixedDt
+0.025  dt &#40;SI unit&#41;
+
+#PROCESSORS
+6       XLEN
+16      YLEN
+20      ZLEN
+
+#RESTART
+T                       DoRrestart
+
+#ELECTRON
+-7.1428571              Charge/mass ratio &#40;qom, 100/14&#41;
+
+SMOOTHE
+T               DoSmoothAll
+4               nSmooth
+0.5             InnerSmoothFactor
+1.5             BCSmoothFactor
+10              nBoundarySmooth
+
+#POISSON
+T
+100000000
+0.01		PoissonTol
+20		PoissonIter
+
+#ENERGYCONSERVING
+T                       useECSIM
+
+#DISCRETIZATION
+0.51                    theta
+0.0                     gradRhoRatio
+0.0                     cDiff
+0.1                     ratioDivC2C
+
+#DIVE
+position_light		divECleanType
+1                       nPower
+1e-2                    Tol
+20                      nIter
+3                       nIterNonLinear
+
+PARTICLEBC
+3
+
+#PARTICLES
+6                       Particles per cell in X region 1
+6                       Particles per cell in Y
+6                       Particles per cell in Z
+
+SOLVER
+1.0e-6                  GMREStol : GMRES solver stopping criterium tolerance
+100                     nGMRESRestart
+3                       NiterMover : mover predictor corrector iteration
+
+#SAVEIDL
+1                       nPlotFile
+3d var real4 planet	StringPlot
+-1                      DnOutput
+1.0                     DtOutput
+0                       DxOutput
+&#123;fluid&#125; qc divEc
+
+#END_COMP PC -----------------------------------------------------------------</code></pre>
 <h2 id=caveats_potential_improvements ><a href="#caveats_potential_improvements" class=header-anchor >Caveats &amp; Potential Improvements</a></h2>
 <ul>
 <li><p>If a run crashes and the restart time is earlier, when you restart from the earlier time, there will be duplicate output files generated. These files typically have identical time tag &#40;<code>txxxxxx</code>&#41; but different iteration step tag &#40;<code>nxxxxxx</code>&#41;. One automated way to clean this up is to check which one comes later and delete the eariler one. However, this is not available as of 2024/06/21.</p>
