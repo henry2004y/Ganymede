@@ -9,6 +9,7 @@
 * [Simulation attempts](/simulations_ganymede/)
 * [Practical Issues](/extra/)
 * [Extra](/galileo)
+* [Compilation](/compilation)
 * [Run in Action](/swmf)
 * [ULF Waves](/ulfwaves)
 * [Shocks](/shocks)
