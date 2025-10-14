@@ -1,4 +1,4 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/Ganymede/libs/highlight/github.min.css"> <link rel=stylesheet  href="/Ganymede/css/franklin.css"> <link rel=stylesheet  href="/Ganymede/css/poole_hyde.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/Ganymede/assets/favicon.png"> <title>Compilation on Ubuntu</title> <div class=sidebar > <div class="container sidebar-sticky"> <div class=sidebar-about > <h1><a href="/Ganymede/">CSEM</a></h1> <p class=lead >Our attempts to understand nature.</p> </div> <nav class=sidebar-nav > <a class="sidebar-nav-item " href="/Ganymede/">Home</a> <a class="sidebar-nav-item " href="/Ganymede/log_ganymede/">Log</a> <a class="sidebar-nav-item " href="/Ganymede/simulations_ganymede/">OverView</a> <a class="sidebar-nav-item " href="/Ganymede/extra/">Extra</a> <a class="sidebar-nav-item " href="/Ganymede/galileo/">Observation</a> <a class="sidebar-nav-item active" href="/Ganymede/compilation/">Compilation</a> <a class="sidebar-nav-item " href="/Ganymede/swmf/">Run in Action</a> <a class="sidebar-nav-item " href="/Ganymede/ulfwaves/">ULF Waves</a> <a class="sidebar-nav-item " href="/Ganymede/shocks/">Shocks</a> <a class="sidebar-nav-item " href="/Ganymede/reconnection/">Reconnection</a> <a class="sidebar-nav-item " href="/Ganymede/kaw/">Kinetic Alfvén Waves</a> </nav> <p>&copy; Hongyang Zhou.</p> </div> </div> <div class="content container"> <div class=franklin-content ><h1 id=how_to_compile_the_swmf_model ><a href="#how_to_compile_the_swmf_model" class=header-anchor >How to compile the SWMF model</a></h1> <h2 id=pre-requisites ><a href="#pre-requisites" class=header-anchor >Pre-requisites</a></h2> <ul> <li><p>Start by updating the packages list:</p> </ul> <pre><code class="shell hljs">sudo apt update</code></pre>
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/Ganymede/libs/highlight/github.min.css"> <link rel=stylesheet  href="/Ganymede/css/franklin.css"> <link rel=stylesheet  href="/Ganymede/css/poole_hyde.css"> <style> html {font-size: 17px;} .franklin-content {position: relative; padding-left: 8%; padding-right: 5%; line-height: 1.35em;} @media (min-width: 940px) { .franklin-content {width: 100%; margin-left: auto; margin-right: auto;} } @media (max-width: 768px) { .franklin-content {padding-left: 6%; padding-right: 6%;} } </style> <link rel=icon  href="/Ganymede/assets/favicon.png"> <title>Compilation on Ubuntu</title> <div class=sidebar > <div class="container sidebar-sticky"> <div class=sidebar-about > <h1><a href="/Ganymede/">CSEM</a></h1> <p class=lead >Our attempts to understand nature.</p> </div> <nav class=sidebar-nav > <a class="sidebar-nav-item " href="/Ganymede/">Home</a> <a class="sidebar-nav-item " href="/Ganymede/log_ganymede/">Log</a> <a class="sidebar-nav-item " href="/Ganymede/simulations_ganymede/">OverView</a> <a class="sidebar-nav-item " href="/Ganymede/extra/">Extra</a> <a class="sidebar-nav-item " href="/Ganymede/galileo/">Observation</a> <a class="sidebar-nav-item active" href="/Ganymede/compilation/">Compilation</a> <a class="sidebar-nav-item " href="/Ganymede/swmf/">Run in Action</a> <a class="sidebar-nav-item " href="/Ganymede/ulfwaves/">ULF Waves</a> <a class="sidebar-nav-item " href="/Ganymede/shocks/">Shocks</a> <a class="sidebar-nav-item " href="/Ganymede/reconnection/">Reconnection</a> <a class="sidebar-nav-item " href="/Ganymede/kaw/">Kinetic Alfvén Waves</a> </nav> <p>&copy; Hongyang Zhou.</p> </div> </div> <div class="content container"> <div class=franklin-content ><h1 id=how_to_compile_the_swmf_model ><a href="#how_to_compile_the_swmf_model" class=header-anchor >How to compile the SWMF model</a></h1> <h2 id=swmf ><a href="#swmf" class=header-anchor >SWMF</a></h2> <h3 id=pre-requisites ><a href="#pre-requisites" class=header-anchor >Pre-requisites</a></h3> <ul> <li><p>Start by updating the packages list:</p> </ul> <pre><code class="shell hljs">sudo apt update</code></pre>
 <ul>
 <li><p>Install the build-essential package by typing:</p>
 
@@ -16,12 +16,12 @@
 sudo apt-get install openmpi-bin openmpi-common libopenmpi-dev libgtk2.0-dev
 sudo apt-get install librdmacm-dev libpsm2-dev</code></pre>
 <p>The command installs a bunch of new programs including <code>mpiexec</code>, <code>mpif90</code>, and <code>mpicxx</code>.</p>
-<h2 id=downloading ><a href="#downloading" class=header-anchor >Downloading</a></h2>
+<h3 id=downloading ><a href="#downloading" class=header-anchor >Downloading</a></h3>
 <p>The source code locates at: <code>https://github.com/SWMFsoftware/SWMF</code></p>
 <p>To download the code, we choose to clone through SSH:</p>
 <pre><code class="shell hljs">git clone git@github.com:SWMFsoftware/SWMF.git</code></pre>
 <p>If you use HTTPS, you will encounter errors during installation. SSH connection requires setup in the terminal. Checkout this <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub post</a>.</p>
-<h2 id=compilation ><a href="#compilation" class=header-anchor >Compilation</a></h2>
+<h3 id=compilation ><a href="#compilation" class=header-anchor >Compilation</a></h3>
 <pre><code class="shell hljs">./Config.pl</code></pre>
 <pre><code class="shell hljs">./Config.pl -install</code></pre>
 <p>Checkout the usage of <code>Config.pl</code> for switching compilers etc.</p>
@@ -29,11 +29,37 @@ sudo apt-get install librdmacm-dev libpsm2-dev</code></pre>
 <pre><code class="make hljs">LINK.f90         = ${CUSTOMPATH_MPI}mpif90</code></pre>
 <p>Append <code>-pthread</code> to the end:</p>
 <pre><code class="make hljs">LINK.f90         = ${CUSTOMPATH_MPI}mpif90 -pthread</code></pre>
-<h2 id=testing ><a href="#testing" class=header-anchor >Testing</a></h2>
+<h3 id=testing ><a href="#testing" class=header-anchor >Testing</a></h3>
 <pre><code class="shell hljs">make -j test16_2d</code></pre>
+<h2 id=batsrus ><a href="#batsrus" class=header-anchor >BATSRUS</a></h2>
+<pre><code class="shell hljs">git clone git@github.com:SWMFsoftware/BATSRUS.git
+cd BATSRUS
+./Config.pl -install</code></pre>
+<p>Here we try a simple KHI demo on Perlmutter.</p>
+<pre><code class="shell hljs">/Config.pl -e=Hd -g=8,8,1 -u=KelvinHelmholtz
+make -j
+make PIDL
+make rundir
+cp Param/SHOCKTUBE/PARAM.in.kelvin_helmholtz run/PARAM.in</code></pre>
+<pre><code class="shell hljs">mv run ~/scratch # move the run folder to your workspace</code></pre>
+<p>Next we ask for an interactive job:</p>
+<pre><code class="shell hljs">salloc --nodes 1 --qos interactive --time 00:10:00 --constraint cpu</code></pre>
+<p>After entering the interactive job, we go to the copied run directory.</p>
+<pre><code class="shell hljs">srun -n 1 ./BATSRUS.exe | tee runlog</code></pre>
+<p>Then we postprocess the data into a new folder:</p>
+<pre><code class="shell hljs">./PostProc RESULT/run1</code></pre>
+<p>The actual data is stored under <code>RESULT/run1/GM/</code>. For plotting with Python, checkout flekspy demos <a href="https://henry2004y.github.io/flekspy/idl_data.html">here</a>.</p>
+<pre><code class="shell hljs">import flekspy as fs
+import matplotlib.pyplot as plt
+
+file = &#x27;z=0_hd_1_t00000320_n00001016.out&#x27;
+ds = fs.load(file)
+ds.Rho.plot.pcolormesh(x=&quot;x&quot;, y=&quot;y&quot;)
+
+plt.savefig(&quot;test.png&quot;)</code></pre>
 <div class=page-foot >
   <div class=copyright >
-    &copy; Hongyang Zhou. Last modified: September 17, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    &copy; Hongyang Zhou. Last modified: October 14, 2025. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
   </div>
 </div>
 </div>
