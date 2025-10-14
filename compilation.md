@@ -8,7 +8,9 @@
 
 # How to compile the SWMF model
 
-## Pre-requisites
+## SWMF
+
+### Pre-requisites
 
 - Start by updating the packages list:
 
@@ -41,7 +43,7 @@ sudo apt-get install librdmacm-dev libpsm2-dev
 
 The command installs a bunch of new programs including `mpiexec`, `mpif90`, and `mpicxx`.
 
-## Downloading
+### Downloading
 
 The source code locates at: `https://github.com/SWMFsoftware/SWMF`
 
@@ -53,7 +55,7 @@ git clone git@github.com:SWMFsoftware/SWMF.git
 
 If you use HTTPS, you will encounter errors during installation. SSH connection requires setup in the terminal. Checkout this [GitHub post](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
-## Compilation
+### Compilation
 
 ```shell
 ./Config.pl
@@ -77,8 +79,61 @@ Append `-pthread` to the end:
 LINK.f90         = ${CUSTOMPATH_MPI}mpif90 -pthread
 ```
 
-## Testing
+### Testing
 
 ```shell
 make -j test16_2d
+```
+
+## BATSRUS
+
+```shell
+git clone git@github.com:SWMFsoftware/BATSRUS.git
+cd BATSRUS
+./Config.pl -install
+```
+
+Here we try a simple KHI demo on Perlmutter.
+
+```shell
+/Config.pl -e=Hd -g=8,8,1 -u=KelvinHelmholtz
+make -j
+make PIDL
+make rundir
+cp Param/SHOCKTUBE/PARAM.in.kelvin_helmholtz run/PARAM.in
+```
+
+```shell
+mv run ~/scratch # move the run folder to your workspace
+```
+
+Next we ask for an interactive job:
+```shell
+salloc --nodes 1 --qos interactive --time 00:10:00 --constraint cpu
+```
+
+After entering the interactive job, we go to the copied run directory.
+
+```shell
+srun -n 1 ./BATSRUS.exe | tee runlog
+```
+
+Then we postprocess the data into a new folder:
+
+```shell
+./PostProc RESULT/run1
+```
+
+The actual data is stored under `RESULT/run1/GM/`.
+For plotting with Python, checkout flekspy demos [here](https://henry2004y.github.io/flekspy/idl_data.html).
+
+```shell
+import flekspy as fs
+import matplotlib.pyplot as plt
+
+file = 'z=0_hd_1_t00000320_n00001016.out'
+ds = fs.load(file)
+ds.Rho.plot.pcolormesh(x="x", y="y")
+
+plt.savefig("test.png")
 ```
